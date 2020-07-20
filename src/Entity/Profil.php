@@ -25,13 +25,13 @@ class Profil
     private $libelle;
 
     /**
-     * @ORM\OneToMany(targetEntity=Utilisateur::class, mappedBy="profil", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
      */
-    private $utilisateurs;
+    private $users;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,30 +52,30 @@ class Profil
     }
 
     /**
-     * @return Collection|Utilisateur[]
+     * @return Collection|User[]
      */
-    public function getUtilisateurs(): Collection
+    public function getUsers(): Collection
     {
-        return $this->utilisateurs;
+        return $this->users;
     }
 
-    public function addUtilisateur(Utilisateur $utilisateur): self
+    public function addUser(User $user): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs[] = $utilisateur;
-            $utilisateur->setProfil($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setProfil($this);
         }
 
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateur $utilisateur): self
+    public function removeUser(User $user): self
     {
-        if ($this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->removeElement($utilisateur);
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
             // set the owning side to null (unless already changed)
-            if ($utilisateur->getProfil() === $this) {
-                $utilisateur->setProfil(null);
+            if ($user->getProfil() === $this) {
+                $user->setProfil(null);
             }
         }
 
