@@ -40,7 +40,6 @@ class AppFixtures extends Fixture
                 $users->setUsername(strtolower($profils[$i].$j));
                 $password = $this->encoder->encodePassword($users, "admin");
                 $users->setPassword($password);
-
                 $manager->persist($profil);
                 $manager->persist($users);
                 $manager->flush();

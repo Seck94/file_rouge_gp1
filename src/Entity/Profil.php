@@ -2,14 +2,30 @@
 
 namespace App\Entity;
 
-use App\Repository\ProfilRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProfilRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
- */
+ * @ApiResource(
+    *     attributes={"security"="is_granted('ROLE_ADMIN')","pagination_items_per_page"=10},
+    *     collectionOperations={
+    *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul un admin peut faire cette action."},
+    *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/profils",},
+    *     },
+    *     
+    *     itemOperations={
+    *         "get"={"security"="is_granted('ROLE_ADMIN')",}, 
+    *         "delete"={"security"="is_granted('ROLE_ADMIN')"},
+    *         "patch"={"security"="is_granted('ROLE_ADMIN')"},
+    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')"},
+    *  }
+  * )
+  */
 class Profil
 {
     /**
@@ -26,6 +42,7 @@ class Profil
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
+     * @ApiSubresource()
      */
     private $users;
 
