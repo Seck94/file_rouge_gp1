@@ -17,6 +17,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'get' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
+                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'normalization_context' => [
+                            'groups' => [
+                                'user_read',
+                                'user_details_read',
+                            ],
+                        ],
+                        'path' => 'admin/users/{id}',
                         'input' => null,
                         'output' => null,
                         'method' => 'GET',
@@ -45,6 +53,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'delete' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
+                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'path' => 'admin/users/{id}',
                         'input' => null,
                         'output' => null,
                         'method' => 'DELETE',
@@ -73,6 +83,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'patch' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
+                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'path' => 'admin/users/{id}',
                         'input' => null,
                         'output' => null,
                         'method' => 'PATCH',
@@ -95,6 +107,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'put' => [
                         'security_post_denormalize' => 'is_granted(\'ROLE_ADMIN\')',
+                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'path' => 'admin/users/{id}',
                         'input' => null,
                         'output' => null,
                         'method' => 'PUT',
@@ -127,7 +141,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'post' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
-                        'security_message' => 'Seul un admin peut faire cette action.',
+                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'path' => 'admin/users',
                         'input' => null,
                         'output' => null,
                         'method' => 'POST',
@@ -158,6 +173,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                         'path' => 'admin/users',
+                        'normalization_context' => [
+                            'groups' => [
+                                'user_read',
+                                'user_details_read',
+                            ],
+                        ],
                         'input' => null,
                         'output' => null,
                         'method' => 'GET',

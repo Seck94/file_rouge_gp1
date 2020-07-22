@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 // use Webmozart\Assert\Assert;
@@ -16,16 +17,42 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ApiResource(
  *     attributes={"security"="is_granted('ROLE_ADMIN')","pagination_items_per_page"=10},
  *     collectionOperations={
- *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul un admin peut faire cette action."},
- *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/users",},
+ *         "post"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/users",
+ *          },
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/users",
+ *              "normalization_context"={"groups"={"user_read","user_details_read"}}
+ *          },
  *     },
  *     
  *     itemOperations={
- *         "get"={"security"="is_granted('ROLE_ADMIN')",}, 
- *         "delete"={"security"="is_granted('ROLE_ADMIN')"},
- *         "patch"={"security"="is_granted('ROLE_ADMIN')"},
- *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')"},
- *     }
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "normalization_context"={"groups"={"user_read","user_details_read"}},
+ *              "path"="admin/users/{id}",
+ *          }, 
+ *         "delete"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/users/{id}",
+ *          },
+ *         "patch"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/users/{id}",
+ *          },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/users/{id}",
+ *          },
+ *     },
  * )
  */
 class User implements UserInterface
@@ -34,15 +61,19 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"user_read"})
      */
     private $username;
 
-  
+    /**
+     * @Groups({"user_details_read"})
+     */
     private $roles = [];
 
     /**
@@ -53,16 +84,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_read"})
      */
     private $avatar;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_read"})
      */
     private $nom;
 
@@ -76,12 +110,14 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_read"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"user_read"})
      */
     private $profil;
 
