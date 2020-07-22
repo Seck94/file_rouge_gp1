@@ -15,14 +15,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
    *     attributes={"security"="is_granted('ROLE_ADMIN')","pagination_items_per_page"=10},
     *     collectionOperations={
     *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul un admin peut faire cette action."},
-    *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/profils",},
+    *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/users",},
     *     },
     *     
     *     itemOperations={
-    *         "get"={"security"="is_granted('ROLE_ADMIN')",}, 
-    *         "delete"={"security"="is_granted('ROLE_ADMIN')"},
-    *         "patch"={"security"="is_granted('ROLE_ADMIN')"},
-    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')"},
+    *         "get"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/users/{id}",}, 
+    *         "delete"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/users/{id}",},
+    *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/users/{id}",},
+    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/users/{id}",},
     *  }
  * )
  */
@@ -37,9 +37,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\Email(
-     *      message = "Email '{{ value }}' invalide !."
-     *)
      */
     private $username;
 
