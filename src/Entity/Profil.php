@@ -2,12 +2,29 @@
 
 namespace App\Entity;
 
-use App\Repository\ProfilRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProfilRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
+ * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_ADMIN')","pagination_items_per_page"=10},
+ *     collectionOperations={
+ *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils"},
+ *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils",},
+ *          
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils/{id}",}, 
+ *         "delete"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils/{id}",},
+ *         "patch"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils/{id}",},
+ *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils/{id}",},
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
  */
 class Profil
@@ -26,6 +43,7 @@ class Profil
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
+     *  @ApiSubresource
      */
     private $users;
 

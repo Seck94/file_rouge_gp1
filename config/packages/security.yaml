@@ -3,6 +3,10 @@ security:
         App\Entity\User:
             algorithm: auto
 
+    role_hierarchy:
+       ROLE_ADMIN: [ ROLE_FORMATEUR ]
+       
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -28,6 +32,7 @@ security:
         api:
             pattern:   ^/api
             stateless: true
+            anonymous: true
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
@@ -48,5 +53,6 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/api/login, roles: [ROLE_USER,IS_AUTHENTICATED_ANONYMOUSLY] }
-        - { path: ^/api,       roles:[ROLE_USER, IS_AUTHENTICATED_FULLY ] }
+        - { path: ^/api/login, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        - { path: ^/api$, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        - { path: ^/api,       roles:[IS_AUTHENTICATED_FULLY ] }
