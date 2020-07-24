@@ -1,3 +1,0 @@
-<?php //route_name_8e416e639bfcbedb3f090fded35e9f43
-
-return [PHP_INT_MAX, 'api_profils_get_collection'];

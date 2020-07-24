@@ -51,6 +51,105 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
+                    'get_apprenant' => [
+                        'method' => 'GET',
+                        'path' => '/apprenants/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\'))',
+                        'security_message' => 'Vous n\'avez pas access à cette Ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get_formateur' => [
+                        'method' => 'GET',
+                        'path' => '/formateurs/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\'))',
+                        'security_message' => 'Vous n\'avez pas access à cette Ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get_admin' => [
+                        'method' => 'GET',
+                        'path' => '/admins/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\'))',
+                        'security_message' => 'Vous n\'avez pas access à cette Ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
                     'delete' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas ces privileges.',
@@ -169,6 +268,36 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
+                    'add_user' => [
+                        'method' => 'POST',
+                        'path' => '/admin/users',
+                        'security' => 'is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\')',
+                        'security_message' => 'Vous n\'avez pas access à cette Ressource',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
                     'get' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas acces a cette ressource.',
@@ -182,6 +311,109 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'input' => null,
                         'output' => null,
                         'method' => 'GET',
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get_apprenants' => [
+                        'method' => 'GET',
+                        'path' => '/apprenants',
+                        'security' => '(is_granted(\'ROLE_FORMATEUR\'))',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                        'route_name' => 'apprenant_liste',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get_formateurs' => [
+                        'method' => 'GET',
+                        'path' => '/formateurs',
+                        'security' => '(is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                        'route_name' => 'formateur_liste',
+                        'normalization_context' => [
+                            'groups' => [
+                                'formateur_read',
+                            ],
+                        ],
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'get_admins' => [
+                        'method' => 'GET',
+                        'path' => '/admins',
+                        'security' => '(is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                        'route_name' => 'admin_liste',
+                        'normalization_context' => [
+                            'groups' => [
+                                'admin_read',
+                            ],
+                        ],
+                        'input' => null,
+                        'output' => null,
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',

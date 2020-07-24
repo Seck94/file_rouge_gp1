@@ -170,6 +170,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'normalization_context' => [
                             'groups' => [
                                 'profil_read',
+                                'profil_details_read',
                             ],
                         ],
                         'input' => null,

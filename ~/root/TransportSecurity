@@ -6,9 +6,9 @@
       "sts_observed": 1595451975.339867
    },
    "bvX4PpTCW5oYCQv3FySIixdkmM+paN/l+o4e/8K1m3o=": {
-      "expiry": 1626992628.308409,
+      "expiry": 1627097380.947891,
       "mode": "force-https",
       "sts_include_subdomains": true,
-      "sts_observed": 1595456628.308412
+      "sts_observed": 1595561380.947893
    }
 }

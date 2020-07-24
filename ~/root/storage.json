@@ -577,8 +577,7 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location",
-                        "enabled": false
+                        "label": "&&Last Edit Location"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1444,7 +1443,7 @@
             "uiState": {
                 "mode": 1,
                 "x": 811,
-                "y": 87,
+                "y": 115,
                 "width": 1108,
                 "height": 965
             }

@@ -22,8 +22,8 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
          // $product = new Product();
         // $manager->persist($product);
-        $profils=['ADMIN','FORMATEUR','CM'];
-        for ($i = 0; $i < 3; $i++) {
+        $profils=['ADMIN','FORMATEUR','CM','APPRENANT'];
+        for ($i = 0; $i < 4; $i++) {
             $profil= new Profil();
             $profil->setLibelle($profils[$i]);
             for($j =0; $j<3; $j++){

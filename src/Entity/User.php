@@ -22,6 +22,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "path"="admin/users",
  *          },
+ *          "add_user"={
+ *              "method"="POST",
+ *              "path"="/admin/users",
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_CM')",
+ *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *          },
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
@@ -30,11 +36,26 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *          },
  *         "get_apprenants"={
  *              "method"="GET",
- *              "path"="/apprenants" ,
- *              "security"="(is_granted('ROLE_FORMATEUR')", 
+ *              "path"="/apprenants",
+ *              "security"="(is_granted('ROLE_FORMATEUR'))", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "route_name"="apprenant_liste",
- *              "normalization_context"={"groups"={"apprenant_read"}}
+ *          },
+ *          "get_formateurs"={
+ *              "method"="GET",
+ *              "path"="/formateurs" ,
+ *              "security"="(is_granted('ROLE_ADMIN'))", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "route_name"="formateur_liste",
+ *              "normalization_context"={"groups"={"formateur_read"}}
+ *          },
+ *          "get_admins"={
+ *              "method"="GET",
+ *              "path"="/admins" ,
+ *              "security"="(is_granted('ROLE_ADMIN'))", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "route_name"="admin_liste",
+ *              "normalization_context"={"groups"={"admin_read"}}
  *          }
  *     },
  *     
@@ -44,6 +65,27 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "normalization_context"={"groups"={"user_read","user_details_read"}},
  *              "path"="admin/users/{id}",
+ *          },
+ *          "get_apprenant"={
+ *              "method"="GET",
+ *              "path"="/apprenants/{id}",
+ *              "requirements"={"id"="\d+"},
+ *              "security"="(is_granted('ROLE_FORMATEUR'))",
+ *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *          }, 
+ *          "get_formateur"={
+ *              "method"="GET",
+ *              "path"="/formateurs/{id}",
+ *              "requirements"={"id"="\d+"},
+ *              "security"="(is_granted('ROLE_FORMATEUR'))",
+ *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *          }, 
+ *          "get_admin"={
+ *              "method"="GET",
+ *              "path"="/admins/{id}",
+ *              "requirements"={"id"="\d+"},
+ *              "security"="(is_granted('ROLE_FORMATEUR'))",
+ *              "security_message"="Vous n'avez pas access à cette Ressource"
  *          }, 
  *         "delete"={
  *              "security"="is_granted('ROLE_ADMIN')",
@@ -69,7 +111,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user_read"})
+     * @Groups({"apprenant_read"})
      */
     private $id;
 
@@ -202,17 +244,19 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+    
     public function getAvatar(): ?string
     {
         return $this->avatar;
     }
 
-    public function setAvatar(string $avatar): self
+    public function setAvatar($avatar): self
     {
         $this->avatar = $avatar;
 
         return $this;
     }
+    
 
     public function getPrenom(): ?string
     {
