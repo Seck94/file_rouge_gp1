@@ -28,6 +28,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "path"="admin/users",
  *              "normalization_context"={"groups"={"user_read","user_details_read"}}
  *          },
+ *         "get_apprenants"={
+ *              "method"="GET",
+ *              "path"="/apprenants" ,
+ *              "security"="(is_granted('ROLE_FORMATEUR')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "route_name"="apprenant_liste",
+ *              "normalization_context"={"groups"={"apprenant_read"}}
+ *          }
  *     },
  *     
  *     itemOperations={
