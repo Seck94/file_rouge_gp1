@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\Profil;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -17,8 +19,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur"})
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_ADMIN') ","pagination_items_per_page"=20},
+ *     attributes={"security"="is_granted('ROLE_ADMIN') ","pagination_items_per_page"=20,"normalization_context"={"groups"={"not_img"}}},
  *     collectionOperations={
  *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/users",},
  *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/users","normalization_context"={"groups"={"user_read","user_details_read"}}},
@@ -103,24 +108,26 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"not_img"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * )
-     * @Groups({"user_read"})
+     * @Groups({"user_read","not_img"})
      */
     private $username;
 
    /* 
-   * @Groups ({"user_details_read"}) 
+   * @Groups ({"user_details_read","not_img"}) 
    */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Groups({"not_img"})
      */
     private $password;
 
@@ -133,34 +140,50 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","not_img"})
      */
     private $prenom;
 
     /*
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","not_img"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","not_img"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","not_img"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","not_img"})
      */
     private $profil;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $promo;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Groupecompetence::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $groupecompetences;
+
+    public function __construct()
+    {
+        $this->promo = new ArrayCollection();
+        $this->groupecompetences = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -304,6 +327,68 @@ class User implements UserInterface
     public function setProfil(?Profil $profil): self
     {
         $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Promo[]
+     */
+    public function getPromo(): Collection
+    {
+        return $this->promo;
+    }
+
+    public function addPromo(Promo $promo): self
+    {
+        if (!$this->promo->contains($promo)) {
+            $this->promo[] = $promo;
+            $promo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromo(Promo $promo): self
+    {
+        if ($this->promo->contains($promo)) {
+            $this->promo->removeElement($promo);
+            // set the owning side to null (unless already changed)
+            if ($promo->getUser() === $this) {
+                $promo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupecompetence[]
+     */
+    public function getGroupecompetences(): Collection
+    {
+        return $this->groupecompetences;
+    }
+
+    public function addGroupecompetence(Groupecompetence $groupecompetence): self
+    {
+        if (!$this->groupecompetences->contains($groupecompetence)) {
+            $this->groupecompetences[] = $groupecompetence;
+            $groupecompetence->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupecompetence(Groupecompetence $groupecompetence): self
+    {
+        if ($this->groupecompetences->contains($groupecompetence)) {
+            $this->groupecompetences->removeElement($groupecompetence);
+            // set the owning side to null (unless already changed)
+            if ($groupecompetence->getUser() === $this) {
+                $groupecompetence->setUser(null);
+            }
+        }
 
         return $this;
     }

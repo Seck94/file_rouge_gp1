@@ -22,14 +22,14 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
          // $product = new Product();
         // $manager->persist($product);
-        $profils=['ADMIN','FORMATEUR','CM'];
-        for ($i = 0; $i < 3; $i++) {
+        $profils=['ADMIN','FORMATEUR','CM','APPRENANT'];
+        for ($i = 0; $i <= 3; $i++) {
             
            
 
                 $profil= new Profil();
                 $profil->setLibelle($profils[$i]);
-                for($j =0; $j<3; $j++){
+                for($j =1; $j<=4; $j++){
                 $users= new User();
                 $users->setNom($faker->lastname);
                 $users->setPrenom($faker->firstname);
