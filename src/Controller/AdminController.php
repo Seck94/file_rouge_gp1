@@ -41,8 +41,10 @@ class AdminController extends AbstractController
     *     }
     * )
     */
-    public function getFormateurById(UserRepository $repo, SerializerInterface $serializer, $id){
-        $user = $repo -> find($id);
+    public function getAdminById(UserRepository $repo, SerializerInterface $serializer, $id){
+        if (!($user = $repo -> find($id))) {
+            return null;
+        }
         $role = $user -> getRoles();
         if ($role[0] == "ROLE_ADMIN") {
             $user = $serializer -> serialize($user,"json");

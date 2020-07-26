@@ -50,27 +50,39 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'groups' => [
                 1 => [
                     'apprenant_read',
+                    'not_img',
                 ],
                 [
                     'user_read',
+                    'not_img',
                 ],
                 [
                     'user_details_read',
                 ],
-                5 => [
-                    'user_read',
+                [
+                    'not_img',
                 ],
                 [
                     'user_read',
                 ],
                 [
                     'user_read',
-                ],
-                9 => [
-                    'user_read',
+                    'not_img',
                 ],
                 [
                     'user_read',
+                    'not_img',
+                ],
+                [
+                    'not_img',
+                ],
+                [
+                    'user_read',
+                    'not_img',
+                ],
+                [
+                    'user_read',
+                    'not_img',
                 ],
             ],
         ],

@@ -42,7 +42,9 @@ class FormateurController extends AbstractController
     * )
     */
     public function getFormateurById(UserRepository $repo, SerializerInterface $serializer, $id){
-        $user = $repo -> find($id);
+        if (!($user = $repo -> find($id))) {
+            return null;
+        }
         $role = $user -> getRoles();
         if ($role[0] == "ROLE_FORMATEUR") {
             $user = $serializer -> serialize($user,"json");

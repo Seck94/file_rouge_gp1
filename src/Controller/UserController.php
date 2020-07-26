@@ -3,16 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Profil;
 use App\Repository\ProfilRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
@@ -30,6 +31,8 @@ class UserController extends AbstractController
     public function addUser(Request $request,UserPasswordEncoderInterface $encoder,SerializerInterface $serializer,ValidatorInterface $validator,ProfilRepository $profil,EntityManagerInterface $manager)
     {
         $user = $request->request->all();
+        $id_profil = $request -> request -> get("id_profil");
+        $profil = $profil -> find($id_profil);
         $avatar = $request->files->get("avatar");
         $avatar = fopen($avatar->getRealPath(),"rb");
         $user["avatar"] = $avatar;
@@ -39,8 +42,10 @@ class UserController extends AbstractController
             $errors = $serializer->serialize($errors,"json");
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
+        $user -> setProfil($profil);
         $password = $user->getPassword();
         $user->setPassword($encoder->encodePassword($user,$password));
+        //dd($user);
         $manager->persist($user);
         $manager->flush();
         fclose($avatar);

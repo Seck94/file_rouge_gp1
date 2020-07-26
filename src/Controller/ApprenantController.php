@@ -42,7 +42,9 @@ class ApprenantController extends AbstractController
     * )
     */
     public function getApprenantById(UserRepository $repo, SerializerInterface $serializer, $id){
-        $user = $repo -> find($id);
+        if (!($user = $repo -> find($id))) {
+            return null;
+        }
         $role = $user -> getRoles();
         if ($role[0] == "ROLE_APPRENANT") {
             $user = $serializer -> serialize($user,"json");
