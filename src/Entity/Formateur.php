@@ -8,10 +8,73 @@ use App\Repository\FormateurRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=FormateurRepository::class)
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={
+ *          "security"="is_granted('ROLE_ADMIN')",
+ *          "pagination_items_per_page"=10, 
+ *     },
+ * 
+ *     collectionOperations={
+ *         "post"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/formateurs",
+ *          },
+ *          "add_formateur"={
+ *              "method"="POST",
+ *              "path"="/admin/formateurs",
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_CM')",
+ *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *          },
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/formateurs",
+ *          },
+ *          "get_formateurs"={
+ *              "method"="GET",
+ *              "path"="/formateurs" ,
+ *              "security"="(is_granted('ROLE_ADMIN'))", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "route_name"="formateur_liste",
+ *          },
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/formateurs/{id}",
+ *              "defaults"={"id"=null}
+ *          }, 
+ *          "get_formateur"={
+ *              "method"="GET",
+ *              "path"="/formateurs/{id}",
+ *              "requirements"={"id"="\d+"},
+ *              "security"="(is_granted('ROLE_FORMATEUR'))",
+ *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *          }, 
+ *         "delete"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/formateurs/{id}",
+ *          },
+ *         "patch"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/formateurs/{id}",
+ *          },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/formateurs/{id}",
+ *          },
+ *     },
+ * )
  */
 class Formateur extends User
 {

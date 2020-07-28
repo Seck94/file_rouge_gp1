@@ -195,3 +195,14 @@ Open repository: /opt/lampp/htdocs/file_rouge_gp1
 > git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/migrations/Version20200724174548.php
 > git show --textconv :src/Entity/Formateur.php
 > git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Formateur.php
+> git status -z -u
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Formateur.php
+> git cat-file -s 341efd981d4286387037cbaf362adf8c11e5ba53
+> git show --textconv :src/Entity/Formateur.php
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template

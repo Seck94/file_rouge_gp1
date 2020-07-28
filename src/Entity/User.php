@@ -24,7 +24,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
- *          "normalization_context"={"groups"={"not_img"}}
  *     },
  * 
  *     collectionOperations={
@@ -45,21 +44,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "path"="admin/users",
  *              "normalization_context"={"groups"={"user_read","user_details_read"}}
  *          },
- *         "get_apprenants"={
- *              "method"="GET",
- *              "path"="/apprenants",
- *              "security"="(is_granted('ROLE_FORMATEUR'))", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "route_name"="apprenant_liste",
- *          },
- *          "get_formateurs"={
- *              "method"="GET",
- *              "path"="/formateurs" ,
- *              "security"="(is_granted('ROLE_ADMIN'))", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "route_name"="formateur_liste",
- *              "normalization_context"={"groups"={"formateur_read"}}
- *          },
  *          "get_admins"={
  *              "method"="GET",
  *              "path"="/admins" ,
@@ -77,20 +61,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "normalization_context"={"groups"={"user_read","user_details_read"}},
  *              "path"="admin/users/{id}",
  *          },
- *          "get_apprenant"={
- *              "method"="GET",
- *              "path"="/apprenants/{id}",
- *              "requirements"={"id"="\d+"},
- *              "security"="(is_granted('ROLE_FORMATEUR'))",
- *              "security_message"="Vous n'avez pas access à cette Ressource"
- *          }, 
- *          "get_formateur"={
- *              "method"="GET",
- *              "path"="/formateurs/{id}",
- *              "requirements"={"id"="\d+"},
- *              "security"="(is_granted('ROLE_FORMATEUR'))",
- *              "security_message"="Vous n'avez pas access à cette Ressource"
- *          }, 
  *          "get_admin"={
  *              "method"="GET",
  *              "path"="/admins/{id}",
@@ -122,13 +92,12 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"apprenant_read","not_img"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $username;
 
@@ -140,25 +109,23 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Groups({"not_img"})
      */
     private $password;
 
     /**
      * @ORM\Column(type="blob", nullable=true)
-     * @Groups({"user_read"})
      */
     private $avatar;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $nom;
 
@@ -167,20 +134,20 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' est invalide."
      * )
-     * @Groups({"not_img"})
+     * @Groups({"user_read"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $profil;
 
@@ -274,10 +241,10 @@ class User implements UserInterface
     }
 
     
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
+    // public function getAvatar()
+    // {
+    //     return $this->avatar;
+    // }
 
     public function setAvatar($avatar): self
     {

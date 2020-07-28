@@ -11,7 +11,69 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=ApprenantRepository::class)
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={
+ *          "security"="is_granted('ROLE_ADMIN')",
+ *          "pagination_items_per_page"=10, 
+ *     },
+ * 
+ *     collectionOperations={
+ *         "post"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/apprenants",
+ *          },
+ *          "add_apprenant"={
+ *              "method"="POST",
+ *              "path"="/admin/apprenants",
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_CM')",
+ *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *          },
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/apprenants",
+ *          },
+ *          "get_apprenants"={
+ *              "method"="GET",
+ *              "path"="/apprenants" ,
+ *              "security"="(is_granted('ROLE_ADMIN'))", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "route_name"="formateur_liste",
+ *          },
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/apprenants/{id}",
+ *              "defaults"={"id"=null}
+ *          }, 
+ *          "get_apprenant"={
+ *              "method"="GET",
+ *              "path"="/apprenants/{id}",
+ *              "requirements"={"id"="\d+"},
+ *              "security"="(is_granted('ROLE_FORMATEUR'))",
+ *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *          }, 
+ *         "delete"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/apprenants/{id}",
+ *          },
+ *         "patch"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/apprenants/{id}",
+ *          },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/apprenants/{id}",
+ *          },
+ *     },
+ * )
  */
 class Apprenant extends User
 {

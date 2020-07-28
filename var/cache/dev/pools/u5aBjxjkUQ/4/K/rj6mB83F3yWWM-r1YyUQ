@@ -1,0 +1,3 @@
+<?php //route_name_acbd582f28774c305bc659fc5fc635e7
+
+return [PHP_INT_MAX, 'api_formateurs_get_collection'];

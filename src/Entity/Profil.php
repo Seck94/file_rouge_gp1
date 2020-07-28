@@ -2,16 +2,19 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProfilRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  * 
  * @ApiResource(
  *     attributes={
@@ -71,6 +74,32 @@ class Profil
      * @Groups({"profil_read"})
      */
     private $libelle;
+
+
+    /**
+     * @ORM\Column(name="last_update", type="datetime",nullable=true)
+     */
+    private $lastUpdate;
+
+
+    public function getLastUpdate(): ?\DateTimeInterface
+    {
+        return $this->lastUpdate;
+    }
+
+    public function setLastUpdate(\DateTimeInterface $lastUpdate): self
+    {
+        $this->lastUpdate = $lastUpdate;
+
+        return $this;
+    }
+
+     /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate(){
+        $this -> setLastUpdate(new \DateTime());
+    }
 
     /**
     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)

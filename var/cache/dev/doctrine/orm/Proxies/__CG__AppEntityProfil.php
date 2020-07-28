@@ -66,10 +66,10 @@ class Profil extends \App\Entity\Profil implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'users'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'lastUpdate', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'users'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'users'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'lastUpdate', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'users'];
     }
 
     /**
@@ -176,6 +176,39 @@ class Profil extends \App\Entity\Profil implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getLastUpdate(): ?\DateTimeInterface
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastUpdate', []);
+
+        return parent::getLastUpdate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLastUpdate(\DateTimeInterface $lastUpdate): \App\Entity\Profil
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastUpdate', [$lastUpdate]);
+
+        return parent::setLastUpdate($lastUpdate);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function preUpdate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'preUpdate', []);
+
+        return parent::preUpdate();
+    }
+
     /**
      * {@inheritDoc}
      */

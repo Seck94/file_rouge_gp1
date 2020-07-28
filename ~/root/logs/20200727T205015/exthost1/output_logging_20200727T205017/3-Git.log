@@ -1,0 +1,56 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --show-toplevel
+> git rev-parse --git-dir
+Open repository: /opt/lampp/htdocs/file_rouge_gp1
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/Formateur.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Formateur.php
+> git cat-file -s 341efd981d4286387037cbaf362adf8c11e5ba53
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :src/Entity/Apprenant.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Apprenant.php
+> git cat-file -s d32568fd2daab8f1609d2401c02d638ac348e0d9
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Controller/ApprenantController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/ApprenantController.php
+> git cat-file -s 42ae96f8800a7750a9ee5c0eb15ff54879befcc6
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Controller/FormateurController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/FormateurController.php
+> git cat-file -s 2b8194df65caf720cc4e2642e1ad34d14b72b215
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Controller/ApprenantController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/ApprenantController.php
+> git cat-file -s 42ae96f8800a7750a9ee5c0eb15ff54879befcc6
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/Formateur.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Formateur.php
+> git cat-file -s 341efd981d4286387037cbaf362adf8c11e5ba53
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s a9f2982ecbb3896f3cce61ea02a3dfcc7bb34ff6
+> git show --textconv :src/Entity/Formateur.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Formateur.php
+> git cat-file -s 341efd981d4286387037cbaf362adf8c11e5ba53
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s a9f2982ecbb3896f3cce61ea02a3dfcc7bb34ff6
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9f5011d00c2f9d9fb616e84c3604f49d0328e0c0
