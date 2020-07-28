@@ -23,7 +23,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur"})
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_ADMIN') ","pagination_items_per_page"=20,"normalization_context"={"groups"={"not_img"}}},
+ *     attributes={"security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_FORMATEUR') ","pagination_items_per_page"=20,"normalization_context"={"groups"={"not_img"}}},
  *     collectionOperations={
  *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/users",},
  *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/users","normalization_context"={"groups"={"user_read","user_details_read"}}},
@@ -132,8 +132,8 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *@Groups({"user_read"})
+     * @ORM\Column(type="blob")
+     * @Groups({"user_read"})
      */
     
     private $avatar;
