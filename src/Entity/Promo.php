@@ -86,9 +86,15 @@ class Promo
      */
     private $referentiel;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Apprenant::class, mappedBy="promo")
+     */
+    private $apprenants;
+
     public function __construct()
     {
         $this->formateurs = new ArrayCollection();
+        $this->apprenants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -264,6 +270,37 @@ class Promo
     public function setReferentiel(?Referentiel $referentiel): self
     {
         $this->referentiel = $referentiel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Apprenant[]
+     */
+    public function getApprenants(): Collection
+    {
+        return $this->apprenants;
+    }
+
+    public function addApprenant(Apprenant $apprenant): self
+    {
+        if (!$this->apprenants->contains($apprenant)) {
+            $this->apprenants[] = $apprenant;
+            $apprenant->setPromo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApprenant(Apprenant $apprenant): self
+    {
+        if ($this->apprenants->contains($apprenant)) {
+            $this->apprenants->removeElement($apprenant);
+            // set the owning side to null (unless already changed)
+            if ($apprenant->getPromo() === $this) {
+                $apprenant->setPromo(null);
+            }
+        }
 
         return $this;
     }

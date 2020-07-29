@@ -56,6 +56,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *         "get"={"security"="is_granted('ROLE_ADMIN')",
  *               "security_message"="Seul l'administrateur peut effectuer ceci!!!!",
  *               "path"="admin/formateurs/{id}",
+ *               "defaults"={"id"=null} 
  * }, 
  *         "delete"={"security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Seul l'administrateur peut effectuer ceci!!!!",

@@ -54,6 +54,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *         "get"={"security"="is_granted('ROLE_ADMIN')",
  *               "security_message"="Seul l'administrateur peut effectuer ceci!!!!",
  *               "path"="admin/apprenants/{id}",
+ *               "defaults"={"id"=null} 
  * }, 
  *         "delete"={"security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Seul l'administrateur peut effectuer ceci!!!!",
@@ -109,6 +110,7 @@ class Apprenant extends User
      */
     private $profilsortie;
 
+
     public function __construct()
     {
         $this->groupes = new ArrayCollection();
@@ -155,6 +157,15 @@ class Apprenant extends User
     public function setProfilsortie(?Profilsortie $profilsortie): self
     {
         $this->profilsortie = $profilsortie;
+
+        return $this;
+    }
+
+   
+
+    public function setPromo(?Promo $promo): self
+    {
+        $this->promo = $promo;
 
         return $this;
     }

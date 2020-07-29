@@ -31,8 +31,7 @@ class UserController extends AbstractController
     public function addUser(Request $request,UserPasswordEncoderInterface $encoder,SerializerInterface $serializer,ValidatorInterface $validator,ProfilRepository $profil,EntityManagerInterface $manager)
     {
         $user = $request->request->all();
-        $id_profil = $request -> request -> get("id_profil");
-        $profil = $profil -> find($id_profil);
+        $profil = $profil -> find(1);
         $avatar = $request->files->get("avatar");
         $avatar = fopen($avatar->getRealPath(),"rb");
         $user["avatar"] = $avatar;
