@@ -19,15 +19,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     },
  * 
  *     collectionOperations={
- *         "post"={
- *              "security"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/formateurs",
- *          },
  *          "add_formateur"={
  *              "method"="POST",
  *              "path"="/admin/formateurs",
- *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_CM')",
+ *              "security"="is_granted('ROLE_ADMIN'))",
  *              "security_message"="Vous n'avez pas access à cette Ressource"
  *          },
  *         "get"={

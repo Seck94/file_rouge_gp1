@@ -62,7 +62,7 @@ class Promo
     private $fabrique;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date",nullable=true)
      */
     private $dateFinReelle;
 
@@ -78,7 +78,7 @@ class Promo
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="promo")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 

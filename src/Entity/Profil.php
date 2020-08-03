@@ -24,7 +24,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     collectionOperations={
  *         "post"={
  *              "security"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils",
  *          },
  *         "get"={
@@ -38,22 +38,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     itemOperations={
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         }, 
  *         "delete"={
  *              "security"="is_granted('ROLE_ADMIN')",
- *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         },
  *         "patch"={
  *              "security"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         },
  *         "put"={
  *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         },
  *     },

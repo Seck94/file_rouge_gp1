@@ -169,40 +169,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'collectionOperations' => [
                 [
-                    'post' => [
-                        'security' => 'is_granted(\'ROLE_ADMIN\')',
-                        'security_message' => 'Vous n\'avez pas ces privileges.',
-                        'path' => 'admin/formateurs',
-                        'input' => null,
-                        'output' => null,
-                        'method' => 'POST',
-                        'input_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
                     'add_formateur' => [
                         'method' => 'POST',
                         'path' => '/admin/formateurs',
-                        'security' => 'is_granted(\'ROLE_ADMIN\') or is_granted(\'ROLE_CM\')',
+                        'security' => 'is_granted(\'ROLE_ADMIN\'))',
                         'security_message' => 'Vous n\'avez pas access à cette Ressource',
                         'input' => null,
                         'output' => null,

@@ -1,3 +1,0 @@
-<?php //route_name_2292f4b0ac77be4452b98303225c5c67
-
-return [PHP_INT_MAX, 'api_apprenants_get_collection'];

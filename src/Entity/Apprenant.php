@@ -18,11 +18,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  *     },
  * 
  *     collectionOperations={
- *         "post"={
- *              "security"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/apprenants",
- *          },
  *          "add_apprenant"={
  *              "method"="POST",
  *              "path"="/admin/apprenants",

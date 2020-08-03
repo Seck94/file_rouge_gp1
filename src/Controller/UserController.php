@@ -44,7 +44,7 @@ class UserController extends AbstractController
         $user -> setProfil($profil);
         $password = $user->getPassword();
         $user->setPassword($encoder->encodePassword($user,$password));
-        dd($user);
+        // dd($user);
         $manager->persist($user);
         $manager->flush();
         fclose($avatar);

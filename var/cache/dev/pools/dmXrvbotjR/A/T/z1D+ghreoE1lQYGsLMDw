@@ -17,7 +17,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'get' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
-                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'security_message' => 'Vous n\'avez pas ce privilege.',
                         'path' => 'admin/profils/{id}',
                         'input' => null,
                         'output' => null,
@@ -47,7 +47,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'delete' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
-                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'security_message' => 'Vous n\'avez pas ce privilege.',
                         'path' => 'admin/profils/{id}',
                         'input' => null,
                         'output' => null,
@@ -77,7 +77,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'patch' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
-                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'security_message' => 'Vous n\'avez pas ce privilege.',
                         'path' => 'admin/profils/{id}',
                         'input' => null,
                         'output' => null,
@@ -101,7 +101,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'put' => [
                         'security_post_denormalize' => 'is_granted(\'ROLE_ADMIN\')',
-                        'security_message' => 'Vous n\'avez pas ces privileges.',
+                        'security_message' => 'Vous n\'avez pas ce privilege.',
                         'path' => 'admin/profils/{id}',
                         'input' => null,
                         'output' => null,

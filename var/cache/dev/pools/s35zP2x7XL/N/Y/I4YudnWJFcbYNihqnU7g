@@ -16,6 +16,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -34,6 +35,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'profil',
                 'promo',
                 'groupecompetence',
+                'lastLogin',
                 'salt',
             ],
             'attributesMetadata' => [
@@ -50,7 +52,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'profil' => $o[10],
                     'promo' => $o[11],
                     'groupecompetence' => $o[12],
-                    'salt' => $o[13],
+                    'lastLogin' => $o[13],
+                    'salt' => $o[14],
                 ],
             ],
             'groups' => [
@@ -73,6 +76,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'user_read',
                 ],
                 [
+                    'user_read',
+                ],
+                13 => [
                     'user_read',
                 ],
             ],

@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -27,16 +28,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     },
  * 
  *     collectionOperations={
- *         "post"={
- *              "security"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/users",
- *          },
  *          "add_user"={
  *              "method"="POST",
  *              "path"="/admin/users",
- *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_CM')",
- *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="Vous n'avez pas le privilege"
  *          },
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
@@ -160,6 +156,12 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Groupecompetence::class, mappedBy="user", orphanRemoval=true)
      */
     private $groupecompetence;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"user_read"})
+     */
+    private $lastLogin;
 
     public function __construct()
     {
@@ -317,10 +319,10 @@ class User implements UserInterface
     /**
      * @return Collection|Promo[]
      */
-    public function getPromo(): Collection
-    {
-        return $this->promo;
-    }
+    // public function getPromo(): Collection
+    // {
+    //     return $this->promo;
+    // }
 
     public function addPromo(Promo $promo): self
     {
@@ -348,10 +350,10 @@ class User implements UserInterface
     /**
      * @return Collection|Groupecompetence[]
      */
-    public function getGroupecompetence(): Collection
-    {
-        return $this->groupecompetence;
-    }
+    // public function getGroupecompetence(): Collection
+    // {
+    //     return $this->groupecompetence;
+    // }
 
     public function addGroupecompetence(Groupecompetence $groupecompetence): self
     {
@@ -372,6 +374,18 @@ class User implements UserInterface
                 $groupecompetence->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(?\DateTimeInterface $lastLogin): self
+    {
+        $this->lastLogin = $lastLogin;
 
         return $this;
     }
