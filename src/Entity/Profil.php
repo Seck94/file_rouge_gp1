@@ -13,15 +13,29 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
  * @ApiResource(
-    *     attributes={"security"="is_granted('ROLE_ADMIN')","pagination_items_per_page"=10},
+    *     attributes={"pagination_items_per_page"=10},
     *     collectionOperations={
-    *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul un admin peut faire cette action.","path"="admin/profils",},
-    *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/profils",
-    *         "normalization_context"={"groups"={"profil_read","profil_details_read"}}},
+    *         "get"={
+    *              "security"="is_granted('ROLE_ADMIN')", 
+    *              "security_message"="Vous n'avez pas acces a cette ressource.",
+    *              "path"="admin/profils",
+    *              "normalization_context"={"groups"={"profil_read","profil_details_read"}}
+    *              },
+    *       "get"={
+    *              "security"="is_granted('ROLE_ADMIN')", 
+    *              "security_message"="Vous n'avez pas acces a cette ressource.",
+    *              "path"="admin/profils/{id}/users",
+    *              "normalization_context"={"groups"={"profil_read","profil_details_read"}}
+    *              },
+    *         "post"={
+    *              "security_post_denormalize"="is_granted('EDIT', object)", 
+    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+    *              "path"="admin/profils",
+    *          },
     *     },
     *     
     *     itemOperations={
-    *         "get"={"security"="is_granted('ROLE_ADMIN')","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/profils/{id}",}, 
+    *         "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/profils/{id}",}, 
     *         "delete"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/profils/{id}",},
     *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/profils/{id}",},
     *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/profils/{id}",},

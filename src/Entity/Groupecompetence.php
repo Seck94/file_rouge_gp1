@@ -2,13 +2,40 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\GroupecompetenceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=GroupecompetenceRepository::class)
+ * @ApiResource(
+    *        attributes={"pagination_items_per_page"=10},
+    *     collectionOperations={
+    *         "get"={
+    *              "security"="is_granted('ROLE_ADMIN')", 
+    *              "security_message"="Vous n'avez pas acces a cette ressource.",
+    *              "path"="admin/groupecompetences",
+    *              
+    *              },
+    *         "post"={
+    *              "security_post_denormalize"="is_granted('EDIT', object)", 
+    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+    *              "path"="admin/groupecompetences",
+    *          },
+    *     },
+    *     
+    *     itemOperations={
+    *         "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/groupecompetences/{id}",}, 
+    *         "get"={"security"="is_granted('VIEW',object)",
+    *                "security_message"="Vous n'avez pas acces a cette ressource.",
+    *                "path"="admin/groupecompetences/{id}/competences",}, 
+    *         "delete"={"security"="is_granted('DELETE',object)","security_message"="Seul l'admin qui a creer peut supprimer.","path"="admin/groupecompetences/{id}",},
+    *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupecompetences/{id}",},
+    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupecompetences/{id}",},
+    *  }
+ * )
  */
 class Groupecompetence
 {
