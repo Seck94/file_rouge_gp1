@@ -114,7 +114,6 @@ class Competence
                 $niveau->setCompetence(null);
             }
         }
-
         return $this;
     }
 }

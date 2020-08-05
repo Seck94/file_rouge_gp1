@@ -60,7 +60,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
             ],
             'groups' => [
-                4 => [
+                3 => [
+                    'user_details_read',
+                ],
+                [
                     'user_read',
                 ],
                 [
@@ -81,7 +84,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'user_read',
                 ],
-                14 => [
+                [
+                    'user_details_read',
+                ],
+                [
                     'user_read',
                 ],
             ],

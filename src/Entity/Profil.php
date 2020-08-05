@@ -18,13 +18,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * 
  * @ApiResource(
  *     attributes={
- *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10
  *      },
  *     collectionOperations={
  *         "post"={
- *              "security"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils",
  *          },
  *         "get"={
@@ -37,23 +36,23 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     
  *     itemOperations={
  *         "get"={
- *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security"="is_granted('VIEW',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         }, 
  *         "delete"={
- *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security"="is_granted('DELETE',object)",
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         },
  *         "patch"={
- *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         },
  *         "put"={
- *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         },
  *     },
@@ -103,7 +102,6 @@ class Profil
 
     /**
     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
-    * 
     * @ApiSubresource
     */
     private $users;

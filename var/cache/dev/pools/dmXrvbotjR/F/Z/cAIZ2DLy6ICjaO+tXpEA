@@ -25,6 +25,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                         'path' => 'admin/users/{id}',
+                        'defaults' => [
+                            'id' => null,
+                        ],
                         'input' => null,
                         'output' => null,
                         'method' => 'GET',

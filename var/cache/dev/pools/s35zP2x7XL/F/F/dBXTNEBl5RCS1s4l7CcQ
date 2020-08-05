@@ -84,7 +84,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'user_read',
                 ],
-                15 => [
+                [
+                    'user_details_read',
+                ],
+                [
+                    'user_details_read',
+                ],
+                [
                     'user_read',
                 ],
             ],

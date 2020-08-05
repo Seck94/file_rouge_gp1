@@ -401,6 +401,13 @@
         <argument type="service" id=".service_locator.g9CqTPp.App\Controller\FormateurController"/>
       </call>
     </service>
+    <service id="App\Controller\GroupecompetenceController" class="App\Controller\GroupecompetenceController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\GroupecompetenceController"/>
+      </call>
+    </service>
     <service id="App\Controller\UserController" class="App\Controller\UserController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -466,6 +473,12 @@
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Security\Voter\GroupecompetenceVoter" class="App\Security\Voter\GroupecompetenceVoter" autowire="true" autoconfigure="true">
+      <tag name="security.voter"/>
+    </service>
+    <service id="App\Security\Voter\ProfilVoter" class="App\Security\Voter\ProfilVoter" autowire="true" autoconfigure="true">
+      <tag name="security.voter"/>
     </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory" public="false"/>
     <service id="response_listener" class="Symfony\Component\HttpKernel\EventListener\ResponseListener" public="false">
@@ -4887,6 +4900,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FormateurController" class="App\Controller\FormateurController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FormateurController" class="App\Controller\FormateurController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\FormateurController" class="App\Controller\FormateurController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\GroupecompetenceController" class="App\Controller\GroupecompetenceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\GroupecompetenceController" class="App\Controller\GroupecompetenceController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\GroupecompetenceController" class="App\Controller\GroupecompetenceController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4918,6 +4934,10 @@
     <service id=".abstract.instanceof.App\Repository\TagRepository" class="App\Repository\TagRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Security\Core\Authorization\Voter\VoterInterface.0.App\Security\Voter\GroupecompetenceVoter" class="App\Security\Voter\GroupecompetenceVoter" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Security\Voter\GroupecompetenceVoter" class="App\Security\Voter\GroupecompetenceVoter" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Security\Core\Authorization\Voter\VoterInterface.0.App\Security\Voter\ProfilVoter" class="App\Security\Voter\ProfilVoter" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Security\Voter\ProfilVoter" class="App\Security\Voter\ProfilVoter" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.WaGDpDt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5194,7 +5214,21 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.xuVEnxl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.19ps0qC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="serializer" type="service" id="serializer"/>
+        <argument key="validator" type="service" id="validator"/>
+      </argument>
+    </service>
+    <service id=".service_locator.lRLL0n8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Groupecompetence" type="service" id="App\Repository\GroupecompetenceRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.inO9YAp" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::getAdmin" type="service" id=".service_locator.RTUGCCW"/>
@@ -5205,6 +5239,8 @@
         <argument key="App\Controller\FormateurController::addFormateur" type="service" id=".service_locator.r5pch1I"/>
         <argument key="App\Controller\FormateurController::getFormateur" type="service" id=".service_locator.RTUGCCW"/>
         <argument key="App\Controller\FormateurController::getFormateurById" type="service" id=".service_locator.olU6qez"/>
+        <argument key="App\Controller\GroupecompetenceController::addGroupecompetence" type="service" id=".service_locator.19ps0qC"/>
+        <argument key="App\Controller\GroupecompetenceController::showGroupecompetence" type="service" id=".service_locator.lRLL0n8"/>
         <argument key="App\Controller\UserController::addUser" type="service" id=".service_locator.r5pch1I"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
@@ -5220,6 +5256,8 @@
         <argument key="App\Controller\FormateurController:addFormateur" type="service" id=".service_locator.r5pch1I"/>
         <argument key="App\Controller\FormateurController:getFormateur" type="service" id=".service_locator.RTUGCCW"/>
         <argument key="App\Controller\FormateurController:getFormateurById" type="service" id=".service_locator.olU6qez"/>
+        <argument key="App\Controller\GroupecompetenceController:addGroupecompetence" type="service" id=".service_locator.19ps0qC"/>
+        <argument key="App\Controller\GroupecompetenceController:showGroupecompetence" type="service" id=".service_locator.lRLL0n8"/>
         <argument key="App\Controller\UserController:addUser" type="service" id=".service_locator.r5pch1I"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
@@ -5319,6 +5357,14 @@
     </service>
     <service id="debug.security.voter.security.access.expression_voter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
       <argument type="service" id="security.access.expression_voter"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="debug.security.voter.App\Security\Voter\GroupecompetenceVoter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
+      <argument type="service" id="App\Security\Voter\GroupecompetenceVoter"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="debug.security.voter.App\Security\Voter\ProfilVoter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
+      <argument type="service" id="App\Security\Voter\ProfilVoter"/>
       <argument type="service" id="debug.event_dispatcher"/>
     </service>
     <service id="security.logout.listener.csrf_token_clearing" class="Symfony\Component\Security\Http\EventListener\CsrfTokenClearingLogoutListener" public="false">
@@ -5423,6 +5469,12 @@
     <service id=".service_locator.g9CqTPp.App\Controller\FormateurController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\FormateurController"/>
       <argument>App\Controller\FormateurController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\GroupecompetenceController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\GroupecompetenceController"/>
+      <argument>App\Controller\GroupecompetenceController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.g9CqTPp" method="withContext"/>
     </service>
@@ -5535,6 +5587,8 @@
         <argument type="service" id="debug.security.voter.security.access.authenticated_voter"/>
         <argument type="service" id="debug.security.voter.security.access.role_hierarchy_voter"/>
         <argument type="service" id="debug.security.voter.security.access.expression_voter"/>
+        <argument type="service" id="debug.security.voter.App\Security\Voter\GroupecompetenceVoter"/>
+        <argument type="service" id="debug.security.voter.App\Security\Voter\ProfilVoter"/>
       </argument>
       <argument>affirmative</argument>
       <argument>false</argument>
@@ -5581,12 +5635,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.xuVEnxl"/>
+      <argument type="service" id=".service_locator.inO9YAp"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.xuVEnxl"/>
+      <argument type="service" id=".service_locator.inO9YAp"/>
     </service>
     <service id="api_platform.swagger.normalizer.api_gateway.inner" class="ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer" public="false">
       <argument type="service" id="api_platform.metadata.resource.metadata_factory.cached"/>
@@ -5993,7 +6047,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.xuVEnxl"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.inO9YAp"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

@@ -56,6 +56,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "normalization_context"={"groups"={"user_read","user_details_read"}},
  *              "path"="admin/users/{id}",
+ *              "defaults"={"id"=null}
  *          },
  *          "get_admin"={
  *              "method"="GET",
@@ -149,11 +150,13 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="user", orphanRemoval=true)
+     * @Groups({"user_details_read"})
      */
     private $promo;
 
     /**
      * @ORM\OneToMany(targetEntity=Groupecompetence::class, mappedBy="user", orphanRemoval=true)
+     * @Groups({"user_details_read"})
      */
     private $groupecompetence;
 
@@ -319,10 +322,10 @@ class User implements UserInterface
     /**
      * @return Collection|Promo[]
      */
-    // public function getPromo(): Collection
-    // {
-    //     return $this->promo;
-    // }
+    public function getPromo(): Collection
+    {
+        return $this->promo;
+    }
 
     public function addPromo(Promo $promo): self
     {
@@ -350,10 +353,10 @@ class User implements UserInterface
     /**
      * @return Collection|Groupecompetence[]
      */
-    // public function getGroupecompetence(): Collection
-    // {
-    //     return $this->groupecompetence;
-    // }
+    public function getGroupecompetence(): Collection
+    {
+        return $this->groupecompetence;
+    }
 
     public function addGroupecompetence(Groupecompetence $groupecompetence): self
     {

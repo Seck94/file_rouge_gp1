@@ -1441,11 +1441,11 @@
             "folder": "file:///opt/lampp/htdocs/file_rouge_gp1",
             "backupPath": "/opt/lampp/htdocs/file_rouge_gp1/~/root/Backups/077f8bd220fffee23f6a9a1fcb7c85ea",
             "uiState": {
-                "mode": 1,
-                "x": 811,
-                "y": 57,
-                "width": 1108,
-                "height": 1023
+                "mode": 0,
+                "x": 67,
+                "y": 55,
+                "width": 1853,
+                "height": 1025
             }
         },
         "openedWindows": []
