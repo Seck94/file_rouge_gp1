@@ -2,13 +2,37 @@
 
 namespace App\Entity;
 
-use App\Repository\GroupetagRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\GroupetagRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=GroupetagRepository::class)
+  * @ApiResource(
+    *     attributes={"pagination_items_per_page"=10},
+    *     collectionOperations={
+    *         "get"={
+    *              "security"="is_granted('ROLE_ADMIN')", 
+    *              "security_message"="Vous n'avez pas acces a cette ressource.",
+    *              "path"="admin/groupetags",
+    *              "normalization_context"={"groups"={"profil_read","profil_details_read"}}
+    *              },
+    *         "post"={
+    *              "security_post_denormalize"="is_granted('EDIT', object)", 
+    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+    *              "path"="admin/groupetags",
+    *          },
+    *     },
+    *     
+    *     itemOperations={
+    *         "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/groupetags/{id}",}, 
+    *          "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/groupetags/{id}/tags",}, 
+    *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupetags/{id}",},
+    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupetags/{id}",},
+    *  }
+  * )
  */
 class Groupetag
 {

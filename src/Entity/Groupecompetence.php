@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\GroupecompetenceRepository;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -28,10 +29,6 @@ use Doctrine\Common\Collections\ArrayCollection;
     *     
     *     itemOperations={
     *         "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/groupecompetences/{id}",}, 
-    *         "get"={"security"="is_granted('VIEW',object)",
-    *                "security_message"="Vous n'avez pas acces a cette ressource.",
-    *                "path"="admin/groupecompetences/{id}/competences",}, 
-    *         "delete"={"security"="is_granted('DELETE',object)","security_message"="Seul l'admin qui a creer peut supprimer.","path"="admin/groupecompetences/{id}",},
     *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupecompetences/{id}",},
     *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupecompetences/{id}",},
     *  }
@@ -64,6 +61,7 @@ class Groupecompetence
 
     /**
      * @ORM\ManyToMany(targetEntity=Competence::class, mappedBy="groupecompetence")
+     * @ApiSubresource()
      */
     private $competences;
 

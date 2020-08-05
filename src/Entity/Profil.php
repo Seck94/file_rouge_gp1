@@ -21,12 +21,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
     *              "path"="admin/profils",
     *              "normalization_context"={"groups"={"profil_read","profil_details_read"}}
     *              },
-    *       "get"={
-    *              "security"="is_granted('ROLE_ADMIN')", 
-    *              "security_message"="Vous n'avez pas acces a cette ressource.",
-    *              "path"="admin/profils/{id}/users",
-    *              "normalization_context"={"groups"={"profil_read","profil_details_read"}}
-    *              },
     *         "post"={
     *              "security_post_denormalize"="is_granted('EDIT', object)", 
     *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
