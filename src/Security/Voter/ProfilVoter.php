@@ -21,7 +21,7 @@ class ProfilVoter extends Voter
     {
         /** @var Profil $subject */
         $user = $token->getUser();
-        //dd($user -> getRoles());
+        // dd($user -> getRoles());
         // si l'utilisateur n'est pas connecté, on retourne immédiatement false
         if (!$user instanceof UserInterface) {
             return false;
@@ -30,13 +30,14 @@ class ProfilVoter extends Voter
         // ...l'utilisateur est connecté, on  voit s'il est autorisé à faire cette action...
         switch ($attribute) {
             case 'EDIT':
+                $subject -> setLibelle("blablaaa");
+                dd($subject);
                 return $user -> getRoles()[0] === "ROLE_ADMIN";
                 break;
             case 'VIEW':
                 return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM";
                 break;
         }
-
         return false;
     }
 }

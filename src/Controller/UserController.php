@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-
+use App\Entity\Profil;
 use App\Repository\ProfilRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,11 +44,10 @@ class UserController extends AbstractController
         $user -> setProfil($profil);
         $password = $user->getPassword();
         $user->setPassword($encoder->encodePassword($user,$password));
-        //dd($user);
+        // dd($user);
         $manager->persist($user);
         $manager->flush();
         fclose($avatar);
         return $this->json($user,Response::HTTP_CREATED);
     }
-
 }

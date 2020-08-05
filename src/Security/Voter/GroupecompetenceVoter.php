@@ -19,29 +19,26 @@ class GroupecompetenceVoter extends Voter
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
-        /** @var Groupecompetence $subject */
         $user = $token->getUser();
-        //dd($user -> getRoles());
-        // si l'utilisateur n'est pas connecté, on retourne immédiatement false
+        // if the user is anonymous, do not grant access
         if (!$user instanceof UserInterface) {
             return false;
         }
 
-        // ...l'utilisateur est connecté, on  voit s'il est autorisé à faire cette action...
+        // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case 'EDIT':
                 if ($user -> getRoles()[0] === "ROLE_ADMIN") {
                     $subject -> setUser($user);
                     return true;
                 }
-                break;
-            case 'VIEW':
-                return $user -> getRoles()[0] === "ROLE_ADMIN";
+                return false;
                 break;
             case 'DELETE':
-                if ($subject->getUser() == $user) {
-                    return true;
-                }
+                return $subject -> getUser() === $user;
+                break;
+            case 'VIEW':
+                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM";
                 break;
         }
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Controller\ApprenantController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -13,9 +14,8 @@ class AdminController extends AbstractController
 {
     /**
     * @Route(
-    *     
+    *     name="admin_liste",
     *     path="api/admins",
-      *   name="admin_liste",
     *     methods={"GET"},
     *     defaults={
     *         "_controller"="\app\Controller\AdminController::getAdmin",
@@ -28,7 +28,7 @@ class AdminController extends AbstractController
         $admin = $repo -> findByProfil("ADMIN");
         return $this -> json($admin, Response::HTTP_OK,);
     }
-
+    
     /**
     * @Route(
     *     name="admin_find",
@@ -41,29 +41,24 @@ class AdminController extends AbstractController
     *     }
     * )
     */
-    public function getAdminById(UserRepository $repo,SerializerInterface $serializer, $id)
-    
-    {
-        $admin=$repo->find($id);
-        $role = $admin->getRoles();
-        if($role[0]=="ROLE_ADMIN")
-        {
-            $admin = $serializer->serialize($admin,"json");
-            return $this -> json($admin, Response::HTTP_OK,);
-               
+    public function getAdminById(UserRepository $repo, SerializerInterface $serializer, $id){
+        if (!($user = $repo -> find($id))) {
+            return null;
         }
-        else
-        {
+        $role = $user -> getRoles();
+        if ($role[0] == "ROLE_ADMIN") {
+            $user = $serializer -> serialize($user,"json");
+            return $this -> json($user, Response::HTTP_OK,);
+        }
+        else{
             return $this ->json(null, Response::HTTP_NOT_FOUND,);
         }
- 
-        
-        }
-    
+    }
+
     public function index()
     {
-        return $this->render('apprenant/index.html.twig', [
-            'controller_name' => 'FormateurController',
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController',
         ]);
     }
 }

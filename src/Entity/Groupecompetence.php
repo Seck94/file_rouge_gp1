@@ -11,30 +11,50 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity(repositoryClass=GroupecompetenceRepository::class)
  * @ApiResource(
-    *        attributes={"pagination_items_per_page"=10},
-    *     collectionOperations={
-    *         "get"={
-    *              "security"="is_granted('ROLE_ADMIN')", 
-    *              "security_message"="Vous n'avez pas acces a cette ressource.",
-    *              "path"="admin/groupecompetences",
-    *              "normalization_context"={"groups"={"Grpcompetence_read"}}
-    *              
-    *              },
-    *         "post"={
-    *              "security_post_denormalize"="is_granted('EDIT', object)", 
-    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
-    *              "path"="admin/groupecompetences",
-    *          },
-    *     },
-    *     
-    *     itemOperations={
-    *         "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/groupecompetences/{id}",}, 
-    *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupecompetences/{id}",},
-    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupecompetences/{id}",},
-    *  }
+ *     attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"Grpcompetence_read","Grpcompetence_details_read"}}
+ *      },
+ *     collectionOperations={
+ *          "add_groupecompetence"={
+ *              "method"="POST",
+ *              "path"="admin/groupecompetences",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *          },
+ *         "show_groupecompetence"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/groupecompetences"
+ *              },
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/groupecompetences/{id}",
+ *         }, 
+ *         "delete"={
+ *              "security"="is_granted('DELETE',object)",
+ *              "security_message"="Seul le proprietaite....",
+ *              "path"="admin/groupecompetences/{id}",
+ *         },
+ *         "patch"={
+ *              "security"="is_granted('EDIT',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/groupecompetences/{id}",
+ *         },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/groupecompetences/{id}",
+ *         },
+ *     },
  * )
+ * @ORM\Entity(repositoryClass=GroupecompetenceRepository::class)
  */
 class Groupecompetence
 {
@@ -59,28 +79,28 @@ class Groupecompetence
     private $descriptif;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="groupecompetences")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="groupecompetence")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"Grpcompetence_read"})
      */
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Competence::class, mappedBy="groupecompetence")
-     * @ApiSubresource()
-     * @Groups({"Grpcompetence_read"})
+     * @ORM\ManyToMany(targetEntity=Referentiel::class, mappedBy="groupecompetence")
      */
-    private $competences;
+    private $referentiels;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Referentiel::class, inversedBy="groupecompetences")
+     * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences")
+     * @Groups({"Grpcompetence_details_read"})
+     * @ApiSubresource()
      */
-    private $referentiel;
+    private $competence;
 
     public function __construct()
     {
-        $this->competences = new ArrayCollection();
-        $this->referentiel = new ArrayCollection();
+        $this->referentiels = new ArrayCollection();
+        $this->competence = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,45 +145,18 @@ class Groupecompetence
     }
 
     /**
-     * @return Collection|Competence[]
-     */
-    public function getCompetences(): Collection
-    {
-        return $this->competences;
-    }
-
-    public function addCompetence(Competence $competence): self
-    {
-        if (!$this->competences->contains($competence)) {
-            $this->competences[] = $competence;
-            $competence->addGroupecompetence($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCompetence(Competence $competence): self
-    {
-        if ($this->competences->contains($competence)) {
-            $this->competences->removeElement($competence);
-            $competence->removeGroupecompetence($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Referentiel[]
      */
-    public function getReferentiel(): Collection
+    public function getReferentiels(): Collection
     {
-        return $this->referentiel;
+        return $this->referentiels;
     }
 
     public function addReferentiel(Referentiel $referentiel): self
     {
-        if (!$this->referentiel->contains($referentiel)) {
-            $this->referentiel[] = $referentiel;
+        if (!$this->referentiels->contains($referentiel)) {
+            $this->referentiels[] = $referentiel;
+            $referentiel->addGroupecompetence($this);
         }
 
         return $this;
@@ -171,8 +164,35 @@ class Groupecompetence
 
     public function removeReferentiel(Referentiel $referentiel): self
     {
-        if ($this->referentiel->contains($referentiel)) {
-            $this->referentiel->removeElement($referentiel);
+        if ($this->referentiels->contains($referentiel)) {
+            $this->referentiels->removeElement($referentiel);
+            $referentiel->removeGroupecompetence($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Competence[]
+     */
+    public function getCompetence(): Collection
+    {
+        return $this->competence;
+    }
+
+    public function addCompetence(Competence $competence): self
+    {
+        if (!$this->competence->contains($competence)) {
+            $this->competence[] = $competence;
+        }
+
+        return $this;
+    }
+
+    public function removeCompetence(Competence $competence): self
+    {
+        if ($this->competence->contains($competence)) {
+            $this->competence->removeElement($competence);
         }
 
         return $this;

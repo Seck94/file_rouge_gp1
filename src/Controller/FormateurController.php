@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Repository\ProfilRepository;
@@ -11,7 +10,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,7 +33,7 @@ class FormateurController extends AbstractController
         $formateur = $repo -> findByProfil("FORMATEUR");
         return $this -> json($formateur, Response::HTTP_OK,);
     }
-
+    
     /**
     * @Route(
     *     name="formateur_find",
@@ -48,25 +46,21 @@ class FormateurController extends AbstractController
     *     }
     * )
     */
-    public function getFormateurById(UserRepository $repo,SerializerInterface $serializer, $id){
-        $formateur = $repo->find($id);
-        $role = $formateur->getRoles();
-        if($role[0]=="ROLE_FORMATEUR")
-        {
-            $apprenant = $serializer->serialize($formateur,"json");
-            return $this -> json($apprenant, Response::HTTP_OK,);
-               
+    public function getFormateurById(UserRepository $repo, SerializerInterface $serializer, $id){
+        if (!($user = $repo -> find($id))) {
+            return null;
         }
-        else
-        {
+        $role = $user -> getRoles();
+        if ($role[0] == "ROLE_FORMATEUR") {
+            $user = $serializer -> serialize($user,"json");
+            return $this -> json($user, Response::HTTP_OK,);
+        }
+        else{
             return $this ->json(null, Response::HTTP_NOT_FOUND,);
         }
- 
-        
-        }
+    }
 
-
-            /**
+    /**
      * @Route(
      *     path="/api/admin/formateurs",
      *     methods={"POST"},
@@ -93,7 +87,7 @@ class FormateurController extends AbstractController
         $user -> setProfil($profil);
         $password = $user->getPassword();
         $user->setPassword($encoder->encodePassword($user,$password));
-        //dd($user);
+        // dd($user);
         $manager->persist($user);
         $manager->flush();
         fclose($avatar);
@@ -101,13 +95,10 @@ class FormateurController extends AbstractController
     }
 
 
-    
     public function index()
     {
-        return $this->render('apprenant/index.html.twig', [
+        return $this->render('formateur/index.html.twig', [
             'controller_name' => 'FormateurController',
         ]);
     }
-
-
 }

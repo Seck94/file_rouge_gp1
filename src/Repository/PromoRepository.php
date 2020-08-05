@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Promos;
+use App\Entity\Promo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Promos|null find($id, $lockMode = null, $lockVersion = null)
- * @method Promos|null findOneBy(array $criteria, array $orderBy = null)
- * @method Promos[]    findAll()
- * @method Promos[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Promo|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Promo|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Promo[]    findAll()
+ * @method Promo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PromosRepository extends ServiceEntityRepository
+class PromoRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Promos::class);
+        parent::__construct($registry, Promo::class);
     }
 
     // /**
-    //  * @return Promos[] Returns an array of Promos objects
+    //  * @return Promo[] Returns an array of Promo objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class PromosRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Promos
+    public function findOneBySomeField($value): ?Promo
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

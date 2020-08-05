@@ -2,35 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\TagRepository;
-use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\TagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=TagRepository::class)
- *  * @ApiResource(
-    *     attributes={"pagination_items_per_page"=10},
-    *     collectionOperations={
-    *         "get"={
-    *              "security"="is_granted('ROLE_ADMIN')", 
-    *              "security_message"="Vous n'avez pas acces a cette ressource.",
-    *              "path"="admin/tags",
-    *             
-    *              },
-    *         "post"={
-    *              "security_post_denormalize"="is_granted('EDIT', object)", 
-    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
-    *              "path"="admin/tags",
-    *          },
-    *     },
-    *     
-    *     itemOperations={
-    *         "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/tags/{id}",}, 
-    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/tags/{id}",},
-    *  }
-  * )
  */
 class Tag
 {
@@ -49,16 +29,16 @@ class Tag
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private $descriptif;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupetag::class, inversedBy="tags")
+     * @ORM\ManyToMany(targetEntity=Groupetag::class, mappedBy="tag")
      */
-    private $groupetag;
+    private $groupetags;
 
     public function __construct()
     {
-        $this->groupetag = new ArrayCollection();
+        $this->groupetags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -78,14 +58,14 @@ class Tag
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getDescriptif(): ?string
     {
-        return $this->description;
+        return $this->descriptif;
     }
 
-    public function setDescription(string $description): self
+    public function setDescriptif(string $descriptif): self
     {
-        $this->description = $description;
+        $this->descriptif = $descriptif;
 
         return $this;
     }
@@ -93,15 +73,16 @@ class Tag
     /**
      * @return Collection|Groupetag[]
      */
-    public function getGroupetag(): Collection
+    public function getGroupetags(): Collection
     {
-        return $this->groupetag;
+        return $this->groupetags;
     }
 
     public function addGroupetag(Groupetag $groupetag): self
     {
-        if (!$this->groupetag->contains($groupetag)) {
-            $this->groupetag[] = $groupetag;
+        if (!$this->groupetags->contains($groupetag)) {
+            $this->groupetags[] = $groupetag;
+            $groupetag->addTag($this);
         }
 
         return $this;
@@ -109,8 +90,9 @@ class Tag
 
     public function removeGroupetag(Groupetag $groupetag): self
     {
-        if ($this->groupetag->contains($groupetag)) {
-            $this->groupetag->removeElement($groupetag);
+        if ($this->groupetags->contains($groupetag)) {
+            $this->groupetags->removeElement($groupetag);
+            $groupetag->removeTag($this);
         }
 
         return $this;

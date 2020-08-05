@@ -2,37 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\GroupetagRepository;
-use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\GroupetagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=GroupetagRepository::class)
-  * @ApiResource(
-    *     attributes={"pagination_items_per_page"=10},
-    *     collectionOperations={
-    *         "get"={
-    *              "security"="is_granted('ROLE_ADMIN')", 
-    *              "security_message"="Vous n'avez pas acces a cette ressource.",
-    *              "path"="admin/groupetags",
-    *              "normalization_context"={"groups"={"profil_read","profil_details_read"}}
-    *              },
-    *         "post"={
-    *              "security_post_denormalize"="is_granted('EDIT', object)", 
-    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
-    *              "path"="admin/groupetags",
-    *          },
-    *     },
-    *     
-    *     itemOperations={
-    *         "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/groupetags/{id}",}, 
-    *          "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/groupetags/{id}/tags",}, 
-    *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupetags/{id}",},
-    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/groupetags/{id}",},
-    *  }
-  * )
  */
 class Groupetag
 {
@@ -49,13 +27,13 @@ class Groupetag
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="groupetag")
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="groupetags")
      */
-    private $tags;
+    private $tag;
 
     public function __construct()
     {
-        $this->tags = new ArrayCollection();
+        $this->tag = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -78,16 +56,15 @@ class Groupetag
     /**
      * @return Collection|Tag[]
      */
-    public function getTags(): Collection
+    public function getTag(): Collection
     {
-        return $this->tags;
+        return $this->tag;
     }
 
     public function addTag(Tag $tag): self
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addGroupetag($this);
+        if (!$this->tag->contains($tag)) {
+            $this->tag[] = $tag;
         }
 
         return $this;
@@ -95,9 +72,8 @@ class Groupetag
 
     public function removeTag(Tag $tag): self
     {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-            $tag->removeGroupetag($this);
+        if ($this->tag->contains($tag)) {
+            $this->tag->removeElement($tag);
         }
 
         return $this;

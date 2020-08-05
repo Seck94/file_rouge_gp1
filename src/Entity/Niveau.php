@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NiveauRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
  */
 class Niveau
@@ -25,16 +27,15 @@ class Niveau
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $critereevoluation;
+    private $critereEvaluation;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $groupeaction;
+    private $groupeAction;
 
     /**
      * @ORM\ManyToOne(targetEntity=Competence::class, inversedBy="niveau")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $competence;
 
@@ -55,26 +56,26 @@ class Niveau
         return $this;
     }
 
-    public function getCritereevoluation(): ?string
+    public function getCritereEvaluation(): ?string
     {
-        return $this->critereevoluation;
+        return $this->critereEvaluation;
     }
 
-    public function setCritereevoluation(string $critereevoluation): self
+    public function setCritereEvaluation(string $critereEvaluation): self
     {
-        $this->critereevoluation = $critereevoluation;
+        $this->critereEvaluation = $critereEvaluation;
 
         return $this;
     }
 
-    public function getGroupeaction(): ?string
+    public function getGroupeAction(): ?string
     {
-        return $this->groupeaction;
+        return $this->groupeAction;
     }
 
-    public function setGroupeaction(string $groupeaction): self
+    public function setGroupeAction(string $groupeAction): self
     {
-        $this->groupeaction = $groupeaction;
+        $this->groupeAction = $groupeAction;
 
         return $this;
     }

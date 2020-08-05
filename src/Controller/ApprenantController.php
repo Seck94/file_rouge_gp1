@@ -5,11 +5,11 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Repository\ProfilRepository;
+use App\Controller\ApprenantController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,12 +29,11 @@ class ApprenantController extends AbstractController
     *     }
     * )
     */
-    public function getApprenant(UserRepository $repo)
-    {
+    public function getApprenant(UserRepository $repo){
         $apprenant = $repo -> findByProfil("APPRENANT");
         return $this -> json($apprenant, Response::HTTP_OK,);
     }
-
+    
     /**
     * @Route(
     *     name="apprenant_find",
@@ -47,25 +46,22 @@ class ApprenantController extends AbstractController
     *     }
     * )
     */
-    public function getApprenantById(UserRepository $repo,SerializerInterface $serializer, $id){
-        $apprenant = $repo->find($id);
-        $role = $apprenant->getRoles();
-        if($role[0]=="ROLE_APPRENANT")
-        {
-            $apprenant = $serializer->serialize($apprenant,"json");
-            return $this -> json($apprenant, Response::HTTP_OK,);
-               
+    public function getApprenantById(UserRepository $repo, SerializerInterface $serializer, $id){
+        if (!($user = $repo -> find($id))) {
+            return null;
         }
-        else
-        {
+        $role = $user -> getRoles();
+        if ($role[0] == "ROLE_APPRENANT") {
+            $user = $serializer -> serialize($user,"json");
+            return $this -> json($user, Response::HTTP_OK,);
+        }
+        else{
             return $this ->json(null, Response::HTTP_NOT_FOUND,);
         }
- 
-        
-        }
+    }
 
 
-               /**
+    /**
      * @Route(
      *     path="/api/admin/apprenants",
      *     methods={"POST"},
@@ -92,13 +88,15 @@ class ApprenantController extends AbstractController
         $user -> setProfil($profil);
         $password = $user->getPassword();
         $user->setPassword($encoder->encodePassword($user,$password));
-        //dd($user);
+        // dd($user);
         $manager->persist($user);
         $manager->flush();
         fclose($avatar);
         return $this->json($user,Response::HTTP_CREATED);
     }
-    
+
+
+
     public function index()
     {
         return $this->render('apprenant/index.html.twig', [

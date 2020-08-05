@@ -2,105 +2,86 @@
 
 namespace App\Entity;
 
-use App\Entity\Profil;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
-
-
-
+// use Webmozart\Assert\Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * 
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur"})
+ * 
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_FORMATEUR') ","pagination_items_per_page"=20,"normalization_context"={"groups"={"not_img"}}},
+ *     attributes={
+ *          "security"="is_granted('ROLE_ADMIN')",
+ *          "pagination_items_per_page"=10, 
+ *     },
+ * 
  *     collectionOperations={
- *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/users",},
- *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/users","normalization_context"={"groups"={"user_read","user_details_read"}}},
-*           "get_apprenants"={
- *              "method"="GET",
- *              "path"="/apprenants" ,
- *              "access_control"="is_granted('ROLE_FORMATEUR')",
- *              "access_control_message"="Vous n'avez pas access à cette Ressource",
- *              "route_name"="apprenant_liste",
- *               
+ *          "add_user"={
+ *              "method"="POST",
+ *              "path"="/admin/users",
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="Vous n'avez pas le privilege"
  *          },
- * 
- *          "get_formateurs"={
- *              "method"="GET",
- *              "path"="/formateurs" ,
- *              "access_control"="is_granted('ROLE_ADMIN')",
- *              "access_control_message"="Vous n'avez pas access à cette Ressource",
- *              "route_name"="formateur_liste",
- *               
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/users",
+ *              "normalization_context"={"groups"={"user_read","user_details_read"}}
  *          },
- * 
  *          "get_admins"={
  *              "method"="GET",
  *              "path"="/admins" ,
- *              "access_control"="is_granted('ROLE_ADMIN')",
- *              "access_control_message"="Vous n'avez pas access à cette Ressource",
+ *              "security"="(is_granted('ROLE_ADMIN'))", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "route_name"="admin_liste",
- *               
+ *              "normalization_context"={"groups"={"admin_read"}}
  *          }
- * 
- *          
- * 
- * 
- * 
- *          
- * },
+ *     },
  *     
  *     itemOperations={
- *         "get"={"security"="is_granted('ROLE_ADMIN')",
- *               "security_message"="Seul l'administrateur peut effectuer ceci!!!!",
- *               "path"="admin/users/{id}",
- * }, 
- *         "delete"={"security"="is_granted('ROLE_ADMIN')",
- *              "security_message"="Seul l'administrateur peut effectuer ceci!!!!",
- *              "path"="admin/users/{id}",}
- * ,
- *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/users/{id}",},
- *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/users/{id}",},
- *          "get_apprenant"=
- *            {
- *              "method"="GET",
- *              "path"="/apprenants/{id}",
- *              "requirements"={"id"="\d+"},
- *              "security"="(is_granted('ROLE_FORMATEUR'))",
- *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "normalization_context"={"groups"={"user_read","user_details_read"}},
+ *              "path"="admin/users/{id}",
+ *              "defaults"={"id"=null}
  *          },
- * 
- *          "get_formateur"=
- *            {
- *              "method"="GET",
- *              "path"="/formateurs/{id}",
- *              "requirements"={"id"="\d+"},
- *              "security"="(is_granted('ROLE_FORMATEUR'))",
- *              "security_message"="Vous n'avez pas access à cette Ressource"
- *          },
- * 
- *          "get_admin"=
- *            {
+ *          "get_admin"={
  *              "method"="GET",
  *              "path"="/admins/{id}",
  *              "requirements"={"id"="\d+"},
  *              "security"="(is_granted('ROLE_FORMATEUR'))",
  *              "security_message"="Vous n'avez pas access à cette Ressource"
+ *          }, 
+ *         "delete"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/users/{id}",
  *          },
- *     }
+ *         "patch"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/users/{id}",
+ *          },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/users/{id}",
+ *          },
+ *     },
  * )
- 
  */
 class User implements UserInterface
 {
@@ -108,83 +89,88 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"not_img"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * )
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $username;
 
-   /* 
-   * @Groups ({"user_details_read","not_img"}) 
-   */
+    /**
+     * @Groups({"user_details_read"})
+     */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Groups({"not_img"})
      */
     private $password;
 
     /**
-     * @ORM\Column(type="blob")
-     * @Groups({"user_read"})
+     * @ORM\Column(type="blob", nullable=true)
      */
-    
     private $avatar;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $prenom;
 
-    /*
+    /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","not_img"})
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' est invalide."
+     * )
+     * @Groups({"user_read"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"user_read","not_img"})
+     * @Groups({"user_read"})
      */
     private $profil;
 
     /**
      * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="user", orphanRemoval=true)
+     * @Groups({"user_details_read"})
      */
     private $promo;
 
     /**
      * @ORM\OneToMany(targetEntity=Groupecompetence::class, mappedBy="user", orphanRemoval=true)
+     * @Groups({"user_details_read"})
      */
-    private $groupecompetences;
+    private $groupecompetence;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"user_read"})
+     */
+    private $lastLogin;
 
     public function __construct()
     {
         $this->promo = new ArrayCollection();
-        $this->groupecompetences = new ArrayCollection();
+        $this->groupecompetence = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -259,10 +245,11 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
+    
+    // public function getAvatar()
+    // {
+    //     return $this->avatar;
+    // }
 
     public function setAvatar($avatar): self
     {
@@ -270,6 +257,7 @@ class User implements UserInterface
 
         return $this;
     }
+    
 
     public function getPrenom(): ?string
     {
@@ -365,15 +353,15 @@ class User implements UserInterface
     /**
      * @return Collection|Groupecompetence[]
      */
-    public function getGroupecompetences(): Collection
+    public function getGroupecompetence(): Collection
     {
-        return $this->groupecompetences;
+        return $this->groupecompetence;
     }
 
     public function addGroupecompetence(Groupecompetence $groupecompetence): self
     {
-        if (!$this->groupecompetences->contains($groupecompetence)) {
-            $this->groupecompetences[] = $groupecompetence;
+        if (!$this->groupecompetence->contains($groupecompetence)) {
+            $this->groupecompetence[] = $groupecompetence;
             $groupecompetence->setUser($this);
         }
 
@@ -382,8 +370,8 @@ class User implements UserInterface
 
     public function removeGroupecompetence(Groupecompetence $groupecompetence): self
     {
-        if ($this->groupecompetences->contains($groupecompetence)) {
-            $this->groupecompetences->removeElement($groupecompetence);
+        if ($this->groupecompetence->contains($groupecompetence)) {
+            $this->groupecompetence->removeElement($groupecompetence);
             // set the owning side to null (unless already changed)
             if ($groupecompetence->getUser() === $this) {
                 $groupecompetence->setUser(null);
@@ -393,5 +381,15 @@ class User implements UserInterface
         return $this;
     }
 
-    
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(?\DateTimeInterface $lastLogin): self
+    {
+        $this->lastLogin = $lastLogin;
+
+        return $this;
+    }
 }

@@ -2,37 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\CompetenceRepository;
-use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\CompetenceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=CompetenceRepository::class)
-  * @ApiResource(
-    *        attributes={"pagination_items_per_page"=10},
-    *     collectionOperations={
-    *         "get"={
-    *              "security"="is_granted('ROLE_ADMIN')", 
-    *              "security_message"="Vous n'avez pas acces a cette ressource.",
-    *              "path"="admin/competences",
-    *             
-    *              },
-    *         "post"={
-    *              "security_post_denormalize"="is_granted('EDIT', object)", 
-    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
-    *              "path"="admin/competences",
-    *          },
-    *     },
-    *     
-    *     itemOperations={
-    *         "get"={"security"="is_granted('VIEW',object)","security_message"="Vous n'avez pas acces a cette ressource.","path"="admin/competences/{id}",}, 
-    *         "delete"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/competences/{id}",},
-    *         "patch"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/competences/{id}",},
-    *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul un admin peut faire cette action.","path"="admin/competences/{id}",},
-    *  }
- * )
  */
 class Competence
 {
@@ -49,18 +27,18 @@ class Competence
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, inversedBy="competences")
+     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence")
      */
-    private $groupecompetence;
+    private $groupecompetences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence")
      */
     private $niveau;
 
     public function __construct()
     {
-        $this->groupecompetence = new ArrayCollection();
+        $this->groupecompetences = new ArrayCollection();
         $this->niveau = new ArrayCollection();
     }
 
@@ -84,15 +62,16 @@ class Competence
     /**
      * @return Collection|Groupecompetence[]
      */
-    public function getGroupecompetence(): Collection
+    public function getGroupecompetences(): Collection
     {
-        return $this->groupecompetence;
+        return $this->groupecompetences;
     }
 
     public function addGroupecompetence(Groupecompetence $groupecompetence): self
     {
-        if (!$this->groupecompetence->contains($groupecompetence)) {
-            $this->groupecompetence[] = $groupecompetence;
+        if (!$this->groupecompetences->contains($groupecompetence)) {
+            $this->groupecompetences[] = $groupecompetence;
+            $groupecompetence->addCompetence($this);
         }
 
         return $this;
@@ -100,8 +79,9 @@ class Competence
 
     public function removeGroupecompetence(Groupecompetence $groupecompetence): self
     {
-        if ($this->groupecompetence->contains($groupecompetence)) {
-            $this->groupecompetence->removeElement($groupecompetence);
+        if ($this->groupecompetences->contains($groupecompetence)) {
+            $this->groupecompetences->removeElement($groupecompetence);
+            $groupecompetence->removeCompetence($this);
         }
 
         return $this;
@@ -134,7 +114,6 @@ class Competence
                 $niveau->setCompetence(null);
             }
         }
-
         return $this;
     }
 }
