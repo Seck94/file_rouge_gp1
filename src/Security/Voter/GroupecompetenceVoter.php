@@ -13,7 +13,7 @@ class GroupecompetenceVoter extends Voter
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, ['EDIT', 'VIEW'])
+        return in_array($attribute, ['EDIT', 'VIEW','DELETE'])
             && $subject instanceof \App\Entity\Groupecompetence;
     }
 
@@ -30,7 +30,10 @@ class GroupecompetenceVoter extends Voter
         // ...l'utilisateur est connecté, on  voit s'il est autorisé à faire cette action...
         switch ($attribute) {
             case 'EDIT':
-                return $user -> getRoles()[0] === "ROLE_ADMIN";
+                if ($user -> getRoles()[0] === "ROLE_ADMIN") {
+                    $subject -> setUser($user);
+                    return true;
+                }
                 break;
             case 'VIEW':
                 return $user -> getRoles()[0] === "ROLE_ADMIN";

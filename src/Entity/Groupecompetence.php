@@ -8,6 +8,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\GroupecompetenceRepository;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=GroupecompetenceRepository::class)
@@ -18,6 +19,7 @@ use Doctrine\Common\Collections\ArrayCollection;
     *              "security"="is_granted('ROLE_ADMIN')", 
     *              "security_message"="Vous n'avez pas acces a cette ressource.",
     *              "path"="admin/groupecompetences",
+    *              "normalization_context"={"groups"={"Grpcompetence_read"}}
     *              
     *              },
     *         "post"={
@@ -40,28 +42,33 @@ class Groupecompetence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"Grpcompetence_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"Grpcompetence_read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"Grpcompetence_read"})
      */
     private $descriptif;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="groupecompetences")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"Grpcompetence_read"})
      */
     private $user;
 
     /**
      * @ORM\ManyToMany(targetEntity=Competence::class, mappedBy="groupecompetence")
      * @ApiSubresource()
+     * @Groups({"Grpcompetence_read"})
      */
     private $competences;
 
