@@ -25,6 +25,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
+ *          "normalization_context"={"groups"={"user_read","user_details_read"}}
  *     },
  * 
  *     collectionOperations={
@@ -38,7 +39,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/users",
- *              "normalization_context"={"groups"={"user_read","user_details_read"}}
+ *             
  *          },
  *          "get_admins"={
  *              "method"="GET",
@@ -116,13 +117,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","profil_read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","profil_read"})
      */
     private $nom;
 
@@ -131,7 +132,7 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' est invalide."
      * )
-     * @Groups({"user_read"})
+     * @Groups({"user_read","profil_read"})
      */
     private $email;
 

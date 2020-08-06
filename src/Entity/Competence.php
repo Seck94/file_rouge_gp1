@@ -2,14 +2,34 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\CompetenceRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CompetenceRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"Competence_read","Competence_details_read"}}
+ *      },
+ *     collectionOperations={
+ *          "add_groupecompetence"={
+ *              "method"="POST",
+ *              "path"="admin/groupecompetences",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *          },
+ *         "show_groupecompetence"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/groupecompetences"
+ *              },
+ *     },
+ * )
  * @ORM\Entity(repositoryClass=CompetenceRepository::class)
  */
 class Competence
@@ -18,11 +38,13 @@ class Competence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"Competence_read","Grpcompetence_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"Competence_read","Grpcompetence_read"})
      */
     private $libelle;
 
@@ -33,6 +55,7 @@ class Competence
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence")
+     * @Groups({"Competence_read","Grpcompetence_read"})
      */
     private $niveau;
 

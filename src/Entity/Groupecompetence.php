@@ -92,7 +92,7 @@ class Groupecompetence
 
     /**
      * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences")
-     * @Groups({"Grpcompetence_details_read"})
+     * @Groups({"Grpcompetence_read"})
      * @ApiSubresource()
      */
     private $competence;

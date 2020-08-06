@@ -18,7 +18,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * 
  * @ApiResource(
  *     attributes={
- *          "pagination_items_per_page"=10
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"profil_read","profil_details_read"},"enable_max_depth"=true}
  *      },
  *     collectionOperations={
  *         "post"={
@@ -30,7 +31,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/profils",
- *              "normalization_context"={"groups"={"profil_read","profil_details_read"}}
+ *              
  *              },
  *     },
  *     
@@ -103,6 +104,7 @@ class Profil
     /**
     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
     * @ApiSubresource
+    * @Groups({"profil_read"})
     */
     private $users;
 

@@ -2,7 +2,7 @@
     "telemetry.machineId": "70e47962f8db9099b5c32bff5d086a841625d7fc5fd73ad6847e53798bf19d88",
     "openedPathsList": {
         "workspaces3": [
-            "file:///opt/lampp/htdocs/file_rouge_gp1"
+            "file:///home/sms/Desktop/file_rouge_gp1"
         ],
         "files2": []
     },
@@ -50,13 +50,13 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
-                                        "fsPath": "/opt/lampp/htdocs/file_rouge_gp1",
-                                        "external": "file:///opt/lampp/htdocs/file_rouge_gp1",
-                                        "path": "/opt/lampp/htdocs/file_rouge_gp1",
+                                        "fsPath": "/home/sms/Desktop/file_rouge_gp1",
+                                        "external": "file:///home/sms/Desktop/file_rouge_gp1",
+                                        "path": "/home/sms/Desktop/file_rouge_gp1",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "/opt/lampp/htdocs/file_rouge_gp1"
+                                    "label": "/home/sms/Desktop/file_rouge_gp1"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -1415,6 +1415,11 @@
                 "label": "Shift+F9",
                 "userSettingsLabel": "shift+f9"
             },
+            "workbench.action.terminal.new": {
+                "label": "Ctrl+Shift+²",
+                "isNative": false,
+                "userSettingsLabel": "ctrl+shift+[Backquote]"
+            },
             "workbench.action.terminal.split": {
                 "label": "Ctrl+Shift+5",
                 "userSettingsLabel": "ctrl+shift+5"
@@ -1438,17 +1443,17 @@
     "themeBackground": "#1e1e1e",
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///opt/lampp/htdocs/file_rouge_gp1",
-            "backupPath": "/opt/lampp/htdocs/file_rouge_gp1/~/root/Backups/077f8bd220fffee23f6a9a1fcb7c85ea",
+            "folder": "file:///home/sms/Desktop/file_rouge_gp1",
+            "backupPath": "/home/sms/Desktop/file_rouge_gp1/~/root/Backups/376b77aca25369f421b1a6d81dbbc85f",
             "uiState": {
                 "mode": 0,
-                "x": 67,
-                "y": 55,
-                "width": 1853,
-                "height": 1025
+                "x": 72,
+                "y": 64,
+                "width": 1848,
+                "height": 1016
             }
         },
         "openedWindows": []
     },
-    "pickerWorkingDir": "/opt/lampp/htdocs"
+    "pickerWorkingDir": "/home/sms/Desktop"
 }

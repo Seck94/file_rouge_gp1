@@ -1,0 +1,1092 @@
+Looking for git in: git
+Using git 2.25.1 from git
+> git rev-parse --show-toplevel
+> git rev-parse --git-dir
+Open repository: /home/sms/Desktop/file_rouge_gp1
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :.env
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/.env
+> git cat-file -s 1bbd5aabcd834ef67a866974b63e1b4288b6bc7b
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :src/DataFixtures/AppFixtures.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/DataFixtures/AppFixtures.php
+> git cat-file -s 1f52cfed2ce98788090d6b5f509b14ea89af13ea
+> git check-ignore -v -z --stdin
+> git show --textconv :migrations/Version20200805175952.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/migrations/Version20200805175952.php
+> git cat-file -s 49d50337f140d2aa5e1ce200a3d64614e562ea52
+> git show --textconv :.env
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/.env
+> git cat-file -s 1bbd5aabcd834ef67a866974b63e1b4288b6bc7b
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git check-ignore -v -z --stdin
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s 333c60e78c4262b1c2b0551daf384b011bbf0104
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9a3cc5ace69c5bd1fff5bb3b17389df0b44950fa
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s 333c60e78c4262b1c2b0551daf384b011bbf0104
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9a3cc5ace69c5bd1fff5bb3b17389df0b44950fa
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s 333c60e78c4262b1c2b0551daf384b011bbf0104
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9a3cc5ace69c5bd1fff5bb3b17389df0b44950fa
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s 333c60e78c4262b1c2b0551daf384b011bbf0104
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s 333c60e78c4262b1c2b0551daf384b011bbf0104
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9a3cc5ace69c5bd1fff5bb3b17389df0b44950fa
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/Groupecompetence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Groupecompetence.php
+> git cat-file -s d71737db6b099f925c6f049e364632b66d0ba3f9
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9a3cc5ace69c5bd1fff5bb3b17389df0b44950fa
+> git show --textconv :src/Entity/Groupecompetence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Groupecompetence.php
+> git cat-file -s d71737db6b099f925c6f049e364632b66d0ba3f9
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/Competence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Competence.php
+> git cat-file -s 5224b5888dc078145f3a99c82f4a9bff715b1b87
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/Groupecompetence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Groupecompetence.php
+> git cat-file -s d71737db6b099f925c6f049e364632b66d0ba3f9
+> git show --textconv :src/Entity/Competence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Competence.php
+> git cat-file -s 5224b5888dc078145f3a99c82f4a9bff715b1b87
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/Niveau.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Niveau.php
+> git cat-file -s ddb03e44c163f537841933c1bc64f0293dfeeab7
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/Groupecompetence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Groupecompetence.php
+> git cat-file -s d71737db6b099f925c6f049e364632b66d0ba3f9
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9a3cc5ace69c5bd1fff5bb3b17389df0b44950fa
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/Competence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Competence.php
+> git cat-file -s 5224b5888dc078145f3a99c82f4a9bff715b1b87
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Entity/Groupecompetence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Groupecompetence.php
+> git cat-file -s d71737db6b099f925c6f049e364632b66d0ba3f9
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9a3cc5ace69c5bd1fff5bb3b17389df0b44950fa
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 9a3cc5ace69c5bd1fff5bb3b17389df0b44950fa
+> git show --textconv :src/Entity/User.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git symbolic-ref --short HEAD
+> git cat-file -s 162bac7ea0958369bf85056b46382c68c9ceeb5a
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git show --textconv :src/Entity/User.php
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git config --get commit.template
+> git cat-file -s 162bac7ea0958369bf85056b46382c68c9ceeb5a
+> git show --textconv :src/Entity/User.php
+> git status -z -u
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git symbolic-ref --short HEAD
+> git cat-file -s 162bac7ea0958369bf85056b46382c68c9ceeb5a
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git show --textconv :src/Entity/User.php
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git config --get commit.template
+> git cat-file -s 162bac7ea0958369bf85056b46382c68c9ceeb5a
+> git show --textconv :src/Entity/User.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 162bac7ea0958369bf85056b46382c68c9ceeb5a
+> git show --textconv :src/Entity/User.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 162bac7ea0958369bf85056b46382c68c9ceeb5a
+> git show --textconv :src/Entity/User.php
+> git status -z -u
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 162bac7ea0958369bf85056b46382c68c9ceeb5a
+> git show --textconv :src/Entity/User.php
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
+> git config --get commit.template
