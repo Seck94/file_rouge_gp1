@@ -8,7 +8,26 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *        attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"niveau_read","niveau_details_read"}}
+ *      },
+ *     collectionOperations={
+ *          "add_groupecompetence"={
+ *              "method"="POST",
+ *              "path"="admin/groupecompetences",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *          },
+ *         "show_groupecompetence"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/groupecompetences"
+ *              },
+ *     },
+ * )
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
  */
 class Niveau
@@ -17,25 +36,25 @@ class Niveau
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Competence_read"})
+     * @Groups({"competence_read","niveau_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Competence_read"})
+     * @Groups({"competence_read","niveau_read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Competence_read"})
+     * @Groups({"competence_read","niveau_read"})
      */
     private $critereEvaluation;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Competence_read"})
+     * @Groups({"competence_read","niveau_read"})
      */
     private $groupeAction;
 

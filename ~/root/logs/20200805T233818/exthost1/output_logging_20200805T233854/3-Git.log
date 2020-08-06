@@ -1090,3 +1090,317 @@ Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes
 > git remote --verbose
 Warning: Failed to watch ref '/home/sms/Desktop/file_rouge_gp1/.git/refs/remotes/origin/sms_update', is most likely packed.
 > git config --get commit.template
+> git status -z -u
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 162bac7ea0958369bf85056b46382c68c9ceeb5a
+> git show --textconv :src/Entity/User.php
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :src/Entity/Niveau.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Niveau.php
+> git cat-file -s f1e880d1c8f321ca7c353b4e7429e786435c9cff
+> git show --textconv :src/Entity/Groupetag.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Groupetag.php
+> git cat-file -s b2acc0b3fb9c4d856d073f214beb73a131d669e0
+> git show --textconv :src/Entity/Groupecompetence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Groupecompetence.php
+> git cat-file -s ac5278298c761b183e9052741484d6e5105c670f
+> git show --textconv :src/Entity/Niveau.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Niveau.php
+> git cat-file -s f1e880d1c8f321ca7c353b4e7429e786435c9cff
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :src/Entity/Competence.php
+> git ls-files --stage -- /home/sms/Desktop/file_rouge_gp1/src/Entity/Competence.php
+> git cat-file -s 1b1f3e19b5b3ea04a1b8c6ce248b9d4bf626b4d1
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse sms_update
+> git rev-parse --symbolic-full-name sms_update@{u}
+> git rev-list --left-right sms_update...refs/remotes/origin/sms_update
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template

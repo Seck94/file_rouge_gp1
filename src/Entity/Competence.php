@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ApiResource(
  *      attributes={
  *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"Competence_read","Competence_details_read"}}
+ *          "normalization_context"={"groups"={"competence_read","competence_details_read"}}
  *      },
  *     collectionOperations={
  *          "add_groupecompetence"={
@@ -38,13 +38,13 @@ class Competence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Competence_read","Grpcompetence_read"})
+     * @Groups({"competence_read","Grpcompetence_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Competence_read","Grpcompetence_read"})
+     * @Groups({"competence_read","Grpcompetence_read"})
      */
     private $libelle;
 
@@ -55,7 +55,7 @@ class Competence
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence")
-     * @Groups({"Competence_read","Grpcompetence_read"})
+     * @Groups({"competence_read","Grpcompetence_read"})
      */
     private $niveau;
 
