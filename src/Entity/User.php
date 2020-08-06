@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * 
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur"})
+ * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur", "cm"="CM"})
  * 
  * @ApiResource(
  *     attributes={

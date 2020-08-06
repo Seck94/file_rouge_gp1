@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CompetenceRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -15,19 +16,42 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "pagination_items_per_page"=10,
  *          "normalization_context"={"groups"={"competence_read","competence_details_read"}}
  *      },
- *     collectionOperations={
+ *    collectionOperations={
  *          "add_groupecompetence"={
  *              "method"="POST",
- *              "path"="admin/groupecompetences",
+ *              "path"="admin/competences",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *          },
  *         "show_groupecompetence"={
  *              "method"="GET",
- *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/groupecompetences"
+ *              "path"="admin/competences"
  *              },
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/competences/{id}",
+ *         }, 
+ *         "delete"={
+ *              "security"="is_granted('DELETE',object)",
+ *              "security_message"="Seul le proprietaite....",
+ *              "path"="admin/competences/{id}",
+ *         },
+ *         "patch"={
+ *              "security"="is_granted('EDIT',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/competences/{id}",
+ *         },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/competences/{id}",
+ *         },
  *     },
  * )
  * @ORM\Entity(repositoryClass=CompetenceRepository::class)
@@ -50,12 +74,13 @@ class Competence
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence")
+     * @ApiSubresource()
      */
     private $groupecompetences;
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence")
-     * @Groups({"competence_read","Grpcompetence_read"})
+     * @Groups({"competence_read"})
      */
     private $niveau;
 

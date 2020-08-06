@@ -1,12 +1,15 @@
 <?php
 
 namespace App\DataFixtures;
+use App\Entity\CM;
 use Faker\Factory;
 use App\Entity\Tag;
-use App\Entity\Groupetag;
 use App\Entity\User;
 use App\Entity\Niveau;
 use App\Entity\Profil;
+use App\Entity\Apprenant;
+use App\Entity\Formateur;
+use App\Entity\Groupetag;
 use App\Entity\Competence;
 use App\Entity\Referentiel;
 use App\Entity\Groupecompetence;
@@ -30,10 +33,22 @@ class AppFixtures extends Fixture
         // $manager->persist($product);
         $profils=['FORMATEUR','CM','APPRENANT','ADMIN'];
         for ($i = 0; $i < 4; $i++) {
+            
             $profil= new Profil();
             $profil->setLibelle($profils[$i]);
             for($j =0; $j<3; $j++){
-                $users= new User();
+                if ($i === 0) {
+                    $users= new Formateur();
+                }
+                elseif ($i === 1) {
+                    $users= new CM();
+                }
+                elseif ($i === 2) {
+                    $users= new Apprenant();
+                }
+                else {
+                    $users= new User();
+                }
                 $users->setNom($faker->lastname);
                 $users->setPrenom($faker->firstname);
                 $users->setEmail($faker->email);

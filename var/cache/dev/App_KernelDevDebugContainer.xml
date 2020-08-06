@@ -203,6 +203,10 @@
         <parameter>ROLE_CM</parameter>
         <parameter>ROLE_APPRENANT</parameter>
       </parameter>
+      <parameter key="ROLE_FORMATEUR" type="collection">
+        <parameter>ROLE_CM</parameter>
+        <parameter>ROLE_APPRENANT</parameter>
+      </parameter>
     </parameter>
     <parameter key="security.access.denied_url">null</parameter>
     <parameter key="security.authentication.manager.erase_credentials">true</parameter>
@@ -426,6 +430,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\CMRepository" class="App\Repository\CMRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -473,6 +481,9 @@
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Security\Voter\CompetenceVoter" class="App\Security\Voter\CompetenceVoter" autowire="true" autoconfigure="true">
+      <tag name="security.voter"/>
     </service>
     <service id="App\Security\Voter\GroupecompetenceVoter" class="App\Security\Voter\GroupecompetenceVoter" autowire="true" autoconfigure="true">
       <tag name="security.voter"/>
@@ -2300,7 +2311,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.txM5MN."/>
+      <argument type="service" id=".service_locator.ML5th2p"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4910,6 +4921,8 @@
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ApprenantRepository" class="App\Repository\ApprenantRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ApprenantRepository" class="App\Repository\ApprenantRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CMRepository" class="App\Repository\CMRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CMRepository" class="App\Repository\CMRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FormateurRepository" class="App\Repository\FormateurRepository" autowire="true" abstract="true"/>
@@ -4934,6 +4947,8 @@
     <service id=".abstract.instanceof.App\Repository\TagRepository" class="App\Repository\TagRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Security\Core\Authorization\Voter\VoterInterface.0.App\Security\Voter\CompetenceVoter" class="App\Security\Voter\CompetenceVoter" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Security\Voter\CompetenceVoter" class="App\Security\Voter\CompetenceVoter" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Security\Core\Authorization\Voter\VoterInterface.0.App\Security\Voter\GroupecompetenceVoter" class="App\Security\Voter\GroupecompetenceVoter" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Security\Voter\GroupecompetenceVoter" class="App\Security\Voter\GroupecompetenceVoter" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Security\Core\Authorization\Voter\VoterInterface.0.App\Security\Voter\ProfilVoter" class="App\Security\Voter\ProfilVoter" autowire="true" abstract="true"/>
@@ -5329,10 +5344,11 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.txM5MN." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.ML5th2p" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ApprenantRepository" type="service" id="App\Repository\ApprenantRepository"/>
+        <argument key="App\Repository\CMRepository" type="service" id="App\Repository\CMRepository"/>
         <argument key="App\Repository\CompetenceRepository" type="service" id="App\Repository\CompetenceRepository"/>
         <argument key="App\Repository\FormateurRepository" type="service" id="App\Repository\FormateurRepository"/>
         <argument key="App\Repository\GroupeRepository" type="service" id="App\Repository\GroupeRepository"/>
@@ -5357,6 +5373,10 @@
     </service>
     <service id="debug.security.voter.security.access.expression_voter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
       <argument type="service" id="security.access.expression_voter"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="debug.security.voter.App\Security\Voter\CompetenceVoter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
+      <argument type="service" id="App\Security\Voter\CompetenceVoter"/>
       <argument type="service" id="debug.event_dispatcher"/>
     </service>
     <service id="debug.security.voter.App\Security\Voter\GroupecompetenceVoter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
@@ -5587,6 +5607,7 @@
         <argument type="service" id="debug.security.voter.security.access.authenticated_voter"/>
         <argument type="service" id="debug.security.voter.security.access.role_hierarchy_voter"/>
         <argument type="service" id="debug.security.voter.security.access.expression_voter"/>
+        <argument type="service" id="debug.security.voter.App\Security\Voter\CompetenceVoter"/>
         <argument type="service" id="debug.security.voter.App\Security\Voter\GroupecompetenceVoter"/>
         <argument type="service" id="debug.security.voter.App\Security\Voter\ProfilVoter"/>
       </argument>

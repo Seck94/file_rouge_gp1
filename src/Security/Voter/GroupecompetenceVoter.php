@@ -27,18 +27,28 @@ class GroupecompetenceVoter extends Voter
 
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
-            case 'EDIT':
+
+            case 'ADD':
                 if ($user -> getRoles()[0] === "ROLE_ADMIN") {
                     $subject -> setUser($user);
                     return true;
                 }
                 return false;
                 break;
+
+            case 'EDIT':
+                if ($user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_FORMATEUR") {
+                   
+                    return true;
+                }
+                return false;
+
+                break;
             case 'DELETE':
                 return $subject -> getUser() === $user;
                 break;
             case 'VIEW':
-                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM";
+                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM" || $user -> getRoles()[0] === "ROLE_FORMATEUR";
                 break;
         }
 
