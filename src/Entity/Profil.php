@@ -2,30 +2,63 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProfilRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ORM\Entity(repositoryClass=ProfilRepository::class)
+ * @ORM\HasLifecycleCallbacks()
+ * 
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_ADMIN')","pagination_items_per_page"=10},
+ *     attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"profil_read","profil_details_read"},"enable_max_depth"=true}
+ *      },
+ * 
  *     collectionOperations={
- *         "post"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils"},
- *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils",},
- *          
+ *         "post"={
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/profils",
+ *          },
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/profils",
+ *              
+ *              },
  *     },
  *     
  *     itemOperations={
- *         "get"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils/{id}",}, 
- *         "delete"={"security"="is_granted('ROLE_ADMIN')","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils/{id}",},
- *         "patch"={"security"="is_granted('ROLE_ADMIN')", "security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils/{id}",},
- *         "put"={"security_post_denormalize"="is_granted('ROLE_ADMIN')","security_message"="Seul l'administrateur peut effectuer ceci!!!!","path"="admin/profils/{id}",},
- *     }
+ *         "get"={
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/profils/{id}",
+ *         }, 
+ *         "delete"={
+ *              "security"="is_granted('DELETE',object)",
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/profils/{id}",
+ *         },
+ *         "patch"={
+ *              "security"="is_granted('EDIT',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/profils/{id}",
+ *         },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/profils/{id}",
+ *         },
+ *     },
  * )
- * @ORM\Entity(repositoryClass=ProfilRepository::class)
  */
 class Profil
 {
@@ -33,18 +66,48 @@ class Profil
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"profil_read"})
      */
     private $libelle;
 
+
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
-     *  @ApiSubresource
+     * @ORM\Column(name="last_update", type="datetime",nullable=true)
+     * @Groups({"profil_read"})
      */
+    private $lastUpdate;
+
+
+    public function getLastUpdate(): ?\DateTimeInterface
+    {
+        return $this->lastUpdate;
+    }
+
+    public function setLastUpdate(\DateTimeInterface $lastUpdate): self
+    {
+        $this->lastUpdate = $lastUpdate;
+
+        return $this;
+    }
+
+     /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate(){
+        $this -> setLastUpdate(new \DateTime());
+    }
+
+    /**
+    * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
+    * @ApiSubresource
+    *@Groups({"profil_read"})
+    */
     private $users;
 
     public function __construct()
