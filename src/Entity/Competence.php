@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Niveau;
+use App\Entity\Groupecompetence;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CompetenceRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -16,6 +19,53 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "pagination_items_per_page"=10,
  *              "normalization_context"={"groups"={"competence_read","competence_details_read"}}
  *      },
+ * 
+ *      collectionOperations={
+ *          
+ * 
+ *          "add_competence"={
+ *              "method"="POST",
+ *              "path"="admin/competences",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *          },
+ *         "show_groupecompetence"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/competences"
+ *              },
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/competences/{id}",
+ *         }, 
+ *         "delete"={
+ *              "security"="is_granted('DELETE',object)",
+ *              "security_message"="Seul le proprietaite....",
+ *              "path"="admin/competences/{id}",
+ *         },
+ *         "update_competence"={
+ *              "method"="PUT",
+ *              "security"="is_granted('EDIT',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/competences/{id}",
+ *         },
+*          "update_competence"={
+ *              "method"="PATCH",
+ *              "security"="is_granted('EDIT',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/competences/{id}",
+ *         },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/competences/{id}",
+ *         },
+ *     },
  * 
  * )
  * 
@@ -39,18 +89,19 @@ class Competence
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence")
+     * @ApiSubresource
      */
-    private $groupecompetences;
+    private $competences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence")
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence",cascade={"persist"})
      * @Groups({"competence_read"})
      */
     private $niveau;
 
     public function __construct()
     {
-        $this->groupecompetences = new ArrayCollection();
+        $this->competences = new ArrayCollection();
         $this->niveau = new ArrayCollection();
     }
 
@@ -74,15 +125,15 @@ class Competence
     /**
      * @return Collection|Groupecompetence[]
      */
-    public function getGroupecompetences(): Collection
+    public function getcompetences(): Collection
     {
-        return $this->groupecompetences;
+        return $this->competences;
     }
 
     public function addGroupecompetence(Groupecompetence $groupecompetence): self
     {
-        if (!$this->groupecompetences->contains($groupecompetence)) {
-            $this->groupecompetences[] = $groupecompetence;
+        if (!$this->competences->contains($groupecompetence)) {
+            $this->competences[] = $groupecompetence;
             $groupecompetence->addCompetence($this);
         }
 
@@ -91,8 +142,8 @@ class Competence
 
     public function removeGroupecompetence(Groupecompetence $groupecompetence): self
     {
-        if ($this->groupecompetences->contains($groupecompetence)) {
-            $this->groupecompetences->removeElement($groupecompetence);
+        if ($this->competences->contains($groupecompetence)) {
+            $this->competences->removeElement($groupecompetence);
             $groupecompetence->removeCompetence($this);
         }
 

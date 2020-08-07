@@ -1,6 +1,32 @@
 <?php //subresource_operations_8a418755f3a31e735fb420ca6922d799
 
 return [PHP_INT_MAX, [
+    'api_groupecompetences_user_get_subresource' => [
+        'property' => 'user',
+        'collection' => false,
+        'resource_class' => 'App\\Entity\\User',
+        'shortNames' => [
+            'User',
+            'Groupecompetence',
+        ],
+        'identifiers' => [
+            [
+                'id',
+                'App\\Entity\\Groupecompetence',
+                true,
+            ],
+        ],
+        'operation_name' => 'user_get_subresource',
+        'route_name' => 'api_groupecompetences_user_get_subresource',
+        'path' => '/groupecompetences/{id}/user.{_format}',
+        'defaults' => [],
+        'requirements' => [],
+        'options' => [],
+        'host' => '',
+        'schemes' => [],
+        'condition' => '',
+        'controller' => null,
+    ],
     'api_groupecompetences_competences_get_subresource' => [
         'property' => 'competence',
         'collection' => true,
@@ -19,6 +45,73 @@ return [PHP_INT_MAX, [
         'operation_name' => 'competences_get_subresource',
         'route_name' => 'api_groupecompetences_competences_get_subresource',
         'path' => '/groupecompetences/{id}/competences.{_format}',
+        'defaults' => [],
+        'requirements' => [],
+        'options' => [],
+        'host' => '',
+        'schemes' => [],
+        'condition' => '',
+        'controller' => null,
+    ],
+    'api_groupecompetences_competences_competences_get_subresource' => [
+        'property' => 'competences',
+        'collection' => true,
+        'resource_class' => 'App\\Entity\\Groupecompetence',
+        'shortNames' => [
+            'Groupecompetence',
+            'Competence',
+        ],
+        'identifiers' => [
+            [
+                'id',
+                'App\\Entity\\Groupecompetence',
+                true,
+            ],
+            [
+                'competence',
+                'App\\Entity\\Competence',
+                true,
+            ],
+        ],
+        'operation_name' => 'competences_competences_get_subresource',
+        'route_name' => 'api_groupecompetences_competences_competences_get_subresource',
+        'path' => '/groupecompetences/{id}/competences/{competence}/competences.{_format}',
+        'defaults' => [],
+        'requirements' => [],
+        'options' => [],
+        'host' => '',
+        'schemes' => [],
+        'condition' => '',
+        'controller' => null,
+    ],
+    'api_groupecompetences_competences_competences_user_get_subresource' => [
+        'property' => 'user',
+        'collection' => false,
+        'resource_class' => 'App\\Entity\\User',
+        'shortNames' => [
+            'User',
+            'Groupecompetence',
+        ],
+        'identifiers' => [
+            [
+                'id',
+                'App\\Entity\\Groupecompetence',
+                true,
+            ],
+            [
+                'competence',
+                'App\\Entity\\Competence',
+                true,
+            ],
+            [
+                'competences',
+                'App\\Entity\\Groupecompetence',
+                true,
+            ],
+        ],
+        'operation_name' => 'competences_competences_user_get_subresource',
+        'route_name' => 'api_groupecompetences_competences_competences_user_get_subresource',
+        'path' => '/groupecompetences/{id}/competences/{competence}/competences/{competences}/user.{_format}',
         'defaults' => [],
         'requirements' => [],
         'options' => [],

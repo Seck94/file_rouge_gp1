@@ -16,6 +16,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'itemOperations' => [
                 [
                     'get' => [
+                        'security' => 'is_granted(\'VIEW\',object)',
+                        'security_message' => 'Vous n\'avez pas ce privilege.',
+                        'path' => 'admin/competences/{id}',
+                        'input' => null,
+                        'output' => null,
                         'method' => 'GET',
                         'input_formats' => [
                             'jsonld' => [
@@ -41,6 +46,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         ],
                     ],
                     'delete' => [
+                        'security' => 'is_granted(\'DELETE\',object)',
+                        'security_message' => 'Seul le proprietaite....',
+                        'path' => 'admin/competences/{id}',
+                        'input' => null,
+                        'output' => null,
                         'method' => 'DELETE',
                         'input_formats' => [
                             'jsonld' => [
@@ -65,7 +75,36 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
+                    'update_competence' => [
+                        'method' => 'PATCH',
+                        'security' => 'is_granted(\'EDIT\',object)',
+                        'security_message' => 'Vous n\'avez pas ce privilege.',
+                        'path' => 'admin/competences/{id}',
+                        'input' => null,
+                        'output' => null,
+                        'input_formats' => [
+                            'json' => [
+                                'application/merge-patch+json',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
                     'put' => [
+                        'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
+                        'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                        'path' => 'admin/competences/{id}',
+                        'input' => null,
+                        'output' => null,
                         'method' => 'PUT',
                         'input_formats' => [
                             'jsonld' => [
@@ -90,31 +129,17 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'patch' => [
-                        'method' => 'PATCH',
-                        'input_formats' => [
-                            'json' => [
-                                'application/merge-patch+json',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
                 ],
             ],
             'collectionOperations' => [
                 [
-                    'get' => [
-                        'method' => 'GET',
+                    'add_competence' => [
+                        'method' => 'POST',
+                        'path' => 'admin/competences',
+                        'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
+                        'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                        'input' => null,
+                        'output' => null,
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',
@@ -138,8 +163,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'post' => [
-                        'method' => 'POST',
+                    'show_groupecompetence' => [
+                        'method' => 'GET',
+                        'security' => 'is_granted(\'ROLE_CM\')',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                        'path' => 'admin/competences',
+                        'input' => null,
+                        'output' => null,
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',

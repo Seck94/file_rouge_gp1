@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * 
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur"})
+ * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur","cm"="CM"})
  * 
  * @ApiResource(
  *     attributes={
@@ -95,6 +95,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * 
      */
     private $username;
 
@@ -123,7 +124,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read"})
+     * @Groups({"user_read","profil_read","competence_read"})
      */
     private $nom;
 
@@ -132,7 +133,7 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' est invalide."
      * )
-     * @Groups({"user_read","profil_read"})
+     * @Groups({"user_read","profil_read","competence_read"})
      */
     private $email;
 

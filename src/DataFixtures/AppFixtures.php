@@ -1,12 +1,15 @@
 <?php
 
 namespace App\DataFixtures;
+use App\Entity\CM;
 use Faker\Factory;
 use App\Entity\Tag;
-use App\Entity\Groupetag;
 use App\Entity\User;
 use App\Entity\Niveau;
 use App\Entity\Profil;
+use App\Entity\Apprenant;
+use App\Entity\Formateur;
+use App\Entity\Groupetag;
 use App\Entity\Competence;
 use App\Entity\Referentiel;
 use App\Entity\Groupecompetence;
@@ -32,7 +35,18 @@ class AppFixtures extends Fixture
             $profil= new Profil();
             $profil->setLibelle($profils[$i]);
             for($j =0; $j<3; $j++){
-                $users= new User();
+                if ($i === 0) {
+                    $users= new Formateur();
+                }
+                elseif ($i === 1) {
+                    $users= new CM();
+                }
+                elseif ($i === 2) {
+                    $users= new Apprenant();
+                }
+                else {
+                    $users= new User();
+                }
                 $users->setNom($faker->lastname);
                 $users->setPrenom($faker->firstname);
                 $users->setEmail($faker->email);
@@ -70,7 +84,8 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         $tags = ["PHP", "JavaScript","Ajax","Json"];
-        for ($i=0; $i < 4; $i++) { 
+        for ($i=0; $i < 4; $i++) 
+        { 
             $tag = new Tag();
             $tag -> setLibelle($tags[$i]);
             $tag -> setDescriptif("Descriptif de ce tag");
@@ -84,7 +99,7 @@ class AppFixtures extends Fixture
             $competence -> setlibelle($competences[$i]);
             for ($j=0; $j < 3; $j++) {
                 $niveau = new Niveau();
-                $niveau -> setLibelle($niveaux[$i]);
+                $niveau -> setLibelle($niveaux[$j]);
                 $niveau -> setCritereEvaluation($critereEvaluation[$i]);
                 $niveau -> setGroupeAction("Action A, Action B, Action C");
                 $competence -> addNiveau($niveau);

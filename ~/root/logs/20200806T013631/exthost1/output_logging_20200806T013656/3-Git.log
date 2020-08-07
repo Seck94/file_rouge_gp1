@@ -128,3 +128,6 @@ Open repository: /opt/lampp/htdocs/file_rouge_gp1-ldab
 > git show --textconv :src/Entity/Niveau.php
 > git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1-ldab/src/Entity/Niveau.php
 > git check-ignore -v -z --stdin
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1-ldab/src/Entity/Niveau.php
+> git cat-file -s 88fdae15aa5a67b698901d5037f9b81ff950f307
+> git show --textconv :src/Entity/Niveau.php

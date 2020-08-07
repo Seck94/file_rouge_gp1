@@ -15,23 +15,19 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'App\\Entity\\Competence',
                 'id',
                 'libelle',
-                'groupecompetences',
+                'competences',
                 'niveau',
             ],
             'attributesMetadata' => [
                 [
                     'id' => $o[1],
                     'libelle' => $o[2],
-                    'groupecompetences' => $o[3],
+                    'competences' => $o[3],
                     'niveau' => $o[4],
                 ],
             ],
             'groups' => [
-                1 => [
-                    'Grpcompetence_read',
-                    'competence_read',
-                ],
-                [
+                2 => [
                     'Grpcompetence_read',
                     'competence_read',
                 ],

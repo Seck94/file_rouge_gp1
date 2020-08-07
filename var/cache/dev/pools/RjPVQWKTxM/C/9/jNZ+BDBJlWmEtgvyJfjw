@@ -30,7 +30,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 false,
             ],
             'childInherited' => [
-                'App\\Entity\\Formateur',
+                'App\\Entity\\Apprenant',
             ],
             'initializable' => [
                 false,
