@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ApiResource(
  *     attributes={
  *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"Grpcompetence_read","Grpcompetence_details_read"}}
+ *          "normalization_context"={"groups"={"Grpcompetence_read"},"enable_max_depth"=true}
  *      },
  *     collectionOperations={
  *          "add_groupecompetence"={
@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          },
  *         "show_groupecompetence"={
  *              "method"="GET",
- *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupecompetences"
  *              },
@@ -42,12 +42,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Seul le proprietaite....",
  *              "path"="admin/groupecompetences/{id}",
  *         },
- *         "patch"={
+ *         "update_groupecompetence"={
+ *              "method"="PATCH",
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/groupecompetences/{id}",
  *         },
- *         "put"={
+ *         "update_groupecompetence"={
+ *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/groupecompetences/{id}",
@@ -82,6 +84,7 @@ class Groupecompetence
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="groupecompetence")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"Grpcompetence_read"})
+     * @ApiSubresource()
      */
     private $user;
 
@@ -91,8 +94,8 @@ class Groupecompetence
     private $referentiels;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences")
-     * @Groups({"Grpcompetence_details_read"})
+     * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences", cascade={"persist"})
+     * @Groups({"Grpcompetence_read"})
      * @ApiSubresource()
      */
     private $competence;

@@ -1,12 +1,15 @@
 <?php
 
 namespace App\DataFixtures;
+use App\Entity\CM;
 use Faker\Factory;
 use App\Entity\Tag;
-use App\Entity\Groupetag;
 use App\Entity\User;
 use App\Entity\Niveau;
 use App\Entity\Profil;
+use App\Entity\Apprenant;
+use App\Entity\Formateur;
+use App\Entity\Groupetag;
 use App\Entity\Competence;
 use App\Entity\Referentiel;
 use App\Entity\Groupecompetence;
@@ -33,7 +36,18 @@ class AppFixtures extends Fixture
             $profil= new Profil();
             $profil->setLibelle($profils[$i]);
             for($j =0; $j<3; $j++){
-                $users= new User();
+                if ($i === 0) {
+                    $users= new Formateur();
+                }
+                elseif ($i === 1) {
+                    $users= new CM();
+                }
+                elseif ($i === 2) {
+                    $users= new Apprenant();
+                }
+                else {
+                    $users= new User();
+                }
                 $users->setNom($faker->lastname);
                 $users->setPrenom($faker->firstname);
                 $users->setEmail($faker->email);
@@ -45,7 +59,7 @@ class AppFixtures extends Fixture
                 $users->setPassword($password);
                 $manager->persist($profil);
                 $manager->persist($users);
-                // $manager->flush();
+                $manager->flush();
             }            
         }   
         $niveaux = ["Niveau1","Niveau2","Niveau3"];
@@ -85,19 +99,19 @@ class AppFixtures extends Fixture
             $competence -> setlibelle($competences[$i]);
             for ($j=0; $j < 3; $j++) {
                 $niveau = new Niveau();
-                $niveau -> setLibelle($niveaux[$i]);
+                $niveau -> setLibelle($niveaux[$j]);
                 $niveau -> setCritereEvaluation($critereEvaluation[$i]);
                 $niveau -> setGroupeAction("Action A, Action B, Action C");
                 $competence -> addNiveau($niveau);
                 $manager->persist($niveau);
                 $manager->persist($competence);
-                // $manager->flush();
+                $manager->flush();
             }
             $grpCompetence -> addCompetence($competence);
         }
         $grpCompetence -> setUser($users);
         $manager->persist($referentiel);
         $manager->persist($grpCompetence);
-        // $manager->flush();
+        $manager->flush();
     }
 }

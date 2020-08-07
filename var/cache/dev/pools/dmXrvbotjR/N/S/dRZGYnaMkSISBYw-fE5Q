@@ -75,37 +75,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'patch' => [
-                        'security' => 'is_granted(\'EDIT\',object)',
-                        'security_message' => 'Vous n\'avez pas ce privilege.',
-                        'path' => 'admin/groupecompetences/{id}',
-                        'input' => null,
-                        'output' => null,
-                        'method' => 'PATCH',
-                        'input_formats' => [
-                            'json' => [
-                                'application/merge-patch+json',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
-                    'put' => [
+                    'update_groupecompetence' => [
+                        'method' => 'PUT',
                         'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
                         'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
                         'path' => 'admin/groupecompetences/{id}',
                         'input' => null,
                         'output' => null,
-                        'method' => 'PUT',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',
@@ -165,7 +141,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'show_groupecompetence' => [
                         'method' => 'GET',
-                        'security' => 'is_granted(\'ROLE_ADMIN\')',
+                        'security' => 'is_granted(\'ROLE_CM\')',
                         'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                         'path' => 'admin/groupecompetences',
                         'input' => null,
@@ -210,8 +186,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'normalization_context' => [
                         'groups' => [
                             'Grpcompetence_read',
-                            'Grpcompetence_details_read',
                         ],
+                        'enable_max_depth' => true,
                     ],
                     'input' => null,
                     'output' => null,

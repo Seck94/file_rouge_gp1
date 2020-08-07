@@ -32,25 +32,100 @@ class GroupecompetenceController extends AbstractController
     */
     public function addGroupecompetence(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager)
     {
-        $Groupecompetence = $request->request->all();
-        $Groupecompetence = $serializer->denormalize($Groupecompetence,"App\Entity\Groupecompetence");
+        $Groupecompetence_json = $request -> getContent();
 
+        $Groupecompetence_tab = $serializer -> decode($Groupecompetence_json,"json");
+        $Groupecompetence = new Groupecompetence();
+        $Groupecompetence -> setLibelle($Groupecompetence_tab['libelle']);
+        $Groupecompetence -> setDescriptif($Groupecompetence_tab['descriptif']);
+        $Competence_tab = $Groupecompetence_tab['competence'];
+        foreach ($Competence_tab as $key => $value) {
+            $competence = new Competence();
+            $competence -> setLibelle($value['libelle']);
+            $Groupecompetence -> addCompetence($competence);
+        }
         if (!$this -> isGranted("EDIT",$Groupecompetence)) {
             return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
         }
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $Groupecompetence -> setUser($user);
-        dd($Groupecompetence);
 
         $errors = $validator->validate($Groupecompetence);
         if (count($errors)){
             $errors = $serializer->serialize($errors,"json");
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
-        $Competence = new Competence();
-        $Competence -> setLibelle("realiser une bdd");
-        // $Groupecompetence -> addCompetence($Competence);
+        
+        $manager->persist($Groupecompetence);
+        $manager->flush();
+        return $this->json($Groupecompetence,Response::HTTP_CREATED);
+    }
+
+
+
+    /**
+     * @Route(
+     *     path="/api/admin/groupecompetences/{id}",
+     *     methods={"PUT","PATCH"},
+     *     defaults={
+     *          "__controller"="App\Controller\GroupecompetenceController::updateGroupecompetence",
+     *          "__api_resource_class"=Groupecompetence::class,
+     *          "__api_collection_operation_name"="update_groupecompetence"
+     *     }
+     * )
+    */
+    public function updateGroupecompetence(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, $id, CompetenceRepository $cmp, GroupecompetenceRepository $grpcmp)
+    {
+        $Groupecompetence_json = $request -> getContent();
+        $Groupecompetence_tab = $serializer -> decode($Groupecompetence_json,"json");
+        $Groupecompetence = new Groupecompetence();
+        if (!($Groupecompetence = $grpcmp -> find($id))) {
+            return $this ->json(null, Response::HTTP_NOT_FOUND,);
+        }
+        if (isset($Groupecompetence_tab['libelle'])) {
+            $Groupecompetence -> setLibelle($Groupecompetence_tab['libelle']);
+        }
+        if (isset($Groupecompetence_tab['descriptif'])) {
+            $Groupecompetence -> setDescriptif($Groupecompetence_tab['descriptif']);
+        }
+        $Competence_tab = isset($Groupecompetence_tab['competence'])?$Groupecompetence_tab['competence']:[];
+        if (!empty($Competence_tab)) {
+            foreach ($Competence_tab as $key => $value) {
+                $competence = new Competence();
+                if (isset($value['id'])) 
+                {
+                    if (!($competence =  $cmp -> find($value['id']))) {
+                        return $this ->json(null, Response::HTTP_NOT_FOUND,);
+                    }
+                    if (isset($value['libelle'])) {
+                        $competence -> setLibelle($value['libelle']);
+                    }
+                    else {
+                        $Groupecompetence -> removeCompetence($competence);
+                    }
+                }
+                elseif(isset($value['libelle'])) {
+                    $competence -> setLibelle($value['libelle']);
+                    $Groupecompetence -> addCompetence($competence);
+                }
+            }
+        }
+        
+        if (!$this -> isGranted("EDIT",$Groupecompetence)) {
+            return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
+        }
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if ($Groupecompetence -> getUser() !== $user ) {
+            return $this -> json(["message" => "Vous n'avez pas crée ce groupe de competence"],Response::HTTP_FORBIDDEN);
+        }
+
+        $errors = $validator->validate($Groupecompetence);
+        if (count($errors)){
+            $errors = $serializer->serialize($errors,"json");
+            return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
+        }
         
         $manager->persist($Groupecompetence);
         $manager->flush();
@@ -70,8 +145,11 @@ class GroupecompetenceController extends AbstractController
      * )
     */
     public function showGroupecompetence(GroupecompetenceRepository $Groupecompetence){
+        if (!$this -> isGranted("VIEW",$Groupecompetence)) {
+            return $this -> json(["message" => "l'accès à cette ressource vous est interdit"],Response::HTTP_FORBIDDEN);
+        }
         $Groupecompetence = $Groupecompetence -> findAll();
-        // dd($Groupecompetence);
+        // dd($Groupecompetence[0]->getUser());
         return $this -> json($Groupecompetence, Response::HTTP_OK,);
     }
 }

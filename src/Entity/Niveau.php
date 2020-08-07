@@ -2,12 +2,18 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\NiveauRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NiveauRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"niveau_read"},"enable_max_depth"=true}
+ *      },
+ * )
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
  */
 class Niveau
@@ -16,21 +22,25 @@ class Niveau
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"competence_read","niveau_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence_read","niveau_read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence_read","niveau_read"})
      */
     private $critereEvaluation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence_read","niveau_read"})
      */
     private $groupeAction;
 

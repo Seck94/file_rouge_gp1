@@ -176,6 +176,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'attributes' => [
                 [
+                    'pagination_items_per_page' => 10,
+                    'normalization_context' => [
+                        'groups' => [
+                            'niveau_read',
+                        ],
+                        'enable_max_depth' => true,
+                    ],
                     'input' => null,
                     'output' => null,
                 ],
