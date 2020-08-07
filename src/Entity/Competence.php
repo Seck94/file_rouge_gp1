@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "normalization_context"={"groups"={"competence_read","competence_details_read"}}
  *      },
  *    collectionOperations={
- *          "add_groupecompetence"={
+ *          "add_competence"={
  *              "method"="POST",
  *              "path"="admin/competences",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
@@ -42,12 +42,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Seul le proprietaite....",
  *              "path"="admin/competences/{id}",
  *         },
- *         "patch"={
+ *         "update_competence"={
+ *              "method"="PATCH",
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/competences/{id}",
  *         },
- *         "put"={
+ *         "update_competence"={
+ *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/competences/{id}",
@@ -79,7 +81,7 @@ class Competence
     private $groupecompetences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence")
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence",cascade={"persist"})
      * @Groups({"competence_read"})
      */
     private $niveau;

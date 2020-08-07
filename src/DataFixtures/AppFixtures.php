@@ -100,7 +100,7 @@ class AppFixtures extends Fixture
             $competence -> setlibelle($competences[$i]);
             for ($j=0; $j < 3; $j++) {
                 $niveau = new Niveau();
-                $niveau -> setLibelle($niveaux[$i]);
+                $niveau -> setLibelle($niveaux[$j]);
                 $niveau -> setCritereEvaluation($critereEvaluation[$i]);
                 $niveau -> setGroupeAction("Action A, Action B, Action C");
                 $competence -> addNiveau($niveau);

@@ -23,6 +23,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'tag' => $o[3],
                 ],
             ],
+            'groups' => [
+                1 => [
+                    'groupetag_read',
+                ],
+                [
+                    'groupetag_read',
+                ],
+            ],
         ],
     ],
     $o[0],

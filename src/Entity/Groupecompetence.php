@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          },
  *         "show_groupecompetence"={
  *              "method"="GET",
- *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupecompetences"
  *              },
@@ -42,12 +42,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Seul le proprietaite....",
  *              "path"="admin/groupecompetences/{id}",
  *         },
- *         "patch"={
+ *         "update_groupecompetence"={
+ *              "method"="PATCH",
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/groupecompetences/{id}",
  *         },
- *         "put"={
+ *         "update_groupecompetence"={
+ *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/groupecompetences/{id}",
@@ -91,7 +93,7 @@ class Groupecompetence
     private $referentiels;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences")
+     * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences",cascade={"persist"})
      * @Groups({"Grpcompetence_read"})
      * @ApiSubresource()
      */

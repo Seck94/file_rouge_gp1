@@ -75,37 +75,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'patch' => [
-                        'security' => 'is_granted(\'EDIT\',object)',
-                        'security_message' => 'Vous n\'avez pas ce privilege.',
-                        'path' => 'admin/competences/{id}',
-                        'input' => null,
-                        'output' => null,
-                        'method' => 'PATCH',
-                        'input_formats' => [
-                            'json' => [
-                                'application/merge-patch+json',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
-                    'put' => [
+                    'update_competence' => [
+                        'method' => 'PUT',
                         'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
                         'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
                         'path' => 'admin/competences/{id}',
                         'input' => null,
                         'output' => null,
-                        'method' => 'PUT',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',
@@ -133,7 +109,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'collectionOperations' => [
                 [
-                    'add_groupecompetence' => [
+                    'add_competence' => [
                         'method' => 'POST',
                         'path' => 'admin/competences',
                         'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
