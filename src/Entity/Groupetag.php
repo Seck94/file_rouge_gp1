@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\GroupetagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=GroupetagRepository::class)
  */
 class Groupetag
@@ -25,13 +27,13 @@ class Groupetag
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="groupetag")
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="groupetags")
      */
-    private $tags;
+    private $tag;
 
     public function __construct()
     {
-        $this->tags = new ArrayCollection();
+        $this->tag = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -54,16 +56,15 @@ class Groupetag
     /**
      * @return Collection|Tag[]
      */
-    public function getTags(): Collection
+    public function getTag(): Collection
     {
-        return $this->tags;
+        return $this->tag;
     }
 
     public function addTag(Tag $tag): self
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addGroupetag($this);
+        if (!$this->tag->contains($tag)) {
+            $this->tag[] = $tag;
         }
 
         return $this;
@@ -71,9 +72,8 @@ class Groupetag
 
     public function removeTag(Tag $tag): self
     {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-            $tag->removeGroupetag($this);
+        if ($this->tag->contains($tag)) {
+            $this->tag->removeElement($tag);
         }
 
         return $this;

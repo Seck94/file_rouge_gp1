@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\PromosRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\PromoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PromosRepository::class)
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass=PromoRepository::class)
  */
 class Promo
 {
@@ -42,17 +44,17 @@ class Promo
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $referenceagate;
+    private $referenceAgate;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $datedebut;
+    private $dateDebut;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $datefinprovisoire;
+    private $dateFinProvisoire;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -60,9 +62,9 @@ class Promo
     private $fabrique;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date",nullable=true)
      */
-    private $datefinreelle;
+    private $dateFinReelle;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -70,18 +72,23 @@ class Promo
     private $etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="promo")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Formateur::class, mappedBy="promo")
      */
     private $formateurs;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="promo")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="promo")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="promo", orphanRemoval=true)
+     */
+    private $groupes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="promos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $referentiel;
@@ -89,6 +96,7 @@ class Promo
     public function __construct()
     {
         $this->formateurs = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -144,38 +152,38 @@ class Promo
         return $this;
     }
 
-    public function getReferenceagate(): ?string
+    public function getReferenceAgate(): ?string
     {
-        return $this->referenceagate;
+        return $this->referenceAgate;
     }
 
-    public function setReferenceagate(string $referenceagate): self
+    public function setReferenceAgate(string $referenceAgate): self
     {
-        $this->referenceagate = $referenceagate;
+        $this->referenceAgate = $referenceAgate;
 
         return $this;
     }
 
-    public function getDatedebut(): ?\DateTimeInterface
+    public function getDateDebut(): ?\DateTimeInterface
     {
-        return $this->datedebut;
+        return $this->dateDebut;
     }
 
-    public function setDatedebut(\DateTimeInterface $datedebut): self
+    public function setDateDebut(\DateTimeInterface $dateDebut): self
     {
-        $this->datedebut = $datedebut;
+        $this->dateDebut = $dateDebut;
 
         return $this;
     }
 
-    public function getDatefinprovisoire(): ?\DateTimeInterface
+    public function getDateFinProvisoire(): ?\DateTimeInterface
     {
-        return $this->datefinprovisoire;
+        return $this->dateFinProvisoire;
     }
 
-    public function setDatefinprovisoire(\DateTimeInterface $datefinprovisoire): self
+    public function setDateFinProvisoire(\DateTimeInterface $dateFinProvisoire): self
     {
-        $this->datefinprovisoire = $datefinprovisoire;
+        $this->dateFinProvisoire = $dateFinProvisoire;
 
         return $this;
     }
@@ -192,14 +200,14 @@ class Promo
         return $this;
     }
 
-    public function getDatefinreelle(): ?\DateTimeInterface
+    public function getDateFinReelle(): ?\DateTimeInterface
     {
-        return $this->datefinreelle;
+        return $this->dateFinReelle;
     }
 
-    public function setDatefinreelle(\DateTimeInterface $datefinreelle): self
+    public function setDateFinReelle(\DateTimeInterface $dateFinReelle): self
     {
-        $this->datefinreelle = $datefinreelle;
+        $this->dateFinReelle = $dateFinReelle;
 
         return $this;
     }
@@ -212,18 +220,6 @@ class Promo
     public function setEtat(string $etat): self
     {
         $this->etat = $etat;
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
 
         return $this;
     }
@@ -251,6 +247,49 @@ class Promo
         if ($this->formateurs->contains($formateur)) {
             $this->formateurs->removeElement($formateur);
             $formateur->removePromo($this);
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->setPromo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->contains($groupe)) {
+            $this->groupes->removeElement($groupe);
+            // set the owning side to null (unless already changed)
+            if ($groupe->getPromo() === $this) {
+                $groupe->setPromo(null);
+            }
         }
 
         return $this;

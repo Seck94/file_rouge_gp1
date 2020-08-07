@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ReferentielRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=ReferentielRepository::class)
  */
 class Referentiel
@@ -37,27 +39,27 @@ class Referentiel
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $critereadmission;
+    private $critereAdmission;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $critereevoluation;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="referentiel")
-     */
-    private $groupecompetences;
+    private $critereEvaluation;
 
     /**
      * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="referentiel")
      */
-    private $promo;
+    private $promos;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, inversedBy="referentiels")
+     */
+    private $groupecompetence;
 
     public function __construct()
     {
-        $this->groupecompetences = new ArrayCollection();
-        $this->promo = new ArrayCollection();
+        $this->promos = new ArrayCollection();
+        $this->groupecompetence = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,54 +103,26 @@ class Referentiel
         return $this;
     }
 
-    public function getCritereadmission(): ?string
+    public function getCritereAdmission(): ?string
     {
-        return $this->critereadmission;
+        return $this->critereAdmission;
     }
 
-    public function setCritereadmission(string $critereadmission): self
+    public function setCritereAdmission(string $critereAdmission): self
     {
-        $this->critereadmission = $critereadmission;
+        $this->critereAdmission = $critereAdmission;
 
         return $this;
     }
 
-    public function getCritereevoluation(): ?string
+    public function getCritereEvaluation(): ?string
     {
-        return $this->critereevoluation;
+        return $this->critereEvaluation;
     }
 
-    public function setCritereevoluation(string $critereevoluation): self
+    public function setCritereEvaluation(string $critereEvaluation): self
     {
-        $this->critereevoluation = $critereevoluation;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Groupecompetence[]
-     */
-    public function getGroupecompetences(): Collection
-    {
-        return $this->groupecompetences;
-    }
-
-    public function addGroupecompetence(Groupecompetence $groupecompetence): self
-    {
-        if (!$this->groupecompetences->contains($groupecompetence)) {
-            $this->groupecompetences[] = $groupecompetence;
-            $groupecompetence->addReferentiel($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGroupecompetence(Groupecompetence $groupecompetence): self
-    {
-        if ($this->groupecompetences->contains($groupecompetence)) {
-            $this->groupecompetences->removeElement($groupecompetence);
-            $groupecompetence->removeReferentiel($this);
-        }
+        $this->critereEvaluation = $critereEvaluation;
 
         return $this;
     }
@@ -156,15 +130,15 @@ class Referentiel
     /**
      * @return Collection|Promo[]
      */
-    public function getPromo(): Collection
+    public function getPromos(): Collection
     {
-        return $this->promo;
+        return $this->promos;
     }
 
     public function addPromo(Promo $promo): self
     {
-        if (!$this->promo->contains($promo)) {
-            $this->promo[] = $promo;
+        if (!$this->promos->contains($promo)) {
+            $this->promos[] = $promo;
             $promo->setReferentiel($this);
         }
 
@@ -173,12 +147,38 @@ class Referentiel
 
     public function removePromo(Promo $promo): self
     {
-        if ($this->promo->contains($promo)) {
-            $this->promo->removeElement($promo);
+        if ($this->promos->contains($promo)) {
+            $this->promos->removeElement($promo);
             // set the owning side to null (unless already changed)
             if ($promo->getReferentiel() === $this) {
                 $promo->setReferentiel(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupecompetence[]
+     */
+    public function getGroupecompetence(): Collection
+    {
+        return $this->groupecompetence;
+    }
+
+    public function addGroupecompetence(Groupecompetence $groupecompetence): self
+    {
+        if (!$this->groupecompetence->contains($groupecompetence)) {
+            $this->groupecompetence[] = $groupecompetence;
+        }
+
+        return $this;
+    }
+
+    public function removeGroupecompetence(Groupecompetence $groupecompetence): self
+    {
+        if ($this->groupecompetence->contains($groupecompetence)) {
+            $this->groupecompetence->removeElement($groupecompetence);
         }
 
         return $this;
