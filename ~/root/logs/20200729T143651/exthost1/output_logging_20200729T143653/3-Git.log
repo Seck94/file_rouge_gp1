@@ -1,0 +1,123 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --show-toplevel
+> git rev-parse --git-dir
+Open repository: /opt/lampp/htdocs/file_rouge_gp1
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s e7c117139a286497e246adb3524634311dcb9440
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :src/EventListener/LoginListener.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/EventListener/LoginListener.php
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s e7c117139a286497e246adb3524634311dcb9440
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s 337b2b0847c9e74c18177d24ed4861466eccb110
+> git show --textconv :src/EventListener/LoginListener.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/EventListener/LoginListener.php
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s e7c117139a286497e246adb3524634311dcb9440
+> git show --textconv :src/EventListener/LoginListener.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/EventListener/LoginListener.php
+> git log --format=%H%n%aN%n%aE%n%at%n%ct%n%P%n%B -z -n21 -- /opt/lampp/htdocs/file_rouge_gp1/src/EventListener/LoginListener.php
+> git show --textconv :config/packages/security.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/security.yaml
+> git cat-file -s aa24ae0f34470aeba902fcac3f21b2e6f57567b9
+> git show --textconv :config/packages/api_platform.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/api_platform.yaml
+> git cat-file -s 21634597e6ff615c30a6d8679c19913314a250ea
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s 337b2b0847c9e74c18177d24ed4861466eccb110
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :vendor/api-platform/core/src/Cache/CachedTrait.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/vendor/api-platform/core/src/Cache/CachedTrait.php
+> git cat-file -s a5a5b3adf82d5479733555a99ef0dbe194f65f72
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :vendor/api-platform/core/CHANGELOG.md
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/vendor/api-platform/core/CHANGELOG.md
+> git cat-file -s 0eebe5616a99d2d76e27e6ad8bce8ab3587a69ed
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s 337b2b0847c9e74c18177d24ed4861466eccb110
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s e7c117139a286497e246adb3524634311dcb9440
+> git show --textconv :src/Entity/Apprenant.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Apprenant.php
+> git cat-file -s 22dc3b937794027ee642bcd3fa5bd9ac3c19b5a5
+> git show --textconv :config/packages/security.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/security.yaml
+> git cat-file -s aa24ae0f34470aeba902fcac3f21b2e6f57567b9
+> git show --textconv :config/packages/api_platform.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/api_platform.yaml
+> git cat-file -s 21634597e6ff615c30a6d8679c19913314a250ea
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s 337b2b0847c9e74c18177d24ed4861466eccb110
+> git show --textconv :src/Entity/Formateur.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Formateur.php
+> git cat-file -s 13fbc9e0f7d70ffbfc464c5876a1481890095c0d
+> git show --textconv :src/Entity/Apprenant.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Apprenant.php
+> git cat-file -s 22dc3b937794027ee642bcd3fa5bd9ac3c19b5a5
+> git show --textconv :src/Entity/Formateur.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Formateur.php
+> git cat-file -s 13fbc9e0f7d70ffbfc464c5876a1481890095c0d
+> git show --textconv :src/Entity/Apprenant.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Apprenant.php
+> git cat-file -s 22dc3b937794027ee642bcd3fa5bd9ac3c19b5a5
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s e7c117139a286497e246adb3524634311dcb9440
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s 337b2b0847c9e74c18177d24ed4861466eccb110
+> git show --textconv :var/log/dev.log
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/var/log/dev.log
+> git cat-file -s 413dc69a2c51be011a09745bcced0c7360e74d8a
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s 337b2b0847c9e74c18177d24ed4861466eccb110
+> git show --textconv :var/log/dev.log
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/var/log/dev.log
+> git cat-file -s 413dc69a2c51be011a09745bcced0c7360e74d8a
+> git log --format=%H%n%aN%n%aE%n%at%n%ct%n%P%n%B -z -n21 -- /opt/lampp/htdocs/file_rouge_gp1/var/log/dev.log
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 653a18f9c9eadd532140b4c9294add4acebd2d19
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s 337b2b0847c9e74c18177d24ed4861466eccb110
+> git show --textconv :var/log/dev.log
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/var/log/dev.log
+> git cat-file -s 413dc69a2c51be011a09745bcced0c7360e74d8a
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 653a18f9c9eadd532140b4c9294add4acebd2d19

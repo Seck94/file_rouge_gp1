@@ -1,0 +1,61 @@
+<?php //subresource_operations_8a418755f3a31e735fb420ca6922d799
+
+return [PHP_INT_MAX, [
+    'api_groupecompetences_competences_get_subresource' => [
+        'property' => 'competence',
+        'collection' => true,
+        'resource_class' => 'App\\Entity\\Competence',
+        'shortNames' => [
+            'Competence',
+            'Groupecompetence',
+        ],
+        'identifiers' => [
+            [
+                'id',
+                'App\\Entity\\Groupecompetence',
+                true,
+            ],
+        ],
+        'operation_name' => 'competences_get_subresource',
+        'route_name' => 'api_groupecompetences_competences_get_subresource',
+        'path' => '/groupecompetences/{id}/competences.{_format}',
+        'defaults' => [],
+        'requirements' => [],
+        'options' => [],
+        'host' => '',
+        'schemes' => [],
+        'condition' => '',
+        'controller' => null,
+    ],
+    'api_groupecompetences_competences_groupecompetences_get_subresource' => [
+        'property' => 'groupecompetences',
+        'collection' => true,
+        'resource_class' => 'App\\Entity\\Groupecompetence',
+        'shortNames' => [
+            'Groupecompetence',
+            'Competence',
+        ],
+        'identifiers' => [
+            [
+                'id',
+                'App\\Entity\\Groupecompetence',
+                true,
+            ],
+            [
+                'competence',
+                'App\\Entity\\Competence',
+                true,
+            ],
+        ],
+        'operation_name' => 'competences_groupecompetences_get_subresource',
+        'route_name' => 'api_groupecompetences_competences_groupecompetences_get_subresource',
+        'path' => '/groupecompetences/{id}/competences/{competence}/groupecompetences.{_format}',
+        'defaults' => [],
+        'requirements' => [],
+        'options' => [],
+        'host' => '',
+        'schemes' => [],
+        'condition' => '',
+        'controller' => null,
+    ],
+]];
