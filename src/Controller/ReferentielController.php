@@ -131,9 +131,7 @@ class ReferentielController extends AbstractController
                         $Referentiel -> removeGroupecompetence($groupecompetences);
                     }
                     $user = $this->get('security.token_storage')->getToken()->getUser();
-                    if ($Referentiel -> getUser() !== $user ) {
-                        return $this -> json(["message" => "Vous n'avez pas crée ce groupe de competence"],Response::HTTP_FORBIDDEN);
-                    }
+                   
                 }
                 else{
                 if(isset($value['libelle'])) {
