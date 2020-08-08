@@ -83,7 +83,7 @@ class Competence
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grpcompetence_read","competence_read"})
+     * @Groups({"Grpcompetence_read","competence_read","Grpcompetence_Competence_read"})
      */
     private $libelle;
 

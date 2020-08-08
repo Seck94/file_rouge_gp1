@@ -165,7 +165,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     ],
                     'show_tags' => [
                         'method' => 'GET',
-                        'security' => 'is_granted(\'ROLE_CM\')',
+                        'security' => 'is_granted(\'ROLE_FORMATEUR\')',
                         'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                         'path' => 'admin/tags',
                         'input' => null,

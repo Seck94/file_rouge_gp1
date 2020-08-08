@@ -66,12 +66,12 @@ class GroupecompetenceController extends AbstractController
 
     /**
      * @Route(
-     *     path="/api/admin/groupecompetences/{id}",
+     *     path="/api/admin/competences/{id}",
      *     methods={"PUT","PATCH"},
      *     defaults={
-     *          "__controller"="App\Controller\GroupecompetenceController::updateGroupecompetence",
-     *          "__api_resource_class"=Groupecompetence::class,
-     *          "__api_collection_operation_name"="update_groupecompetence"
+     *          "__controller"="App\Controller\CompetenceController::updatecompetence",
+     *          "__api_resource_class"=Competence::class,
+     *          "__api_collection_operation_name"="update_competence"
      *     }
      * )
     */
@@ -146,7 +146,7 @@ class GroupecompetenceController extends AbstractController
     */
     public function showGroupecompetence(GroupecompetenceRepository $Groupecompetence){
 
-        if (!$this -> isGranted("VIEW",$Groupecompetence)) 
+        if (!$this -> isGranted("ROLE_CM",$Groupecompetence)) 
         {
             return $this -> json(["message" => "l'accès à cette ressource est interdite"],Response::HTTP_FORBIDDEN);
         }

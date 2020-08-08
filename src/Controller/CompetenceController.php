@@ -164,7 +164,7 @@ class CompetenceController extends AbstractController
     public function showCompetence(CompetenceRepository $Competence)
     {
 
-        if (!$this -> isGranted("VIEW",$Competence)) 
+        if (!$this -> isGranted("ROLE_CM",$Competence)) 
         {
             return $this -> json(["message" => "l'accès à cette ressource est interdite"],Response::HTTP_FORBIDDEN);
         }

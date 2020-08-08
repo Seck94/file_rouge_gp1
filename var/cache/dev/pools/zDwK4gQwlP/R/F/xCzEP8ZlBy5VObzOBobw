@@ -47,6 +47,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
                 6 => [
                     'Grpcompetence_read',
+                    'Grpcompetence_Competence_read',
                 ],
             ],
         ],

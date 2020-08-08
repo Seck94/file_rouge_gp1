@@ -26,10 +26,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          },
  *         "show_tags"={
  *              "method"="GET",
- *              "security"="is_granted('ROLE_CM')", 
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/tags"
  *              },
+ * 
  *     },
  *     
  *     itemOperations={
@@ -69,13 +70,13 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"tags_read"})
+     * @Groups({"tags_read","Grptags_read","Grptags_tags_read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"tags_read"})
+     * @Groups({"tags_read","Grptags_read","Grptags_tags_read"})
      */
     private $descriptif;
 

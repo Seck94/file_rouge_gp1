@@ -109,6 +109,7 @@ class AppFixtures extends Fixture
             }
             $grpCompetence -> addCompetence($competence);
         }
+        $users=new User();
         $grpCompetence -> setUser($users);
         $manager->persist($referentiel);
         $manager->persist($grpCompetence);

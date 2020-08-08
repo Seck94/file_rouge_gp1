@@ -30,7 +30,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
             ],
             'groups' => [
-                2 => [
+                1 => [
+                    'competence_read',
+                    'niveau_read',
+                ],
+                [
                     'competence_read',
                     'niveau_read',
                 ],

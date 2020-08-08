@@ -29,9 +29,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'groups' => [
                 2 => [
                     'tags_read',
+                    'Grptags_read',
+                    'Grptags_tags_read',
                 ],
                 [
                     'tags_read',
+                    'Grptags_read',
+                    'Grptags_tags_read',
                 ],
             ],
         ],

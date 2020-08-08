@@ -8,13 +8,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     [
         'Symfony\\Component\\Routing\\Annotation\\Route' => [
             'path' => [
-                '/api/admin/groupecompetences/{id}',
+                '/api/admin/competences/{id}',
             ],
             'defaults' => [
                 [
-                    '__controller' => 'App\\Controller\\GroupecompetenceController::updateGroupecompetence',
-                    '__api_resource_class' => 'App\\Entity\\Groupecompetence',
-                    '__api_collection_operation_name' => 'update_groupecompetence',
+                    '__controller' => 'App\\Controller\\CompetenceController::updatecompetence',
+                    '__api_resource_class' => 'App\\Entity\\Competence',
+                    '__api_collection_operation_name' => 'update_competence',
                 ],
             ],
             'methods' => [

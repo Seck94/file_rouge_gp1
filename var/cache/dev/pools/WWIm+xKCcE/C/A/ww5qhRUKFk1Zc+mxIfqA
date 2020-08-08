@@ -1,0 +1,3 @@
+<?php //route_name_326ce629b6d76f13bf713f530b51c8c1
+
+return [PHP_INT_MAX, 'api_groupetags_get_collection'];
