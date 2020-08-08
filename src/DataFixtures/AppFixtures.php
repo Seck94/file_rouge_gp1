@@ -67,13 +67,14 @@ class AppFixtures extends Fixture
         $critereEvaluation = ["CritereEvaluation1","CritereEvaluation2","CritereEvaluation3"];
         $competences = ["Connaissances solide en PHP","excellent niveau en Bootsrap","bon niveux en Ajax"];
 
-
+        
         $referentiel = new Referentiel();
-        $referentiel -> setLibelle("DEV WEB MOBILE");
-        $referentiel -> setPresentation("developpement d'applications web et mobile");
-        $referentiel -> setProgramme("Programme de ce referentiel");
-        $referentiel -> setCritereAdmission("Critère d'admission de ce referentiel");
-        $referentiel -> setCritereEvaluation("Critère d'évaluation de ce referentiel");
+        $referentiel -> setLibelle($ref_lib[$i]);
+        $referentiel -> setPresentation($ref_prt[$i]);
+        $referentiel -> setProgramme($ref_pg[$i]);
+        $referentiel -> setCritereAdmission($ref_Cta[$i]);
+        $referentiel -> setCritereEvaluation($ref_Cte[$i]);
+       
 
         $grpCompetence = new Groupecompetence();
         $grpCompetence -> setLibelle("Developper le backend d'une appli");

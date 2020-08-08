@@ -2,14 +2,76 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ReferentielRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ReferentielRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * *     attributes={
+ *          "security"="is_granted('ROLE_ADMIN')",
+ *          "pagination_items_per_page"=10, 
+ *          "normalization_context"={"groups"={"referentiel_read","user_details_read","referentiel_groupecompetence_read"}}
+ *     },
+ * 
+ *     collectionOperations={
+ *          "add_referentiel"={
+ *              "method"="POST",
+ *              "path"="/admin/referentiels",
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="Vous n'avez pas le privilege"
+ *          },
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/referentiels",
+ *             
+ *          },
+ *           "show_groupecompetence"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/referentiels"
+ *              },
+ *              
+ *           "show_referentiel_groupecompetence"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/referentiels/groupecompetences",
+ *              "normalization_context"={"groups"={"referentiel_groupecompetence_read","user_details_read"}}
+ *              },
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/referentiels/{id}",
+ *          },
+ *         "delete"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/referentiels/{id}",
+ *          },
+ *         "update_referentiel"={
+ *              "method"="PATCH",
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/referentiels/{id}",
+ *          },
+ *         "update_referentiel"={
+ *              "method"="PUT",
+ *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ces privileges.",
+ *              "path"="admin/referentiels/{id}",
+ *          },
+ *     },
+ * )
  * @ORM\Entity(repositoryClass=ReferentielRepository::class)
  */
 class Referentiel
@@ -18,31 +80,37 @@ class Referentiel
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"referentiel_read","Grpcompetence_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"referentiel_read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"referentiel_read"})
      */
     private $presentation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"referentiel_read"})
      */
     private $programme;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"referentiel_read"})
      */
     private $critereAdmission;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"referentiel_read"})
      */
     private $critereEvaluation;
 
@@ -52,7 +120,9 @@ class Referentiel
     private $promos;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, inversedBy="referentiels")
+     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, inversedBy="referentiels",cascade={"persist"})
+     * @ApiSubresource()
+     * @Groups({"referentiel_read","referentiel_groupecompetence_read"})
      */
     private $groupecompetence;
 
