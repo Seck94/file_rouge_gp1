@@ -137,9 +137,10 @@ class Formateur extends User
 
     public function addPromo(Promo $promo): self
     {
-        if (!$this->promo->contains($promo)) {
-            $this->promo[] = $promo;
-        }
+        $this->promo[] = $promo;
+        // if (!$this->promo->contains($promo)) {
+        //     $this->promo[] = $promo;
+        // }
 
         return $this;
     }

@@ -85,7 +85,7 @@ class Apprenant extends User
     private $profilsortie;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="apprenants")
+     * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="apprenants",cascade={"persist"})
      */
     private $groupe;
 

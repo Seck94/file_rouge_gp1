@@ -29,6 +29,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupecompetences"
  *              },
+ *          "show_groupecompetence_competence"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/groupecompetences/competences",
+ *              "normalization_context"={"groups"={"Grpcompetence_competence_read"},"enable_max_depth"=true}
+ *              },
  *     },
  *     
  *     itemOperations={
@@ -95,7 +102,7 @@ class Groupecompetence
 
     /**
      * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences", cascade={"persist"})
-     * @Groups({"Grpcompetence_read"})
+     * @Groups({"Grpcompetence_read","Grpcompetence_competence_read"})
      * @ApiSubresource()
      */
     private $competence;

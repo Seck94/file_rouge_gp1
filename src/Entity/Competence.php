@@ -70,12 +70,12 @@ class Competence
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grpcompetence_read","competence_read"})
+     * @Groups({"Grpcompetence_read","competence_read","Grpcompetence_competence_read"})
      */
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence")
+     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence", cascade={"persist"})
      * @ApiSubresource()
      */
     private $groupecompetences;

@@ -59,6 +59,38 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'referentiel' => $o[15],
                 ],
             ],
+            'groups' => [
+                1 => [
+                    'promo_read',
+                ],
+                [
+                    'promo_read',
+                ],
+                [
+                    'promo_read',
+                ],
+                [
+                    'promo_read',
+                ],
+                [
+                    'promo_read',
+                ],
+                7 => [
+                    'promo_read',
+                ],
+                [
+                    'promo_read',
+                ],
+                [
+                    'promo_read',
+                ],
+                11 => [
+                    'promo_read',
+                ],
+                14 => [
+                    'promo_read',
+                ],
+            ],
         ],
     ],
     $o[0],

@@ -117,13 +117,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read"})
+     * @Groups({"user_read","profil_read","promo_read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read"})
+     * @Groups({"user_read","profil_read","promo_read"})
      */
     private $nom;
 
@@ -132,7 +132,7 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' est invalide."
      * )
-     * @Groups({"user_read","profil_read"})
+     * @Groups({"user_read","profil_read","promo_read"})
      */
     private $email;
 

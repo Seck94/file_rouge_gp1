@@ -2,14 +2,59 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\PromoRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PromoRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
+ *      },
+ *     collectionOperations={
+ *          "add_promo"={
+ *              "method"="POST",
+ *              "path"="admin/promos",
+ *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *          },
+ *         "show_promo"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/promos"
+ *              }
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/promos/{id}",
+ *         }, 
+ *         "delete"={
+ *              "security"="is_granted('DELETE',object)",
+ *              "security_message"="Seul le proprietaite....",
+ *              "path"="admin/promos/{id}",
+ *         },
+ *         "update_groupecompetence"={
+ *              "method"="PATCH",
+ *              "security"="is_granted('EDIT',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/promos/{id}",
+ *         },
+ *         "update_groupecompetence"={
+ *              "method"="PUT",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/promos/{id}",
+ *         },
+ *     },
+ * )
  * @ORM\Entity(repositoryClass=PromoRepository::class)
  */
 class Promo
@@ -18,46 +63,52 @@ class Promo
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"promo_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"promo_read"})
      */
     private $langue;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"promo_read"})
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"promo_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"promo_read"})
      */
     private $lieu;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    // supprimée.. type= string , length=255
     private $referenceAgate;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"promo_read"})
      */
     private $dateDebut;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"promo_read"})
      */
     private $dateFinProvisoire;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"promo_read"})
      */
     private $fabrique;
 
@@ -68,11 +119,12 @@ class Promo
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"promo_read"})
      */
     private $etat;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Formateur::class, mappedBy="promo")
+     * @ORM\ManyToMany(targetEntity=Formateur::class, mappedBy="promo", cascade={"persist"})
      */
     private $formateurs;
 
@@ -83,7 +135,8 @@ class Promo
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="promo", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="promo", orphanRemoval=true, cascade={"persist"})
+     * @Groups({"promo_read"})
      */
     private $groupes;
 

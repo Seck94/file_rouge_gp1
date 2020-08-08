@@ -145,7 +145,7 @@ class GroupecompetenceController extends AbstractController
      * )
     */
     public function showGroupecompetence(GroupecompetenceRepository $Groupecompetence){
-        if (!$this -> isGranted("VIEW",$Groupecompetence)) {
+        if (!$this -> isGranted("ROLE_CM",$Groupecompetence)) {
             return $this -> json(["message" => "l'accès à cette ressource vous est interdit"],Response::HTTP_FORBIDDEN);
         }
         $Groupecompetence = $Groupecompetence -> findAll();

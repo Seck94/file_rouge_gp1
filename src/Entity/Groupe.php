@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\GroupeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\GroupeRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -18,11 +19,13 @@ class Groupe
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"promo_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"promo_read"})
      */
     private $nom;
 
@@ -38,21 +41,23 @@ class Groupe
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"promo_read"})
      */
     private $type;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Apprenant::class, mappedBy="groupe")
+     * @ORM\ManyToMany(targetEntity=Apprenant::class, mappedBy="groupe",cascade={"persist"})
      */
     private $apprenants;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Formateur::class, mappedBy="groupe")
+     * @ORM\ManyToMany(targetEntity=Formateur::class, mappedBy="groupe",cascade={"persist"})
+     * @Groups({"promo_read"})
      */
     private $formateurs;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="groupes")
+     * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="groupes",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $promo;
