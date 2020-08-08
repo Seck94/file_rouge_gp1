@@ -16,6 +16,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'itemOperations' => [
                 [
                     'get' => [
+                        'path' => 'admin/tags/{id}',
+                        'input' => null,
+                        'output' => null,
                         'method' => 'GET',
                         'input_formats' => [
                             'jsonld' => [
@@ -40,32 +43,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'delete' => [
-                        'method' => 'DELETE',
-                        'input_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
                     'put' => [
+                        'path' => 'admin/tags/{id}',
+                        'input' => null,
+                        'output' => null,
                         'method' => 'PUT',
                         'input_formats' => [
                             'jsonld' => [
@@ -90,30 +71,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'patch' => [
-                        'method' => 'PATCH',
-                        'input_formats' => [
-                            'json' => [
-                                'application/merge-patch+json',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
                 ],
             ],
             'collectionOperations' => [
                 [
                     'get' => [
+                        'path' => 'admin/tags',
+                        'input' => null,
+                        'output' => null,
                         'method' => 'GET',
                         'input_formats' => [
                             'jsonld' => [
@@ -139,6 +104,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         ],
                     ],
                     'post' => [
+                        'path' => 'admin/tags',
+                        'input' => null,
+                        'output' => null,
                         'method' => 'POST',
                         'input_formats' => [
                             'jsonld' => [
@@ -176,6 +144,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'attributes' => [
                 [
+                    'normalization_context' => [
+                        'groups' => [
+                            'tag_read',
+                        ],
+                    ],
                     'input' => null,
                     'output' => null,
                 ],
