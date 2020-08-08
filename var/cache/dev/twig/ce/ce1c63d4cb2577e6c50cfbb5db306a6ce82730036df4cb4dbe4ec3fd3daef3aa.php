@@ -165,6 +165,6 @@ class __TwigTemplate_9f3372ec8006b80c53d83771cebed9fc251b89931f94e82471b19193696
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "/var/www/html/file_rouge_gp1/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig");
     }
 }
