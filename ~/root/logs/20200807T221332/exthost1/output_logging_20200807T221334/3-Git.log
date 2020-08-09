@@ -578,3 +578,29 @@ Open repository: /opt/lampp/htdocs/file_rouge_gp1
 > git check-ignore -v -z --stdin
 > git check-ignore -v -z --stdin
 > git check-ignore -v -z --stdin
+> git status -z -u
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 210d4851356ed0a768fd23ac33a6a8879d8e10ca
+> git show --textconv :src/Controller/PromoController.php
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :vendor/autoload.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/vendor/autoload.php
+> git cat-file -s 76a690b877d166e72f9e23fc9631f1960151e027
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 210d4851356ed0a768fd23ac33a6a8879d8e10ca

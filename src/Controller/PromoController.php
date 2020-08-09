@@ -38,7 +38,7 @@ class PromoController extends AbstractController
      *     }
      * )
     */
-    public function addPromo(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,FormateurRepository $formateur_repo, ReferentielRepository $ref_repo,UserRepository $user_repo)
+    public function addPromo(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,FormateurRepository $formateur_repo, ReferentielRepository $ref_repo,UserRepository $user_repo,\Swift_Mailer $mailer)
     {
         $Promo_json = $request -> getContent();
 
@@ -85,8 +85,19 @@ class PromoController extends AbstractController
             $Groupe -> setType($value['type']);
             if (isset($value['apprenants'])) {
                 foreach ($value['apprenants'] as $key => $val) {
-                    $Apprenant = new User();
-                    if ($Apprenant = $user_repo -> findOneByEmail($val['email'])) {
+                    $Apprenant = new Apprenant();
+                    if ($Apprenant = $apprenant_repo -> findOneByEmail($val['email'])) {
+
+                        $message = (new \Swift_Message('Séléctions Sonatel Academy'))
+                            ->setFrom('usernameAdmin@gmail.com')
+                            ->setTo($Apprenant -> getEmail())
+                            ->setBody('Bonjour cher(e) '. $Apprenant -> getPrenom() .' '. $Apprenant -> getNom() .' 
+                            Felicitations!!! vous avez été séléctionné(e) suite à votre test d entré à la Sonatel Academy.
+                            Veillez utiliser ces informations pour vous connecter à votre Promo. username: '. $Apprenant -> getUsername() .' 
+                            password: '. $Apprenant -> getPassword() .' A bientot.')
+                        ;
+
+                        //$mailer->send($message);
                         $Groupe -> addApprenant($Apprenant);
                     }
                 }

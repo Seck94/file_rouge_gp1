@@ -1,0 +1,65 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --show-toplevel
+> git rev-parse --git-dir
+Open repository: /opt/lampp/htdocs/file_rouge_gp1
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 210d4851356ed0a768fd23ac33a6a8879d8e10ca
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :.env
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/.env
+> git cat-file -s 811547a5fb360fa2901f7a1991253ff77d91ce15
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s e7379383dd0f5c0f780c21a3c31cc4c0f6196896
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :config/packages/swiftmailer.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/swiftmailer.yaml
+> git show --textconv :.env
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/.env
+> git cat-file -s 811547a5fb360fa2901f7a1991253ff77d91ce15
+> git show --textconv :config/packages/swiftmailer.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/swiftmailer.yaml
+> git check-ignore -v -z --stdin
+> git show --textconv :.env
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/.env
+> git cat-file -s 811547a5fb360fa2901f7a1991253ff77d91ce15
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 210d4851356ed0a768fd23ac33a6a8879d8e10ca
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 210d4851356ed0a768fd23ac33a6a8879d8e10ca
