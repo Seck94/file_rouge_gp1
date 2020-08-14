@@ -71,19 +71,19 @@ class Groupecompetence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Grpcompetence_read"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grpcompetence_read"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grpcompetence_read"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $descriptif;
 
@@ -102,7 +102,7 @@ class Groupecompetence
 
     /**
      * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences", cascade={"persist"})
-     * @Groups({"Grpcompetence_read","Grpcompetence_competence_read"})
+     * @Groups({"Grpcompetence_read","Grpcompetence_competence_read","promo_referentiel"})
      * @ApiSubresource()
      */
     private $competence;

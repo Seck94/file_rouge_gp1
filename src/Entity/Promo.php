@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use App\Entity\Formateur;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PromoRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -26,13 +28,55 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos"
+ *              "path"="admin/promos",
+ *              "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
+ *              },
+ *          "promo_gprincipal"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/promos/principal",
+ *              
  *              }
  *     },
  *     
  *     itemOperations={
+ *          "promo_id_gprincipal"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/promos/{id}principal",
+ *              
+ *              },
+ *          "apprenants_attente"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/promos/{id}/apprenants/attente"
+ *              }, 
+ *          "promo_referentiel"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/promos/{id}/referentiel",
+ *              "normalization_context"={"groups"={"promo_referentiel"},"enable_max_depth"=true}
+ *              }, 
+ *          "promo_groupe_apprenants"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/promos/{id}/groupes/apprenants",
+ *              "normalization_context"={"groups"={"promo_groupe_apprenants"},"enable_max_depth"=true}
+ *              }, 
+ *          "promo_groupe_formateurs"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/promos/{id}/formateurs",
+ *              "normalization_context"={"groups"={"promo_groupe_formateurs"},"enable_max_depth"=true}
+ *              },
  *         "get"={
- *              "security"="is_granted('VIEW',object)", 
+ *              "security"="is_granted('ROLE_CM',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/promos/{id}",
  *         }, 
@@ -41,17 +85,29 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Seul le proprietaite....",
  *              "path"="admin/promos/{id}",
  *         },
- *         "update_groupecompetence"={
- *              "method"="PATCH",
- *              "security"="is_granted('EDIT',object)", 
- *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/promos/{id}",
- *         },
- *         "update_groupecompetence"={
+ *         "update_promo"={
  *              "method"="PUT",
- *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/promos/{id}",
+ *         },
+ *         "gerer_apprenants"={
+ *              "method"="PUT",
+ *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/promos/{id}/apprenants",
+ *         },
+ *          "gerer_formateurs"={
+ *              "method"="PUT",
+ *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/promos/{id}/formateurs",
+ *         },
+ *         "gerer_groupes"={
+ *              "method"="PUT",
+ *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/promos/{id}/groupes",
  *         },
  *     },
  * )
@@ -63,7 +119,7 @@ class Promo
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo_read"})
+     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $id;
 
@@ -75,7 +131,7 @@ class Promo
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo_read"})
+     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $titre;
 
@@ -136,13 +192,16 @@ class Promo
 
     /**
      * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="promo", orphanRemoval=true, cascade={"persist"})
-     * @Groups({"promo_read"})
+     * @Groups({"promo_read","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @ApiSubresource()
      */
     private $groupes;
 
     /**
      * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="promos")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @ApiSubresource()
      */
     private $referentiel;
 
@@ -287,20 +346,28 @@ class Promo
 
     public function addFormateur(Formateur $formateur): self
     {
-        if (!$this->formateurs->contains($formateur)) {
-            $this->formateurs[] = $formateur;
+        if ($formateur) {
+            $this->formateurs[] = $formateur; //fonctions modifiées
             $formateur->addPromo($this);
         }
+        // if (!$this->formateurs->contains($formateur)) {
+        //     $this->formateurs[] = $formateur;
+        //     $formateur->addPromo($this);
+        // }
 
         return $this;
     }
 
     public function removeFormateur(Formateur $formateur): self
     {
-        if ($this->formateurs->contains($formateur)) {
+        if ($formateur) {
             $this->formateurs->removeElement($formateur);
             $formateur->removePromo($this);
         }
+        // if ($this->formateurs->contains($formateur)) {
+        //     $this->formateurs->removeElement($formateur);
+        //     $formateur->removePromo($this);
+        // }
 
         return $this;
     }

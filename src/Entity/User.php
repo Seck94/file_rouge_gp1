@@ -25,7 +25,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
-*           "normalization_context"={"groups"={"user_read","user_details_read"}}
+*           "normalization_context"={"groups"={"user_read","user_details_read","gprincipal_read"}}
  *     },
  * 
  *     collectionOperations={
@@ -116,14 +116,14 @@ class User implements UserInterface
     private $avatar;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read","promo_read"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read","promo_read"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $nom;
 
@@ -132,12 +132,12 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' est invalide."
      * )
-     * @Groups({"user_read","profil_read","promo_read"})
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"user_read"})
      */
     private $statut;

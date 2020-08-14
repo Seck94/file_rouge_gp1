@@ -47,4 +47,15 @@ class GroupeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    public function findOneByType($value): ?Groupe
+    {
+        return $this->createQueryBuilder('g')
+            ->Where('g.type = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

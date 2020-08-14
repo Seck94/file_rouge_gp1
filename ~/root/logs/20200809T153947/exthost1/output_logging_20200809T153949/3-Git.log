@@ -63,3 +63,268 @@ Open repository: /opt/lampp/htdocs/file_rouge_gp1
 > git show --textconv :src/Controller/PromoController.php
 > git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
 > git cat-file -s 210d4851356ed0a768fd23ac33a6a8879d8e10ca
+> git status -z -u
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Controller/PromoController.php
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :src/EventListener/LoginListener.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/EventListener/LoginListener.php
+> git cat-file -s d22d3fe1bcbabc39e6338757c2e12e4787c529fc
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/EventListener/LoginListener.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/EventListener/LoginListener.php
+> git cat-file -s d22d3fe1bcbabc39e6338757c2e12e4787c529fc
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s e7379383dd0f5c0f780c21a3c31cc4c0f6196896
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :var/log/dev.log
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/var/log/dev.log
+> git cat-file -s c5df2679de3acf460ff532c609a438c79e034d86
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s e7379383dd0f5c0f780c21a3c31cc4c0f6196896
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Controller/ApprenantController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/ApprenantController.php
+> git cat-file -s 92a02fe881428ee272fef6c19ef57d772e212deb
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Controller/ApprenantController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/ApprenantController.php
+> git cat-file -s 92a02fe881428ee272fef6c19ef57d772e212deb
+> git show --textconv :src/Controller/GroupecompetenceController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/GroupecompetenceController.php
+> git cat-file -s 3faf0e634f227ec9633040a022e0962d97cbc295
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Repository/PromoRepository.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Repository/PromoRepository.php
+> git cat-file -s 995464ade8b727418f615261275f0185c1a8eb28
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Repository/UserRepository.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Repository/UserRepository.php
+> git cat-file -s 5a0299ee9f7422eea7f2536d83a91e7c3c539999
+> git show --textconv :src/Repository/GroupeRepository.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Repository/GroupeRepository.php
+> git cat-file -s fe930d07352d23413d555cb44711c35ed0b6d6f7
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Security/Voter/PromoVoter.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Security/Voter/PromoVoter.php
+> git cat-file -s 4b02355edae5b38f6c4e3c6565735c4600218a56
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Security/Voter/PromoVoter.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Security/Voter/PromoVoter.php
+> git cat-file -s 4b02355edae5b38f6c4e3c6565735c4600218a56
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Referentiel.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Referentiel.php
+> git cat-file -s 402484b04077442b9cdad64f9dff624b9673fb77
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s 394415732a77fae60a15a1570c6f0226bfddc88a
+> git show --textconv :src/Entity/Apprenant.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Apprenant.php
+> git cat-file -s 0e027452d6d8441aaf1b93184cc68636d760402d
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Controller/FormateurController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/FormateurController.php
+> git cat-file -s 919127f0aace73332bee43af91ea380eac6fbe81
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s 8f581fee8478f34803da22cf24580c6aec5269ed

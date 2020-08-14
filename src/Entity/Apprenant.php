@@ -15,6 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
+ *          "normalization_context"={"groups"={"gprincipal_read"},"enable_max_depth"=true}
  *     },
  * 
  *     collectionOperations={

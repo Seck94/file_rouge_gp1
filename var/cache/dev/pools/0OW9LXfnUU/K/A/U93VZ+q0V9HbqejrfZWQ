@@ -12,7 +12,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 $o[1],
             ],
             'readable' => [
-                true,
+                false,
             ],
             'writable' => [
                 true,
@@ -35,7 +35,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 1 => 'string',
             ],
             'nullable' => [
-                1 => false,
+                1 => true,
             ],
             'collection' => [
                 1 => false,

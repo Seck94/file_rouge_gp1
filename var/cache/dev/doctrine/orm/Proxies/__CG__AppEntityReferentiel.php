@@ -238,18 +238,7 @@ class Referentiel extends \App\Entity\Referentiel implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getProgramme(): ?string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProgramme', []);
-
-        return parent::getProgramme();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setProgramme(string $programme): \App\Entity\Referentiel
+    public function setProgramme($programme): \App\Entity\Referentiel
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProgramme', [$programme]);

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\User;
+use App\Entity\Promo;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FormateurRepository;
 use Doctrine\Common\Collections\Collection;
@@ -16,6 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
+ *          "normalization_context"={"groups"={"gprincipal_read"},"enable_max_depth"=true}
  *     },
  * 
  *     collectionOperations={
@@ -132,12 +134,17 @@ class Formateur extends User
      */
     public function getPromo(): Collection
     {
-        return $this->promo;
+        if ($this->promo) {
+            return $this->promo; //fonctions modifiées
+        }
+        return new ArrayCollection();
     }
 
     public function addPromo(Promo $promo): self
     {
-        $this->promo[] = $promo;
+        if ($promo) {
+            $this->promo[] = $promo;
+        }
         // if (!$this->promo->contains($promo)) {
         //     $this->promo[] = $promo;
         // }
@@ -147,9 +154,12 @@ class Formateur extends User
 
     public function removePromo(Promo $promo): self
     {
-        if ($this->promo->contains($promo)) {
+        if ($this->promo !== null) {
             $this->promo->removeElement($promo);
         }
+        // if ($this->promo->contains($promo)) {
+        //     $this->promo->removeElement($promo);
+        // }
 
         return $this;
     }

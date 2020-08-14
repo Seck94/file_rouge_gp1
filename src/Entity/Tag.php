@@ -2,14 +2,61 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\TagRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TagRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * 
+ * attributes={
+ *              "pagination_items_per_page"=10,
+ *              "normalization_context"={"groups"={"tags_read","tags_details_read"}}
+ *      },
+ * 
+ *      collectionOperations={
+ *          "add_groupetags"={
+ *              "method"="POST",
+ *              "path"="admin/tags",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *          },
+ *         "show_tags"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/tags"
+ *              },
+ * 
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/tags/{id}",
+ *         }, 
+ *         "delete"={
+ *              "security"="is_granted('DELETE',object)",
+ *              "security_message"="Seul le proprietaite....",
+ *              "path"="admin/tags/{id}",
+ *         },
+ *         "patch"={
+ *              "security"="is_granted('EDIT',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/tags/{id}",
+ *         },
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/tags/{id}",
+ *         },
+ *     },
+ * 
+ * )
  * @ORM\Entity(repositoryClass=TagRepository::class)
  */
 class Tag
@@ -23,11 +70,13 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"tags_read","Grptags_read","Grptags_tags_read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"tags_read","Grptags_read","Grptags_tags_read"})
      */
     private $descriptif;
 

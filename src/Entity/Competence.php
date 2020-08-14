@@ -64,13 +64,13 @@ class Competence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"competence_read"})
+     * @Groups({"competence_read","promo_referentiel"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grpcompetence_read","competence_read","Grpcompetence_competence_read"})
+     * @Groups({"Grpcompetence_read","competence_read","Grpcompetence_competence_read","promo_referentiel"})
      */
     private $libelle;
 

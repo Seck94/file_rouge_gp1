@@ -1,0 +1,3 @@
+<?php //route_name_0fdca9335a9353f6085a441fbfea9723
+
+return [PHP_INT_MAX, 'api_profilsorties_get_collection'];
