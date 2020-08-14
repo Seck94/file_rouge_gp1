@@ -39,11 +39,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/tags/{id}",
  *         }, 
- *         "delete"={
- *              "security"="is_granted('DELETE',object)",
- *              "security_message"="Seul le proprietaite....",
- *              "path"="admin/tags/{id}",
- *         },
+ *         
  *         "patch"={
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",

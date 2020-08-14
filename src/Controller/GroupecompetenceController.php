@@ -50,7 +50,7 @@ class GroupecompetenceController extends AbstractController
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $Groupecompetence -> setUser($user);
-
+        
         $errors = $validator->validate($Groupecompetence);
         if (count($errors)){
             $errors = $serializer->serialize($errors,"json");

@@ -88,6 +88,7 @@ class Groupetag
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"Grptags_read","Grptags_tags_read"})
      */
     private $id;
 
@@ -104,6 +105,11 @@ class Groupetag
      * @ApiSubresource()
      */
     private $tag;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $lastUpdate;
 
     public function __construct()
     {
@@ -149,6 +155,18 @@ class Groupetag
         if ($this->tag->contains($tag)) {
             $this->tag->removeElement($tag);
         }
+
+        return $this;
+    }
+
+    public function getLastUpdate(): ?\DateTimeInterface
+    {
+        return $this->lastUpdate;
+    }
+
+    public function setLastUpdate(?\DateTimeInterface $lastUpdate): self
+    {
+        $this->lastUpdate = $lastUpdate;
 
         return $this;
     }

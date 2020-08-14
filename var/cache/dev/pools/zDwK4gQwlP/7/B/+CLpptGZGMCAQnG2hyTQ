@@ -23,6 +23,19 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'apprenants' => $o[3],
                 ],
             ],
+            'groups' => [
+                1 => [
+                    'profilsortie_read',
+                    'profilsortie_apprenants_read',
+                ],
+                [
+                    'profilsortie_read',
+                    'profilsortie_apprenants_read',
+                ],
+                [
+                    'profilsortie_apprenants_read',
+                ],
+            ],
         ],
     ],
     $o[0],

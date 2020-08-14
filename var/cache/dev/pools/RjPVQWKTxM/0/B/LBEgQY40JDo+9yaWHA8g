@@ -2,25 +2,15 @@
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
-        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Metadata\\Property\\PropertyMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Metadata\\Property\\PropertyMetadata')),
-        clone ($p['Symfony\\Component\\PropertyInfo\\Type'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\PropertyInfo\\Type')),
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['ApiPlatform\\Core\\Metadata\\Property\\PropertyMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Metadata\\Property\\PropertyMetadata')),
     ],
     null,
     [
         'ApiPlatform\\Core\\Metadata\\Property\\PropertyMetadata' => [
-            'type' => [
-                $o[1],
-            ],
             'readable' => [
-                true,
-            ],
-            'writable' => [
-                true,
-            ],
-            'readableLink' => [
                 false,
             ],
-            'writableLink' => [
+            'writable' => [
                 false,
             ],
             'required' => [
@@ -30,24 +20,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 false,
             ],
             'childInherited' => [
-                'App\\Entity\\Apprenant',
+                'App\\Entity\\Formateur',
             ],
             'initializable' => [
                 false,
-            ],
-        ],
-        'Symfony\\Component\\PropertyInfo\\Type' => [
-            'builtinType' => [
-                1 => 'object',
-            ],
-            'nullable' => [
-                1 => true,
-            ],
-            'class' => [
-                1 => 'App\\Entity\\Profilsortie',
-            ],
-            'collection' => [
-                1 => false,
             ],
         ],
     ],

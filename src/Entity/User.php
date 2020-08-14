@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+
 // use Webmozart\Assert\Assert;
 
 /**
@@ -24,7 +25,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ApiResource(
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
- *          "pagination_items_per_page"=10
+ *          "pagination_items_per_page"=10,
  *           
  *     },
  * 
@@ -118,13 +119,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read"})
+     * @Groups({"user_read","profil_read","profilsortie_apprenants_read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read","competence_read"})
+     * @Groups({"user_read","profil_read","competence_read","profilsortie_apprenants_read"})
      */
     private $nom;
 
@@ -133,7 +134,7 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' est invalide."
      * )
-     * @Groups({"user_read","profil_read","competence_read"})
+     * @Groups({"user_read","profil_read","competence_read","profilsortie_apprenants_read"})
      */
     private $email;
 

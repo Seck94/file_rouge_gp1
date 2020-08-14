@@ -8,6 +8,7 @@ use App\Repository\ApprenantRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ApprenantRepository::class)
@@ -15,6 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
+ *          "normalization_context"={"groups"={"profilsortie_read","profilsortie_apprenants_read"},"enable_max_depth"=true}
  *     },
  * 
  *     collectionOperations={
