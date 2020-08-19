@@ -5561,13 +5561,14 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.uarrKVP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Ti2hqA7" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="apprenant_repo" type="service" id="App\Repository\ApprenantRepository"/>
         <argument key="formateur_repo" type="service" id="App\Repository\FormateurRepository"/>
         <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
         <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="profil_repo" type="service" id="App\Repository\ProfilRepository"/>
         <argument key="ref_repo" type="service" id="App\Repository\ReferentielRepository"/>
         <argument key="serializer" type="service" id="serializer"/>
         <argument key="user_repo" type="service" id="App\Repository\UserRepository"/>
@@ -5646,7 +5647,7 @@
         <argument key="Referentiel" type="service" id="App\Repository\ReferentielRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.xC3s6lz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.MngVVgw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::getAdmin" type="service" id=".service_locator.RTUGCCW"/>
@@ -5668,7 +5669,7 @@
         <argument key="App\Controller\GroupetagController::addGroupetag" type="service" id=".service_locator.19ps0qC"/>
         <argument key="App\Controller\GroupetagController::showGroupetag" type="service" id=".service_locator..q_d43b"/>
         <argument key="App\Controller\GroupetagController::updateGroupetag" type="service" id=".service_locator.HbDiaSm"/>
-        <argument key="App\Controller\PromoController::addPromo" type="service" id=".service_locator.uarrKVP"/>
+        <argument key="App\Controller\PromoController::addPromo" type="service" id=".service_locator.Ti2hqA7"/>
         <argument key="App\Controller\PromoController::apprenantEnAttente" type="service" id=".service_locator.LMeZ5AJ"/>
         <argument key="App\Controller\PromoController::gerer_apprenant" type="service" id=".service_locator.gxtjAT3"/>
         <argument key="App\Controller\PromoController::gerer_formateur" type="service" id=".service_locator.Tmk7PJz"/>
@@ -5705,7 +5706,7 @@
         <argument key="App\Controller\GroupetagController:addGroupetag" type="service" id=".service_locator.19ps0qC"/>
         <argument key="App\Controller\GroupetagController:showGroupetag" type="service" id=".service_locator..q_d43b"/>
         <argument key="App\Controller\GroupetagController:updateGroupetag" type="service" id=".service_locator.HbDiaSm"/>
-        <argument key="App\Controller\PromoController:addPromo" type="service" id=".service_locator.uarrKVP"/>
+        <argument key="App\Controller\PromoController:addPromo" type="service" id=".service_locator.Ti2hqA7"/>
         <argument key="App\Controller\PromoController:apprenantEnAttente" type="service" id=".service_locator.LMeZ5AJ"/>
         <argument key="App\Controller\PromoController:gerer_apprenant" type="service" id=".service_locator.gxtjAT3"/>
         <argument key="App\Controller\PromoController:gerer_formateur" type="service" id=".service_locator.Tmk7PJz"/>
@@ -6154,12 +6155,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.xC3s6lz"/>
+      <argument type="service" id=".service_locator.MngVVgw"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.xC3s6lz"/>
+      <argument type="service" id=".service_locator.MngVVgw"/>
     </service>
     <service id="api_platform.swagger.normalizer.api_gateway.inner" class="ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer" public="false">
       <argument type="service" id="api_platform.metadata.resource.metadata_factory.cached"/>
@@ -6584,7 +6585,7 @@
     <service id="mailer" alias="swiftmailer.mailer.default" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.xC3s6lz"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.MngVVgw"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

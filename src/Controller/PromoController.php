@@ -15,6 +15,8 @@ use App\Repository\GroupeRepository;
 use App\Repository\ProfilRepository;
 use App\Repository\ApprenantRepository;
 use App\Repository\FormateurRepository;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ReferentielRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,7 +44,7 @@ class PromoController extends AbstractController
      *     }
      * )
     */
-    public function addPromo(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,FormateurRepository $formateur_repo,ApprenantRepository $apprenant_repo, ReferentielRepository $ref_repo,UserRepository $user_repo,\Swift_Mailer $mailer)
+    public function addPromo(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,FormateurRepository $formateur_repo, ProfilRepository $profil_repo, ApprenantRepository $apprenant_repo, ReferentielRepository $ref_repo,UserRepository $user_repo,\Swift_Mailer $mailer)
     {
         $Promo_json = $request -> getContent();
 
@@ -87,23 +89,26 @@ class PromoController extends AbstractController
                 $Groupe -> setStatut('actif');
                 $Groupe -> setType($value['type']);
                 if (isset($value['apprenants'])) {
+                    $profil = $profil_repo -> findOneByLibelle('APPRENANT');
                     foreach ($value['apprenants'] as $key => $val) {
-                        $Apprenant = new Apprenant();
-                        if ($Apprenant = $apprenant_repo -> findOneByEmail($val['email'])) {
-
-                            $message = (new \Swift_Message('Séléctions Sonatel Academy'))
-                                ->setFrom('usernameAdmin@gmail.com')
-                                ->setTo($Apprenant -> getEmail())
-                                ->setBody('Bonjour cher(e) '. $Apprenant -> getPrenom() .' '. $Apprenant -> getNom() .' 
-                                Felicitations!!! vous avez été séléctionné(e) suite à votre test d entré à la Sonatel Academy.
-                                Veillez utiliser ces informations pour vous connecter à votre Promo. username: '. $Apprenant -> getUsername() .' 
-                                password: '. $Apprenant -> getPassword() .' A bientot.')
-                            ;
-
-                            //$mailer->send($message);
-                            $Groupe -> addApprenant($Apprenant);
+                        $apprenant = new Apprenant();
+                        if (!$apprenant = $apprenant_repo->findOneByEmail($val['email'])) {
+                            $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
+                                      -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
+                                      -> setEmail(strtolower($val['email']))
+                                      -> setProfil($profil);
+                                      $manager->persist($apprenant);     
+                                      $manager->flush();
                         }
-                        // prevoir une else ici en cas de chargement de fichiers exel
+                        $message = (new \Swift_Message('Ajout'))
+                        ->setFrom('admin@gmail.com')
+                        ->setTo($apprenant->getEmail())
+                        ->setBody('Bonjour cher(e) séléctionné(e) Utilsez
+                        ces infos pour vous connecter à votre promo. Username: '.$apprenant->getUsername().'
+                        password: '.$apprenant->getPassword())
+                        ;
+                        // $mailer->send($message); // on envoie
+                        $Groupe -> addApprenant($apprenant);
                     }
                 }
                 
@@ -118,8 +123,54 @@ class PromoController extends AbstractController
                 $Promo -> addGroupe($Groupe);
             }
         }
-        
 
+        // importation fichier Exel d'emails
+        if ($doc = $request->files->get("document")) {
+            $file= IOFactory::identify($doc);        
+            $reader= IOFactory::createReader($file);
+            $spreadsheet=$reader->load($doc);
+            $emails_exel= $spreadsheet->getActivesheet()->toArray();
+            $tab_email = [];
+            $profil = $profil_repo -> findOneByLibelle('APPRENANT');
+            $groupes = $Promo -> getGroupes(); 
+                foreach ($groupes as $key => $groupe) {
+                    if ($groupe -> getType() === 'principal') { //on suppose que le grp principal peut prendre n'importe quelle position
+                        $groupe_principal = $groupe; 
+                        break;
+                    }
+                }
+            $i = 0;
+            while (isset($emails_exel[$i])) {
+                $j = 0;
+                while (isset($emails_exel[$i][$j])) {
+                    if (preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $emails_exel[$i][$j])) {
+                        // $tab_email[] = strtolower($emails_exel[$i][$j]);
+                        if (!$apprenant = $apprenant_repo->findOneByEmail($emails_exel[$i][$j])) {
+                            $apprenant = new Apprenant();
+                            $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
+                                      -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
+                                      -> setEmail(strtolower($emails_exel[$i][$j]))
+                                      -> setProfil($profil);
+                                      $manager->persist($apprenant);     
+                                      $manager->flush();
+                        }
+                        $message = (new \Swift_Message('Ajout'))
+                        ->setFrom('admin@gmail.com')
+                        ->setTo($apprenant->getEmail())
+                        ->setBody('Bonjour cher(e) séléctionné(e) Utilsez
+                        ces infos pour vous connecter à votre promo. Username: '.$apprenant->getUsername().'
+                        password: '.$apprenant->getPassword())
+                        ;
+                        // $mailer->send($message); // on envoie
+                        $groupe_principal -> addApprenant($apprenant); // on l'ajoute dans le groupe principal
+                    }
+                    $j++;
+                }
+                $i++;
+            }
+        return $this->json($groupe_principal,201);
+        }
+        
         if (!$this -> isGranted("ROLE_FORMATEUR",$Promo)) {
             return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
         }
@@ -132,6 +183,8 @@ class PromoController extends AbstractController
             $errors = $serializer->serialize($errors,"json");
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
+
+        dd($Promo);
         
         $manager->persist($Promo);
         $manager->flush();
@@ -322,13 +375,13 @@ class PromoController extends AbstractController
                     $apprenant = new Apprenant();
                     $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
                               -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
-                              -> setEmail($val['email'])
+                              -> setEmail(strtolower($val['email']))
                               -> setProfil($profil);
                               $manager->persist($apprenant);     
                               $manager->flush();
                 }
                 $message = (new \Swift_Message('Ajout'))
-                ->setFrom('laminedabo88@gmail.com')
+                ->setFrom('admin@gmail.com')
                 ->setTo($apprenant->getEmail())
                 ->setBody('Bonjour cher(e) séléctionné(e) Utilsez
                 ces infos pour vous connecter à votre promo. Username: '.$apprenant->getUsername().'
