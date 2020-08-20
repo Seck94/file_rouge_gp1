@@ -481,11 +481,27 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\BriefRepository" class="App\Repository\BriefRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\CMRepository" class="App\Repository\CMRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\CommentaireGeneralRepository" class="App\Repository\CommentaireGeneralRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\FilDeDiscussionRepository" class="App\Repository\FilDeDiscussionRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -505,6 +521,22 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\LivrableAttenduRepository" class="App\Repository\LivrableAttenduRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\LivrablePartielRepository" class="App\Repository\LivrablePartielRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\LivrableRenduRepository" class="App\Repository\LivrableRenduRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\LivrableRepository" class="App\Repository\LivrableRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\NiveauRepository" class="App\Repository\NiveauRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -517,11 +549,27 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\PromoBriefApprenantRepository" class="App\Repository\PromoBriefApprenantRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\PromoBriefRepository" class="App\Repository\PromoBriefRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\PromoRepository" class="App\Repository\PromoRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ReferentielRepository" class="App\Repository\ReferentielRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\RessourceRepository" class="App\Repository\RessourceRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\StatistiquesCompetencesRepository" class="App\Repository\StatistiquesCompetencesRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -2413,7 +2461,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.ML5th2p"/>
+      <argument type="service" id=".service_locator.aNIDyI0"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5155,10 +5203,18 @@
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ApprenantRepository" class="App\Repository\ApprenantRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ApprenantRepository" class="App\Repository\ApprenantRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BriefRepository" class="App\Repository\BriefRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\BriefRepository" class="App\Repository\BriefRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CMRepository" class="App\Repository\CMRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CMRepository" class="App\Repository\CMRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentaireGeneralRepository" class="App\Repository\CommentaireGeneralRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CommentaireGeneralRepository" class="App\Repository\CommentaireGeneralRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CompetenceRepository" class="App\Repository\CompetenceRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FilDeDiscussionRepository" class="App\Repository\FilDeDiscussionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\FilDeDiscussionRepository" class="App\Repository\FilDeDiscussionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FormateurRepository" class="App\Repository\FormateurRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\FormateurRepository" class="App\Repository\FormateurRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\GroupeRepository" class="App\Repository\GroupeRepository" autowire="true" abstract="true"/>
@@ -5167,16 +5223,32 @@
     <service id=".abstract.instanceof.App\Repository\GroupecompetenceRepository" class="App\Repository\GroupecompetenceRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\GroupetagRepository" class="App\Repository\GroupetagRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\GroupetagRepository" class="App\Repository\GroupetagRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LivrableAttenduRepository" class="App\Repository\LivrableAttenduRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LivrableAttenduRepository" class="App\Repository\LivrableAttenduRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LivrablePartielRepository" class="App\Repository\LivrablePartielRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LivrablePartielRepository" class="App\Repository\LivrablePartielRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LivrableRenduRepository" class="App\Repository\LivrableRenduRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LivrableRenduRepository" class="App\Repository\LivrableRenduRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LivrableRepository" class="App\Repository\LivrableRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LivrableRepository" class="App\Repository\LivrableRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\NiveauRepository" class="App\Repository\NiveauRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\NiveauRepository" class="App\Repository\NiveauRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProfilRepository" class="App\Repository\ProfilRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProfilRepository" class="App\Repository\ProfilRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProfilsortieRepository" class="App\Repository\ProfilsortieRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProfilsortieRepository" class="App\Repository\ProfilsortieRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PromoBriefApprenantRepository" class="App\Repository\PromoBriefApprenantRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\PromoBriefApprenantRepository" class="App\Repository\PromoBriefApprenantRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PromoBriefRepository" class="App\Repository\PromoBriefRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\PromoBriefRepository" class="App\Repository\PromoBriefRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PromoRepository" class="App\Repository\PromoRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PromoRepository" class="App\Repository\PromoRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReferentielRepository" class="App\Repository\ReferentielRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReferentielRepository" class="App\Repository\ReferentielRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RessourceRepository" class="App\Repository\RessourceRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\RessourceRepository" class="App\Repository\RessourceRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\StatistiquesCompetencesRepository" class="App\Repository\StatistiquesCompetencesRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\StatistiquesCompetencesRepository" class="App\Repository\StatistiquesCompetencesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TagRepository" class="App\Repository\TagRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\TagRepository" class="App\Repository\TagRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
@@ -5788,21 +5860,33 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.ML5th2p" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.aNIDyI0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ApprenantRepository" type="service" id="App\Repository\ApprenantRepository"/>
+        <argument key="App\Repository\BriefRepository" type="service" id="App\Repository\BriefRepository"/>
         <argument key="App\Repository\CMRepository" type="service" id="App\Repository\CMRepository"/>
+        <argument key="App\Repository\CommentaireGeneralRepository" type="service" id="App\Repository\CommentaireGeneralRepository"/>
+        <argument key="App\Repository\CommentaireRepository" type="service" id="App\Repository\CommentaireRepository"/>
         <argument key="App\Repository\CompetenceRepository" type="service" id="App\Repository\CompetenceRepository"/>
+        <argument key="App\Repository\FilDeDiscussionRepository" type="service" id="App\Repository\FilDeDiscussionRepository"/>
         <argument key="App\Repository\FormateurRepository" type="service" id="App\Repository\FormateurRepository"/>
         <argument key="App\Repository\GroupeRepository" type="service" id="App\Repository\GroupeRepository"/>
         <argument key="App\Repository\GroupecompetenceRepository" type="service" id="App\Repository\GroupecompetenceRepository"/>
         <argument key="App\Repository\GroupetagRepository" type="service" id="App\Repository\GroupetagRepository"/>
+        <argument key="App\Repository\LivrableAttenduRepository" type="service" id="App\Repository\LivrableAttenduRepository"/>
+        <argument key="App\Repository\LivrablePartielRepository" type="service" id="App\Repository\LivrablePartielRepository"/>
+        <argument key="App\Repository\LivrableRenduRepository" type="service" id="App\Repository\LivrableRenduRepository"/>
+        <argument key="App\Repository\LivrableRepository" type="service" id="App\Repository\LivrableRepository"/>
         <argument key="App\Repository\NiveauRepository" type="service" id="App\Repository\NiveauRepository"/>
         <argument key="App\Repository\ProfilRepository" type="service" id="App\Repository\ProfilRepository"/>
         <argument key="App\Repository\ProfilsortieRepository" type="service" id="App\Repository\ProfilsortieRepository"/>
+        <argument key="App\Repository\PromoBriefApprenantRepository" type="service" id="App\Repository\PromoBriefApprenantRepository"/>
+        <argument key="App\Repository\PromoBriefRepository" type="service" id="App\Repository\PromoBriefRepository"/>
         <argument key="App\Repository\PromoRepository" type="service" id="App\Repository\PromoRepository"/>
         <argument key="App\Repository\ReferentielRepository" type="service" id="App\Repository\ReferentielRepository"/>
+        <argument key="App\Repository\RessourceRepository" type="service" id="App\Repository\RessourceRepository"/>
+        <argument key="App\Repository\StatistiquesCompetencesRepository" type="service" id="App\Repository\StatistiquesCompetencesRepository"/>
         <argument key="App\Repository\TagRepository" type="service" id="App\Repository\TagRepository"/>
         <argument key="App\Repository\UserRepository" type="service" id="App\Repository\UserRepository"/>
       </argument>

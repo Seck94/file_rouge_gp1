@@ -111,10 +111,16 @@ class Groupe
      */
     private $idFormateurPrincipal;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Brief::class, mappedBy="groupes")
+     */
+    private $briefs;
+
     public function __construct()
     {
         $this->apprenants = new ArrayCollection();
         $this->formateurs = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -246,6 +252,34 @@ class Groupe
     public function setIdFormateurPrincipal(?string $idFormateurPrincipal): self
     {
         $this->idFormateurPrincipal = $idFormateurPrincipal;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->addGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->contains($brief)) {
+            $this->briefs->removeElement($brief);
+            $brief->removeGroupe($this);
+        }
 
         return $this;
     }

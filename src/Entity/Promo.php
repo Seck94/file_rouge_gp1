@@ -205,10 +205,27 @@ class Promo
      */
     private $referentiel;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="promo", orphanRemoval=true)
+     */
+    private $promoBriefs;
+
+    /**
+     * @ORM\OneToOne(targetEntity=FilDeDiscussion::class, mappedBy="promo", cascade={"persist", "remove"})
+     */
+    private $filDeDiscussion;
+
+    /**
+     * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="promo")
+     */
+    private $statistiquesCompetences;
+
     public function __construct()
     {
         $this->formateurs = new ArrayCollection();
         $this->groupes = new ArrayCollection();
+        $this->promoBriefs = new ArrayCollection();
+        $this->statistiquesCompetences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -423,6 +440,85 @@ class Promo
     public function setReferentiel(?Referentiel $referentiel): self
     {
         $this->referentiel = $referentiel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PromoBrief[]
+     */
+    public function getPromoBriefs(): Collection
+    {
+        return $this->promoBriefs;
+    }
+
+    public function addPromoBrief(PromoBrief $promoBrief): self
+    {
+        if (!$this->promoBriefs->contains($promoBrief)) {
+            $this->promoBriefs[] = $promoBrief;
+            $promoBrief->setPromo($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromoBrief(PromoBrief $promoBrief): self
+    {
+        if ($this->promoBriefs->contains($promoBrief)) {
+            $this->promoBriefs->removeElement($promoBrief);
+            // set the owning side to null (unless already changed)
+            if ($promoBrief->getPromo() === $this) {
+                $promoBrief->setPromo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getFilDeDiscussion(): ?FilDeDiscussion
+    {
+        return $this->filDeDiscussion;
+    }
+
+    public function setFilDeDiscussion(FilDeDiscussion $filDeDiscussion): self
+    {
+        $this->filDeDiscussion = $filDeDiscussion;
+
+        // set the owning side of the relation if necessary
+        if ($filDeDiscussion->getPromo() !== $this) {
+            $filDeDiscussion->setPromo($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StatistiquesCompetences[]
+     */
+    public function getStatistiquesCompetences(): Collection
+    {
+        return $this->statistiquesCompetences;
+    }
+
+    public function addStatistiquesCompetence(StatistiquesCompetences $statistiquesCompetence): self
+    {
+        if (!$this->statistiquesCompetences->contains($statistiquesCompetence)) {
+            $this->statistiquesCompetences[] = $statistiquesCompetence;
+            $statistiquesCompetence->setPromo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStatistiquesCompetence(StatistiquesCompetences $statistiquesCompetence): self
+    {
+        if ($this->statistiquesCompetences->contains($statistiquesCompetence)) {
+            $this->statistiquesCompetences->removeElement($statistiquesCompetence);
+            // set the owning side to null (unless already changed)
+            if ($statistiquesCompetence->getPromo() === $this) {
+                $statistiquesCompetence->setPromo(null);
+            }
+        }
 
         return $this;
     }

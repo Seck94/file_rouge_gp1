@@ -167,10 +167,16 @@ class User implements UserInterface
      */
     private $lastLogin;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommentaireGeneral::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $commentaireGenerals;
+
     public function __construct()
     {
         $this->promo = new ArrayCollection();
         $this->groupecompetence = new ArrayCollection();
+        $this->commentaireGenerals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -390,6 +396,37 @@ class User implements UserInterface
     public function setLastLogin(?\DateTimeInterface $lastLogin): self
     {
         $this->lastLogin = $lastLogin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommentaireGeneral[]
+     */
+    public function getCommentaireGenerals(): Collection
+    {
+        return $this->commentaireGenerals;
+    }
+
+    public function addCommentaireGeneral(CommentaireGeneral $commentaireGeneral): self
+    {
+        if (!$this->commentaireGenerals->contains($commentaireGeneral)) {
+            $this->commentaireGenerals[] = $commentaireGeneral;
+            $commentaireGeneral->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaireGeneral(CommentaireGeneral $commentaireGeneral): self
+    {
+        if ($this->commentaireGenerals->contains($commentaireGeneral)) {
+            $this->commentaireGenerals->removeElement($commentaireGeneral);
+            // set the owning side to null (unless already changed)
+            if ($commentaireGeneral->getUser() === $this) {
+                $commentaireGeneral->setUser(null);
+            }
+        }
 
         return $this;
     }

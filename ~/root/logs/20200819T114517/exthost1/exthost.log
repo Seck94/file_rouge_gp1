@@ -20,3 +20,9 @@
 [2020-08-19 11:45:20.796] [exthost] [info] ExtensionService#_doActivateExtension vscode.github {"startup":true,"extensionId":{"value":"vscode.github","_lower":"vscode.github"},"activationEvent":"*"}
 [2020-08-19 11:45:20.796] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/40/usr/share/code/resources/app/extensions/github/dist/extension.js
 [2020-08-19 11:45:20.851] [exthost] [info] eager extensions activated
+[2020-08-19 15:31:37.151] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing {"startup":false,"extensionId":{"value":"vscode.configuration-editing","_lower":"vscode.configuration-editing"},"activationEvent":"onLanguage:jsonc"}
+[2020-08-19 15:31:37.151] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/40/usr/share/code/resources/app/extensions/configuration-editing/dist/configurationEditingMain
+[2020-08-19 15:31:37.167] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features {"startup":false,"extensionId":{"value":"vscode.json-language-features","_lower":"vscode.json-language-features"},"activationEvent":"onLanguage:jsonc"}
+[2020-08-19 15:31:37.168] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/40/usr/share/code/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain
+[2020-08-19 15:31:37.207] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"extensionId":{"value":"vscode.typescript-language-features","_lower":"vscode.typescript-language-features"},"activationEvent":"onLanguage:jsonc"}
+[2020-08-19 15:31:37.207] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/40/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension
