@@ -73,6 +73,7 @@ class ReferentielController extends AbstractController
         
         $manager->persist($Referentiel);
         $manager->flush();
+        
         return $this->json($Referentiel,Response::HTTP_CREATED);
     }
 

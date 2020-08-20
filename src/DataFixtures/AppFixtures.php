@@ -69,11 +69,11 @@ class AppFixtures extends Fixture
 
         
         $referentiel = new Referentiel();
-        $referentiel -> setLibelle($ref_lib[$i]);
-        $referentiel -> setPresentation($ref_prt[$i]);
-        $referentiel -> setProgramme($ref_pg[$i]);
-        $referentiel -> setCritereAdmission($ref_Cta[$i]);
-        $referentiel -> setCritereEvaluation($ref_Cte[$i]);
+        $referentiel -> setLibelle("DEV BACK");
+        $referentiel -> setPresentation("Programme mobile");
+        $referentiel -> setProgramme("Critère d'admission de groupe competence");
+        $referentiel -> setCritereAdmission("Critère d'admission competence");
+        $referentiel -> setCritereEvaluation("dev mobile");
        
 
         $grpCompetence = new Groupecompetence();

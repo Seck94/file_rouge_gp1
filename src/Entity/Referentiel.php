@@ -97,7 +97,7 @@ class Referentiel
     private $presentation;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="blob", nullable=true)
      * @Groups({"referentiel_read"})
      */
     private $programme;
@@ -161,12 +161,12 @@ class Referentiel
         return $this;
     }
 
-    public function getProgramme(): ?string
-    {
-        return $this->programme;
-    }
+    //  public function getProgramme(): ?string
+    // {
+    //     return $this->programme;
+    // }
 
-    public function setProgramme(string $programme): self
+    public function setProgramme($programme): self
     {
         $this->programme = $programme;
 
