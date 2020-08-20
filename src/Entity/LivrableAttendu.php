@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use App\Repository\LivrableAttenduRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=LivrableAttenduRepository::class)
@@ -16,11 +17,13 @@ class LivrableAttendu
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"brief_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"brief_read"})
      */
     private $libelle;
 
@@ -31,6 +34,7 @@ class LivrableAttendu
 
     /**
      * @ORM\OneToMany(targetEntity=Livrable::class, mappedBy="livrableAttendu", orphanRemoval=true)
+     * @Groups({"brief_read"})
      */
     private $livrables;
 

@@ -66,10 +66,10 @@ class Competence extends \App\Entity\Competence implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'groupecompetences', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'niveau'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'groupecompetences', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'niveau', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'statistiquesCompetences'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'groupecompetences', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'niveau'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'groupecompetences', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'niveau', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'statistiquesCompetences'];
     }
 
     /**
@@ -277,6 +277,39 @@ class Competence extends \App\Entity\Competence implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeNiveau', [$niveau]);
 
         return parent::removeNiveau($niveau);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatistiquesCompetences(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatistiquesCompetences', []);
+
+        return parent::getStatistiquesCompetences();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addStatistiquesCompetence(\App\Entity\StatistiquesCompetences $statistiquesCompetence): \App\Entity\Competence
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addStatistiquesCompetence', [$statistiquesCompetence]);
+
+        return parent::addStatistiquesCompetence($statistiquesCompetence);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeStatistiquesCompetence(\App\Entity\StatistiquesCompetences $statistiquesCompetence): \App\Entity\Competence
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeStatistiquesCompetence', [$statistiquesCompetence]);
+
+        return parent::removeStatistiquesCompetence($statistiquesCompetence);
     }
 
 }

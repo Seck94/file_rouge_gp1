@@ -12,6 +12,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -27,6 +28,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'formateurs',
                 'promo',
                 'idFormateurPrincipal',
+                'briefs',
             ],
             'attributesMetadata' => [
                 [
@@ -39,6 +41,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'formateurs' => $o[7],
                     'promo' => $o[8],
                     'idFormateurPrincipal' => $o[9],
+                    'briefs' => $o[10],
                 ],
             ],
             'groups' => [

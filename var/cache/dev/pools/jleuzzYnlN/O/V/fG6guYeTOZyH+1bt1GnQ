@@ -2,18 +2,41 @@
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
-        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
     ],
     null,
     [
         'stdClass' => [
+            'collectionOperations' => [
+                [
+                    'get' => [
+                        'path' => 'formateur/briefs',
+                        'normalization_context' => [
+                            'groups' => [
+                                'brief_read',
+                            ],
+                        ],
+                    ],
+                    'brief_groupe' => [
+                        'method' => 'GET',
+                        'path' => 'formateur/promo/{id}/groupe/{idg}/briefs',
+                        'normalization_context' => [
+                            'groups' => [
+                                'brief_groupe_read',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
             'repositoryClass' => [
-                'App\\Repository\\BriefRepository',
+                1 => 'App\\Repository\\BriefRepository',
             ],
         ],
     ],
     [
         $o[0],
+        $o[1],
     ],
     []
 ); }];

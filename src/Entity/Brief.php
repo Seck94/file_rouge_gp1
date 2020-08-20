@@ -2,12 +2,27 @@
 
 namespace App\Entity;
 
-use App\Repository\BriefRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BriefRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *      collectionOperations={
+ *          "get"={
+ *              "path"="formateur/briefs",
+ *              "normalization_context"={"groups"={"brief_read"}}
+ *          },
+ *          "brief_groupe"={
+ *              "method"="GET",
+ *              "path"="formateur/promo/{id}/groupe/{idg}/briefs",
+ *              "normalization_context"={"groups"={"brief_groupe_read"}}
+ *          }
+ *      }
+ * )
  * @ORM\Entity(repositoryClass=BriefRepository::class)
  */
 class Brief
@@ -16,26 +31,31 @@ class Brief
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"brief_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"brief_read"})
      */
     private $langue;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"brief_read"})
      */
     private $titre;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"brief_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"brief_read"})
      */
     private $contexte;
 
@@ -66,21 +86,25 @@ class Brief
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"brief_read"})
      */
     private $dateCreation;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"brief_read"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs")
+     * @Groups({"brief_read"})
      */
     private $livrableAttendus;
 
     /**
      * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief", orphanRemoval=true)
+     * @Groups({"brief_read"})
      */
     private $ressources;
 
@@ -92,16 +116,19 @@ class Brief
     /**
      * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="briefs")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"brief_read"})
      */
     private $referentiel;
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief")
+     * @Groups({"brief_read"})
      */
     private $niveaux;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs")
+     * @Groups({"brief_read"})
      */
     private $tags;
 
