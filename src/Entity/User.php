@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 // use Webmozart\Assert\Assert;
 
 /**
@@ -20,13 +19,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * 
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur","cm"="CM"})
+ * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur", "cm" = "CM"})
  * 
  * @ApiResource(
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
- *          "pagination_items_per_page"=10,
- *           
+ *          "pagination_items_per_page"=10, 
+*           "normalization_context"={"groups"={"user_read","user_details_read","gprincipal_read"}}
  *     },
  * 
  *     collectionOperations={
@@ -40,7 +39,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/users",
- *    
+
  *          },
  *          "get_admins"={
  *              "method"="GET",
@@ -96,19 +95,18 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * 
+     * @Groups({"user_read"})
      */
     private $username;
 
     /**
-     * 
+     * @Groups({"user_details_read"})
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * 
      */
     private $password;
 
@@ -118,14 +116,14 @@ class User implements UserInterface
     private $avatar;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read","profilsortie_apprenants_read"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read","profil_read","competence_read","profilsortie_apprenants_read"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $nom;
 
@@ -134,19 +132,20 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' est invalide."
      * )
-     * @Groups({"user_read","profil_read","competence_read","profilsortie_apprenants_read"})
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_read"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * 
+     * @Groups({"user_read"})
      */
     private $profil;
 
@@ -168,10 +167,16 @@ class User implements UserInterface
      */
     private $lastLogin;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommentaireGeneral::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $commentaireGenerals;
+
     public function __construct()
     {
         $this->promo = new ArrayCollection();
         $this->groupecompetence = new ArrayCollection();
+        $this->commentaireGenerals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -391,6 +396,37 @@ class User implements UserInterface
     public function setLastLogin(?\DateTimeInterface $lastLogin): self
     {
         $this->lastLogin = $lastLogin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommentaireGeneral[]
+     */
+    public function getCommentaireGenerals(): Collection
+    {
+        return $this->commentaireGenerals;
+    }
+
+    public function addCommentaireGeneral(CommentaireGeneral $commentaireGeneral): self
+    {
+        if (!$this->commentaireGenerals->contains($commentaireGeneral)) {
+            $this->commentaireGenerals[] = $commentaireGeneral;
+            $commentaireGeneral->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaireGeneral(CommentaireGeneral $commentaireGeneral): self
+    {
+        if ($this->commentaireGenerals->contains($commentaireGeneral)) {
+            $this->commentaireGenerals->removeElement($commentaireGeneral);
+            // set the owning side to null (unless already changed)
+            if ($commentaireGeneral->getUser() === $this) {
+                $commentaireGeneral->setUser(null);
+            }
+        }
 
         return $this;
     }

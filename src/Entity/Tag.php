@@ -39,7 +39,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/tags/{id}",
  *         }, 
- *         
+ *         "delete"={
+ *              "security"="is_granted('DELETE',object)",
+ *              "security_message"="Seul le proprietaite....",
+ *              "path"="admin/tags/{id}",
+ *         },
  *         "patch"={
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
@@ -81,9 +85,15 @@ class Tag
      */
     private $groupetags;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Brief::class, mappedBy="tags")
+     */
+    private $briefs;
+
     public function __construct()
     {
         $this->groupetags = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -138,6 +148,34 @@ class Tag
         if ($this->groupetags->contains($groupetag)) {
             $this->groupetags->removeElement($groupetag);
             $groupetag->removeTag($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->contains($brief)) {
+            $this->briefs->removeElement($brief);
+            $brief->removeTag($this);
         }
 
         return $this;

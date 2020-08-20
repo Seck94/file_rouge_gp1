@@ -47,4 +47,14 @@ class ProfilRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findOneByLibelle($value): ?Profil
+    {
+        return $this->createQueryBuilder('p')
+            ->Where('p.libelle = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

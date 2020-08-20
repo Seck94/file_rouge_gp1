@@ -1,9 +1,0 @@
-[2020-08-06 01:36:34.668] [sharedprocess] [info] main {"machineId":"70e47962f8db9099b5c32bff5d086a841625d7fc5fd73ad6847e53798bf19d88","windowId":2}
-[2020-08-06 01:36:34.705] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/opt/lampp/htdocs/file_rouge_gp1-ldab/~/root/User/snippets'
-[2020-08-06 01:37:14.685] [sharedprocess] [info] Starting to clean up unused language packs.
-[2020-08-06 02:46:05.410] [sharedprocess] [info] Installing extension: mehedidracula.php-namespace-resolver
-[2020-08-06 02:46:05.411] [sharedprocess] [info] Downloaded extension: mehedidracula.php-namespace-resolver /opt/lampp/htdocs/file_rouge_gp1-ldab/~/root/CachedExtensionVSIXs/mehedidracula.php-namespace-resolver-1.1.8
-[2020-08-06 02:46:05.453] [sharedprocess] [info] Extracted extension to /root/.vscode/extensions/.mehedidracula.php-namespace-resolver-1.1.8: mehedidracula.php-namespace-resolver
-[2020-08-06 02:46:05.454] [sharedprocess] [info] Renamed to /root/.vscode/extensions/mehedidracula.php-namespace-resolver-1.1.8
-[2020-08-06 02:46:05.455] [sharedprocess] [info] Installation completed. mehedidracula.php-namespace-resolver
-[2020-08-06 02:46:05.458] [sharedprocess] [info] Extensions installed successfully: mehedidracula.php-namespace-resolver

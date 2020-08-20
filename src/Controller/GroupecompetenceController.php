@@ -50,7 +50,7 @@ class GroupecompetenceController extends AbstractController
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $Groupecompetence -> setUser($user);
-        
+
         $errors = $validator->validate($Groupecompetence);
         if (count($errors)){
             $errors = $serializer->serialize($errors,"json");
@@ -66,12 +66,12 @@ class GroupecompetenceController extends AbstractController
 
     /**
      * @Route(
-     *     path="/api/admin/competences/{id}",
+     *     path="/api/admin/groupecompetences/{id}",
      *     methods={"PUT","PATCH"},
      *     defaults={
-     *          "__controller"="App\Controller\CompetenceController::updatecompetence",
-     *          "__api_resource_class"=Competence::class,
-     *          "__api_collection_operation_name"="update_competence"
+     *          "__controller"="App\Controller\GroupecompetenceController::updateGroupecompetence",
+     *          "__api_resource_class"=Groupecompetence::class,
+     *          "__api_collection_operation_name"="update_groupecompetence"
      *     }
      * )
     */
@@ -145,13 +145,11 @@ class GroupecompetenceController extends AbstractController
      * )
     */
     public function showGroupecompetence(GroupecompetenceRepository $Groupecompetence){
-
-        if (!$this -> isGranted("ROLE_CM",$Groupecompetence)) 
-        {
-            return $this -> json(["message" => "l'accès à cette ressource est interdite"],Response::HTTP_FORBIDDEN);
+        if (!$this -> isGranted("ROLE_CM",$Groupecompetence)) {
+            return $this -> json(["message" => "l'accès à cette ressource vous est interdit"],Response::HTTP_FORBIDDEN);
         }
         $Groupecompetence = $Groupecompetence -> findAll();
-        
+        // dd($Groupecompetence[0]->getUser());
         return $this -> json($Groupecompetence, Response::HTTP_OK,);
     }
 }

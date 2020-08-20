@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Niveau;
-use App\Entity\Groupecompetence;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CompetenceRepository;
 use Doctrine\Common\Collections\Collection;
@@ -14,22 +12,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- * 
  *      attributes={
- *              "pagination_items_per_page"=10,
- *              "normalization_context"={"groups"={"competence_read","competence_details_read"}}
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"competence_read"},"enable_max_depth"=true}
  *      },
- * 
- *      collectionOperations={
- *          
- * 
+ *     collectionOperations={
  *          "add_competence"={
  *              "method"="POST",
  *              "path"="admin/competences",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *          },
- *         "show_groupecompetence"={
+ *         "show_competence"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
@@ -49,26 +43,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "path"="admin/competences/{id}",
  *         },
  *         "update_competence"={
- *              "method"="PUT",
- *              "security"="is_granted('EDIT',object)", 
- *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/competences/{id}",
- *         },
-*          "update_competence"={
  *              "method"="PATCH",
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/competences/{id}",
  *         },
- *         "put"={
+ *         "update_competence"={
+ *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/competences/{id}",
  *         },
  *     },
- * 
  * )
- * 
  * @ORM\Entity(repositoryClass=CompetenceRepository::class)
  */
 class Competence
@@ -77,32 +64,39 @@ class Competence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Grpcompetence_read","competence_read"})
+     * @Groups({"competence_read","promo_referentiel"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grpcompetence_read","competence_read","Grpcompetence_Competence_read"})
+     * @Groups({"Grpcompetence_read","competence_read","Grpcompetence_competence_read","promo_referentiel"})
      */
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence")
-     * @ApiSubresource
+     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence", cascade={"persist"})
+     * @ApiSubresource()
      */
-    private $competences;
+    private $groupecompetences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence", cascade={"persist"})
      * @Groups({"competence_read"})
+     * @ApiSubresource()
      */
     private $niveau;
 
+    /**
+     * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="competence")
+     */
+    private $statistiquesCompetences;
+
     public function __construct()
     {
-        $this->competences = new ArrayCollection();
+        $this->groupecompetences = new ArrayCollection();
         $this->niveau = new ArrayCollection();
+        $this->statistiquesCompetences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,15 +119,15 @@ class Competence
     /**
      * @return Collection|Groupecompetence[]
      */
-    public function getcompetences(): Collection
+    public function getGroupecompetences(): Collection
     {
-        return $this->competences;
+        return $this->groupecompetences;
     }
 
     public function addGroupecompetence(Groupecompetence $groupecompetence): self
     {
-        if (!$this->competences->contains($groupecompetence)) {
-            $this->competences[] = $groupecompetence;
+        if (!$this->groupecompetences->contains($groupecompetence)) {
+            $this->groupecompetences[] = $groupecompetence;
             $groupecompetence->addCompetence($this);
         }
 
@@ -142,8 +136,8 @@ class Competence
 
     public function removeGroupecompetence(Groupecompetence $groupecompetence): self
     {
-        if ($this->competences->contains($groupecompetence)) {
-            $this->competences->removeElement($groupecompetence);
+        if ($this->groupecompetences->contains($groupecompetence)) {
+            $this->groupecompetences->removeElement($groupecompetence);
             $groupecompetence->removeCompetence($this);
         }
 
@@ -177,6 +171,37 @@ class Competence
                 $niveau->setCompetence(null);
             }
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection|StatistiquesCompetences[]
+     */
+    public function getStatistiquesCompetences(): Collection
+    {
+        return $this->statistiquesCompetences;
+    }
+
+    public function addStatistiquesCompetence(StatistiquesCompetences $statistiquesCompetence): self
+    {
+        if (!$this->statistiquesCompetences->contains($statistiquesCompetence)) {
+            $this->statistiquesCompetences[] = $statistiquesCompetence;
+            $statistiquesCompetence->setCompetence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStatistiquesCompetence(StatistiquesCompetences $statistiquesCompetence): self
+    {
+        if ($this->statistiquesCompetences->contains($statistiquesCompetence)) {
+            $this->statistiquesCompetences->removeElement($statistiquesCompetence);
+            // set the owning side to null (unless already changed)
+            if ($statistiquesCompetence->getCompetence() === $this) {
+                $statistiquesCompetence->setCompetence(null);
+            }
+        }
+
         return $this;
     }
 }

@@ -26,13 +26,23 @@ class PromoVoter extends Voter
 
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
-            case 'POST_EDIT':
-                // logic to determine if the user can EDIT
-                // return true or false
+            case 'ADD':
+                if ($user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_FORMATEUR") {
+                    return true;
+                }
+                return false;
                 break;
-            case 'POST_VIEW':
-                // logic to determine if the user can VIEW
-                // return true or false
+            case 'EDIT':
+                if ($user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_FORMATEUR") {
+                    return true;
+                }
+                return false;
+                break;
+            case 'DELETE':
+                return $subject -> getUser() === $user;
+                break;
+            case 'VIEW':
+                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM"  || $user -> getRoles()[0] === "ROLE_FORMATEUR";
                 break;
         }
 

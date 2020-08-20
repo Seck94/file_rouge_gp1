@@ -85,11 +85,11 @@ class __TwigTemplate_0790843b3ae6a9d91a9b91455c7fd6d7f77ef9d0362281f170559d4e8d1
     <ul>
         <li>Your controller at <code><a href=\"";
         // line 16
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/opt/lampp/htdocs/file_rouge_gp1-ldab/src/Controller/GroupetagController.php", 0), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/opt/lampp/htdocs/file_rouge_gp1/src/Controller/GroupetagController.php", 0), "html", null, true);
         echo "\">src/Controller/GroupetagController.php</a></code></li>
         <li>Your template at <code><a href=\"";
         // line 17
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/opt/lampp/htdocs/file_rouge_gp1-ldab/templates/groupetag/index.html.twig", 0), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/opt/lampp/htdocs/file_rouge_gp1/templates/groupetag/index.html.twig", 0), "html", null, true);
         echo "\">templates/groupetag/index.html.twig</a></code></li>
     </ul>
 </div>
@@ -131,11 +131,11 @@ class __TwigTemplate_0790843b3ae6a9d91a9b91455c7fd6d7f77ef9d0362281f170559d4e8d1
 
     This friendly message is coming from:
     <ul>
-        <li>Your controller at <code><a href=\"{{ '/opt/lampp/htdocs/file_rouge_gp1-ldab/src/Controller/GroupetagController.php'|file_link(0) }}\">src/Controller/GroupetagController.php</a></code></li>
-        <li>Your template at <code><a href=\"{{ '/opt/lampp/htdocs/file_rouge_gp1-ldab/templates/groupetag/index.html.twig'|file_link(0) }}\">templates/groupetag/index.html.twig</a></code></li>
+        <li>Your controller at <code><a href=\"{{ '/opt/lampp/htdocs/file_rouge_gp1/src/Controller/GroupetagController.php'|file_link(0) }}\">src/Controller/GroupetagController.php</a></code></li>
+        <li>Your template at <code><a href=\"{{ '/opt/lampp/htdocs/file_rouge_gp1/templates/groupetag/index.html.twig'|file_link(0) }}\">templates/groupetag/index.html.twig</a></code></li>
     </ul>
 </div>
 {% endblock %}
-", "groupetag/index.html.twig", "/opt/lampp/htdocs/file_rouge_gp1-ldab/templates/groupetag/index.html.twig");
+", "groupetag/index.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/templates/groupetag/index.html.twig");
     }
 }

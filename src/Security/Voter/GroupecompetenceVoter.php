@@ -34,11 +34,8 @@ class GroupecompetenceVoter extends Voter
                 }
                 return false;
                 break;
-
-
             case 'EDIT':
                 if ($user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_FORMATEUR") {
-                    
                     return true;
                 }
                 return false;
@@ -47,7 +44,7 @@ class GroupecompetenceVoter extends Voter
                 return $subject -> getUser() === $user;
                 break;
             case 'VIEW':
-                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM" || $user -> getRoles()[0] === "ROLE_FORMATEUR";
+                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM"  || $user -> getRoles()[0] === "ROLE_FORMATEUR";
                 break;
         }
 

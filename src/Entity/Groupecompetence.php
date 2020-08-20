@@ -29,12 +29,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupecompetences"
  *              },
- *              "show_groupecompetence_competence"={
+ *          "show_groupecompetence_competence"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupecompetences/competences",
- *              "normalization_context"={"groups"={"Grpcompetence_Competence_read"},"enable_max_depth"=true}
+ *              "normalization_context"={"groups"={"Grpcompetence_competence_read"},"enable_max_depth"=true}
  *              },
  *     },
  *     
@@ -71,19 +71,19 @@ class Groupecompetence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Grpcompetence_read"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grpcompetence_read"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grpcompetence_read"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $descriptif;
 
@@ -102,7 +102,7 @@ class Groupecompetence
 
     /**
      * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences", cascade={"persist"})
-     * @Groups({"Grpcompetence_read","Grpcompetence_Competence_read"})
+     * @Groups({"Grpcompetence_read","Grpcompetence_competence_read","promo_referentiel"})
      * @ApiSubresource()
      */
     private $competence;

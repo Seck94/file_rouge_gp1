@@ -38,6 +38,43 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'groupecompetence' => $o[8],
                 ],
             ],
+            'groups' => [
+                1 => [
+                    'referentiel_read',
+                    'Grpcompetence_read',
+                ],
+                [
+                    'referentiel_read',
+                    'promo_read',
+                    'promo_referentiel',
+                    'promo_groupe_apprenants',
+                    'promo_groupe_formateurs',
+                ],
+                [
+                    'referentiel_read',
+                    'promo_read',
+                    'promo_referentiel',
+                    'promo_groupe_apprenants',
+                    'promo_groupe_formateurs',
+                ],
+                [
+                    'referentiel_read',
+                    'promo_referentiel',
+                ],
+                [
+                    'referentiel_read',
+                    'promo_referentiel',
+                ],
+                [
+                    'referentiel_read',
+                    'promo_referentiel',
+                ],
+                8 => [
+                    'referentiel_read',
+                    'referentiel_groupecompetence_read',
+                    'promo_referentiel',
+                ],
+            ],
         ],
     ],
     $o[0],

@@ -2,7 +2,7 @@
     "telemetry.machineId": "70e47962f8db9099b5c32bff5d086a841625d7fc5fd73ad6847e53798bf19d88",
     "openedPathsList": {
         "workspaces3": [
-            "file:///opt/lampp/htdocs/file_rouge_gp1-ldab"
+            "file:///opt/lampp/htdocs/file_rouge_gp1"
         ],
         "files2": []
     },
@@ -34,14 +34,13 @@
                         "label": "Open Wor&&kspace..."
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.24",
                         "label": "Open &&Recent",
                         "submenu": {
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Reopen Closed Editor",
-                                    "enabled": false
+                                    "label": "&&Reopen Closed Editor"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -50,13 +49,13 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
-                                        "fsPath": "/opt/lampp/htdocs/file_rouge_gp1-ldab",
-                                        "external": "file:///opt/lampp/htdocs/file_rouge_gp1-ldab",
-                                        "path": "/opt/lampp/htdocs/file_rouge_gp1-ldab",
+                                        "fsPath": "/opt/lampp/htdocs/file_rouge_gp1",
+                                        "external": "file:///opt/lampp/htdocs/file_rouge_gp1",
+                                        "path": "/opt/lampp/htdocs/file_rouge_gp1",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "/opt/lampp/htdocs/file_rouge_gp1-ldab"
+                                    "label": "/opt/lampp/htdocs/file_rouge_gp1"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -111,7 +110,7 @@
                         "checked": true
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.23",
                         "label": "&&Preferences",
                         "submenu": {
                             "items": [
@@ -155,6 +154,13 @@
                                 {
                                     "id": "workbench.action.selectIconTheme",
                                     "label": "File &&Icon Theme"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "workbench.userDataSync.actions.turnOn",
+                                    "label": "Turn on Settings Sync..."
                                 }
                             ]
                         }
@@ -346,7 +352,7 @@
                         "id": "vscode.menubar.separator"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.15",
                         "label": "&&Appearance",
                         "submenu": {
                             "items": [
@@ -360,7 +366,7 @@
                                 },
                                 {
                                     "id": "workbench.action.toggleCenteredLayout",
-                                    "label": "Centered Layout"
+                                    "label": "&&Centered Layout"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -429,7 +435,7 @@
                         }
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.21",
                         "label": "Editor &&Layout",
                         "submenu": {
                             "items": [
@@ -583,7 +589,7 @@
                         "id": "vscode.menubar.separator"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.26",
                         "label": "Switch &&Editor",
                         "submenu": {
                             "items": [
@@ -632,7 +638,7 @@
                         }
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.27",
                         "label": "Switch &&Group",
                         "submenu": {
                             "items": [
@@ -833,7 +839,7 @@
                         "label": "Toggle &&Breakpoint"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.22",
                         "label": "&&New Breakpoint",
                         "submenu": {
                             "items": [
@@ -1438,14 +1444,14 @@
     "themeBackground": "#1e1e1e",
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///opt/lampp/htdocs/file_rouge_gp1-ldab",
-            "backupPath": "/opt/lampp/htdocs/file_rouge_gp1-ldab/~/root/Backups/535b99f35e69f5804df34d84f0fb63af",
+            "folder": "file:///opt/lampp/htdocs/file_rouge_gp1",
+            "backupPath": "/opt/lampp/htdocs/file_rouge_gp1/~/root/Backups/077f8bd220fffee23f6a9a1fcb7c85ea",
             "uiState": {
                 "mode": 0,
-                "x": 72,
-                "y": 64,
-                "width": 1848,
-                "height": 1016
+                "x": 67,
+                "y": 57,
+                "width": 1853,
+                "height": 1023
             }
         },
         "openedWindows": []

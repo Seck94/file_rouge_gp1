@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CMRepository;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
- * @ORM\Entity(repositoryClass=CMRepository::class)
  * @ApiResource()
+ * @ORM\Entity(repositoryClass=CMRepository::class)
  */
 class CM extends User
 {

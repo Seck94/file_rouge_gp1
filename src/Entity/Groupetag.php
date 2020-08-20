@@ -170,4 +170,11 @@ class Groupetag
 
         return $this;
     }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate(){
+        $this -> setLastUpdate(new \DateTime());
+    }
 }

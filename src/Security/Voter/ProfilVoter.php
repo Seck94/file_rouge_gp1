@@ -30,8 +30,6 @@ class ProfilVoter extends Voter
         // ...l'utilisateur est connecté, on  voit s'il est autorisé à faire cette action...
         switch ($attribute) {
             case 'EDIT':
-                $subject -> setLibelle("blablaaa");
-                dd($subject);
                 return $user -> getRoles()[0] === "ROLE_ADMIN";
                 break;
             case 'VIEW':

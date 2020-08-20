@@ -1,3 +1,0 @@
-<?php //route_name_40c8702410f7f5bf64a28262e92b05ea
-
-return [PHP_INT_MAX, 'api_profilsorties_apprenants_get_subresource'];

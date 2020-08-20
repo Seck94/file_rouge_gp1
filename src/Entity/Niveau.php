@@ -9,12 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *          
  *      attributes={
- *              "pagination_items_per_page"=10,
- *              "normalization_context"={"groups"={"competence_read","competence_details_read","niveau_read"}}
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"niveau_read"},"enable_max_depth"=true}
  *      },
- *  
  * )
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
  */
@@ -50,6 +48,11 @@ class Niveau
      * @ORM\ManyToOne(targetEntity=Competence::class, inversedBy="niveau")
      */
     private $competence;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Brief::class, inversedBy="niveaux")
+     */
+    private $brief;
 
     public function getId(): ?int
     {
@@ -100,6 +103,18 @@ class Niveau
     public function setCompetence(?Competence $competence): self
     {
         $this->competence = $competence;
+
+        return $this;
+    }
+
+    public function getBrief(): ?Brief
+    {
+        return $this->brief;
+    }
+
+    public function setBrief(?Brief $brief): self
+    {
+        $this->brief = $brief;
 
         return $this;
     }

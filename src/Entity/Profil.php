@@ -21,7 +21,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "pagination_items_per_page"=10,
  *          "normalization_context"={"groups"={"profil_read","profil_details_read"},"enable_max_depth"=true}
  *      },
- * 
  *     collectionOperations={
  *         "post"={
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
@@ -32,7 +31,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/profils",
- *              
+
  *              },
  *     },
  *     
@@ -66,7 +65,7 @@ class Profil
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     *
+     * @Groups({"profil_read"})
      */
     private $id;
 
@@ -79,7 +78,6 @@ class Profil
 
     /**
      * @ORM\Column(name="last_update", type="datetime",nullable=true)
-     * @Groups({"profil_read"})
      */
     private $lastUpdate;
 
@@ -105,8 +103,8 @@ class Profil
 
     /**
     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
-    * @ApiSubresource
-    *@Groups({"profil_read"})
+    * @Groups({"profil_read"})
+    * @ApiSubresource()
     */
     private $users;
 

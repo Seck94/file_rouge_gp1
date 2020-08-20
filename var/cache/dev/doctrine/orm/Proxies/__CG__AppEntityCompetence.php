@@ -66,10 +66,10 @@ class Competence extends \App\Entity\Competence implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'competences', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'niveau'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'groupecompetences', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'niveau'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'competences', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'niveau'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'groupecompetences', '' . "\0" . 'App\\Entity\\Competence' . "\0" . 'niveau'];
     }
 
     /**
@@ -216,12 +216,12 @@ class Competence extends \App\Entity\Competence implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getcompetences(): \Doctrine\Common\Collections\Collection
+    public function getGroupecompetences(): \Doctrine\Common\Collections\Collection
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getcompetences', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupecompetences', []);
 
-        return parent::getcompetences();
+        return parent::getGroupecompetences();
     }
 
     /**
