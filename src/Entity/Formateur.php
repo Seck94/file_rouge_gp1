@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\User;
+use App\Entity\Promo;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FormateurRepository;
 use Doctrine\Common\Collections\Collection;
@@ -16,6 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
+ *          "normalization_context"={"groups"={"gprincipal_read"},"enable_max_depth"=true}
  *     },
  * 
  *     collectionOperations={
@@ -90,10 +92,22 @@ class Formateur extends User
      */
     private $promo;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="formateur", orphanRemoval=true)
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Brief::class, mappedBy="formateur", orphanRemoval=true)
+     */
+    private $briefs;
+
     public function __construct()
     {
         $this->groupe = new ArrayCollection();
         $this->promo = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,22 +146,93 @@ class Formateur extends User
      */
     public function getPromo(): Collection
     {
-        return $this->promo;
+        if ($this->promo) {
+            return $this->promo; //fonctions modifiées
+        }
+        return new ArrayCollection();
     }
 
     public function addPromo(Promo $promo): self
     {
-        if (!$this->promo->contains($promo)) {
+        if ($promo) {
             $this->promo[] = $promo;
         }
+        // if (!$this->promo->contains($promo)) {
+        //     $this->promo[] = $promo;
+        // }
 
         return $this;
     }
 
     public function removePromo(Promo $promo): self
     {
-        if ($this->promo->contains($promo)) {
+        if ($this->promo !== null) {
             $this->promo->removeElement($promo);
+        }
+        // if ($this->promo->contains($promo)) {
+        //     $this->promo->removeElement($promo);
+        // }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setFormateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->contains($commentaire)) {
+            $this->commentaires->removeElement($commentaire);
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getFormateur() === $this) {
+                $commentaire->setFormateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->setFormateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->contains($brief)) {
+            $this->briefs->removeElement($brief);
+            // set the owning side to null (unless already changed)
+            if ($brief->getFormateur() === $this) {
+                $brief->setFormateur(null);
+            }
         }
 
         return $this;

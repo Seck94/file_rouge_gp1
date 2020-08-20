@@ -33,7 +33,6 @@ class AppFixtures extends Fixture
         // $manager->persist($product);
         $profils=['FORMATEUR','CM','APPRENANT','ADMIN'];
         for ($i = 0; $i < 4; $i++) {
-            
             $profil= new Profil();
             $profil->setLibelle($profils[$i]);
             for($j =0; $j<3; $j++){
@@ -67,14 +66,13 @@ class AppFixtures extends Fixture
         $critereEvaluation = ["CritereEvaluation1","CritereEvaluation2","CritereEvaluation3"];
         $competences = ["Connaissances solide en PHP","excellent niveau en Bootsrap","bon niveux en Ajax"];
 
-        
+
         $referentiel = new Referentiel();
-        $referentiel -> setLibelle("DEV BACK");
-        $referentiel -> setPresentation("Programme mobile");
-        $referentiel -> setProgramme("Critère d'admission de groupe competence");
-        $referentiel -> setCritereAdmission("Critère d'admission competence");
-        $referentiel -> setCritereEvaluation("dev mobile");
-       
+        $referentiel -> setLibelle("DEV WEB MOBILE");
+        $referentiel -> setPresentation("developpement d'applications web et mobile");
+        $referentiel -> setProgramme("Programme de ce referentiel");
+        $referentiel -> setCritereAdmission("Critère d'admission de ce referentiel");
+        $referentiel -> setCritereEvaluation("Critère d'évaluation de ce referentiel");
 
         $grpCompetence = new Groupecompetence();
         $grpCompetence -> setLibelle("Developper le backend d'une appli");
@@ -93,7 +91,7 @@ class AppFixtures extends Fixture
             $tag -> setDescriptif("Descriptif de ce tag");
             $tag -> addGroupetag($groupeTags);
             $manager->persist($tag);
-           $manager->flush();
+            $manager->flush();
         }
 
         for ($i=0; $i < 3; $i++) { 
@@ -114,6 +112,6 @@ class AppFixtures extends Fixture
         $grpCompetence -> setUser($users);
         $manager->persist($referentiel);
         $manager->persist($grpCompetence);
-            $manager->flush();
+        $manager->flush();
     }
 }

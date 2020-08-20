@@ -75,7 +75,7 @@ class ApprenantController extends AbstractController
     public function addApprenant(Request $request,UserPasswordEncoderInterface $encoder,SerializerInterface $serializer,ValidatorInterface $validator,ProfilRepository $profil,EntityManagerInterface $manager)
     {
         $user = $request->request->all();
-        $profil = $profil -> find(4);
+        $profil = $profil -> find(3);
         $avatar = $request->files->get("avatar");
         $avatar = fopen($avatar->getRealPath(),"rb");
         $user["avatar"] = $avatar;

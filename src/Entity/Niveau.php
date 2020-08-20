@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\NiveauRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -9,24 +11,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *        attributes={
+ *      attributes={
  *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"niveau_read","niveau_details_read"}}
+ *          "normalization_context"={"groups"={"niveau_read"},"enable_max_depth"=true}
  *      },
- *     collectionOperations={
- *          "add_groupecompetence"={
- *              "method"="POST",
- *              "path"="admin/groupecompetences",
- *              "security_post_denormalize"="is_granted('EDIT', object)", 
- *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *          },
- *         "show_groupecompetence"={
- *              "method"="GET",
- *              "security"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/groupecompetences"
- *              },
- *     },
  * )
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
  */
@@ -62,6 +50,21 @@ class Niveau
      * @ORM\ManyToOne(targetEntity=Competence::class, inversedBy="niveau")
      */
     private $competence;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Brief::class, inversedBy="niveaux")
+     */
+    private $brief;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=LivrablePartiel::class, mappedBy="niveaux")
+     */
+    private $livrablePartiels;
+
+    public function __construct()
+    {
+        $this->livrablePartiels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -112,6 +115,46 @@ class Niveau
     public function setCompetence(?Competence $competence): self
     {
         $this->competence = $competence;
+
+        return $this;
+    }
+
+    public function getBrief(): ?Brief
+    {
+        return $this->brief;
+    }
+
+    public function setBrief(?Brief $brief): self
+    {
+        $this->brief = $brief;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LivrablePartiel[]
+     */
+    public function getLivrablePartiels(): Collection
+    {
+        return $this->livrablePartiels;
+    }
+
+    public function addLivrablePartiel(LivrablePartiel $livrablePartiel): self
+    {
+        if (!$this->livrablePartiels->contains($livrablePartiel)) {
+            $this->livrablePartiels[] = $livrablePartiel;
+            $livrablePartiel->addNiveau($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLivrablePartiel(LivrablePartiel $livrablePartiel): self
+    {
+        if ($this->livrablePartiels->contains($livrablePartiel)) {
+            $this->livrablePartiels->removeElement($livrablePartiel);
+            $livrablePartiel->removeNiveau($this);
+        }
 
         return $this;
     }

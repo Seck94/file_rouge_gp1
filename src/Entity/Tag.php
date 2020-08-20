@@ -11,23 +11,26 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     attributes={
- *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"tag_read","tag_details_read"}}
+ * 
+ * attributes={
+ *              "pagination_items_per_page"=10,
+ *              "normalization_context"={"groups"={"tags_read","tags_details_read"}}
  *      },
- *    collectionOperations={
- *          "add_groupecompetence"={
+ * 
+ *      collectionOperations={
+ *          "add_groupetags"={
  *              "method"="POST",
  *              "path"="admin/tags",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *          },
- *         "show_groupecompetence"={
+ *         "show_tags"={
  *              "method"="GET",
- *              "security"="is_granted('ROLE_CM')", 
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/tags"
  *              },
+ * 
  *     },
  *     
  *     itemOperations={
@@ -52,6 +55,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "path"="admin/tags/{id}",
  *         },
  *     },
+ * 
  * )
  * @ORM\Entity(repositoryClass=TagRepository::class)
  */
@@ -61,31 +65,35 @@ class Tag
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"tag_read","groupetag_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"tag_read","groupetag_read"})
+     * @Groups({"tags_read","Grptags_read","Grptags_tags_read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"tag_read","groupetag_read"})
+     * @Groups({"tags_read","Grptags_read","Grptags_tags_read"})
      */
     private $descriptif;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupetag::class, mappedBy="tag")
-     * @Groups({"tag_read"})
      */
     private $groupetags;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Brief::class, mappedBy="tags")
+     */
+    private $briefs;
 
     public function __construct()
     {
         $this->groupetags = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -140,6 +148,34 @@ class Tag
         if ($this->groupetags->contains($groupetag)) {
             $this->groupetags->removeElement($groupetag);
             $groupetag->removeTag($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->contains($brief)) {
+            $this->briefs->removeElement($brief);
+            $brief->removeTag($this);
         }
 
         return $this;

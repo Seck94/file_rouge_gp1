@@ -29,20 +29,18 @@ class CompetenceVoter extends Voter
         switch ($attribute) {
             case 'EDIT':
                 if ($user -> getRoles()[0] === "ROLE_ADMIN") {
-                    
                     return true;
                 }
                 return false;
                 break;
             case 'DELETE':
                 if ($user -> getRoles()[0] === "ROLE_ADMIN") {
-                    
                     return true;
                 }
                 return false;
                 break;
             case 'VIEW':
-                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM";
+                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM" || $user -> getRoles()[0] === "ROLE_FORMATEUR";
                 break;
         }
 

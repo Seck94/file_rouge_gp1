@@ -85,11 +85,11 @@ class __TwigTemplate_5cff9a449786fd77a4bed9c183cee2d0f8264bc3e943e6f3605627457f1
     <ul>
         <li>Your controller at <code><a href=\"";
         // line 16
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/home/sms/Desktop/file_rouge_gp1/src/Controller/CompetenceController.php", 0), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/opt/lampp/htdocs/file_rouge_gp1/src/Controller/CompetenceController.php", 0), "html", null, true);
         echo "\">src/Controller/CompetenceController.php</a></code></li>
         <li>Your template at <code><a href=\"";
         // line 17
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/home/sms/Desktop/file_rouge_gp1/templates/competence/index.html.twig", 0), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/opt/lampp/htdocs/file_rouge_gp1/templates/competence/index.html.twig", 0), "html", null, true);
         echo "\">templates/competence/index.html.twig</a></code></li>
     </ul>
 </div>
@@ -131,11 +131,11 @@ class __TwigTemplate_5cff9a449786fd77a4bed9c183cee2d0f8264bc3e943e6f3605627457f1
 
     This friendly message is coming from:
     <ul>
-        <li>Your controller at <code><a href=\"{{ '/home/sms/Desktop/file_rouge_gp1/src/Controller/CompetenceController.php'|file_link(0) }}\">src/Controller/CompetenceController.php</a></code></li>
-        <li>Your template at <code><a href=\"{{ '/home/sms/Desktop/file_rouge_gp1/templates/competence/index.html.twig'|file_link(0) }}\">templates/competence/index.html.twig</a></code></li>
+        <li>Your controller at <code><a href=\"{{ '/opt/lampp/htdocs/file_rouge_gp1/src/Controller/CompetenceController.php'|file_link(0) }}\">src/Controller/CompetenceController.php</a></code></li>
+        <li>Your template at <code><a href=\"{{ '/opt/lampp/htdocs/file_rouge_gp1/templates/competence/index.html.twig'|file_link(0) }}\">templates/competence/index.html.twig</a></code></li>
     </ul>
 </div>
 {% endblock %}
-", "competence/index.html.twig", "/home/sms/Desktop/file_rouge_gp1/templates/competence/index.html.twig");
+", "competence/index.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/templates/competence/index.html.twig");
     }
 }

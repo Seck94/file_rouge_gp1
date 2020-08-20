@@ -2,7 +2,7 @@
     "telemetry.machineId": "70e47962f8db9099b5c32bff5d086a841625d7fc5fd73ad6847e53798bf19d88",
     "openedPathsList": {
         "workspaces3": [
-            "file:///home/sms/Desktop/file_rouge_gp1"
+            "file:///home/sms/file_rouge_gp1"
         ],
         "files2": []
     },
@@ -34,7 +34,7 @@
                         "label": "Open Wor&&kspace..."
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.24",
                         "label": "Open &&Recent",
                         "submenu": {
                             "items": [
@@ -50,13 +50,13 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
-                                        "fsPath": "/home/sms/Desktop/file_rouge_gp1",
-                                        "external": "file:///home/sms/Desktop/file_rouge_gp1",
-                                        "path": "/home/sms/Desktop/file_rouge_gp1",
+                                        "fsPath": "/home/sms/file_rouge_gp1",
+                                        "external": "file:///home/sms/file_rouge_gp1",
+                                        "path": "/home/sms/file_rouge_gp1",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "/home/sms/Desktop/file_rouge_gp1"
+                                    "label": "/home/sms/file_rouge_gp1"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -111,7 +111,7 @@
                         "checked": true
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.23",
                         "label": "&&Preferences",
                         "submenu": {
                             "items": [
@@ -155,6 +155,13 @@
                                 {
                                     "id": "workbench.action.selectIconTheme",
                                     "label": "File &&Icon Theme"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "workbench.userDataSync.actions.turnOn",
+                                    "label": "Turn on Settings Sync..."
                                 }
                             ]
                         }
@@ -346,7 +353,7 @@
                         "id": "vscode.menubar.separator"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.15",
                         "label": "&&Appearance",
                         "submenu": {
                             "items": [
@@ -360,7 +367,7 @@
                                 },
                                 {
                                     "id": "workbench.action.toggleCenteredLayout",
-                                    "label": "Centered Layout"
+                                    "label": "&&Centered Layout"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -429,7 +436,7 @@
                         }
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.21",
                         "label": "Editor &&Layout",
                         "submenu": {
                             "items": [
@@ -583,7 +590,7 @@
                         "id": "vscode.menubar.separator"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.26",
                         "label": "Switch &&Editor",
                         "submenu": {
                             "items": [
@@ -632,7 +639,7 @@
                         }
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.27",
                         "label": "Switch &&Group",
                         "submenu": {
                             "items": [
@@ -833,7 +840,7 @@
                         "label": "Toggle &&Breakpoint"
                     },
                     {
-                        "id": "",
+                        "id": "submenuitem.22",
                         "label": "&&New Breakpoint",
                         "submenu": {
                             "items": [
@@ -1443,8 +1450,8 @@
     "themeBackground": "#1e1e1e",
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/sms/Desktop/file_rouge_gp1",
-            "backupPath": "/home/sms/Desktop/file_rouge_gp1/~/root/Backups/376b77aca25369f421b1a6d81dbbc85f",
+            "folder": "file:///home/sms/file_rouge_gp1",
+            "backupPath": "/home/sms/file_rouge_gp1/~/root/Backups/06f698fb292b9729d45f411635805dbb",
             "uiState": {
                 "mode": 0,
                 "x": 72,
@@ -1455,5 +1462,5 @@
         },
         "openedWindows": []
     },
-    "pickerWorkingDir": "/home/sms/Desktop"
+    "pickerWorkingDir": "/home/sms"
 }

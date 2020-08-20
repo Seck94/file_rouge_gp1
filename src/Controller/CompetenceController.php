@@ -6,6 +6,7 @@ use App\Entity\Niveau;
 use App\Entity\Competence;
 use App\Entity\Groupecompetence;
 use App\Repository\NiveauRepository;
+use App\Controller\CompetenceController;
 use App\Repository\CompetenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;

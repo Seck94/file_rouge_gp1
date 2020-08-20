@@ -12,46 +12,73 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     attributes={
+ * attributes={
  *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"groupetag_read","groupetag_details_read"},"enable_max_depth"=true}
+ *          "normalization_context"={"groups"={"Grptags_read","Grptags_tags_read"},"enable_max_depth"=true}
  *      },
  *     collectionOperations={
- *         "post"={
+ *          "add_groupetags"={
+ *              "method"="POST",
+ *              "path"="admin/groupetags",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupetags",
  *          },
  *         "get"={
- *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupetags",
+ *               
+ *              },
+ *              "show_groupetags"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/groupetags",
+ *              },
+ * 
+ *              "show_groupetags_tags"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/groupetags/tags",
+ *              "normalization_context"={"groups"={"Grptags_tags_read"},"enable_max_depth"=true}
  *              
+ *              },
+ * 
+ *              "add_groupetags"={
+ *              "method"="POST",
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/groupetags",
  *              },
  *     },
  *     
  *     itemOperations={
  *         "get"={
- *              "security"="is_granted('VIEW',object)", 
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/groupetags/{id}",
  *         }, 
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
- *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "security_message"="Seul le proprietaite....",
  *              "path"="admin/groupetags/{id}",
  *         },
- *         "patch"={
+ *         "updateGroupeGroupetag"={
+ *              "method"="PATCH",
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/groupetags/{id}",
  *         },
- *         "put"={
+ *         "updateGroupeGroupetag"={
+ *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/groupetags/{id}",
  *         },
  *     },
+ * )
+ * 
  * )
  * @ORM\Entity(repositoryClass=GroupetagRepository::class)
  */
@@ -61,21 +88,28 @@ class Groupetag
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"groupetag_read"})
+     * @Groups({"Grptags_read","Grptags_tags_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"groupetag_read"})
+     * @Groups({"Grptags_read"})
      */
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="groupetags")
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="groupetags",cascade={"persist"})
+     * @Groups({"Grptags_read","Grptags_tags_read"})
+     * 
      * @ApiSubresource()
      */
     private $tag;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $lastUpdate;
 
     public function __construct()
     {
@@ -123,5 +157,24 @@ class Groupetag
         }
 
         return $this;
+    }
+
+    public function getLastUpdate(): ?\DateTimeInterface
+    {
+        return $this->lastUpdate;
+    }
+
+    public function setLastUpdate(?\DateTimeInterface $lastUpdate): self
+    {
+        $this->lastUpdate = $lastUpdate;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate(){
+        $this -> setLastUpdate(new \DateTime());
     }
 }

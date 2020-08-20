@@ -15,10 +15,11 @@ class LoginListener{
         $this -> em = $em;
     }
 
-    public function onSecurityAuthenticationSuccess(AuthenticationEvent $event){
-        $user = $event -> getAuthenticationToken() -> getUser();
-        $user -> setLastLogin(new \Datetime());
-        $this -> em -> persist($user);
-        $this -> em -> flush();
+    public function onSecurityAuthenticationSuccess(AuthenticationEvent $event){ 
+        if (($user = $event -> getAuthenticationToken() -> getUser())) {
+            $user -> setLastLogin(new \Datetime());
+            $this -> em -> persist($user);
+            $this -> em -> flush();
+        }     
     }
 }

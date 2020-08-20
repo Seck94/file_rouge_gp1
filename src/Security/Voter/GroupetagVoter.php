@@ -11,13 +11,13 @@ class GroupetagVoter extends Voter
 {
     protected function supports($attribute, $subject)
     {
-        // replace with your own logic
+    // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, ['EDIT', 'VIEW','DELETE'])
+        return in_array($attribute, ['ADD','EDIT', 'VIEW','DELETE'])
             && $subject instanceof \App\Entity\Groupetag;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
         $user = $token->getUser();
         // if the user is anonymous, do not grant access
@@ -42,7 +42,7 @@ class GroupetagVoter extends Voter
                 return false;
                 break;
             case 'VIEW':
-                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM";
+                return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_FORMATEUR";
                 break;
         }
 

@@ -29,7 +29,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/referentiels",
- *             
+ *   
  *          },
  *           "show_groupecompetence"={
  *              "method"="GET",
@@ -86,31 +86,31 @@ class Referentiel
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"referentiel_read"})
+     * @Groups({"referentiel_read","promo_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Groups({"referentiel_read"})
+     *  @Groups({"referentiel_read","promo_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $presentation;
 
     /**
      * @ORM\Column(type="blob", nullable=true)
-     * @Groups({"referentiel_read"})
+     * @Groups({"referentiel_read","promo_referentiel"})
      */
     private $programme;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"referentiel_read"})
+     * @Groups({"referentiel_read","promo_referentiel"})
      */
     private $critereAdmission;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"referentiel_read"})
+     * @Groups({"referentiel_read","promo_referentiel"})
      */
     private $critereEvaluation;
 
@@ -122,14 +122,26 @@ class Referentiel
     /**
      * @ORM\ManyToMany(targetEntity=Groupecompetence::class, inversedBy="referentiels",cascade={"persist"})
      * @ApiSubresource()
-     * @Groups({"referentiel_read","referentiel_groupecompetence_read"})
+     * @Groups({"referentiel_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $groupecompetence;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Brief::class, mappedBy="referentiel", orphanRemoval=true)
+     */
+    private $briefs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="referentiel", orphanRemoval=true)
+     */
+    private $statistiquesCompetences;
 
     public function __construct()
     {
         $this->promos = new ArrayCollection();
         $this->groupecompetence = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
+        $this->statistiquesCompetences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -249,6 +261,68 @@ class Referentiel
     {
         if ($this->groupecompetence->contains($groupecompetence)) {
             $this->groupecompetence->removeElement($groupecompetence);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->setReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->contains($brief)) {
+            $this->briefs->removeElement($brief);
+            // set the owning side to null (unless already changed)
+            if ($brief->getReferentiel() === $this) {
+                $brief->setReferentiel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StatistiquesCompetences[]
+     */
+    public function getStatistiquesCompetences(): Collection
+    {
+        return $this->statistiquesCompetences;
+    }
+
+    public function addStatistiquesCompetence(StatistiquesCompetences $statistiquesCompetence): self
+    {
+        if (!$this->statistiquesCompetences->contains($statistiquesCompetence)) {
+            $this->statistiquesCompetences[] = $statistiquesCompetence;
+            $statistiquesCompetence->setReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStatistiquesCompetence(StatistiquesCompetences $statistiquesCompetence): self
+    {
+        if ($this->statistiquesCompetences->contains($statistiquesCompetence)) {
+            $this->statistiquesCompetences->removeElement($statistiquesCompetence);
+            // set the owning side to null (unless already changed)
+            if ($statistiquesCompetence->getReferentiel() === $this) {
+                $statistiquesCompetence->setReferentiel(null);
+            }
         }
 
         return $this;

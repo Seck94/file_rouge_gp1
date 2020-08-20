@@ -143,6 +143,6 @@ class __TwigTemplate_e094041e8486e3fea1c1d82beafd0cd5111c5ca94ff75f6e9833eef486e
         {% block javascripts %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "/home/sms/Desktop/file_rouge_gp1/templates/base.html.twig");
+", "base.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/templates/base.html.twig");
     }
 }

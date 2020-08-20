@@ -97,29 +97,67 @@ return [[
 '%5B%5BC%5DApp%5CController%5CFormateurController%23addFormateur%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CFormateurController%23index%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CFormateurController%23index%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupeController%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CGroupeController%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupeController%23addGroupe%5D%5B1%5D' => 14,
+'%5B%5BC%5DApp%5CController%5CGroupeController%23addGroupe%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupeController%23updateGroupe%5D%5B1%5D' => 15,
+'%5B%5BC%5DApp%5CController%5CGroupeController%23updateGroupe%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupeController%23index%5D%5B1%5D' => 16,
+'%5B%5BC%5DApp%5CController%5CGroupeController%23index%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CGroupecompetenceController%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CGroupecompetenceController%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CGroupecompetenceController%23addGroupecompetence%5D%5B1%5D' => 14,
+'%5BApp%5CController%5CGroupecompetenceController%23addGroupecompetence%5D%5B1%5D' => 17,
 '%5B%5BC%5DApp%5CController%5CGroupecompetenceController%23addGroupecompetence%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CGroupecompetenceController%23updateGroupecompetence%5D%5B1%5D' => 15,
+'%5BApp%5CController%5CGroupecompetenceController%23updateGroupecompetence%5D%5B1%5D' => 18,
 '%5B%5BC%5DApp%5CController%5CGroupecompetenceController%23updateGroupecompetence%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CGroupecompetenceController%23showGroupecompetence%5D%5B1%5D' => 16,
+'%5BApp%5CController%5CGroupecompetenceController%23showGroupecompetence%5D%5B1%5D' => 19,
 '%5B%5BC%5DApp%5CController%5CGroupecompetenceController%23showGroupecompetence%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupetagController%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CGroupetagController%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupetagController%23index%5D%5B1%5D' => 20,
+'%5B%5BC%5DApp%5CController%5CGroupetagController%23index%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupetagController%23addGroupetag%5D%5B1%5D' => 21,
+'%5B%5BC%5DApp%5CController%5CGroupetagController%23addGroupetag%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupetagController%23showGroupetag%5D%5B1%5D' => 22,
+'%5B%5BC%5DApp%5CController%5CGroupetagController%23showGroupetag%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CGroupetagController%23updateGroupetag%5D%5B1%5D' => 23,
+'%5B%5BC%5DApp%5CController%5CGroupetagController%23updateGroupetag%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CPromoController%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23addPromo%5D%5B1%5D' => 24,
+'%5B%5BC%5DApp%5CController%5CPromoController%23addPromo%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23apprenantEnAttente%5D%5B1%5D' => 25,
+'%5B%5BC%5DApp%5CController%5CPromoController%23apprenantEnAttente%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23promo_gp_principal%5D%5B1%5D' => 26,
+'%5B%5BC%5DApp%5CController%5CPromoController%23promo_gp_principal%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23promo_id_gp_principal%5D%5B1%5D' => 27,
+'%5B%5BC%5DApp%5CController%5CPromoController%23promo_id_gp_principal%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23updatePromo%5D%5B1%5D' => 28,
+'%5B%5BC%5DApp%5CController%5CPromoController%23updatePromo%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23gerer_apprenant%5D%5B1%5D' => 29,
+'%5B%5BC%5DApp%5CController%5CPromoController%23gerer_apprenant%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23gerer_formateur%5D%5B1%5D' => 30,
+'%5B%5BC%5DApp%5CController%5CPromoController%23gerer_formateur%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23gerer_groupe%5D%5B1%5D' => 31,
+'%5B%5BC%5DApp%5CController%5CPromoController%23gerer_groupe%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CPromoController%23index%5D%5B1%5D' => 32,
+'%5B%5BC%5DApp%5CController%5CPromoController%23index%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CReferentielController%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CReferentielController%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CReferentielController%23index%5D%5B1%5D' => 17,
+'%5BApp%5CController%5CReferentielController%23index%5D%5B1%5D' => 33,
 '%5B%5BC%5DApp%5CController%5CReferentielController%23index%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CReferentielController%23addReferentiel%5D%5B1%5D' => 18,
+'%5BApp%5CController%5CReferentielController%23addReferentiel%5D%5B1%5D' => 34,
 '%5B%5BC%5DApp%5CController%5CReferentielController%23addReferentiel%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CReferentielController%23updateReferentiel%5D%5B1%5D' => 19,
+'%5BApp%5CController%5CReferentielController%23updateReferentiel%5D%5B1%5D' => 35,
 '%5B%5BC%5DApp%5CController%5CReferentielController%23updateReferentiel%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CReferentielController%23showReferentiel%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CReferentielController%23showReferentiel%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CUserController%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CUserController%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CUserController%23addUser%5D%5B1%5D' => 20,
+'%5BApp%5CController%5CUserController%23addUser%5D%5B1%5D' => 36,
 '%5B%5BC%5DApp%5CController%5CUserController%23addUser%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CApprenant%5D%5B1%5D' => 21,
+'%5BApp%5CEntity%5CApprenant%5D%5B1%5D' => 37,
 '%5B%5BC%5DApp%5CEntity%5CApprenant%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CApprenant%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CApprenant%23__construct%5D%5B1%5D' => 2,
@@ -189,21 +227,21 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CUser%23getLastLogin%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CUser%23setLastLogin%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CUser%23setLastLogin%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CApprenant%24id%5D%5B1%5D' => 22,
+'%5BApp%5CEntity%5CApprenant%24id%5D%5B1%5D' => 38,
 '%5B%5BC%5DApp%5CEntity%5CApprenant%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CApprenant%24profilsortie%5D%5B1%5D' => 23,
+'%5BApp%5CEntity%5CApprenant%24profilsortie%5D%5B1%5D' => 39,
 '%5B%5BC%5DApp%5CEntity%5CApprenant%24profilsortie%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CApprenant%24groupe%5D%5B1%5D' => 24,
+'%5BApp%5CEntity%5CApprenant%24groupe%5D%5B1%5D' => 40,
 '%5B%5BC%5DApp%5CEntity%5CApprenant%24groupe%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CCM%5D%5B1%5D' => 25,
+'%5BApp%5CEntity%5CCM%5D%5B1%5D' => 41,
 '%5B%5BC%5DApp%5CEntity%5CCM%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CCM%23getId%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CCM%23getId%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CUser%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CUser%23__construct%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CCM%24id%5D%5B1%5D' => 22,
+'%5BApp%5CEntity%5CCM%24id%5D%5B1%5D' => 38,
 '%5B%5BC%5DApp%5CEntity%5CCM%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CCompetence%5D%5B1%5D' => 26,
+'%5BApp%5CEntity%5CCompetence%5D%5B1%5D' => 42,
 '%5B%5BC%5DApp%5CEntity%5CCompetence%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CCompetence%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CCompetence%23__construct%5D%5B1%5D' => 2,
@@ -225,15 +263,15 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CCompetence%23addNiveau%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CCompetence%23removeNiveau%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CCompetence%23removeNiveau%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CCompetence%24id%5D%5B1%5D' => 27,
+'%5BApp%5CEntity%5CCompetence%24id%5D%5B1%5D' => 43,
 '%5B%5BC%5DApp%5CEntity%5CCompetence%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CCompetence%24libelle%5D%5B1%5D' => 28,
+'%5BApp%5CEntity%5CCompetence%24libelle%5D%5B1%5D' => 44,
 '%5B%5BC%5DApp%5CEntity%5CCompetence%24libelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CCompetence%24groupecompetences%5D%5B1%5D' => 29,
+'%5BApp%5CEntity%5CCompetence%24groupecompetences%5D%5B1%5D' => 45,
 '%5B%5BC%5DApp%5CEntity%5CCompetence%24groupecompetences%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CCompetence%24niveau%5D%5B1%5D' => 30,
+'%5BApp%5CEntity%5CCompetence%24niveau%5D%5B1%5D' => 46,
 '%5B%5BC%5DApp%5CEntity%5CCompetence%24niveau%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CFormateur%5D%5B1%5D' => 31,
+'%5BApp%5CEntity%5CFormateur%5D%5B1%5D' => 47,
 '%5B%5BC%5DApp%5CEntity%5CFormateur%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CFormateur%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CFormateur%23__construct%5D%5B1%5D' => 2,
@@ -251,13 +289,13 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CFormateur%23addPromo%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CFormateur%23removePromo%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CFormateur%23removePromo%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CFormateur%24id%5D%5B1%5D' => 22,
+'%5BApp%5CEntity%5CFormateur%24id%5D%5B1%5D' => 38,
 '%5B%5BC%5DApp%5CEntity%5CFormateur%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CFormateur%24groupe%5D%5B1%5D' => 32,
+'%5BApp%5CEntity%5CFormateur%24groupe%5D%5B1%5D' => 48,
 '%5B%5BC%5DApp%5CEntity%5CFormateur%24groupe%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CFormateur%24promo%5D%5B1%5D' => 33,
+'%5BApp%5CEntity%5CFormateur%24promo%5D%5B1%5D' => 49,
 '%5B%5BC%5DApp%5CEntity%5CFormateur%24promo%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%5D%5B1%5D' => 34,
+'%5BApp%5CEntity%5CGroupe%5D%5B1%5D' => 50,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CGroupe%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%23__construct%5D%5B1%5D' => 2,
@@ -295,23 +333,29 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CGroupe%23getPromo%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CGroupe%23setPromo%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%23setPromo%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%24id%5D%5B1%5D' => 22,
+'%5BApp%5CEntity%5CGroupe%23getIdFormateurPrincipal%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CEntity%5CGroupe%23getIdFormateurPrincipal%5D%5B1%5D' => 2,
+'%5BApp%5CEntity%5CGroupe%23setIdFormateurPrincipal%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CEntity%5CGroupe%23setIdFormateurPrincipal%5D%5B1%5D' => 2,
+'%5BApp%5CEntity%5CGroupe%24id%5D%5B1%5D' => 51,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%24nom%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CGroupe%24nom%5D%5B1%5D' => 52,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%24nom%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%24dateCreation%5D%5B1%5D' => 36,
+'%5BApp%5CEntity%5CGroupe%24dateCreation%5D%5B1%5D' => 53,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%24dateCreation%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%24statut%5D%5B1%5D' => 37,
+'%5BApp%5CEntity%5CGroupe%24statut%5D%5B1%5D' => 54,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%24statut%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%24type%5D%5B1%5D' => 37,
+'%5BApp%5CEntity%5CGroupe%24type%5D%5B1%5D' => 54,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%24type%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%24apprenants%5D%5B1%5D' => 38,
+'%5BApp%5CEntity%5CGroupe%24apprenants%5D%5B1%5D' => 55,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%24apprenants%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%24formateurs%5D%5B1%5D' => 39,
+'%5BApp%5CEntity%5CGroupe%24formateurs%5D%5B1%5D' => 56,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%24formateurs%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupe%24promo%5D%5B1%5D' => 40,
+'%5BApp%5CEntity%5CGroupe%24promo%5D%5B1%5D' => 57,
 '%5B%5BC%5DApp%5CEntity%5CGroupe%24promo%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupecompetence%5D%5B1%5D' => 41,
+'%5BApp%5CEntity%5CGroupe%24idFormateurPrincipal%5D%5B1%5D' => 58,
+'%5B%5BC%5DApp%5CEntity%5CGroupe%24idFormateurPrincipal%5D%5B1%5D' => 2,
+'%5BApp%5CEntity%5CGroupecompetence%5D%5B1%5D' => 59,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CGroupecompetence%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%23__construct%5D%5B1%5D' => 2,
@@ -341,19 +385,19 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%23addCompetence%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CGroupecompetence%23removeCompetence%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%23removeCompetence%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupecompetence%24id%5D%5B1%5D' => 42,
+'%5BApp%5CEntity%5CGroupecompetence%24id%5D%5B1%5D' => 60,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupecompetence%24libelle%5D%5B1%5D' => 43,
+'%5BApp%5CEntity%5CGroupecompetence%24libelle%5D%5B1%5D' => 61,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%24libelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupecompetence%24descriptif%5D%5B1%5D' => 43,
+'%5BApp%5CEntity%5CGroupecompetence%24descriptif%5D%5B1%5D' => 61,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%24descriptif%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupecompetence%24user%5D%5B1%5D' => 44,
+'%5BApp%5CEntity%5CGroupecompetence%24user%5D%5B1%5D' => 62,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%24user%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupecompetence%24referentiels%5D%5B1%5D' => 45,
+'%5BApp%5CEntity%5CGroupecompetence%24referentiels%5D%5B1%5D' => 63,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%24referentiels%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupecompetence%24competence%5D%5B1%5D' => 46,
+'%5BApp%5CEntity%5CGroupecompetence%24competence%5D%5B1%5D' => 64,
 '%5B%5BC%5DApp%5CEntity%5CGroupecompetence%24competence%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupetag%5D%5B1%5D' => 47,
+'%5BApp%5CEntity%5CGroupetag%5D%5B1%5D' => 65,
 '%5B%5BC%5DApp%5CEntity%5CGroupetag%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CGroupetag%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CGroupetag%23__construct%5D%5B1%5D' => 2,
@@ -369,13 +413,21 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CGroupetag%23addTag%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CGroupetag%23removeTag%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CGroupetag%23removeTag%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupetag%24id%5D%5B1%5D' => 48,
+'%5BApp%5CEntity%5CGroupetag%23getLastUpdate%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CEntity%5CGroupetag%23getLastUpdate%5D%5B1%5D' => 2,
+'%5BApp%5CEntity%5CGroupetag%23setLastUpdate%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CEntity%5CGroupetag%23setLastUpdate%5D%5B1%5D' => 2,
+'%5BApp%5CEntity%5CGroupetag%23preUpdate%5D%5B1%5D' => 66,
+'%5B%5BC%5DApp%5CEntity%5CGroupetag%23preUpdate%5D%5B1%5D' => 2,
+'%5BApp%5CEntity%5CGroupetag%24id%5D%5B1%5D' => 67,
 '%5B%5BC%5DApp%5CEntity%5CGroupetag%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupetag%24libelle%5D%5B1%5D' => 49,
+'%5BApp%5CEntity%5CGroupetag%24libelle%5D%5B1%5D' => 68,
 '%5B%5BC%5DApp%5CEntity%5CGroupetag%24libelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CGroupetag%24tag%5D%5B1%5D' => 50,
+'%5BApp%5CEntity%5CGroupetag%24tag%5D%5B1%5D' => 69,
 '%5B%5BC%5DApp%5CEntity%5CGroupetag%24tag%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CNiveau%5D%5B1%5D' => 51,
+'%5BApp%5CEntity%5CGroupetag%24lastUpdate%5D%5B1%5D' => 70,
+'%5B%5BC%5DApp%5CEntity%5CGroupetag%24lastUpdate%5D%5B1%5D' => 2,
+'%5BApp%5CEntity%5CNiveau%5D%5B1%5D' => 71,
 '%5B%5BC%5DApp%5CEntity%5CNiveau%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CNiveau%23getId%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CNiveau%23getId%5D%5B1%5D' => 2,
@@ -395,23 +447,23 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CNiveau%23getCompetence%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CNiveau%23setCompetence%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CNiveau%23setCompetence%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CNiveau%24id%5D%5B1%5D' => 52,
+'%5BApp%5CEntity%5CNiveau%24id%5D%5B1%5D' => 72,
 '%5B%5BC%5DApp%5CEntity%5CNiveau%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CNiveau%24libelle%5D%5B1%5D' => 53,
+'%5BApp%5CEntity%5CNiveau%24libelle%5D%5B1%5D' => 73,
 '%5B%5BC%5DApp%5CEntity%5CNiveau%24libelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CNiveau%24critereEvaluation%5D%5B1%5D' => 53,
+'%5BApp%5CEntity%5CNiveau%24critereEvaluation%5D%5B1%5D' => 73,
 '%5B%5BC%5DApp%5CEntity%5CNiveau%24critereEvaluation%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CNiveau%24groupeAction%5D%5B1%5D' => 53,
+'%5BApp%5CEntity%5CNiveau%24groupeAction%5D%5B1%5D' => 73,
 '%5B%5BC%5DApp%5CEntity%5CNiveau%24groupeAction%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CNiveau%24competence%5D%5B1%5D' => 54,
+'%5BApp%5CEntity%5CNiveau%24competence%5D%5B1%5D' => 74,
 '%5B%5BC%5DApp%5CEntity%5CNiveau%24competence%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfil%5D%5B1%5D' => 55,
+'%5BApp%5CEntity%5CProfil%5D%5B1%5D' => 75,
 '%5B%5BC%5DApp%5CEntity%5CProfil%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CProfil%23getLastUpdate%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CProfil%23getLastUpdate%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CProfil%23setLastUpdate%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CProfil%23setLastUpdate%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfil%23preUpdate%5D%5B1%5D' => 56,
+'%5BApp%5CEntity%5CProfil%23preUpdate%5D%5B1%5D' => 66,
 '%5B%5BC%5DApp%5CEntity%5CProfil%23preUpdate%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CProfil%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CProfil%23__construct%5D%5B1%5D' => 2,
@@ -427,15 +479,15 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CProfil%23addUser%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CProfil%23removeUser%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CProfil%23removeUser%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfil%24id%5D%5B1%5D' => 57,
+'%5BApp%5CEntity%5CProfil%24id%5D%5B1%5D' => 76,
 '%5B%5BC%5DApp%5CEntity%5CProfil%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfil%24libelle%5D%5B1%5D' => 58,
+'%5BApp%5CEntity%5CProfil%24libelle%5D%5B1%5D' => 77,
 '%5B%5BC%5DApp%5CEntity%5CProfil%24libelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfil%24lastUpdate%5D%5B1%5D' => 59,
+'%5BApp%5CEntity%5CProfil%24lastUpdate%5D%5B1%5D' => 78,
 '%5B%5BC%5DApp%5CEntity%5CProfil%24lastUpdate%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfil%24users%5D%5B1%5D' => 60,
+'%5BApp%5CEntity%5CProfil%24users%5D%5B1%5D' => 79,
 '%5B%5BC%5DApp%5CEntity%5CProfil%24users%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfilsortie%5D%5B1%5D' => 61,
+'%5BApp%5CEntity%5CProfilsortie%5D%5B1%5D' => 80,
 '%5B%5BC%5DApp%5CEntity%5CProfilsortie%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CProfilsortie%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CProfilsortie%23__construct%5D%5B1%5D' => 2,
@@ -451,13 +503,13 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CProfilsortie%23addApprenant%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CProfilsortie%23removeApprenant%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CProfilsortie%23removeApprenant%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfilsortie%24id%5D%5B1%5D' => 22,
+'%5BApp%5CEntity%5CProfilsortie%24id%5D%5B1%5D' => 81,
 '%5B%5BC%5DApp%5CEntity%5CProfilsortie%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfilsortie%24libelle%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CProfilsortie%24libelle%5D%5B1%5D' => 82,
 '%5B%5BC%5DApp%5CEntity%5CProfilsortie%24libelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CProfilsortie%24apprenants%5D%5B1%5D' => 62,
+'%5BApp%5CEntity%5CProfilsortie%24apprenants%5D%5B1%5D' => 83,
 '%5B%5BC%5DApp%5CEntity%5CProfilsortie%24apprenants%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%5D%5B1%5D' => 63,
+'%5BApp%5CEntity%5CPromo%5D%5B1%5D' => 84,
 '%5B%5BC%5DApp%5CEntity%5CPromo%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CPromo%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CPromo%23__construct%5D%5B1%5D' => 2,
@@ -523,37 +575,37 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CPromo%23getReferentiel%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CPromo%23setReferentiel%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CPromo%23setReferentiel%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24id%5D%5B1%5D' => 22,
+'%5BApp%5CEntity%5CPromo%24id%5D%5B1%5D' => 85,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24langue%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CPromo%24langue%5D%5B1%5D' => 86,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24langue%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24titre%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CPromo%24titre%5D%5B1%5D' => 87,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24titre%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24description%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CPromo%24description%5D%5B1%5D' => 86,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24description%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24lieu%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CPromo%24lieu%5D%5B1%5D' => 86,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24lieu%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24referenceAgate%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CPromo%24referenceAgate%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24referenceAgate%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24dateDebut%5D%5B1%5D' => 36,
+'%5BApp%5CEntity%5CPromo%24dateDebut%5D%5B1%5D' => 88,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24dateDebut%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24dateFinProvisoire%5D%5B1%5D' => 36,
+'%5BApp%5CEntity%5CPromo%24dateFinProvisoire%5D%5B1%5D' => 88,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24dateFinProvisoire%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24fabrique%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CPromo%24fabrique%5D%5B1%5D' => 86,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24fabrique%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24dateFinReelle%5D%5B1%5D' => 64,
+'%5BApp%5CEntity%5CPromo%24dateFinReelle%5D%5B1%5D' => 89,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24dateFinReelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24etat%5D%5B1%5D' => 35,
+'%5BApp%5CEntity%5CPromo%24etat%5D%5B1%5D' => 86,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24etat%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24formateurs%5D%5B1%5D' => 65,
+'%5BApp%5CEntity%5CPromo%24formateurs%5D%5B1%5D' => 90,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24formateurs%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24user%5D%5B1%5D' => 66,
+'%5BApp%5CEntity%5CPromo%24user%5D%5B1%5D' => 91,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24user%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24groupes%5D%5B1%5D' => 67,
+'%5BApp%5CEntity%5CPromo%24groupes%5D%5B1%5D' => 92,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24groupes%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CPromo%24referentiel%5D%5B1%5D' => 68,
+'%5BApp%5CEntity%5CPromo%24referentiel%5D%5B1%5D' => 93,
 '%5B%5BC%5DApp%5CEntity%5CPromo%24referentiel%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%5D%5B1%5D' => 69,
+'%5BApp%5CEntity%5CReferentiel%5D%5B1%5D' => 94,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CReferentiel%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%23__construct%5D%5B1%5D' => 2,
@@ -567,8 +619,6 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%23getPresentation%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CReferentiel%23setPresentation%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%23setPresentation%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%23getProgramme%5D%5B1%5D' => 1,
-'%5B%5BC%5DApp%5CEntity%5CReferentiel%23getProgramme%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CReferentiel%23setProgramme%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%23setProgramme%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CReferentiel%23getCritereAdmission%5D%5B1%5D' => 1,
@@ -591,23 +641,23 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%23addGroupecompetence%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CReferentiel%23removeGroupecompetence%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%23removeGroupecompetence%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%24id%5D%5B1%5D' => 70,
+'%5BApp%5CEntity%5CReferentiel%24id%5D%5B1%5D' => 95,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%24libelle%5D%5B1%5D' => 71,
+'%5BApp%5CEntity%5CReferentiel%24libelle%5D%5B1%5D' => 96,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%24libelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%24presentation%5D%5B1%5D' => 71,
+'%5BApp%5CEntity%5CReferentiel%24presentation%5D%5B1%5D' => 96,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%24presentation%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%24programme%5D%5B1%5D' => 71,
+'%5BApp%5CEntity%5CReferentiel%24programme%5D%5B1%5D' => 97,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%24programme%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%24critereAdmission%5D%5B1%5D' => 71,
+'%5BApp%5CEntity%5CReferentiel%24critereAdmission%5D%5B1%5D' => 98,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%24critereAdmission%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%24critereEvaluation%5D%5B1%5D' => 71,
+'%5BApp%5CEntity%5CReferentiel%24critereEvaluation%5D%5B1%5D' => 98,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%24critereEvaluation%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%24promos%5D%5B1%5D' => 72,
+'%5BApp%5CEntity%5CReferentiel%24promos%5D%5B1%5D' => 99,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%24promos%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CReferentiel%24groupecompetence%5D%5B1%5D' => 73,
+'%5BApp%5CEntity%5CReferentiel%24groupecompetence%5D%5B1%5D' => 100,
 '%5B%5BC%5DApp%5CEntity%5CReferentiel%24groupecompetence%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CTag%5D%5B1%5D' => 74,
+'%5BApp%5CEntity%5CTag%5D%5B1%5D' => 101,
 '%5B%5BC%5DApp%5CEntity%5CTag%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CTag%23__construct%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CTag%23__construct%5D%5B1%5D' => 2,
@@ -627,43 +677,43 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CTag%23addGroupetag%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CTag%23removeGroupetag%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CTag%23removeGroupetag%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CTag%24id%5D%5B1%5D' => 75,
+'%5BApp%5CEntity%5CTag%24id%5D%5B1%5D' => 38,
 '%5B%5BC%5DApp%5CEntity%5CTag%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CTag%24libelle%5D%5B1%5D' => 76,
+'%5BApp%5CEntity%5CTag%24libelle%5D%5B1%5D' => 102,
 '%5B%5BC%5DApp%5CEntity%5CTag%24libelle%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CTag%24descriptif%5D%5B1%5D' => 76,
+'%5BApp%5CEntity%5CTag%24descriptif%5D%5B1%5D' => 102,
 '%5B%5BC%5DApp%5CEntity%5CTag%24descriptif%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CTag%24groupetags%5D%5B1%5D' => 77,
+'%5BApp%5CEntity%5CTag%24groupetags%5D%5B1%5D' => 103,
 '%5B%5BC%5DApp%5CEntity%5CTag%24groupetags%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%5D%5B1%5D' => 78,
+'%5BApp%5CEntity%5CUser%5D%5B1%5D' => 104,
 '%5B%5BC%5DApp%5CEntity%5CUser%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CUser%23getId%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CEntity%5CUser%23getId%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24id%5D%5B1%5D' => 22,
+'%5BApp%5CEntity%5CUser%24id%5D%5B1%5D' => 38,
 '%5B%5BC%5DApp%5CEntity%5CUser%24id%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24username%5D%5B1%5D' => 79,
+'%5BApp%5CEntity%5CUser%24username%5D%5B1%5D' => 105,
 '%5B%5BC%5DApp%5CEntity%5CUser%24username%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24roles%5D%5B1%5D' => 80,
+'%5BApp%5CEntity%5CUser%24roles%5D%5B1%5D' => 106,
 '%5B%5BC%5DApp%5CEntity%5CUser%24roles%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24password%5D%5B1%5D' => 81,
+'%5BApp%5CEntity%5CUser%24password%5D%5B1%5D' => 107,
 '%5B%5BC%5DApp%5CEntity%5CUser%24password%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24avatar%5D%5B1%5D' => 82,
+'%5BApp%5CEntity%5CUser%24avatar%5D%5B1%5D' => 108,
 '%5B%5BC%5DApp%5CEntity%5CUser%24avatar%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24prenom%5D%5B1%5D' => 83,
+'%5BApp%5CEntity%5CUser%24prenom%5D%5B1%5D' => 109,
 '%5B%5BC%5DApp%5CEntity%5CUser%24prenom%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24nom%5D%5B1%5D' => 83,
+'%5BApp%5CEntity%5CUser%24nom%5D%5B1%5D' => 109,
 '%5B%5BC%5DApp%5CEntity%5CUser%24nom%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24email%5D%5B1%5D' => 84,
+'%5BApp%5CEntity%5CUser%24email%5D%5B1%5D' => 110,
 '%5B%5BC%5DApp%5CEntity%5CUser%24email%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24statut%5D%5B1%5D' => 85,
+'%5BApp%5CEntity%5CUser%24statut%5D%5B1%5D' => 111,
 '%5B%5BC%5DApp%5CEntity%5CUser%24statut%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24profil%5D%5B1%5D' => 86,
+'%5BApp%5CEntity%5CUser%24profil%5D%5B1%5D' => 112,
 '%5B%5BC%5DApp%5CEntity%5CUser%24profil%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24promo%5D%5B1%5D' => 87,
+'%5BApp%5CEntity%5CUser%24promo%5D%5B1%5D' => 113,
 '%5B%5BC%5DApp%5CEntity%5CUser%24promo%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24groupecompetence%5D%5B1%5D' => 88,
+'%5BApp%5CEntity%5CUser%24groupecompetence%5D%5B1%5D' => 114,
 '%5B%5BC%5DApp%5CEntity%5CUser%24groupecompetence%5D%5B1%5D' => 2,
-'%5BApp%5CEntity%5CUser%24lastLogin%5D%5B1%5D' => 89,
+'%5BApp%5CEntity%5CUser%24lastLogin%5D%5B1%5D' => 115,
 '%5B%5BC%5DApp%5CEntity%5CUser%24lastLogin%5D%5B1%5D' => 2,
 '%5BDoctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController%5D%5B1%5D' => 1,
 '%5B%5BC%5DDoctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController%5D%5B1%5D' => 2,
@@ -1134,7 +1184,7 @@ return [[
 
 0 => 'N;',
 1 => [],
-2 => 1597092752,
+2 => 1597590605,
 3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -1504,6 +1554,90 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
+                    '/api/admin/groupes',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\GroupeController::addGroupe',
+                        '__api_resource_class' => 'App\\Entity\\Groupe',
+                        '__api_collection_operation_name' => 'add_groupe',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'POST',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+15 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/groupes/{id}',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\GroupeController::updateGroupe',
+                        '__api_resource_class' => 'App\\Entity\\Groupe',
+                        '__api_collection_operation_name' => 'update_groupe',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'PUT',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+16 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/groupe',
+                ],
+                'name' => [
+                    'groupe',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+17 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
                     '/api/admin/groupecompetences',
                 ],
                 'defaults' => [
@@ -1526,7 +1660,7 @@ return [[
         []
     );
 },
-15 => static function () {
+18 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1558,7 +1692,7 @@ return [[
         []
     );
 },
-16 => static function () {
+19 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1589,7 +1723,393 @@ return [[
         []
     );
 },
-17 => static function () {
+20 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/groupetag',
+                ],
+                'name' => [
+                    'groupetag',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+21 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/groupetags',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\GroupetagController::addGroupetag',
+                        '__api_resource_class' => 'App\\Entity\\Groupetag',
+                        '__api_collection_operation_name' => 'add_groupetags',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'POST',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+22 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/groupetags',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\GroupetagController::showGroupetag',
+                        '__api_resource_class' => 'App\\Entity\\Groupetag',
+                        '__api_collection_operation_name' => 'show_groupetagss',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'GET',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+23 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/groupetags/{id}',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\GroupetagController::updateGroupetag',
+                        '__api_resource_class' => 'App\\Entity\\Groupetag',
+                        '__api_collection_operation_name' => 'update_Groupetag',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'PUT',
+                        'PATCH',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+24 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/promos',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\PromoController::addPromo',
+                        '__api_resource_class' => 'App\\Entity\\Promo',
+                        '__api_collection_operation_name' => 'add_promo',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'POST',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+25 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/promos/{id}/apprenants/attente',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\PromoController::apprenantEnAttente',
+                        '__api_resource_class' => 'App\\Entity\\Promo',
+                        '__api_collection_operation_name' => 'apprenants_attente',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'GET',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+26 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/promos/principal',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\PromoController::promo_gp_principal',
+                        '__api_resource_class' => 'App\\Entity\\Promo',
+                        '__api_collection_operation_name' => 'promo_gprincipal',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'GET',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+27 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/promos/{id}/principal',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\PromoController::promo_id_gp_principal',
+                        '__api_resource_class' => 'App\\Entity\\Promo',
+                        '__api_collection_operation_name' => 'promo_id_gprincipal',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'GET',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+28 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/promos/{id}',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\PromoController::updatePromo',
+                        '__api_resource_class' => 'App\\Entity\\Promo',
+                        '__api_collection_operation_name' => 'update_promo',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'PUT',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+29 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/promos/{id}/apprenants',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\PromoController::gerer_apprenant',
+                        '__api_resource_class' => 'App\\Entity\\Promo',
+                        '__api_collection_operation_name' => 'gerer_apprenants',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'PUT',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+30 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/promos/{id}/formateurs',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\PromoController::gerer_formateur',
+                        '__api_resource_class' => 'App\\Entity\\Promo',
+                        '__api_collection_operation_name' => 'gerer_formateurs',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'PUT',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+31 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/api/admin/promos/{id}/groupes',
+                ],
+                'defaults' => [
+                    [
+                        '__controller' => 'App\\Controller\\PromoController::gerer_groupe',
+                        '__api_resource_class' => 'App\\Entity\\Promo',
+                        '__api_collection_operation_name' => 'gerer_groupes',
+                    ],
+                ],
+                'methods' => [
+                    [
+                        'PUT',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+32 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/promo',
+                ],
+                'name' => [
+                    'promo',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+33 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1611,7 +2131,7 @@ return [[
         []
     );
 },
-18 => static function () {
+34 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1642,7 +2162,7 @@ return [[
         []
     );
 },
-19 => static function () {
+35 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1674,7 +2194,7 @@ return [[
         []
     );
 },
-20 => static function () {
+36 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1705,7 +2225,7 @@ return [[
         []
     );
 },
-21 => static function () {
+37 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
@@ -1779,6 +2299,12 @@ return [[
                     1 => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'pagination_items_per_page' => 10,
+                        'normalization_context' => [
+                            'groups' => [
+                                'gprincipal_read',
+                            ],
+                            'enable_max_depth' => true,
+                        ],
                     ],
                 ],
             ],
@@ -1790,7 +2316,7 @@ return [[
         []
     );
 },
-22 => static function () {
+38 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
@@ -1813,7 +2339,7 @@ return [[
         []
     );
 },
-23 => static function () {
+39 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
@@ -1835,7 +2361,7 @@ return [[
         []
     );
 },
-24 => static function () {
+40 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
@@ -1849,6 +2375,11 @@ return [[
                 'inversedBy' => [
                     'apprenants',
                 ],
+                'cascade' => [
+                    [
+                        'persist',
+                    ],
+                ],
             ],
         ],
         [
@@ -1857,7 +2388,7 @@ return [[
         []
     );
 },
-25 => static function () {
+41 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -1878,7 +2409,7 @@ return [[
         []
     );
 },
-26 => static function () {
+42 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -1895,7 +2426,7 @@ return [[
                             'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
                             'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
                         ],
-                        'show_groupecompetence' => [
+                        'show_competence' => [
                             'method' => 'GET',
                             'security' => 'is_granted(\'ROLE_CM\')',
                             'security_message' => 'Vous n\'avez pas acces a cette ressource.',
@@ -1929,8 +2460,8 @@ return [[
                         'normalization_context' => [
                             'groups' => [
                                 'competence_read',
-                                'competence_details_read',
                             ],
+                            'enable_max_depth' => true,
                         ],
                     ],
                 ],
@@ -1946,7 +2477,7 @@ return [[
         []
     );
 },
-27 => static function () {
+43 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
@@ -1965,7 +2496,7 @@ return [[
                 'groups' => [
                     3 => [
                         'competence_read',
-                        'Grpcompetence_read',
+                        'promo_referentiel',
                     ],
                 ],
             ],
@@ -1979,7 +2510,7 @@ return [[
         []
     );
 },
-28 => static function () {
+44 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -1995,8 +2526,10 @@ return [[
             'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
                 'groups' => [
                     1 => [
-                        'competence_read',
                         'Grpcompetence_read',
+                        'competence_read',
+                        'Grpcompetence_competence_read',
+                        'promo_referentiel',
                     ],
                 ],
             ],
@@ -2008,7 +2541,7 @@ return [[
         []
     );
 },
-29 => static function () {
+45 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
@@ -2023,6 +2556,11 @@ return [[
                 'mappedBy' => [
                     'competence',
                 ],
+                'cascade' => [
+                    [
+                        'persist',
+                    ],
+                ],
             ],
         ],
         [
@@ -2032,11 +2570,12 @@ return [[
         []
     );
 },
-30 => static function () {
+46 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
             clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         ],
         null,
         [
@@ -2064,11 +2603,12 @@ return [[
         [
             $o[0],
             $o[1],
+            $o[2],
         ],
         []
     );
 },
-31 => static function () {
+47 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
@@ -2142,6 +2682,12 @@ return [[
                     1 => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'pagination_items_per_page' => 10,
+                        'normalization_context' => [
+                            'groups' => [
+                                'gprincipal_read',
+                            ],
+                            'enable_max_depth' => true,
+                        ],
                     ],
                 ],
             ],
@@ -2153,7 +2699,7 @@ return [[
         []
     );
 },
-32 => static function () {
+48 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
@@ -2175,7 +2721,7 @@ return [[
         []
     );
 },
-33 => static function () {
+49 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
@@ -2197,7 +2743,7 @@ return [[
         []
     );
 },
-34 => static function () {
+50 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -2206,6 +2752,65 @@ return [[
         null,
         [
             'stdClass' => [
+                'collectionOperations' => [
+                    [
+                        'get' => [
+                            'method' => 'GET',
+                            'path' => '/admin/groupes',
+                            'security' => '(is_granted(\'ROLE_ADMIN\'))',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'gproupe_read',
+                                ],
+                                'enable_max_depth' => true,
+                            ],
+                        ],
+                        'show_apprenants_groupe' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_FORMATEUR\',object)',
+                            'security_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/groupes/apprenants',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'gproupe_apprenant_read',
+                                ],
+                                'enable_max_depth' => true,
+                            ],
+                        ],
+                        'add_groupe' => [
+                            'method' => 'POST',
+                            'path' => '/admin/groupes',
+                            'security' => '(is_granted(\'ROLE_FORMATEUR\'))',
+                            'security_message' => 'Vous n\'avez pas le droit.',
+                        ],
+                    ],
+                ],
+                'itemOperations' => [
+                    [
+                        'get' => [
+                            'security' => 'is_granted(\'ROLE_FORMATEUR\',object)',
+                            'security_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/groupes/{id}',
+                        ],
+                        'update_groupe' => [
+                            'method' => 'PUT',
+                            'security_post_denormalize' => 'is_granted(\'ROLE_FORMATEUR\', object)',
+                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/groupes/{id}',
+                        ],
+                    ],
+                ],
+                'attributes' => [
+                    [
+                        'normalization_context' => [
+                            'groups' => [
+                                'gprincipal_read',
+                            ],
+                            'enable_max_depth' => true,
+                        ],
+                    ],
+                ],
                 'repositoryClass' => [
                     1 => 'App\\Repository\\GroupeRepository',
                 ],
@@ -2218,10 +2823,48 @@ return [[
         []
     );
 },
-35 => static function () {
+51 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
+            clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
+            clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    2 => 'integer',
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    3 => [
+                        'promo_read',
+                        'gprincipal_read',
+                        'gproupe_read',
+                        'gproupe_apprenant_read',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+            $o[2],
+            $o[3],
+        ],
+        []
+    );
+},
+52 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
         ],
         null,
         [
@@ -2230,14 +2873,27 @@ return [[
                     255,
                 ],
             ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'promo_read',
+                        'gprincipal_read',
+                        'gproupe_read',
+                        'gproupe_apprenant_read',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
+                    ],
+                ],
+            ],
         ],
         [
             $o[0],
+            $o[1],
         ],
         []
     );
 },
-36 => static function () {
+53 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -2256,7 +2912,165 @@ return [[
         []
     );
 },
-37 => static function () {
+54 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'length' => [
+                    255,
+                ],
+                'nullable' => [
+                    true,
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'promo_read',
+                        'gprincipal_read',
+                        'gproupe_read',
+                        'gproupe_apprenant_read',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+55 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'targetEntity' => [
+                    'App\\Entity\\Apprenant',
+                ],
+                'mappedBy' => [
+                    'groupe',
+                ],
+                'cascade' => [
+                    [
+                        'persist',
+                    ],
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'promo_read',
+                        'gprincipal_read',
+                        'gproupe_read',
+                        'gproupe_apprenant_read',
+                        'promo_groupe_apprenants',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+            $o[2],
+        ],
+        []
+    );
+},
+56 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'targetEntity' => [
+                    'App\\Entity\\Formateur',
+                ],
+                'mappedBy' => [
+                    'groupe',
+                ],
+                'cascade' => [
+                    [
+                        'persist',
+                    ],
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'promo_read',
+                        'gprincipal_read',
+                        'gproupe_read',
+                        'promo_groupe_formateurs',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+57 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
+            clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'targetEntity' => [
+                    'App\\Entity\\Promo',
+                ],
+                'cascade' => [
+                    [
+                        'persist',
+                    ],
+                ],
+                'inversedBy' => [
+                    'groupes',
+                ],
+                'nullable' => [
+                    1 => false,
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    2 => [
+                        'gproupe_read',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+            $o[2],
+        ],
+        []
+    );
+},
+58 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -2278,78 +3092,7 @@ return [[
         []
     );
 },
-38 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
-        ],
-        null,
-        [
-            'stdClass' => [
-                'targetEntity' => [
-                    'App\\Entity\\Apprenant',
-                ],
-                'mappedBy' => [
-                    'groupe',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-39 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
-        ],
-        null,
-        [
-            'stdClass' => [
-                'targetEntity' => [
-                    'App\\Entity\\Formateur',
-                ],
-                'mappedBy' => [
-                    'groupe',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-40 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
-            clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
-        ],
-        null,
-        [
-            'stdClass' => [
-                'targetEntity' => [
-                    'App\\Entity\\Promo',
-                ],
-                'inversedBy' => [
-                    'groupes',
-                ],
-                'nullable' => [
-                    1 => false,
-                ],
-            ],
-        ],
-        [
-            $o[0],
-            $o[1],
-        ],
-        []
-    );
-},
-41 => static function () {
+59 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -2371,6 +3114,18 @@ return [[
                             'security' => 'is_granted(\'ROLE_CM\')',
                             'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                             'path' => 'admin/groupecompetences',
+                        ],
+                        'show_groupecompetence_competence' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/groupecompetences/competences',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'Grpcompetence_competence_read',
+                                ],
+                                'enable_max_depth' => true,
+                            ],
                         ],
                     ],
                 ],
@@ -2400,8 +3155,8 @@ return [[
                         'normalization_context' => [
                             'groups' => [
                                 'Grpcompetence_read',
-                                'Grpcompetence_details_read',
                             ],
+                            'enable_max_depth' => true,
                         ],
                     ],
                 ],
@@ -2417,7 +3172,7 @@ return [[
         []
     );
 },
-42 => static function () {
+60 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
@@ -2436,8 +3191,8 @@ return [[
                 'groups' => [
                     3 => [
                         'Grpcompetence_read',
-                        'referentiel_read',
                         'referentiel_groupecompetence_read',
+                        'promo_referentiel',
                     ],
                 ],
             ],
@@ -2451,7 +3206,7 @@ return [[
         []
     );
 },
-43 => static function () {
+61 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -2468,8 +3223,8 @@ return [[
                 'groups' => [
                     1 => [
                         'Grpcompetence_read',
-                        'referentiel_read',
                         'referentiel_groupecompetence_read',
+                        'promo_referentiel',
                     ],
                 ],
             ],
@@ -2481,12 +3236,13 @@ return [[
         []
     );
 },
-44 => static function () {
+62 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
             clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
             clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         ],
         null,
         [
@@ -2513,11 +3269,12 @@ return [[
             $o[0],
             $o[1],
             $o[2],
+            $o[3],
         ],
         []
     );
 },
-45 => static function () {
+63 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
@@ -2539,7 +3296,7 @@ return [[
         []
     );
 },
-46 => static function () {
+64 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
@@ -2565,6 +3322,8 @@ return [[
                 'groups' => [
                     1 => [
                         'Grpcompetence_read',
+                        'Grpcompetence_competence_read',
+                        'promo_referentiel',
                     ],
                 ],
             ],
@@ -2577,7 +3336,7 @@ return [[
         []
     );
 },
-47 => static function () {
+65 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -2588,36 +3347,51 @@ return [[
             'stdClass' => [
                 'collectionOperations' => [
                     [
-                        'post' => [
-                            'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
-                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                        'add_groupetags' => [
+                            'method' => 'POST',
+                            'security' => 'is_granted(\'VIEW\',object)',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                             'path' => 'admin/groupetags',
                         ],
                         'get' => [
-                            'security' => 'is_granted(\'ROLE_ADMIN\')',
+                            'security' => 'is_granted(\'ROLE_CM\')',
                             'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                             'path' => 'admin/groupetags',
+                        ],
+                        'show_groupetags' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/groupetags',
+                        ],
+                        'show_groupetags_tags' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_FORMATEUR\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/groupetags/tags',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'Grptags_tags_read',
+                                ],
+                                'enable_max_depth' => true,
+                            ],
                         ],
                     ],
                 ],
                 'itemOperations' => [
                     [
                         'get' => [
-                            'security' => 'is_granted(\'VIEW\',object)',
+                            'security' => 'is_granted(\'ROLE_FORMATEUR\')',
                             'security_message' => 'Vous n\'avez pas ce privilege.',
                             'path' => 'admin/groupetags/{id}',
                         ],
                         'delete' => [
                             'security' => 'is_granted(\'DELETE\',object)',
-                            'security_message' => 'Vous n\'avez pas ce privilege.',
+                            'security_message' => 'Seul le proprietaite....',
                             'path' => 'admin/groupetags/{id}',
                         ],
-                        'patch' => [
-                            'security' => 'is_granted(\'EDIT\',object)',
-                            'security_message' => 'Vous n\'avez pas ce privilege.',
-                            'path' => 'admin/groupetags/{id}',
-                        ],
-                        'put' => [
+                        'updateGroupeGroupetag' => [
+                            'method' => 'PUT',
                             'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
                             'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
                             'path' => 'admin/groupetags/{id}',
@@ -2629,8 +3403,8 @@ return [[
                         'pagination_items_per_page' => 10,
                         'normalization_context' => [
                             'groups' => [
-                                'groupetag_read',
-                                'groupetag_details_read',
+                                'Grptags_read',
+                                'Grptags_tags_read',
                             ],
                             'enable_max_depth' => true,
                         ],
@@ -2648,7 +3422,20 @@ return [[
         []
     );
 },
-48 => static function () {
+66 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\PreUpdate'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\PreUpdate')),
+        ],
+        null,
+        [],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+67 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
@@ -2666,7 +3453,8 @@ return [[
             'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
                 'groups' => [
                     3 => [
-                        'groupetag_read',
+                        'Grptags_read',
+                        'Grptags_tags_read',
                     ],
                 ],
             ],
@@ -2680,7 +3468,7 @@ return [[
         []
     );
 },
-49 => static function () {
+68 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -2696,7 +3484,7 @@ return [[
             'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
                 'groups' => [
                     1 => [
-                        'groupetag_read',
+                        'Grptags_read',
                     ],
                 ],
             ],
@@ -2708,10 +3496,11 @@ return [[
         []
     );
 },
-50 => static function () {
+69 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
             clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         ],
         null,
@@ -2723,16 +3512,52 @@ return [[
                 'inversedBy' => [
                     'groupetags',
                 ],
+                'cascade' => [
+                    [
+                        'persist',
+                    ],
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'Grptags_read',
+                        'Grptags_tags_read',
+                    ],
+                ],
             ],
         ],
         [
             $o[0],
             $o[1],
+            $o[2],
         ],
         []
     );
 },
-51 => static function () {
+70 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    'datetime',
+                ],
+                'nullable' => [
+                    true,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+71 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -2741,30 +3566,14 @@ return [[
         null,
         [
             'stdClass' => [
-                'collectionOperations' => [
-                    [
-                        'add_groupecompetence' => [
-                            'method' => 'POST',
-                            'path' => 'admin/groupecompetences',
-                            'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
-                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
-                        ],
-                        'show_groupecompetence' => [
-                            'method' => 'GET',
-                            'security' => 'is_granted(\'ROLE_ADMIN\')',
-                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
-                            'path' => 'admin/groupecompetences',
-                        ],
-                    ],
-                ],
                 'attributes' => [
                     [
                         'pagination_items_per_page' => 10,
                         'normalization_context' => [
                             'groups' => [
                                 'niveau_read',
-                                'niveau_details_read',
                             ],
+                            'enable_max_depth' => true,
                         ],
                     ],
                 ],
@@ -2780,7 +3589,7 @@ return [[
         []
     );
 },
-52 => static function () {
+72 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
@@ -2813,7 +3622,7 @@ return [[
         []
     );
 },
-53 => static function () {
+73 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -2842,7 +3651,7 @@ return [[
         []
     );
 },
-54 => static function () {
+74 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
@@ -2864,7 +3673,7 @@ return [[
         []
     );
 },
-55 => static function () {
+75 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
@@ -2937,20 +3746,7 @@ return [[
         []
     );
 },
-56 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\PreUpdate'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\PreUpdate')),
-        ],
-        null,
-        [],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-57 => static function () {
+76 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
@@ -2982,7 +3778,7 @@ return [[
         []
     );
 },
-58 => static function () {
+77 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3010,7 +3806,7 @@ return [[
         []
     );
 },
-59 => static function () {
+78 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3035,12 +3831,12 @@ return [[
         []
     );
 },
-60 => static function () {
+79 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
-            clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
             clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         ],
         null,
         [
@@ -3057,7 +3853,7 @@ return [[
             ],
             'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
                 'groups' => [
-                    2 => [
+                    1 => [
                         'profil_read',
                     ],
                 ],
@@ -3071,7 +3867,7 @@ return [[
         []
     );
 },
-61 => static function () {
+80 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -3080,6 +3876,61 @@ return [[
         null,
         [
             'stdClass' => [
+                'collectionOperations' => [
+                    [
+                        'post' => [
+                            'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
+                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/profilsorties',
+                        ],
+                        'get' => [
+                            'security' => 'is_granted(\'ROLE_APPRENANT\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/profilsorties',
+                        ],
+                    ],
+                ],
+                'itemOperations' => [
+                    [
+                        'get' => [
+                            'security' => 'is_granted(\'ROLE_FORMATEUR\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'api/profilsorties/{id}/apprenants',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'profilsortie_apprenants_read',
+                                ],
+                            ],
+                        ],
+                        'delete' => [
+                            'security' => 'is_granted(\'DELETE\',object)',
+                            'security_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/profilsorties/{id}',
+                        ],
+                        'patch' => [
+                            'security' => 'is_granted(\'EDIT\',object)',
+                            'security_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/profilsorties/{id}',
+                        ],
+                        'put' => [
+                            'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
+                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/profilsorties/{id}',
+                        ],
+                    ],
+                ],
+                'attributes' => [
+                    [
+                        'pagination_items_per_page' => 10,
+                        'normalization_context' => [
+                            'groups' => [
+                                'profilsortie_read',
+                                'profilsortie_apprenants_read',
+                            ],
+                            'enable_max_depth' => true,
+                        ],
+                    ],
+                ],
                 'repositoryClass' => [
                     1 => 'App\\Repository\\ProfilsortieRepository',
                 ],
@@ -3092,10 +3943,74 @@ return [[
         []
     );
 },
-62 => static function () {
+81 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
+            clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
+            clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    2 => 'integer',
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    3 => [
+                        'profilsortie_read',
+                        'profilsortie_apprenants_read',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+            $o[2],
+            $o[3],
+        ],
+        []
+    );
+},
+82 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'length' => [
+                    255,
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'profilsortie_read',
+                        'profilsortie_apprenants_read',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+83 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         ],
         null,
         [
@@ -3107,14 +4022,23 @@ return [[
                     'App\\Entity\\Apprenant',
                 ],
             ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'profilsortie_apprenants_read',
+                    ],
+                ],
+            ],
         ],
         [
             $o[0],
+            $o[1],
+            $o[2],
         ],
         []
     );
 },
-63 => static function () {
+84 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -3123,6 +4047,131 @@ return [[
         null,
         [
             'stdClass' => [
+                'collectionOperations' => [
+                    [
+                        'add_promo' => [
+                            'method' => 'POST',
+                            'path' => 'admin/promos',
+                            'security_post_denormalize' => 'is_granted(\'ROLE_FORMATEUR\', object)',
+                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                        ],
+                        'show_promo' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/promos',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'promo_read',
+                                ],
+                                'enable_max_depth' => true,
+                            ],
+                        ],
+                        'promo_gprincipal' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/promos/principal',
+                        ],
+                    ],
+                ],
+                'itemOperations' => [
+                    [
+                        'promo_id_gprincipal' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/promos/{id}principal',
+                        ],
+                        'apprenants_attente' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/promos/{id}/apprenants/attente',
+                        ],
+                        'promo_referentiel' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/promos/{id}/referentiel',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'promo_referentiel',
+                                ],
+                                'enable_max_depth' => true,
+                            ],
+                        ],
+                        'promo_groupe_apprenants' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/promos/{id}/groupes/apprenants',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'promo_groupe_apprenants',
+                                ],
+                                'enable_max_depth' => true,
+                            ],
+                        ],
+                        'promo_groupe_formateurs' => [
+                            'method' => 'GET',
+                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                            'path' => 'admin/promos/{id}/formateurs',
+                            'normalization_context' => [
+                                'groups' => [
+                                    'promo_groupe_formateurs',
+                                ],
+                                'enable_max_depth' => true,
+                            ],
+                        ],
+                        'get' => [
+                            'security' => 'is_granted(\'ROLE_CM\',object)',
+                            'security_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/promos/{id}',
+                        ],
+                        'delete' => [
+                            'security' => 'is_granted(\'DELETE\',object)',
+                            'security_message' => 'Seul le proprietaite....',
+                            'path' => 'admin/promos/{id}',
+                        ],
+                        'update_promo' => [
+                            'method' => 'PUT',
+                            'security_post_denormalize' => 'is_granted(\'ROLE_FORMATEUR\', object)',
+                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/promos/{id}',
+                        ],
+                        'gerer_apprenants' => [
+                            'method' => 'PUT',
+                            'security_post_denormalize' => 'is_granted(\'ROLE_FORMATEUR\', object)',
+                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/promos/{id}/apprenants',
+                        ],
+                        'gerer_formateurs' => [
+                            'method' => 'PUT',
+                            'security_post_denormalize' => 'is_granted(\'ROLE_FORMATEUR\', object)',
+                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/promos/{id}/formateurs',
+                        ],
+                        'gerer_groupes' => [
+                            'method' => 'PUT',
+                            'security_post_denormalize' => 'is_granted(\'ROLE_FORMATEUR\', object)',
+                            'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
+                            'path' => 'admin/promos/{id}/groupes',
+                        ],
+                    ],
+                ],
+                'attributes' => [
+                    [
+                        'pagination_items_per_page' => 10,
+                        'normalization_context' => [
+                            'groups' => [
+                                'promo_read',
+                            ],
+                            'enable_max_depth' => true,
+                        ],
+                    ],
+                ],
                 'repositoryClass' => [
                     1 => 'App\\Repository\\PromoRepository',
                 ],
@@ -3135,7 +4184,131 @@ return [[
         []
     );
 },
-64 => static function () {
+85 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
+            clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
+            clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    2 => 'integer',
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    3 => [
+                        'promo_read',
+                        'gproupe_read',
+                        'promo_referentiel',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+            $o[2],
+            $o[3],
+        ],
+        []
+    );
+},
+86 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'length' => [
+                    255,
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'promo_read',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+87 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'length' => [
+                    255,
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'promo_read',
+                        'gproupe_read',
+                        'promo_referentiel',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+88 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    'date',
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'promo_read',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+89 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3157,7 +4330,7 @@ return [[
         []
     );
 },
-65 => static function () {
+90 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
@@ -3171,6 +4344,11 @@ return [[
                 'mappedBy' => [
                     'promo',
                 ],
+                'cascade' => [
+                    [
+                        'persist',
+                    ],
+                ],
             ],
         ],
         [
@@ -3179,7 +4357,7 @@ return [[
         []
     );
 },
-66 => static function () {
+91 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
@@ -3203,10 +4381,12 @@ return [[
         []
     );
 },
-67 => static function () {
+92 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         ],
         null,
         [
@@ -3217,22 +4397,40 @@ return [[
                 'targetEntity' => [
                     'App\\Entity\\Groupe',
                 ],
+                'cascade' => [
+                    [
+                        'persist',
+                    ],
+                ],
                 'orphanRemoval' => [
                     true,
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'promo_read',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
+                    ],
                 ],
             ],
         ],
         [
             $o[0],
+            $o[1],
+            $o[2],
         ],
         []
     );
 },
-68 => static function () {
+93 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
             clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         ],
         null,
         [
@@ -3247,15 +4445,28 @@ return [[
                     1 => false,
                 ],
             ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    2 => [
+                        'promo_read',
+                        'gproupe_read',
+                        'promo_referentiel',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
+                    ],
+                ],
+            ],
         ],
         [
             $o[0],
             $o[1],
+            $o[2],
+            $o[3],
         ],
         []
     );
 },
-69 => static function () {
+94 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -3342,7 +4553,7 @@ return [[
         []
     );
 },
-70 => static function () {
+95 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
@@ -3375,7 +4586,7 @@ return [[
         []
     );
 },
-71 => static function () {
+96 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3392,6 +4603,10 @@ return [[
                 'groups' => [
                     1 => [
                         'referentiel_read',
+                        'promo_read',
+                        'promo_referentiel',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
                     ],
                 ],
             ],
@@ -3403,7 +4618,68 @@ return [[
         []
     );
 },
-72 => static function () {
+97 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'type' => [
+                    'blob',
+                ],
+                'nullable' => [
+                    true,
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'referentiel_read',
+                        'promo_referentiel',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+98 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'length' => [
+                    255,
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'referentiel_read',
+                        'promo_referentiel',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+99 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
@@ -3425,7 +4701,7 @@ return [[
         []
     );
 },
-73 => static function () {
+100 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
@@ -3452,6 +4728,7 @@ return [[
                     2 => [
                         'referentiel_read',
                         'referentiel_groupecompetence_read',
+                        'promo_referentiel',
                     ],
                 ],
             ],
@@ -3464,7 +4741,7 @@ return [[
         []
     );
 },
-74 => static function () {
+101 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
@@ -3475,15 +4752,15 @@ return [[
             'stdClass' => [
                 'collectionOperations' => [
                     [
-                        'add_groupecompetence' => [
+                        'add_groupetags' => [
                             'method' => 'POST',
                             'path' => 'admin/tags',
                             'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
                             'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
                         ],
-                        'show_groupecompetence' => [
+                        'show_tags' => [
                             'method' => 'GET',
-                            'security' => 'is_granted(\'ROLE_CM\')',
+                            'security' => 'is_granted(\'ROLE_FORMATEUR\')',
                             'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                             'path' => 'admin/tags',
                         ],
@@ -3518,8 +4795,8 @@ return [[
                         'pagination_items_per_page' => 10,
                         'normalization_context' => [
                             'groups' => [
-                                'tag_read',
-                                'tag_details_read',
+                                'tags_read',
+                                'tags_details_read',
                             ],
                         ],
                     ],
@@ -3536,40 +4813,7 @@ return [[
         []
     );
 },
-75 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
-            clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
-            clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
-            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
-        ],
-        null,
-        [
-            'stdClass' => [
-                'type' => [
-                    2 => 'integer',
-                ],
-            ],
-            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
-                'groups' => [
-                    3 => [
-                        'tag_read',
-                        'groupetag_read',
-                    ],
-                ],
-            ],
-        ],
-        [
-            $o[0],
-            $o[1],
-            $o[2],
-            $o[3],
-        ],
-        []
-    );
-},
-76 => static function () {
+102 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3585,8 +4829,9 @@ return [[
             'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
                 'groups' => [
                     1 => [
-                        'tag_read',
-                        'groupetag_read',
+                        'tags_read',
+                        'Grptags_read',
+                        'Grptags_tags_read',
                     ],
                 ],
             ],
@@ -3598,11 +4843,10 @@ return [[
         []
     );
 },
-77 => static function () {
+103 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
-            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
-            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToMany')),
         ],
         null,
         [
@@ -3614,22 +4858,14 @@ return [[
                     'tag',
                 ],
             ],
-            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
-                'groups' => [
-                    1 => [
-                        'tag_read',
-                    ],
-                ],
-            ],
         ],
         [
             $o[0],
-            $o[1],
         ],
         []
     );
 },
-78 => static function () {
+104 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
@@ -3736,6 +4972,7 @@ return [[
                             'groups' => [
                                 'user_read',
                                 'user_details_read',
+                                'gprincipal_read',
                             ],
                         ],
                     ],
@@ -3752,7 +4989,7 @@ return [[
         []
     );
 },
-79 => static function () {
+105 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3783,7 +5020,7 @@ return [[
         []
     );
 },
-80 => static function () {
+106 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
@@ -3804,7 +5041,7 @@ return [[
         []
     );
 },
-81 => static function () {
+107 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3817,7 +5054,7 @@ return [[
         []
     );
 },
-82 => static function () {
+108 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3839,7 +5076,7 @@ return [[
         []
     );
 },
-83 => static function () {
+109 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3851,12 +5088,21 @@ return [[
                 'length' => [
                     255,
                 ],
+                'nullable' => [
+                    true,
+                ],
             ],
             'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
                 'groups' => [
                     1 => [
                         'user_read',
                         'profil_read',
+                        'promo_read',
+                        'gprincipal_read',
+                        'gproupe_read',
+                        'gproupe_apprenant_read',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
                     ],
                 ],
             ],
@@ -3868,7 +5114,7 @@ return [[
         []
     );
 },
-84 => static function () {
+110 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3895,6 +5141,12 @@ return [[
                     2 => [
                         'user_read',
                         'profil_read',
+                        'promo_read',
+                        'gprincipal_read',
+                        'gproupe_read',
+                        'gproupe_apprenant_read',
+                        'promo_groupe_apprenants',
+                        'promo_groupe_formateurs',
                     ],
                 ],
             ],
@@ -3907,7 +5159,7 @@ return [[
         []
     );
 },
-85 => static function () {
+111 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -3918,6 +5170,9 @@ return [[
             'stdClass' => [
                 'length' => [
                     255,
+                ],
+                'nullable' => [
+                    true,
                 ],
             ],
             'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
@@ -3935,7 +5190,7 @@ return [[
         []
     );
 },
-86 => static function () {
+112 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
@@ -3971,7 +5226,7 @@ return [[
         []
     );
 },
-87 => static function () {
+113 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
@@ -4005,7 +5260,7 @@ return [[
         []
     );
 },
-88 => static function () {
+114 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
@@ -4039,7 +5294,7 @@ return [[
         []
     );
 },
-89 => static function () {
+115 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),

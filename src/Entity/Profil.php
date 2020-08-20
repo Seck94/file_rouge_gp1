@@ -31,7 +31,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/profils",
- *              
+
  *              },
  *     },
  *     
@@ -103,8 +103,8 @@ class Profil
 
     /**
     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profil", orphanRemoval=true)
-    * @ApiSubresource
     * @Groups({"profil_read"})
+    * @ApiSubresource()
     */
     private $users;
 
