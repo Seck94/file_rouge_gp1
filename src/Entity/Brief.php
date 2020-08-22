@@ -2,12 +2,93 @@
 
 namespace App\Entity;
 
-use App\Repository\BriefRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BriefRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+* @ApiResource(
+ * attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"Grptags_read","Grptags_tags_read"},"enable_max_depth"=true}
+ *      },
+ *     collectionOperations={
+ *          "add_briefs"={
+ *              "method"="POST",
+ *              "path"="formateur/briefs",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *          },
+ *         "get"={
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="formateur/briefs",
+ *               
+ *              },
+ *              "show_briefs"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="formateur/briefs",
+ *              },
+ * 
+ *              "show_briefs_tags"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="formateur/briefs/tags",
+ *              "normalization_context"={"groups"={"Grptags_tags_read"},"enable_max_depth"=true}
+ *              
+ *              },
+ * 
+ *              "add_briefs"={
+ *              "method"="POST",
+ *              "security"="is_granted('VIEW',object)", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="formateur/briefs",
+ *              },
+ *              
+ *              "duplique_briefs"={
+ *              "method"="POST",
+ *               "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateur/briefs/{id}",
+ *              "defaults"={"id"=null}   
+ *               }
+ *     },
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateur/briefs/{id}",
+ *         }, 
+ *         "delete"={
+ *              "security"="is_granted('DELETE',object)",
+ *              "security_message"="Seul le proprietaite....",
+ *              "path"="formateur/briefs/{id}",
+ *         },
+ *         "updateGroupeGroupetag"={
+ *              "method"="PATCH",
+ *              "security"="is_granted('EDIT',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateur/briefs/{id}",
+ *         },
+ *         "updateGroupeGroupetag"={
+ *              "method"="PUT",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateur/briefs/{id}",
+ *         },
+ *     },
+ * )
+ * 
+ * )
+ * 
+ * 
  * @ORM\Entity(repositoryClass=BriefRepository::class)
  */
 class Brief
@@ -16,26 +97,31 @@ class Brief
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"brief_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"brief_read"})
      */
     private $langue;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"brief_read"})
      */
     private $titre;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"brief_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"brief_read"})
      */
     private $contexte;
 
@@ -66,42 +152,49 @@ class Brief
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"brief_read"})
      */
     private $dateCreation;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"brief_read"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs")
+     * @Groups({"brief_read"})
      */
     private $livrableAttendus;
 
     /**
-     * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief", orphanRemoval=true,cascade={"persist"})
+     * @Groups({"brief_read"})
      */
     private $ressources;
 
     /**
-     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="brief", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="brief", orphanRemoval=true,cascade={"persist"})
      */
     private $promoBriefs;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="briefs")
+     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="briefs",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"brief_read"})
      */
     private $referentiel;
 
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief")
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief",cascade={"persist"})
+     * @Groups({"brief_read"})
      */
     private $niveaux;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs")
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs",cascade={"persist"})
+     * @Groups({"brief_read"})
      */
     private $tags;
 
@@ -112,7 +205,7 @@ class Brief
     private $formateur;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
+     * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs",cascade={"persist"})
      */
     private $groupes;
 
@@ -130,7 +223,11 @@ class Brief
     {
         return $this->id;
     }
-
+    public function setId( $id): self 
+    {
+         $this->id=$id;
+         return $this;
+    }
     public function getLangue(): ?string
     {
         return $this->langue;

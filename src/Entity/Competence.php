@@ -71,6 +71,7 @@ class Competence
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"Grpcompetence_read","competence_read","Grpcompetence_competence_read","promo_referentiel"})
+     * @Groups({"brief_read"})
      */
     private $libelle;
 

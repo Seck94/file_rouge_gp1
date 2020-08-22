@@ -29,6 +29,7 @@ class Niveau
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence_read","niveau_read"})
+     * @Groups({"brief_read"})
      */
     private $libelle;
 
@@ -46,6 +47,7 @@ class Niveau
 
     /**
      * @ORM\ManyToOne(targetEntity=Competence::class, inversedBy="niveau")
+     * @Groups({"brief_read"})
      */
     private $competence;
 

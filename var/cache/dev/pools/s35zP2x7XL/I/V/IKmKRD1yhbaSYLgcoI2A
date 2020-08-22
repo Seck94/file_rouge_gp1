@@ -18,6 +18,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -39,6 +42,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'user',
                 'groupes',
                 'referentiel',
+                'promoBriefs',
+                'filDeDiscussion',
+                'statistiquesCompetences',
             ],
             'attributesMetadata' => [
                 [
@@ -57,6 +63,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'user' => $o[13],
                     'groupes' => $o[14],
                     'referentiel' => $o[15],
+                    'promoBriefs' => $o[16],
+                    'filDeDiscussion' => $o[17],
+                    'statistiquesCompetences' => $o[18],
                 ],
             ],
             'groups' => [
