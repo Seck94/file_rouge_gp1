@@ -66,10 +66,10 @@ class Promo extends \App\Entity\Promo implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'langue', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'titre', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'lieu', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'referenceAgate', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateDebut', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateFinProvisoire', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'fabrique', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateFinReelle', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'etat', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'formateurs', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'user', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'groupes', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'referentiel'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'langue', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'titre', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'lieu', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'referenceAgate', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateDebut', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateFinProvisoire', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'fabrique', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateFinReelle', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'etat', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'formateurs', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'user', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'groupes', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'referentiel', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'promoBriefs', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'filDeDiscussion', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'statistiquesCompetences'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'langue', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'titre', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'lieu', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'referenceAgate', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateDebut', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateFinProvisoire', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'fabrique', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateFinReelle', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'etat', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'formateurs', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'user', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'groupes', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'referentiel'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'langue', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'titre', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'lieu', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'referenceAgate', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateDebut', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateFinProvisoire', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'fabrique', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'dateFinReelle', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'etat', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'formateurs', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'user', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'groupes', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'referentiel', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'promoBriefs', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'filDeDiscussion', '' . "\0" . 'App\\Entity\\Promo' . "\0" . 'statistiquesCompetences'];
     }
 
     /**
@@ -519,6 +519,94 @@ class Promo extends \App\Entity\Promo implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReferentiel', [$referentiel]);
 
         return parent::setReferentiel($referentiel);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPromoBriefs(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPromoBriefs', []);
+
+        return parent::getPromoBriefs();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addPromoBrief(\App\Entity\PromoBrief $promoBrief): \App\Entity\Promo
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPromoBrief', [$promoBrief]);
+
+        return parent::addPromoBrief($promoBrief);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removePromoBrief(\App\Entity\PromoBrief $promoBrief): \App\Entity\Promo
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePromoBrief', [$promoBrief]);
+
+        return parent::removePromoBrief($promoBrief);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFilDeDiscussion(): ?\App\Entity\FilDeDiscussion
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilDeDiscussion', []);
+
+        return parent::getFilDeDiscussion();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFilDeDiscussion(\App\Entity\FilDeDiscussion $filDeDiscussion): \App\Entity\Promo
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilDeDiscussion', [$filDeDiscussion]);
+
+        return parent::setFilDeDiscussion($filDeDiscussion);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatistiquesCompetences(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatistiquesCompetences', []);
+
+        return parent::getStatistiquesCompetences();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addStatistiquesCompetence(\App\Entity\StatistiquesCompetences $statistiquesCompetence): \App\Entity\Promo
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addStatistiquesCompetence', [$statistiquesCompetence]);
+
+        return parent::addStatistiquesCompetence($statistiquesCompetence);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeStatistiquesCompetence(\App\Entity\StatistiquesCompetences $statistiquesCompetence): \App\Entity\Promo
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeStatistiquesCompetence', [$statistiquesCompetence]);
+
+        return parent::removeStatistiquesCompetence($statistiquesCompetence);
     }
 
 }

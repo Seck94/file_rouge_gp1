@@ -4,6 +4,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
         clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
+        clone ($p['Symfony\\Component\\Serializer\\Annotation\\MaxDepth'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\MaxDepth')),
+        clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
     ],
     null,
     [
@@ -18,10 +20,24 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 1 => false,
             ],
         ],
+        'Symfony\\Component\\Serializer\\Annotation\\MaxDepth' => [
+            'maxDepth' => [
+                2 => 2,
+            ],
+        ],
+        'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+            'groups' => [
+                3 => [
+                    'brief_read',
+                ],
+            ],
+        ],
     ],
     [
         $o[0],
         $o[1],
+        $o[2],
+        $o[3],
     ],
     []
 ); }];

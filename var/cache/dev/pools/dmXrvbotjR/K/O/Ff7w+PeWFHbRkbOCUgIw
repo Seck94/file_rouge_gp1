@@ -210,6 +210,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'normalization_context' => [
                         'groups' => [
                             'tags_read',
+                            'brief_read',
                             'tags_details_read',
                         ],
                     ],

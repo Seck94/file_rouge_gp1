@@ -90,6 +90,18 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'brief_read',
                 ],
+                [
+                    'brief_read',
+                ],
+                [
+                    'brief_read',
+                ],
+                [
+                    'brief_read',
+                ],
+                [
+                    'brief_read',
+                ],
                 11 => [
                     'brief_read',
                 ],
@@ -102,7 +114,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'brief_read',
                 ],
-                16 => [
+                [
+                    'brief_read',
+                ],
+                [
                     'brief_read',
                 ],
                 [
@@ -111,6 +126,15 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'brief_read',
                 ],
+                [
+                    'brief_read',
+                ],
+                [
+                    'brief_read',
+                ],
+            ],
+            'maxDepth' => [
+                19 => 2,
             ],
         ],
     ],

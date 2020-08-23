@@ -114,6 +114,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'path' => '/admin/referentiels',
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas le privilege',
+                        'normalization_context' => [
+                            'groups' => [
+                                'referentiel_read',
+                            ],
+                        ],
                         'input' => null,
                         'output' => null,
                         'input_formats' => [
@@ -207,6 +212,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'normalization_context' => [
                             'groups' => [
                                 'referentiel_groupecompetence_read',
+                                'referentiel_read',
                                 'user_details_read',
                             ],
                         ],
@@ -252,9 +258,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'pagination_items_per_page' => 10,
                     'normalization_context' => [
                         'groups' => [
-                            'referentiel_read',
-                            'user_details_read',
-                            'referentiel_groupecompetence_read',
+                            'brief_read',
                         ],
                     ],
                     'input' => null,

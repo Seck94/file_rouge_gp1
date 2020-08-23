@@ -55,9 +55,15 @@ class LivrablePartiel
      */
     private $promoBrief;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Niveau::class, inversedBy="livrablePartiels")
+     */
+    private $niveaux;
+
     public function __construct()
     {
         $this->livrableRendus = new ArrayCollection();
+        $this->niveaux = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,6 +170,32 @@ class LivrablePartiel
     public function setPromoBrief(?PromoBrief $promoBrief): self
     {
         $this->promoBrief = $promoBrief;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Niveau[]
+     */
+    public function getNiveaux(): Collection
+    {
+        return $this->niveaux;
+    }
+
+    public function addNiveau(Niveau $niveau): self
+    {
+        if (!$this->niveaux->contains($niveau)) {
+            $this->niveaux[] = $niveau;
+        }
+
+        return $this;
+    }
+
+    public function removeNiveau(Niveau $niveau): self
+    {
+        if ($this->niveaux->contains($niveau)) {
+            $this->niveaux->removeElement($niveau);
+        }
 
         return $this;
     }

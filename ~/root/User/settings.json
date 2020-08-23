@@ -1,5 +1,8 @@
 {
     "files.autoSave": "afterDelay",
     "terminal.integrated.shell.linux": "/bin/bash",
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "gitlens.gitCommands.closeOnFocusOut": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "git.confirmSync": false
 }

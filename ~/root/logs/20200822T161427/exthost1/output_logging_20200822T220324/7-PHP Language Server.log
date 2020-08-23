@@ -1,0 +1,18 @@
+Parsing file:///opt/lampp/htdocs/file_rouge_gp1/vendor/twig/twig/src/Extension/OptimizerExtension.php
+Parsing file:///opt/lampp/htdocs/file_rouge_gp1/vendor/twig/twig/src/Extension/GlobalsInterface.php
+[Error - 22:03:24] Request textDocument/hover failed.
+Error: Connection got disposed.
+	at Object.dispose (/root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-jsonrpc/lib/main.js:876:25)
+	at Object.dispose (/root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-languageclient/lib/client.js:71:35)
+	at /root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-languageclient/lib/client.js:2062:28
+[Error - 22:03:24] Request textDocument/hover failed.
+Error: Connection got disposed.
+	at Object.dispose (/root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-jsonrpc/lib/main.js:876:25)
+	at Object.dispose (/root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-languageclient/lib/client.js:71:35)
+	at /root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-languageclient/lib/client.js:2062:28
+[Error - 22:03:24] Request textDocument/hover failed.
+Error: Connection got disposed.
+	at Object.dispose (/root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-jsonrpc/lib/main.js:876:25)
+	at Object.dispose (/root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-languageclient/lib/client.js:71:35)
+	at /root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14/node_modules/vscode-languageclient/lib/client.js:2062:28
+Language server exited with exit code 0

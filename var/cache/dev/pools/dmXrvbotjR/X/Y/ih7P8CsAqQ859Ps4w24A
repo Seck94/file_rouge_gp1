@@ -54,7 +54,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'requirements' => [
                             'id' => '\\d+',
                         ],
-                        'security' => '(is_granted(\'ROLE_FORMATEUR\'))',
+                        'security' => 'is_granted(\'ROLE_FORMATEUR\')',
                         'security_message' => 'Vous n\'avez pas access à cette Ressource',
                         'input' => null,
                         'output' => null,
@@ -172,7 +172,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'add_formateur' => [
                         'method' => 'POST',
                         'path' => '/admin/formateurs',
-                        'security' => 'is_granted(\'ROLE_ADMIN\'))',
+                        'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas access à cette Ressource',
                         'input' => null,
                         'output' => null,
@@ -200,7 +200,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         ],
                     ],
                     'get' => [
-                        'security' => 'is_granted(\'ROLE_ADMIN\')',
+                        'security' => 'is_granted(\'ROLE_FORMATEUR\')',
                         'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                         'path' => 'admin/formateurs',
                         'input' => null,
@@ -232,7 +232,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'get_formateurs' => [
                         'method' => 'GET',
                         'path' => '/formateurs',
-                        'security' => '(is_granted(\'ROLE_ADMIN\'))',
+                        'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                         'route_name' => 'formateur_liste',
                         'input' => null,

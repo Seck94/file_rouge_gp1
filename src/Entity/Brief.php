@@ -8,20 +8,38 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ApiResource(
- *      collectionOperations={
- *          "get"={
- *              "path"="formateur/briefs",
- *              "normalization_context"={"groups"={"brief_read"}}
- *          },
- *          "brief_groupe"={
+ *     attributes={
+ *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
+ *      },
+ *     collectionOperations={
+ *          "brief_formateur"={
  *              "method"="GET",
- *              "path"="formateur/promo/{id}/groupe/{idg}/briefs",
- *              "normalization_context"={"groups"={"brief_groupe_read"}}
+ *              "security"="is_granted('ROLE_CM')",
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="formateur/briefs",
+ *          },
+ *          "get",
+ *          "brief_groupe_promo"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')",
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="formateur/promos/{idp}/groupes/{idg}/briefs",
+ *              "requirements"={"idp"="\d+"},
+ *              "requirements"={"idg"="\d+"},
+ *          },
+ *          "promo_id_brief"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')",
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="formateur/promos/{id}/briefs",
+ *              "requirements"={"idp"="\d+"},
+ *              "requirements"={"idg"="\d+"},
  *          }
- *      }
+ *     }
  * )
  * @ORM\Entity(repositoryClass=BriefRepository::class)
  */
@@ -61,21 +79,25 @@ class Brief
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"brief_read"})
      */
     private $livrablesAttendus;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"brief_read"})
      */
     private $modalitesPedagogiques;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"brief_read"})
      */
     private $criteresDePerformance;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"brief_read"})
      */
     private $modalitesEvaluation;
 
@@ -110,6 +132,7 @@ class Brief
 
     /**
      * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="brief", orphanRemoval=true)
+     * @Groups({"brief_read"})
      */
     private $promoBriefs;
 
@@ -122,6 +145,7 @@ class Brief
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief")
+     * @ORM\JoinColumn(nullable=false)
      * @Groups({"brief_read"})
      */
     private $niveaux;
@@ -135,11 +159,14 @@ class Brief
     /**
      * @ORM\ManyToOne(targetEntity=Formateur::class, inversedBy="briefs")
      * @ORM\JoinColumn(nullable=false)
+     * @MaxDepth(2)
+     * @Groups({"brief_read"})
      */
     private $formateur;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
+     * @Groups({"brief_read"})
      */
     private $groupes;
 

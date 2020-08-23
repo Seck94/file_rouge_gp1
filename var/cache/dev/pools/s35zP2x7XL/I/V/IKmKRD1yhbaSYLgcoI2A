@@ -75,6 +75,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'promo_referentiel',
                     'promo_groupe_apprenants',
                     'promo_groupe_formateurs',
+                    'brief_read',
                 ],
                 [
                     'promo_read',
@@ -85,6 +86,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'promo_referentiel',
                     'promo_groupe_apprenants',
                     'promo_groupe_formateurs',
+                    'brief_read',
                 ],
                 [
                     'promo_read',

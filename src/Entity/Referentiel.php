@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
- *          "normalization_context"={"groups"={"referentiel_read","user_details_read","referentiel_groupecompetence_read"}}
+ *          "normalization_context"={"groups"={"brief_read"}}
  *     },
  * 
  *     collectionOperations={
@@ -23,7 +23,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "method"="POST",
  *              "path"="/admin/referentiels",
  *              "security"="is_granted('ROLE_ADMIN')",
- *              "security_message"="Vous n'avez pas le privilege"
+ *              "security_message"="Vous n'avez pas le privilege",
+ *              "normalization_context"={"groups"={"referentiel_read"}}
  *          },
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
@@ -43,7 +44,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/referentiels/groupecompetences",
- *              "normalization_context"={"groups"={"referentiel_groupecompetence_read","user_details_read"}}
+ *              "normalization_context"={"groups"={"referentiel_groupecompetence_read","referentiel_read","user_details_read"}}
  *              },
  *     },
  *     

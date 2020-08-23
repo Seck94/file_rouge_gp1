@@ -209,6 +209,7 @@
       <parameter key="ROLE_FORMATEUR" type="collection">
         <parameter>ROLE_CM</parameter>
         <parameter>ROLE_APPRENANT</parameter>
+        <parameter>ROLE_ADMIN</parameter>
       </parameter>
     </parameter>
     <parameter key="security.access.denied_url">null</parameter>
@@ -412,6 +413,13 @@
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.g9CqTPp.App\Controller\ApprenantController"/>
+      </call>
+    </service>
+    <service id="App\Controller\BriefController" class="App\Controller\BriefController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\BriefController"/>
       </call>
     </service>
     <service id="App\Controller\CompetenceController" class="App\Controller\CompetenceController" public="true" autowire="true" autoconfigure="true">
@@ -5175,6 +5183,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ApprenantController" class="App\Controller\ApprenantController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ApprenantController" class="App\Controller\ApprenantController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ApprenantController" class="App\Controller\ApprenantController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BriefController" class="App\Controller\BriefController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BriefController" class="App\Controller\BriefController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\BriefController" class="App\Controller\BriefController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CompetenceController" class="App\Controller\CompetenceController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5545,6 +5556,19 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
+    <service id=".service_locator.X_yNDnk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="groupe_repo" type="service" id="App\Repository\GroupeRepository"/>
+        <argument key="promo_repo" type="service" id="App\Repository\PromoRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.LMeZ5AJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="promo_repo" type="service" id="App\Repository\PromoRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.bk_JP9I" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5647,19 +5671,6 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.LMeZ5AJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="promo_repo" type="service" id="App\Repository\PromoRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.X_yNDnk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="groupe_repo" type="service" id="App\Repository\GroupeRepository"/>
-        <argument key="promo_repo" type="service" id="App\Repository\PromoRepository"/>
-      </argument>
-    </service>
     <service id=".service_locator.1F.SJ.0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5719,7 +5730,7 @@
         <argument key="Referentiel" type="service" id="App\Repository\ReferentielRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.MngVVgw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.XGwGuYA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::getAdmin" type="service" id=".service_locator.RTUGCCW"/>
@@ -5727,6 +5738,8 @@
         <argument key="App\Controller\ApprenantController::addApprenant" type="service" id=".service_locator.r5pch1I"/>
         <argument key="App\Controller\ApprenantController::getApprenant" type="service" id=".service_locator.RTUGCCW"/>
         <argument key="App\Controller\ApprenantController::getApprenantById" type="service" id=".service_locator.olU6qez"/>
+        <argument key="App\Controller\BriefController::briefs_groupe_promo" type="service" id=".service_locator.X_yNDnk"/>
+        <argument key="App\Controller\BriefController::promo_id_briefs" type="service" id=".service_locator.LMeZ5AJ"/>
         <argument key="App\Controller\CompetenceController::addCompetence" type="service" id=".service_locator.bk_JP9I"/>
         <argument key="App\Controller\CompetenceController::showCompetence" type="service" id=".service_locator.EFPYbVF"/>
         <argument key="App\Controller\CompetenceController::updateCompetence" type="service" id=".service_locator.ihUGo0D"/>
@@ -5764,6 +5777,8 @@
         <argument key="App\Controller\ApprenantController:addApprenant" type="service" id=".service_locator.r5pch1I"/>
         <argument key="App\Controller\ApprenantController:getApprenant" type="service" id=".service_locator.RTUGCCW"/>
         <argument key="App\Controller\ApprenantController:getApprenantById" type="service" id=".service_locator.olU6qez"/>
+        <argument key="App\Controller\BriefController:briefs_groupe_promo" type="service" id=".service_locator.X_yNDnk"/>
+        <argument key="App\Controller\BriefController:promo_id_briefs" type="service" id=".service_locator.LMeZ5AJ"/>
         <argument key="App\Controller\CompetenceController:addCompetence" type="service" id=".service_locator.bk_JP9I"/>
         <argument key="App\Controller\CompetenceController:showCompetence" type="service" id=".service_locator.EFPYbVF"/>
         <argument key="App\Controller\CompetenceController:updateCompetence" type="service" id=".service_locator.ihUGo0D"/>
@@ -6034,6 +6049,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.g9CqTPp" method="withContext"/>
     </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\BriefController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\BriefController"/>
+      <argument>App\Controller\BriefController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
     <service id=".service_locator.g9CqTPp.App\Controller\CompetenceController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\CompetenceController"/>
       <argument>App\Controller\CompetenceController</argument>
@@ -6239,12 +6260,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.MngVVgw"/>
+      <argument type="service" id=".service_locator.XGwGuYA"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.MngVVgw"/>
+      <argument type="service" id=".service_locator.XGwGuYA"/>
     </service>
     <service id="api_platform.swagger.normalizer.api_gateway.inner" class="ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer" public="false">
       <argument type="service" id="api_platform.metadata.resource.metadata_factory.cached"/>
@@ -6669,7 +6690,7 @@
     <service id="mailer" alias="swiftmailer.mailer.default" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.MngVVgw"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.XGwGuYA"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

@@ -57,6 +57,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "normalization_context"={"groups"={"user_read","user_details_read"}},
  *              "path"="admin/users/{id}",
+ *              "requirements"={"id"="\d+"},
  *              "defaults"={"id"=null}
  *          },
  *          "get_admin"={
@@ -70,16 +71,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "path"="admin/users/{id}",
+ *              "requirements"={"id"="\d+"},
  *          },
  *         "patch"={
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "path"="admin/users/{id}",
+ *              "requirements"={"id"="\d+"},
  *          },
  *         "put"={
  *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "path"="admin/users/{id}",
+ *              "requirements"={"id"="\d+"},
  *          },
  *     },
  * )
@@ -95,7 +99,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $username;
 

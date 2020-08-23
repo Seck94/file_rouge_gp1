@@ -4,11 +4,17 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\LivrableAttenduRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *      attributes={
+ *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
+ *      },
+ * )
  * @ORM\Entity(repositoryClass=LivrableAttenduRepository::class)
  */
 class LivrableAttendu

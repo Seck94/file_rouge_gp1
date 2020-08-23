@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * 
  * attributes={
  *              "pagination_items_per_page"=10,
- *              "normalization_context"={"groups"={"tags_read","tags_details_read"}}
+ *              "normalization_context"={"groups"={"tags_read","brief_read","tags_details_read"}}
  *      },
  * 
  *      collectionOperations={

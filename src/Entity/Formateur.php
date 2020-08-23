@@ -24,21 +24,21 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "add_formateur"={
  *              "method"="POST",
  *              "path"="/admin/formateurs",
- *              "security"="is_granted('ROLE_ADMIN'))",
+ *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Vous n'avez pas access à cette Ressource"
  *          },
  *         "get"={
- *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/formateurs",
  *          },
  *          "get_formateurs"={
  *              "method"="GET",
  *              "path"="/formateurs" ,
- *              "security"="(is_granted('ROLE_ADMIN'))", 
+ *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "route_name"="formateur_liste",
- *          },
+ *          }
  *     },
  *     
  *     itemOperations={
@@ -52,7 +52,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "method"="GET",
  *              "path"="/formateurs/{id}",
  *              "requirements"={"id"="\d+"},
- *              "security"="(is_granted('ROLE_FORMATEUR'))",
+ *              "security"="is_granted('ROLE_FORMATEUR')",
  *              "security_message"="Vous n'avez pas access à cette Ressource"
  *          }, 
  *         "delete"={
@@ -99,6 +99,7 @@ class Formateur extends User
 
     /**
      * @ORM\OneToMany(targetEntity=Brief::class, mappedBy="formateur", orphanRemoval=true)
+     * @Groups({"brief_read"})
      */
     private $briefs;
 

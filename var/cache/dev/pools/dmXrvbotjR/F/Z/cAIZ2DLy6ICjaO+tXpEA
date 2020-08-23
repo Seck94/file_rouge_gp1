@@ -25,6 +25,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                         'path' => 'admin/users/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
                         'defaults' => [
                             'id' => null,
                         ],
@@ -91,6 +94,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas ces privileges.',
                         'path' => 'admin/users/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
                         'input' => null,
                         'output' => null,
                         'method' => 'DELETE',
@@ -121,6 +127,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas ces privileges.',
                         'path' => 'admin/users/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
                         'input' => null,
                         'output' => null,
                         'method' => 'PATCH',
@@ -145,6 +154,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'security_post_denormalize' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas ces privileges.',
                         'path' => 'admin/users/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
                         'input' => null,
                         'output' => null,
                         'method' => 'PUT',

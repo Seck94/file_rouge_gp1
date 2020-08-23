@@ -19,7 +19,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'method' => 'GET',
                         'security' => 'is_granted(\'ROLE_CM\')',
                         'security_message' => 'Vous n\'avez pas acces a cette ressource.',
-                        'path' => 'admin/promos/{id}principal',
+                        'path' => 'admin/promos/{id}/principal',
                         'input' => null,
                         'output' => null,
                         'input_formats' => [
@@ -187,6 +187,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'security' => 'is_granted(\'ROLE_CM\',object)',
                         'security_message' => 'Vous n\'avez pas ce privilege.',
                         'path' => 'admin/promos/{id}',
+                        'normalization_context' => [
+                            'groups' => [
+                                'promo_read',
+                            ],
+                            'enable_max_depth' => true,
+                        ],
                         'input' => null,
                         'output' => null,
                         'method' => 'GET',
@@ -479,7 +485,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'pagination_items_per_page' => 10,
                     'normalization_context' => [
                         'groups' => [
-                            'promo_read',
+                            'brief_read',
                         ],
                         'enable_max_depth' => true,
                     ],

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\NiveauRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -10,9 +12,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *      attributes={
- *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"niveau_read"},"enable_max_depth"=true}
+ *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
  *      },
+ *      collectionOperations={
+ *          "get"={
+ *              "path"="admin/niveaux",
+ *              "normalization_context"={"groups"={"niveau_read"}}
+ *          }
+ *      }
  * )
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
  */
@@ -55,6 +62,16 @@ class Niveau
      * @ORM\ManyToOne(targetEntity=Brief::class, inversedBy="niveaux")
      */
     private $brief;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=LivrablePartiel::class, mappedBy="niveaux")
+     */
+    private $livrablePartiels;
+
+    public function __construct()
+    {
+        $this->livrablePartiels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -117,6 +134,34 @@ class Niveau
     public function setBrief(?Brief $brief): self
     {
         $this->brief = $brief;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LivrablePartiel[]
+     */
+    public function getLivrablePartiels(): Collection
+    {
+        return $this->livrablePartiels;
+    }
+
+    public function addLivrablePartiel(LivrablePartiel $livrablePartiel): self
+    {
+        if (!$this->livrablePartiels->contains($livrablePartiel)) {
+            $this->livrablePartiels[] = $livrablePartiel;
+            $livrablePartiel->addNiveau($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLivrablePartiel(LivrablePartiel $livrablePartiel): self
+    {
+        if ($this->livrablePartiels->contains($livrablePartiel)) {
+            $this->livrablePartiels->removeElement($livrablePartiel);
+            $livrablePartiel->removeNiveau($this);
+        }
 
         return $this;
     }

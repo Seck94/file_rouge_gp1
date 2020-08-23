@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Repository\PromoRepository;
+use App\Repository\GroupeRepository;
 use App\Repository\ProfilRepository;
 use App\Controller\ApprenantController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -94,7 +96,9 @@ class FormateurController extends AbstractController
         return $this->json($user,Response::HTTP_CREATED);
     }
 
-
+    /**
+     * @Route("/formateur", name="formateur")
+     */
     public function index()
     {
         return $this->render('formateur/index.html.twig', [

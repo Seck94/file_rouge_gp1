@@ -10,22 +10,40 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         'stdClass' => [
             'collectionOperations' => [
                 [
-                    'get' => [
+                    'brief_formateur' => [
+                        'method' => 'GET',
+                        'security' => 'is_granted(\'ROLE_CM\')',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                         'path' => 'formateur/briefs',
-                        'normalization_context' => [
-                            'groups' => [
-                                'brief_read',
-                            ],
+                    ],
+                    'get',
+                    'brief_groupe_promo' => [
+                        'method' => 'GET',
+                        'security' => 'is_granted(\'ROLE_CM\')',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                        'path' => 'formateur/promos/{idp}/groupes/{idg}/briefs',
+                        'requirements' => [
+                            'idg' => '\\d+',
                         ],
                     ],
-                    'brief_groupe' => [
+                    'promo_id_brief' => [
                         'method' => 'GET',
-                        'path' => 'formateur/promo/{id}/groupe/{idg}/briefs',
-                        'normalization_context' => [
-                            'groups' => [
-                                'brief_groupe_read',
-                            ],
+                        'security' => 'is_granted(\'ROLE_CM\')',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                        'path' => 'formateur/promos/{id}/briefs',
+                        'requirements' => [
+                            'idg' => '\\d+',
                         ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                [
+                    'normalization_context' => [
+                        'groups' => [
+                            'brief_read',
+                        ],
+                        'enable_max_depth' => true,
                     ],
                 ],
             ],

@@ -4,9 +4,15 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RessourceRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *      attributes={
+ *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
+ *      }
+ * )
  * @ORM\Entity(repositoryClass=RessourceRepository::class)
  */
 class Ressource

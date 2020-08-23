@@ -52,6 +52,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'gproupe_apprenant_read',
                     'promo_groupe_apprenants',
                     'promo_groupe_formateurs',
+                    'brief_read',
                 ],
                 [
                     'promo_read',

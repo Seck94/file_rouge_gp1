@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ApiResource(
  *     attributes={
  *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
+ *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
  *      },
  *     collectionOperations={
  *          "add_promo"={
@@ -45,7 +45,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/{id}principal",
+ *              "path"="admin/promos/{id}/principal",
  *              
  *              },
  *          "apprenants_attente"={
@@ -79,6 +79,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="is_granted('ROLE_CM',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/promos/{id}",
+ *              "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
  *         }, 
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
@@ -119,7 +120,7 @@ class Promo
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read"})
      */
     private $id;
 
@@ -131,7 +132,7 @@ class Promo
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read"})
      */
     private $titre;
 

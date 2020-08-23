@@ -32,6 +32,17 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'promoBriefApprenant' => $o[6],
                 ],
             ],
+            'groups' => [
+                1 => [
+                    'brief_read',
+                ],
+                [
+                    'brief_read',
+                ],
+                4 => [
+                    'brief_read',
+                ],
+            ],
         ],
     ],
     $o[0],
