@@ -1,0 +1,157 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --git-dir
+Open repository: /opt/lampp/htdocs/file_rouge_gp1
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :src/EventListener/LoginListener.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/EventListener/LoginListener.php
+> git cat-file -s d22d3fe1bcbabc39e6338757c2e12e4787c529fc
+> git show --textconv :config/packages/security.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/security.yaml
+> git cat-file -s 80e602f3170162e39b097acfa6db0d887e62fb4a
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s e7379383dd0f5c0f780c21a3c31cc4c0f6196896
+> git show --textconv :config/packages/api_platform.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/api_platform.yaml
+> git cat-file -s 21634597e6ff615c30a6d8679c19913314a250ea
+> git show --textconv :config/packages/security.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/packages/security.yaml
+> git cat-file -s 80e602f3170162e39b097acfa6db0d887e62fb4a
+> git show --textconv :src/EventListener/LoginListener.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/EventListener/LoginListener.php
+> git cat-file -s d22d3fe1bcbabc39e6338757c2e12e4787c529fc
+> git check-ignore -v -z --stdin
+> git show --textconv :config/services.yaml
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/config/services.yaml
+> git cat-file -s e7379383dd0f5c0f780c21a3c31cc4c0f6196896
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :.env
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/.env
+> git cat-file -s ce19302373cc9832610872c8ddff2aecab31f7ac
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :.env
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/.env
+> git cat-file -s ce19302373cc9832610872c8ddff2aecab31f7ac
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s 50128a79e37717e022f82a93f6f4b116a81ff613
+> git show --textconv :src/Repository/UserRepository.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Repository/UserRepository.php
+> git cat-file -s 5a0299ee9f7422eea7f2536d83a91e7c3c539999
+> git show --textconv :src/Controller/PromoController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/PromoController.php
+> git cat-file -s 6eafb93e57866eb8053b1c223663527cfc8067f9
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Controller/GroupetagController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/GroupetagController.php
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Security/Voter/GroupetagVoter.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Security/Voter/GroupetagVoter.php
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Security/Voter/TagVoter.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Security/Voter/TagVoter.php
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Security/Voter/ProfilsortieVoter.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Security/Voter/ProfilsortieVoter.php
+> git show --textconv :src/Entity/Groupetag.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupetag.php
+> git cat-file -s b2acc0b3fb9c4d856d073f214beb73a131d669e0
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s 940f3b294c4c8f018484fa223852d1fd0099d7a2
+> git show --textconv :src/Entity/Groupetag.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupetag.php
+> git cat-file -s b2acc0b3fb9c4d856d073f214beb73a131d669e0
+> git show --textconv :src/Entity/Profil.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Profil.php
+> git cat-file -s 940f3b294c4c8f018484fa223852d1fd0099d7a2
+> git show --textconv :src/Entity/Groupetag.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupetag.php
+> git cat-file -s b2acc0b3fb9c4d856d073f214beb73a131d669e0
+> git show --textconv :src/Entity/Tag.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Tag.php
+> git cat-file -s d1b13cf4dcc23abcb4be4cf761a443b2cc148ec7
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Tag.php
+> git cat-file -s d1b13cf4dcc23abcb4be4cf761a443b2cc148ec7
+> git show --textconv :src/Entity/Profilsortie.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Profilsortie.php
+> git cat-file -s d1c666ebd6dbf247d6f1a1e64d7d00a10922b55a
+> git status -z -u
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Profilsortie.php
+> git cat-file -s 086f984a57dd7ef97d5a654b13051c9bc75b7778
+> git show --textconv :src/Entity/Profilsortie.php
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Profilsortie.php
+> git cat-file -s 086f984a57dd7ef97d5a654b13051c9bc75b7778
+> git show --textconv :src/Entity/Profilsortie.php
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git for-each-ref --format %(refname:short)%00%(upstream:short) refs/heads
+> git checkout -q --track origin/master
+error: Your local changes to the following files would be overwritten by checkout:
+	~/root/logs/20200811T191340/exthost1/output_logging_20200811T191343/1-GitHub Authentication.log
+	~/root/logs/20200811T191340/exthost1/output_logging_20200811T191343/2-Microsoft Authentication.log
+	~/root/logs/20200813T212426/exthost1/output_logging_20200813T212429/1-Microsoft Authentication.log
+	~/root/logs/20200813T212426/exthost1/output_logging_20200813T212429/2-GitHub Authentication.log
+	~/root/logs/20200813T212426/exthost1/output_logging_20200813T212429/3-Git.log
+Please commit your changes or stash them before you switch branches.
+Aborting

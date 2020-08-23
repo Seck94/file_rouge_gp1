@@ -1,0 +1,9 @@
+[2020-08-22 16:14:31.551] [sharedprocess] [info] main {"machineId":"70e47962f8db9099b5c32bff5d086a841625d7fc5fd73ad6847e53798bf19d88","windowId":2}
+[2020-08-22 16:15:11.577] [sharedprocess] [info] Starting to clean up unused language packs.
+[2020-08-22 16:15:11.581] [sharedprocess] [info] Skipping directory 0efca33a20bf5218eaa314fca17076eb.fr. Language pack still in use.
+[2020-08-22 22:02:48.211] [sharedprocess] [info] Installing extension: felixfbecker.php-intellisense
+[2020-08-22 22:02:50.638] [sharedprocess] [info] Downloaded extension: felixfbecker.php-intellisense /opt/lampp/htdocs/file_rouge_gp1/~/root/CachedExtensionVSIXs/felixfbecker.php-intellisense-2.3.14
+[2020-08-22 22:02:51.288] [sharedprocess] [info] Extracted extension to /root/.vscode/extensions/.felixfbecker.php-intellisense-2.3.14: felixfbecker.php-intellisense
+[2020-08-22 22:02:51.288] [sharedprocess] [info] Renamed to /root/.vscode/extensions/felixfbecker.php-intellisense-2.3.14
+[2020-08-22 22:02:51.289] [sharedprocess] [info] Installation completed. felixfbecker.php-intellisense
+[2020-08-22 22:02:51.294] [sharedprocess] [info] Extensions installed successfully: felixfbecker.php-intellisense

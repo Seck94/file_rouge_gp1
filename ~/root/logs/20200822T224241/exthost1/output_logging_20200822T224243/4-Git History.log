@@ -1,0 +1,8 @@
+git remote show origin -n  (completed in 0.023s)
+git log --full-history --pretty=oneline --date-order --decorate=full --skip=0 --max-count=100 ldab --  (completed in 0.039s)
+git rev-list --full-history --count ldab --  (completed in 0.06s)
+git shortlog -e -s -n HEAD  (completed in 0.033s)
+git remote show origin -n  (completed in 0.026s)
+git log --full-history --pretty=oneline --date-order --decorate=full --skip=0 --max-count=100 ldab --  (completed in 0.039s)
+git rev-list --full-history --count ldab --  (completed in 0.05s)
+git shortlog -e -s -n HEAD  (completed in 0.031s)

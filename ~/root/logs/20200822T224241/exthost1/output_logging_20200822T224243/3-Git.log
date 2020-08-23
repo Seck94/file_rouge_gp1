@@ -1,0 +1,257 @@
+Recherche de git dans : git
+Utilisation de git 2.17.1 à partir de git
+> git rev-parse --git-dir
+Open repository: /opt/lampp/htdocs/file_rouge_gp1
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/Referentiel.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Referentiel.php
+> git cat-file -s 7404a0dda30c2a5fb7ba1005bac473ee6042a5f6
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git show --textconv :src/Entity/Referentiel.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Referentiel.php
+> git cat-file -s 7404a0dda30c2a5fb7ba1005bac473ee6042a5f6
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s b076e1af8d1f402a7d9bf816d187c5828d2c02e9
+> git show --textconv :src/Entity/Referentiel.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Referentiel.php
+> git cat-file -s 7404a0dda30c2a5fb7ba1005bac473ee6042a5f6
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/Niveau.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Niveau.php
+> git cat-file -s 82efbe64184ecd9c91f41284c60cbcc749c1329b
+> git show --textconv :src/Entity/Livrable.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Livrable.php
+> git cat-file -s 8a8a0391268ac3cc0ac840bb6d6786ed2cbd570a
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s c99981c7b88350fc3a44c498704c8f88eb984c57
+> git show --textconv :src/Entity/Livrable.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Livrable.php
+> git cat-file -s 8a8a0391268ac3cc0ac840bb6d6786ed2cbd570a
+> git show --textconv :src/Entity/LivrableAttendu.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/LivrableAttendu.php
+> git cat-file -s 1f77dcb2a01bae86c4bc5291f16cfba3b2d0763f
+> git show --textconv :src/Entity/Niveau.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Niveau.php
+> git cat-file -s 82efbe64184ecd9c91f41284c60cbcc749c1329b
+> git show --textconv :src/Entity/PromoBrief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/PromoBrief.php
+> git cat-file -s b3c328fc4b91c9ec9da3470c937c21bcb273dac1
+> git show --textconv :src/Entity/Referentiel.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Referentiel.php
+> git cat-file -s 7404a0dda30c2a5fb7ba1005bac473ee6042a5f6
+> git show --textconv :src/Entity/Ressource.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Ressource.php
+> git cat-file -s cffd711a6759a1cf1dac0e264bdde9518c8f6d92
+> git show --textconv :src/Entity/Tag.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Tag.php
+> git cat-file -s f2f1b8e0910f9949a25183803bb9fc4621faac4b
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s b076e1af8d1f402a7d9bf816d187c5828d2c02e9
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s f5a7c24084d99c93550391f35032879f135a6c36
+> git show --textconv :src/Entity/PromoBrief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/PromoBrief.php
+> git cat-file -s b3c328fc4b91c9ec9da3470c937c21bcb273dac1
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s f5a7c24084d99c93550391f35032879f135a6c36
+> git show --textconv :src/Entity/User.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/User.php
+> git cat-file -s ab970407f0b5d861f775ccd69d7ff99f68d5e945
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/Niveau.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Niveau.php
+> git cat-file -s 82efbe64184ecd9c91f41284c60cbcc749c1329b
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s c99981c7b88350fc3a44c498704c8f88eb984c57
+> git show --textconv :src/Entity/Promo.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Promo.php
+> git cat-file -s f5a7c24084d99c93550391f35032879f135a6c36
+> git show --textconv :src/Entity/Groupe.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Groupe.php
+> git cat-file -s c99981c7b88350fc3a44c498704c8f88eb984c57
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git pull --tags origin ldab
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git show --textconv :src/Controller/BriefController.php
+From https://github.com/Seck94/file_rouge_gp1
+ * branch              ldab       -> FETCH_HEAD
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git show --textconv :src/Controller/BriefController.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git pull --tags origin ldab
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git show --textconv :src/Controller/BriefController.php
+From https://github.com/Seck94/file_rouge_gp1
+ * branch              ldab       -> FETCH_HEAD
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git show --textconv :src/Controller/BriefController.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git symbolic-ref --short HEAD
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git show --textconv :src/Controller/BriefController.php
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git symbolic-ref --short HEAD
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git show --textconv :src/Controller/BriefController.php
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git status -z -u
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 32b7628525ec322ebff0654918b9e303bf8c5742
+> git show --textconv :src/Controller/BriefController.php
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git push origin ldab:ldab
+Informations d'identification manquantes ou non valides.
+Error: socket hang up
+    at connResetException (internal/errors.js:559:14)
+    at Socket.socketOnEnd (_http_client.js:433:23)
+    at Socket.emit (events.js:208:15)
+    at endReadableNT (_stream_readable.js:1168:12)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  code: 'ECONNRESET'
+}
+Informations d'identification manquantes ou non valides.
+Error: socket hang up
+    at connResetException (internal/errors.js:559:14)
+    at Socket.socketOnEnd (_http_client.js:433:23)
+    at Socket.emit (events.js:208:15)
+    at endReadableNT (_stream_readable.js:1168:12)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  code: 'ECONNRESET'
+}
+remote: No anonymous write access.
+fatal: Authentication failed for 'https://github.com/Seck94/file_rouge_gp1.git/'
