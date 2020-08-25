@@ -181,3 +181,152 @@
 [Error  - 09:31:05.214] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
 [Error  - 09:31:35.215] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
 [Error  - 09:32:05.216] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:32:35.216] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Info  - 09:32:58.398] Logging in...
+[Error  - 09:33:05.220] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:33:35.223] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:34:05.224] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:34:35.225] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:35:05.230] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:35:35.231] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:36:05.235] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:36:35.238] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:37:05.240] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:37:35.241] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:38:05.242] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:38:35.250] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:39:05.251] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:39:35.254] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Info  - 09:39:36.993] Logging in...
+[Error  - 09:40:05.255] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Info  - 09:40:24.3] Logging in...
+[Error  - 09:40:35.257] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Info  - 09:40:44.490] Logging in...
+[Error  - 09:41:05.261] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:41:35.263] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:42:05.268] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:42:35.273] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Info  - 09:42:39.3] Treating input as token
+[Info  - 09:42:39.5] Getting user info...
+[Info  - 09:42:39.10] Getting user info...
+[Info  - 09:42:39.11] Getting user info...
+[Info  - 09:42:39.11] Getting user info...
+[Error  - 09:42:39.499] Getting account info failed: Unauthorized
+[Error  - 09:42:39.499] Unauthorized
+[Error  - 09:42:39.500] Error: network error
+[Error  - 09:42:39.508] Getting account info failed: Unauthorized
+[Error  - 09:42:39.508] Unauthorized
+[Error  - 09:42:39.508] Error: network error
+[Error  - 09:42:39.518] Getting account info failed: Unauthorized
+[Error  - 09:42:39.518] Unauthorized
+[Error  - 09:42:39.518] Error: network error
+[Error  - 09:42:39.758] Getting account info failed: Unauthorized
+[Error  - 09:42:39.759] Unauthorized
+[Error  - 09:42:39.759] Error: network error
+[Error  - 09:43:05.276] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Info  - 09:43:21.385] Logging in...
+[Info  - 09:43:31.213] Treating input as token
+[Info  - 09:43:31.213] Getting user info...
+[Error  - 09:43:31.689] Getting account info failed: Unauthorized
+[Error  - 09:43:31.689] Unauthorized
+[Error  - 09:43:31.690] Error: network error
+[Error  - 09:43:35.279] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Info  - 09:43:40.504] Logging in...
+[Info  - 09:43:54.533] Treating input as token
+[Info  - 09:43:54.533] Getting user info...
+[Error  - 09:43:54.991] Getting account info failed: Unauthorized
+[Error  - 09:43:54.991] Unauthorized
+[Error  - 09:43:54.991] Error: network error
+[Error  - 09:44:05.281] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:44:35.283] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:45:05.287] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:45:35.291] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:46:05.296] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:46:35.299] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:47:05.304] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:47:35.308] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:48:05.311] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:48:35.316] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:49:05.319] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:49:35.320] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:50:05.322] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:50:35.326] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:51:05.328] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:51:35.329] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:52:05.332] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:52:35.336] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:53:05.340] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:53:35.340] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:54:05.342] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:54:35.344] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:55:05.349] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:55:35.350] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:56:05.351] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:56:35.356] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:57:05.357] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:57:35.362] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:58:05.366] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:58:35.368] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:59:05.369] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 09:59:35.375] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:00:05.378] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:00:35.382] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:01:05.387] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:01:35.391] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:02:05.393] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:02:35.397] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:03:05.399] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:03:35.401] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:04:05.404] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:04:35.409] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:05:05.412] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:05:35.416] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:06:05.419] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:06:35.424] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:07:05.427] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:07:35.429] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:08:05.431] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:08:35.435] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:09:05.441] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:09:35.446] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:10:05.449] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:10:35.453] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:11:05.456] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:11:35.460] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:12:05.464] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:12:35.468] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:13:05.471] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:13:35.472] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:14:05.477] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:14:35.480] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:15:05.484] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:15:35.489] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:16:05.517] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:16:35.520] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:17:05.523] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:17:35.528] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:18:05.533] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:18:35.536] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:19:05.539] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:19:35.543] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:20:05.544] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:20:35.548] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:21:05.553] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:21:35.555] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:22:05.558] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:22:35.562] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:23:05.564] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:23:35.570] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:24:05.579] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Info  - 10:24:27.546] Logging in...
+[Info  - 10:24:35.119] Treating input as token
+[Info  - 10:24:35.119] Getting user info...
+[Error  - 10:24:35.584] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:24:35.799] Getting account info failed: Unauthorized
+[Error  - 10:24:35.799] Unauthorized
+[Error  - 10:24:35.800] Error: network error
+[Info  - 10:24:47.186] Logging in...
+[Info  - 10:25:00.448] Logging in...
+[Error  - 10:25:05.587] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:25:35.592] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”
+[Error  - 10:26:05.643] Getting token failed: Error: Unknown or unsupported transport “disabled” for address “disabled:”

@@ -264,6 +264,61 @@ class BriefController extends AbstractController
     }
 
     /**
+    * @Route(
+    *     name="briefs_valide",
+    *     path="api/formateur/briefs/valides",
+    *     methods={"GET"},
+    *     defaults={
+    *         "_controller"="\app\Controller\BriefController::briefs_valide",
+    *         "_api_resource_class"=Brief::class,
+    *         "_api_collection_operation_name"="briefs_valide"
+    *     }
+    * )
+    */
+    public function briefs_valide(){
+        if ($this->get('security.token_storage')->getToken()->getUser() -> getRoles()[0] !== "ROLE_FORMATEUR") {
+            return $this -> json("Vous n'etes pas formateur...", Response::HTTP_FORBIDDEN);
+        }
+        $briefs = $this->get('security.token_storage')->getToken()->getUser() -> getBriefs();
+        $result = [];
+        foreach ($briefs as $key => $brief) {
+            if ($brief -> getstatut() === 'valide') {
+                $brf['id'] = $brief -> getId();
+                $brf['titre'] = $brief -> getTitre();
+                $brf['referentiel']['id'] = $brief -> getreferentiel() -> getId();
+                $brf['referentiel']['libelle'] = $brief -> getReferentiel() -> getLibelle();
+                foreach ($brief -> getLivrableAttendus() as $key => $livrableAttendu) {
+                    $livAtt['id'] = $livrableAttendu -> getId();
+                    $livAtt['libelle'] = $livrableAttendu -> getLibelle();
+                    $brf['livrables Attendus'][] = $livAtt;
+                }
+                foreach ($brief -> getNiveaux() as $key => $niveau) {
+                    $niv['id'] = $niveau -> getId();
+                    $niv['libelle'] = $niveau -> getLibelle();
+                    $niv['competence']['id'] = $niveau -> getCompetence() -> getId();
+                    $niv['competence']['libelle'] = $niveau -> getCompetence() -> getLibelle();
+                    $brf['niveaux'][] = $niv;
+                }
+                foreach ($brief -> getTags() as $key => $tag) {
+                    $tg['id'] = $tag -> getId();
+                    $tg['libelle'] = $tag -> getLibelle();
+                    $brf['tags'][] = $tg;
+                }
+                foreach ($brief -> getRessources() as $key => $ressource) {
+                    $rsrce['id'] = $ressource -> getId();
+                    $rsrce['titre'] = $ressource -> getTitre();
+                    $rsrce['url'] = $ressource -> getUrl();
+                    $rsrce['pj'] = $ressource -> getPj();
+                    $brf['ressources'][] = $rsrce;
+                }
+                $result[] = $brf;
+            }
+        }
+        return !empty($result) ? $this -> json($result, Response::HTTP_OK) : $this -> json("Vous n'avez aucun brief validé", Response::HTTP_NOT_FOUND);
+    }
+
+
+    /**
      * @Route("/brief", name="brief")
      */
     public function index()

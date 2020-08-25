@@ -40,7 +40,8 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Rouvrir l'éditeur fermé"
+                                    "label": "&&Rouvrir l'éditeur fermé",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -154,13 +155,6 @@
                                 {
                                     "id": "workbench.action.selectIconTheme",
                                     "label": "Thème d'&&icône de fichier"
-                                },
-                                {
-                                    "id": "vscode.menubar.separator"
-                                },
-                                {
-                                    "id": "workbench.userDataSync.actions.turnOn",
-                                    "label": "Activer la synchronisation des paramètres..."
                                 }
                             ]
                         }

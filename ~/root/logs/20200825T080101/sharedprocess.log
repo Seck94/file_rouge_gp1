@@ -2,3 +2,9 @@
 [2020-08-25 08:01:05.202] [sharedprocess] [info] Deleted from disk mblode.twig-language-2 /root/.vscode/extensions/mblode.twig-language-2-0.9.1
 [2020-08-25 08:01:44.893] [sharedprocess] [info] Starting to clean up unused language packs.
 [2020-08-25 08:01:44.896] [sharedprocess] [info] Skipping directory 0efca33a20bf5218eaa314fca17076eb.fr. Language pack still in use.
+[2020-08-25 09:38:56.212] [sharedprocess] [info] Installing extension: github.vscode-pull-request-github
+[2020-08-25 09:38:57.019] [sharedprocess] [info] Downloaded extension: github.vscode-pull-request-github /opt/lampp/htdocs/file_rouge_gp1/~/root/CachedExtensionVSIXs/github.vscode-pull-request-github-0.19.0
+[2020-08-25 09:38:57.112] [sharedprocess] [info] Extracted extension to /root/.vscode/extensions/.github.vscode-pull-request-github-0.19.0: github.vscode-pull-request-github
+[2020-08-25 09:38:57.113] [sharedprocess] [info] Renamed to /root/.vscode/extensions/github.vscode-pull-request-github-0.19.0
+[2020-08-25 09:38:57.114] [sharedprocess] [info] Installation completed. github.vscode-pull-request-github
+[2020-08-25 09:38:57.159] [sharedprocess] [info] Extensions installed successfully: github.vscode-pull-request-github

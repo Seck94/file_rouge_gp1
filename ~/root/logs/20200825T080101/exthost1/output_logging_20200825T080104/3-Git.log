@@ -66,3 +66,59 @@ From https://github.com/Seck94/file_rouge_gp1
 > git remote --verbose
 > git config --get commit.template
 > git add -A -- .
+> git commit --quiet --allow-empty-message --file -
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 1961e1ad58520b14272015a6beee2ecaf056c264
+> git show --textconv :src/Controller/BriefController.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git push origin ldab:ldab
+Informations d'identification manquantes ou non valides.
+Error: socket hang up
+    at connResetException (internal/errors.js:559:14)
+    at Socket.socketOnEnd (_http_client.js:433:23)
+    at Socket.emit (events.js:208:15)
+    at endReadableNT (_stream_readable.js:1168:12)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  code: 'ECONNRESET'
+}
+remote: No anonymous write access.
+fatal: Authentication failed for 'https://github.com/Seck94/file_rouge_gp1.git/'
+> git config --local branch.ldab.github-pr-owner-number
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 1961e1ad58520b14272015a6beee2ecaf056c264
+> git pull --tags origin ldab
+From https://github.com/Seck94/file_rouge_gp1
+ * branch              ldab       -> FETCH_HEAD
+> git push origin ldab:ldab
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 1961e1ad58520b14272015a6beee2ecaf056c264
+> git show --textconv :src/Controller/BriefController.php
+Informations d'identification manquantes ou non valides.
+Error: socket hang up
+    at connResetException (internal/errors.js:559:14)
+    at Socket.socketOnEnd (_http_client.js:433:23)
+    at Socket.emit (events.js:208:15)
+    at endReadableNT (_stream_readable.js:1168:12)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  code: 'ECONNRESET'
+}
+remote: No anonymous write access.
+fatal: Authentication failed for 'https://github.com/Seck94/file_rouge_gp1.git/'

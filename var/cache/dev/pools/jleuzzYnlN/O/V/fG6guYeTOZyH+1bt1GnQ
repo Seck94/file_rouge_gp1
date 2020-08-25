@@ -44,6 +44,15 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             'idg' => '\\d+',
                         ],
                     ],
+                    'briefs_valide' => [
+                        'method' => 'GET',
+                        'security' => 'is_granted(\'ROLE_FORMATEUR\')',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                        'path' => 'formateur/briefs/valides',
+                        'requirements' => [
+                            'idg' => '\\d+',
+                        ],
+                    ],
                 ],
             ],
             'attributes' => [
