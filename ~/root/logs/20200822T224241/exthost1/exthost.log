@@ -34,3 +34,7 @@
 [2020-08-23 00:42:10.496] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain
 [2020-08-23 00:42:10.536] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"extensionId":{"value":"vscode.typescript-language-features","_lower":"vscode.typescript-language-features"},"activationEvent":"onLanguage:jsonc"}
 [2020-08-23 00:42:10.536] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension
+[2020-08-23 23:20:36.973] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"extensionId":{"value":"vscode.extension-editing","_lower":"vscode.extension-editing"},"activationEvent":"onLanguage:typescript"}
+[2020-08-23 23:20:36.973] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/extension-editing/dist/extensionEditingMain
+[2020-08-23 23:42:25.175] [exthost] [info] ExtensionService#_doActivateExtension Atishay-Jain.All-Autocomplete {"startup":false,"extensionId":{"value":"Atishay-Jain.All-Autocomplete","_lower":"atishay-jain.all-autocomplete"},"activationEvent":"*"}
+[2020-08-23 23:42:25.175] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/atishay-jain.all-autocomplete-0.0.23/dist/extension

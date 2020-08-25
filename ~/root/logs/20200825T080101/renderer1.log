@@ -1,0 +1,8 @@
+[2020-08-25 08:01:05.510] [renderer1] [error] Error: [File Watcher (chokidar)] Inotify limit reached (ENOSPC)
+[2020-08-25 08:01:05.518] [renderer1] [error] [File Watcher (chokidar)] Inotify limit reached (ENOSPC)
+[2020-08-25 08:13:14.887] [renderer1] [info] Setting search error: XHR timeout: 5000ms
+[2020-08-25 08:13:14.889] [renderer1] [info] Setting search error: XHR timeout: 5000ms
+[2020-08-25 08:13:19.892] [renderer1] [info] Setting search error: XHR timeout: 5000ms
+[2020-08-25 08:13:19.895] [renderer1] [info] Setting search error: XHR timeout: 5000ms
+[2020-08-25 08:13:24.898] [renderer1] [info] Setting search error: XHR timeout: 5000ms
+[2020-08-25 08:13:24.929] [renderer1] [info] Setting search error: XHR timeout: 5000ms

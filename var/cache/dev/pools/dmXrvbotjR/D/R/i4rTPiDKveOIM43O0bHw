@@ -178,7 +178,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'normalization_context' => [
                         'groups' => [
-                            'brief_read',
+                            'a_mettre',
                         ],
                         'enable_max_depth' => true,
                     ],

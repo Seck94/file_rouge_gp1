@@ -39,6 +39,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 1 => [
                     'competence_read',
                     'niveau_read',
+                    'brief_read',
                 ],
                 [
                     'competence_read',

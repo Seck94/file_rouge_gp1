@@ -1,0 +1,32 @@
+[2020-08-25 08:01:04.002] [exthost] [info] extension host started
+[2020-08-25 08:01:04.125] [exthost] [info] ExtensionService#_doActivateExtension vscode.microsoft-authentication {"startup":false,"extensionId":{"value":"vscode.microsoft-authentication","_lower":"vscode.microsoft-authentication"},"activationEvent":"onAuthenticationRequest:microsoft"}
+[2020-08-25 08:01:04.125] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/microsoft-authentication/dist/extension.js
+[2020-08-25 08:01:04.147] [exthost] [info] ExtensionService#_doActivateExtension vscode.github-authentication {"startup":false,"extensionId":{"value":"vscode.github-authentication","_lower":"vscode.github-authentication"},"activationEvent":"onAuthenticationRequest:github"}
+[2020-08-25 08:01:04.147] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/github-authentication/dist/extension.js
+[2020-08-25 08:01:04.159] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features {"startup":false,"extensionId":{"value":"vscode.php-language-features","_lower":"vscode.php-language-features"},"activationEvent":"onLanguage:php"}
+[2020-08-25 08:01:04.159] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/php-language-features/dist/phpMain
+[2020-08-25 08:01:04.172] [exthost] [info] ExtensionService#_doActivateExtension MehediDracula.php-namespace-resolver {"startup":false,"extensionId":{"value":"MehediDracula.php-namespace-resolver","_lower":"mehedidracula.php-namespace-resolver"},"activationEvent":"onLanguage:php"}
+[2020-08-25 08:01:04.172] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/mehedidracula.php-namespace-resolver-1.1.8/src/extension
+[2020-08-25 08:01:04.182] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"extensionId":{"value":"vscode.debug-auto-launch","_lower":"vscode.debug-auto-launch"},"activationEvent":"*"}
+[2020-08-25 08:01:04.182] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2020-08-25 08:01:04.186] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"extensionId":{"value":"vscode.emmet","_lower":"vscode.emmet"},"activationEvent":"*"}
+[2020-08-25 08:01:04.186] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/emmet/dist/node/emmetNodeMain
+[2020-08-25 08:01:04.207] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"extensionId":{"value":"vscode.github","_lower":"vscode.github"},"activationEvent":"*"}
+[2020-08-25 08:01:04.207] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/git/dist/main
+[2020-08-25 08:01:04.253] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"extensionId":{"value":"vscode.merge-conflict","_lower":"vscode.merge-conflict"},"activationEvent":"*"}
+[2020-08-25 08:01:04.253] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/merge-conflict/dist/mergeConflictMain
+[2020-08-25 08:01:04.260] [exthost] [info] ExtensionService#_doActivateExtension vscode.search-result {"startup":true,"extensionId":{"value":"vscode.search-result","_lower":"vscode.search-result"},"activationEvent":"*"}
+[2020-08-25 08:01:04.260] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/search-result/dist/extension.js
+[2020-08-25 08:01:04.262] [exthost] [info] ExtensionService#_doActivateExtension alefragnani.project-manager {"startup":true,"extensionId":{"value":"alefragnani.project-manager","_lower":"alefragnani.project-manager"},"activationEvent":"*"}
+[2020-08-25 08:01:04.262] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/alefragnani.project-manager-11.2.0/dist/extension
+[2020-08-25 08:01:04.265] [exthost] [info] ExtensionService#_doActivateExtension Atishay-Jain.All-Autocomplete {"startup":true,"extensionId":{"value":"Atishay-Jain.All-Autocomplete","_lower":"atishay-jain.all-autocomplete"},"activationEvent":"*"}
+[2020-08-25 08:01:04.265] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/atishay-jain.all-autocomplete-0.0.23/dist/extension
+[2020-08-25 08:01:04.267] [exthost] [info] ExtensionService#_doActivateExtension donjayamanne.githistory {"startup":true,"extensionId":{"value":"donjayamanne.githistory","_lower":"donjayamanne.githistory"},"activationEvent":"*"}
+[2020-08-25 08:01:04.267] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/donjayamanne.githistory-0.6.9/dist/src/extension
+[2020-08-25 08:01:04.281] [exthost] [info] ExtensionService#_doActivateExtension eamodio.gitlens {"startup":true,"extensionId":{"value":"eamodio.gitlens","_lower":"eamodio.gitlens"},"activationEvent":"*"}
+[2020-08-25 08:01:04.281] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/eamodio.gitlens-10.2.2/dist/extension
+[2020-08-25 08:01:04.298] [exthost] [info] ExtensionService#_doActivateExtension huizhou.githd {"startup":true,"extensionId":{"value":"huizhou.githd","_lower":"huizhou.githd"},"activationEvent":"*"}
+[2020-08-25 08:01:04.298] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/huizhou.githd-2.2.4/out/src/extension
+[2020-08-25 08:01:04.561] [exthost] [info] ExtensionService#_doActivateExtension vscode.github {"startup":true,"extensionId":{"value":"vscode.github","_lower":"vscode.github"},"activationEvent":"*"}
+[2020-08-25 08:01:04.563] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/41/usr/share/code/resources/app/extensions/github/dist/extension.js
+[2020-08-25 08:01:04.708] [exthost] [info] eager extensions activated

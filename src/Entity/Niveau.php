@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      collectionOperations={
  *          "get"={
  *              "path"="admin/niveaux",
- *              "normalization_context"={"groups"={"niveau_read"}}
+ *              "normalization_context"={"groups"={"niveau_read","brief_read"}}
  *          }
  *      }
  * )
@@ -29,7 +29,7 @@ class Niveau
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"competence_read","niveau_read"})
+     * @Groups({"competence_read","niveau_read","brief_read"})
      */
     private $id;
 

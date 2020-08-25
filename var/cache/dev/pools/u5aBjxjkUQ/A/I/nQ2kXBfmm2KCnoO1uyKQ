@@ -1,3 +1,0 @@
-<?php //route_name_56c53c6599fe078c487865fae48f33ac
-
-return [PHP_INT_MAX, 'api_livrable_attendus_get_item'];

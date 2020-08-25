@@ -40,8 +40,7 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Rouvrir l'éditeur fermé",
-                                    "enabled": false
+                                    "label": "&&Rouvrir l'éditeur fermé"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -91,8 +90,7 @@
                     },
                     {
                         "id": "workbench.action.files.save",
-                        "label": "Enregi&&strer",
-                        "enabled": false
+                        "label": "Enregi&&strer"
                     },
                     {
                         "id": "workbench.action.files.saveAs",
@@ -172,8 +170,7 @@
                     },
                     {
                         "id": "workbench.action.files.revert",
-                        "label": "Réta&&blir le fichier",
-                        "enabled": false
+                        "label": "Réta&&blir le fichier"
                     },
                     {
                         "id": "workbench.action.closeActiveEditor",

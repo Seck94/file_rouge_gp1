@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *      attributes={
- *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
+ *          "normalization_context"={"groups"={"a_mettre"},"enable_max_depth"=true}
  *      },
  * )
  * @ORM\Entity(repositoryClass=LivrableRepository::class)

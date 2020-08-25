@@ -38,6 +38,14 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *              "path"="formateur/promos/{id}/briefs",
  *              "requirements"={"idp"="\d+"},
  *              "requirements"={"idg"="\d+"},
+ *          },
+ *          "briefs_brouillon"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_FORMATEUR')",
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="formateur/briefs/brouillons",
+ *              "requirements"={"idp"="\d+"},
+ *              "requirements"={"idg"="\d+"},
  *          }
  *     }
  * )

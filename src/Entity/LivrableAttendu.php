@@ -40,7 +40,6 @@ class LivrableAttendu
 
     /**
      * @ORM\OneToMany(targetEntity=Livrable::class, mappedBy="livrableAttendu", orphanRemoval=true)
-     * @Groups({"brief_read"})
      */
     private $livrables;
 

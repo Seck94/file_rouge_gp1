@@ -118,6 +118,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'normalization_context' => [
                             'groups' => [
                                 'niveau_read',
+                                'brief_read',
                             ],
                         ],
                         'input' => null,

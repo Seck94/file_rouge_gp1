@@ -33,9 +33,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'brief_read',
                 ],
-                4 => [
-                    'brief_read',
-                ],
             ],
         ],
     ],
