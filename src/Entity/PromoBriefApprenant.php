@@ -25,12 +25,12 @@ class PromoBriefApprenant
     private $statut;
 
     /**
-     * @ORM\OneToMany(targetEntity=Apprenant::class, mappedBy="promoBriefApprenant")
+     * @ORM\OneToMany(targetEntity=Apprenant::class, mappedBy="promoBriefApprenant",cascade={"persist"})
      */
     private $apprenant;
 
     /**
-     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="promoBriefApprenant")
+     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="promoBriefApprenant",cascade={"persist"})
      */
     private $promoBrief;
 

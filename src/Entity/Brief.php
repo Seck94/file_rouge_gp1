@@ -35,15 +35,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "path"="formateur/briefs",
  *              },
  * 
- *              "show_briefs_tags"={
- *              "method"="GET",
- *              "security"="is_granted('ROLE_FORMATEUR')", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="formateur/briefs/tags",
- *              "normalization_context"={"groups"={"Grptags_tags_read"},"enable_max_depth"=true}
- *              
- *              },
- * 
  *              "add_briefs"={
  *              "method"="POST",
  *              "security"="is_granted('VIEW',object)", 
@@ -66,23 +57,16 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="formateur/briefs/{id}",
  *         }, 
- *         "delete"={
- *              "security"="is_granted('DELETE',object)",
- *              "security_message"="Seul le proprietaite....",
- *              "path"="formateur/briefs/{id}",
- *         },
- *         "updateGroupeGroupetag"={
- *              "method"="PATCH",
- *              "security"="is_granted('EDIT',object)", 
- *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="formateur/briefs/{id}",
- *         },
- *         "updateGroupeGroupetag"={
- *              "method"="PUT",
- *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *         
+ * 
+ *          "assignation_briefs"={
+ *              "method"="GET",
+ *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR')", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="formateur/briefs/{id}",
- *         },
+ *              "path"="formateurs/promo/{idpromo}/brief/{idbrief}/assignation",
+ *          
+ *          },
+ * 
  *     },
  * )
  * 
@@ -163,7 +147,7 @@ class Brief
     private $statut;
 
     /**
-     * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs")
+     * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs",cascade={"persist"})
      * @Groups({"brief_read"})
      */
     private $livrableAttendus;
@@ -308,7 +292,6 @@ class Brief
     public function setCriteresDePerformance(string $criteresDePerformance): self
     {
         $this->criteresDePerformance = $criteresDePerformance;
-
         return $this;
     }
 
@@ -555,5 +538,21 @@ class Brief
         }
 
         return $this;
+    }
+    // Suppression de la collection de PromoBriefs
+    public function setPromoBrief($promoBrief)
+    {
+        $this->$promoBriefs=$promoBriefs;
+    }
+    // Suppression de la collection de groupes
+    public function setGroupe($groupe)
+    {
+        $this->groupes=$groupe;
+    }
+
+    // Suppression de la collection de niveaux
+    public function setNiveau($niveaux)
+    {
+        $this->niveaux=$niveaux;
     }
 }

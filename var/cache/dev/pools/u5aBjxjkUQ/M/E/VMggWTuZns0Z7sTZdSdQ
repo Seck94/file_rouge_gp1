@@ -1,3 +1,0 @@
-<?php //route_name_ad60f046ec042b1125e69a5a8a1fb511
-
-return [PHP_INT_MAX, 'api_briefs_get_collection'];

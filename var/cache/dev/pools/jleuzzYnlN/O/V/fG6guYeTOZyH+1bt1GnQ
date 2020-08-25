@@ -57,16 +57,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'security_message' => 'Vous n\'avez pas ce privilege.',
                         'path' => 'formateur/briefs/{id}',
                     ],
-                    'delete' => [
-                        'security' => 'is_granted(\'DELETE\',object)',
-                        'security_message' => 'Seul le proprietaite....',
-                        'path' => 'formateur/briefs/{id}',
-                    ],
-                    'updateGroupeGroupetag' => [
-                        'method' => 'PUT',
-                        'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
+                    'assignation_briefs' => [
+                        'method' => 'GET',
+                        'security_post_denormalize' => 'is_granted(\'ROLE_FORMATEUR\')',
                         'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
-                        'path' => 'formateur/briefs/{id}',
+                        'path' => 'formateurs/promo/{idpromo}/brief/{idbrief}/assignation',
                     ],
                 ],
             ],

@@ -118,4 +118,9 @@ class LivrableAttendu
 
         return $this;
     }
+    // Suppression de la collection de livrables
+    public function setLivrable($livrables)
+    {
+        $this->livrables=$livrables;
+    }
 }

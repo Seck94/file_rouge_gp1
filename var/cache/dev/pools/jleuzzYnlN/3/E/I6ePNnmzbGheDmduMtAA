@@ -15,7 +15,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     '__controller' => 'App\\Controller\\BriefController::addBrief',
                     '__api_resource_class' => 'App\\Entity\\Brief',
                     '__api_collection_operation_name' => 'duplique_briefs',
-                    'id' => null,
                 ],
             ],
             'methods' => [
