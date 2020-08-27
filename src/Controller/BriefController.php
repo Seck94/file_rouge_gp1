@@ -12,6 +12,7 @@ use App\Controller\BriefController;
 use App\Entity\PromoBriefApprenant;
 use App\Repository\BriefRepository;
 use App\Repository\PromoRepository;
+use App\Entity\BriefLivrableAttendu;
 use App\Repository\GroupeRepository;
 use App\Repository\NiveauRepository;
 use App\Repository\PromoBriefRepository;
@@ -20,6 +21,7 @@ use App\Repository\ReferentielRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -48,7 +50,7 @@ class BriefController extends AbstractController
      *     }
      * )
     */
-        public function addBrief (Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,ReferentielRepository $ref,TagRepository $tag,NiveauRepository $niveau,GroupeRepository $groupe,PromoBriefRepository $promo)
+        public function addBrief (Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,ReferentielRepository $ref,TagRepository $tag,NiveauRepository $niveau,GroupeRepository $groupe,PromoBriefRepository $promo,\Swift_Mailer $mailer)
         
         {
             $Brief_json = $request -> getContent();
@@ -145,9 +147,12 @@ class BriefController extends AbstractController
                                                                                 {   
                                                                                         foreach ($Brief_tab["livrablesattendus"] as $key => $value) 
                                                                                         {
-                                                                                                $livrablesattendus=new LivrableAttendu();
-                                                                                                $livrablesattendus->setLibelle($value["libelle"]);   
-                                                                                                $Brief->addLivrableAttendu($livrablesattendus);
+                                                                                            $livrablesattendus=new LivrableAttendu();
+                                                                                            $livrablesattendus->setLibelle($value["libelle"]);   
+                                                                                            $BriefLivrableAttendu=new BriefLivrableAttendu();
+                                                                                            $BriefLivrableAttendu->setBrief($Brief);
+                                                                                            $BriefLivrableAttendu->setLivrableAttendu($livrablesattendus);
+                                                                                            $Brief->addBriefLivrableAttendu($BriefLivrableAttendu);   
                                                                                             
                                                                                         }
                                                                                             
@@ -163,7 +168,7 @@ class BriefController extends AbstractController
                                                                                     if ($groupe->find($value))
                                                                                     {
                                                                                         
-                                                                                       $Groupe=$groupe->find($value);
+                                                                                        $Groupe=$groupe->find($value);
                                                                                         $Brief->addGroupe($Groupe);
                                                                                         $Promo=$Groupe->getPromo();
                                                                                         $PromoBrief=new PromoBrief();
@@ -178,6 +183,12 @@ class BriefController extends AbstractController
                                                                                         foreach ($tab as $key => $value) 
                                                                                         {
                                                                                             $PromoBriefApprenant->addApprenant($value);
+                                                                                            
+                                                                                            $message = (new \Swift_Message('Ajout'))
+                                                                                            ->setFrom('admin@gmail.com')
+                                                                                            ->setTo($apprenant->getEmail())
+                                                                                            ->setBody('Bonjour cher(e) apprenant(e), vous avez été assigné au brief '.$Brief->getTitre());
+                                                                                                // $mailer->send($message); // on envoie
                                                                                             
                                                                                         }
                                                                                         
@@ -216,8 +227,8 @@ class BriefController extends AbstractController
                     $Brief->setFormateur($user);
                     $manager->persist($Brief);
                     $manager->flush();
-                    dd($Brief);
-                    return $this->json($Groupetag,Response::HTTP_CREATED);
+                    
+                    return $this->json($Brief,Response::HTTP_CREATED);
     }
                 }
     }
@@ -242,36 +253,67 @@ class BriefController extends AbstractController
         
         $Brief=$brief->find($id);
         $duplique=clone $Brief;
+        //Suppression de l'id
         $duplique->setId(null);
+        //Suppression de la collection de PromoBrief dans Brief
         $duplique->setPromoBrief(new ArrayCollection());
-        $PromoBriefs=$duplique->getPromoBriefs();
-        //Obtention de chaque PromoBrief
-        foreach ($PromoBriefs as $key => $PromoBrief) 
+        //Suppression de la collection de Groupes dans Brief
+        $duplique->setGroupe(new ArrayCollection());
+        //Suppression de la collection de Niveaux dans Brief
+        $duplique->setNiveaux(new ArrayCollection());
+        
+        $tab_Brieflivrableatt=$duplique->getBriefLivrableAttendus();
+        $duplique->setBriefLivrableAttendu(new ArrayCollection());
+        $manager->persist($duplique);
+        $manager->flush();
+        foreach ($tab_Brieflivrableatt as $key => $BriefLivrableatt) 
         {
-            //Obtention des apprenants du PromoBrief
-            $PromoBriefApprenant=$PromoBrief->getPromoBriefApprenant();   
-            $tab_Apprenants=$PromoBrief->getPromoBriefApprenant()->getApprenant();
-            
-            foreach ($tab_Apprenants as $key => $apprenant) 
-            {
-                //Suppression des apprenants dans PromoBriefApprenant
-                $PromoBriefApprenant->removeApprenant($apprenant);
-            } 
-
-            //Suppression du PromoBrief dans le Brief
-            $duplique->removePromoBrief($PromoBrief);
+            $BriefLivrableAttendu=new BriefLivrableAttendu();
+            $livrableAttendu=$BriefLivrableatt->getLivrableAttendu();
+            $BriefLivrableAttendu->setLivrableAttendu($livrableAttendu);
+            $BriefLivrableAttendu->SetBrief($duplique);
+            $manager->persist($BriefLivrableAttendu);
+            $manager->flush();
         }
+        //dd($Brief->getBriefLivrableAttendus());
         
 
-        $Groupes=$duplique->getGroupes();
-        //Suppression des groupes
-        foreach ($Groupes as $key => $Groupe) 
-        {
-            $duplique->removeGroupe($Groupe);
-        }
+        /* 
+                                Autres Méthode de duplication
+
+            $PromoBriefs=$duplique->getPromoBriefs();
+            Obtention de chaque PromoBrief
+            foreach ($PromoBriefs as $key => $PromoBrief) 
+            {
+                Obtention des apprenants du PromoBrief
+                $PromoBriefApprenant=$PromoBrief->getPromoBriefApprenant();   
+                $tab_Apprenants=$PromoBrief->getPromoBriefApprenant()->getApprenant();
+                
+                foreach ($tab_Apprenants as $key => $apprenant) 
+                {
+                    Suppression des apprenants dans PromoBriefApprenant
+                    $PromoBriefApprenant->removeApprenant($apprenant);
+                } 
+
+                Suppression du PromoBrief dans le Brief
+                $duplique->removePromoBrief($PromoBrief);
+
+                 $Groupes=$duplique->getGroupes();
+                Suppression des groupes
+                foreach ($Groupes as $key => $Groupe) 
+                {
+                     $duplique->removeGroupe($Groupe);
+                }
+            }
+         
+         */
+        
+
+        
         
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $duplique->setFormateur($user);
+        $duplique->setDateCreation(new \DateTime());
         $manager->persist($duplique);
         $manager->flush();  
         return $this->json($duplique,Response::HTTP_CREATED);  
@@ -303,7 +345,8 @@ class BriefController extends AbstractController
                 $Brief=$brief->find($idbrief);
                 if (isset ($Brief_tab["groupes"]) && !empty($Brief_tab["groupes"]))
                 {
-                    foreach ($Brief_tab["groupes"] as $key => $value) {
+                    foreach ($Brief_tab["groupes"] as $key => $value) 
+                    {
                         if (!empty ($value["id"]) && $groupe->find($value["id"])!=null)
                         {
                             if(isset ($value["action"]) && $value["action"]=="affecter")
@@ -316,6 +359,8 @@ class BriefController extends AbstractController
                                $PromoBrief->setPromo($Promo);
                                $PromoBrief->setStatut("assigné");
                                $Brief->addPromoBrief($PromoBrief);
+                               $manager->persist($Brief);
+                               $manager->flush();
                                $PromoBriefApprenant=new PromoBriefApprenant();
                                $PromoBriefApprenant->setStatut("en cours");
                                $PromoBriefApprenant->addPromoBrief($PromoBrief);
@@ -323,18 +368,28 @@ class BriefController extends AbstractController
                                foreach ($tab as $key => $value) 
                                {
                                    $PromoBriefApprenant->addApprenant($value);
+                                   $manager->persist($PromoBriefApprenant);
+                                   $manager->flush();
                                }
                                 
                             }
-                            dd($PromoBriefApprenant);
+                            /*else
+                                if (isset ($value["action"]) && $value["action"]=="desaffecter")
+                                {
+                                    $PromoBrief->setStatut("desassigné");
+                                    $manager->persist($PromoBriefApprenant);
+                                    $manager->flush();
+                                }
+                            */
                         }
+
                     }
                 }
 
 
             }
         }   
-        
+        return $this->json($Brief,Response::HTTP_CREATED);
     }
 
 

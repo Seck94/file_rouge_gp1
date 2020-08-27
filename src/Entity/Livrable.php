@@ -26,11 +26,7 @@ class Livrable
      */
     private $url;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=LivrableAttendu::class, inversedBy="livrables")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $livrableAttendu;
+    
 
     /**
      * @ORM\ManyToOne(targetEntity=Apprenant::class, inversedBy="livrables")
@@ -38,10 +34,21 @@ class Livrable
      */
     private $apprenant;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=BriefLivrableAttendu::class, inversedBy="livrables")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $briefLivrableAttendu;
+
+    
+
+    
+
 
     public function __construct()
     {
         $this->livrableAttendu = new ArrayCollection();
+        $this->briefLivrableAttendus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -61,17 +68,7 @@ class Livrable
         return $this;
     }
 
-    public function getLivrableAttendu(): ?LivrableAttendu
-    {
-        return $this->livrableAttendu;
-    }
-
-    public function setLivrableAttendu(?LivrableAttendu $livrableAttendu): self
-    {
-        $this->livrableAttendu = $livrableAttendu;
-
-        return $this;
-    }
+   
 
     public function getApprenant(): ?Apprenant
     {
@@ -84,4 +81,20 @@ class Livrable
 
         return $this;
     }
+
+    public function getBriefLivrableAttendu(): ?BriefLivrableAttendu
+    {
+        return $this->briefLivrableAttendu;
+    }
+
+    public function setBriefLivrableAttendu(?BriefLivrableAttendu $briefLivrableAttendu): self
+    {
+        $this->briefLivrableAttendu = $briefLivrableAttendu;
+
+        return $this;
+    }
+
+    
+
+    
 }

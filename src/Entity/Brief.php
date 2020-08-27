@@ -146,11 +146,7 @@ class Brief
      */
     private $statut;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs",cascade={"persist"})
-     * @Groups({"brief_read"})
-     */
-    private $livrableAttendus;
+    
 
     /**
      * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief", orphanRemoval=true,cascade={"persist"})
@@ -193,6 +189,11 @@ class Brief
      */
     private $groupes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=BriefLivrableAttendu::class, mappedBy="Brief", orphanRemoval=true,cascade={"persist"})
+     */
+    private $briefLivrableAttendus;
+
     public function __construct()
     {
         $this->livrableAttendus = new ArrayCollection();
@@ -201,6 +202,7 @@ class Brief
         $this->niveaux = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->groupes = new ArrayCollection();
+        $this->briefLivrableAttendus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -343,34 +345,7 @@ class Brief
         return $this;
     }
 
-    /**
-     * @return Collection|LivrableAttendu[]
-     */
-    public function getLivrableAttendus(): Collection
-    {
-        return $this->livrableAttendus;
-    }
-
-    public function addLivrableAttendu(LivrableAttendu $livrableAttendu): self
-    {
-        if (!$this->livrableAttendus->contains($livrableAttendu)) {
-            $this->livrableAttendus[] = $livrableAttendu;
-            $livrableAttendu->addBrief($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLivrableAttendu(LivrableAttendu $livrableAttendu): self
-    {
-        if ($this->livrableAttendus->contains($livrableAttendu)) {
-            $this->livrableAttendus->removeElement($livrableAttendu);
-            $livrableAttendu->removeBrief($this);
-        }
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection|Ressource[]
      */
@@ -542,7 +517,7 @@ class Brief
     // Suppression de la collection de PromoBriefs
     public function setPromoBrief($promoBrief)
     {
-        $this->$promoBriefs=$promoBriefs;
+        $this->promoBriefs=$promoBrief;
     }
     // Suppression de la collection de groupes
     public function setGroupe($groupe)
@@ -551,8 +526,45 @@ class Brief
     }
 
     // Suppression de la collection de niveaux
-    public function setNiveau($niveaux)
+    public function setNiveaux($niveaux)
     {
         $this->niveaux=$niveaux;
     }
+
+    /**
+     * @return Collection|BriefLivrableAttendu[]
+     */
+    public function getBriefLivrableAttendus(): Collection
+    {
+        return $this->briefLivrableAttendus;
+    }
+
+    public function addBriefLivrableAttendu(BriefLivrableAttendu $briefLivrableAttendu): self
+    {
+        if (!$this->briefLivrableAttendus->contains($briefLivrableAttendu)) 
+        {
+            $this->briefLivrableAttendus[] = $briefLivrableAttendu;
+            $briefLivrableAttendu->setBrief($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBriefLivrableAttendu(BriefLivrableAttendu $briefLivrableAttendu): self
+    {
+        if ($this->briefLivrableAttendus->contains($briefLivrableAttendu)) {
+            $this->briefLivrableAttendus->removeElement($briefLivrableAttendu);
+            // set the owning side to null (unless already changed)
+            if ($briefLivrableAttendu->getBrief() === $this) {
+                $briefLivrableAttendu->setBrief(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function setBriefLivrableAttendu($briefLivrableAttendu)
+    {
+         $this->briefLivrableAttendus=$briefLivrableAttendu;
+    } 
 }

@@ -66,10 +66,10 @@ class Brief extends \App\Entity\Brief implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'langue', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'titre', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'contexte', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'livrablesAttendus', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'modalitesPedagogiques', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'criteresDePerformance', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'modalitesEvaluation', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'avatar', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'dateCreation', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'statut', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'livrableAttendus', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'ressources', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'promoBriefs', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'referentiel', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'niveaux', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'tags', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'formateur', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'groupes'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'langue', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'titre', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'contexte', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'livrablesAttendus', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'modalitesPedagogiques', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'criteresDePerformance', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'modalitesEvaluation', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'avatar', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'dateCreation', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'statut', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'ressources', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'promoBriefs', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'referentiel', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'niveaux', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'tags', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'formateur', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'groupes', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'briefLivrableAttendus'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'langue', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'titre', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'contexte', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'livrablesAttendus', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'modalitesPedagogiques', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'criteresDePerformance', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'modalitesEvaluation', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'avatar', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'dateCreation', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'statut', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'livrableAttendus', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'ressources', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'promoBriefs', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'referentiel', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'niveaux', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'tags', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'formateur', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'groupes'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'langue', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'titre', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'description', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'contexte', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'livrablesAttendus', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'modalitesPedagogiques', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'criteresDePerformance', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'modalitesEvaluation', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'avatar', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'dateCreation', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'statut', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'ressources', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'promoBriefs', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'referentiel', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'niveaux', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'tags', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'formateur', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'groupes', '' . "\0" . 'App\\Entity\\Brief' . "\0" . 'briefLivrableAttendus'];
     }
 
     /**
@@ -447,39 +447,6 @@ class Brief extends \App\Entity\Brief implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getLivrableAttendus(): \Doctrine\Common\Collections\Collection
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLivrableAttendus', []);
-
-        return parent::getLivrableAttendus();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addLivrableAttendu(\App\Entity\LivrableAttendu $livrableAttendu): \App\Entity\Brief
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLivrableAttendu', [$livrableAttendu]);
-
-        return parent::addLivrableAttendu($livrableAttendu);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removeLivrableAttendu(\App\Entity\LivrableAttendu $livrableAttendu): \App\Entity\Brief
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLivrableAttendu', [$livrableAttendu]);
-
-        return parent::removeLivrableAttendu($livrableAttendu);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getRessources(): \Doctrine\Common\Collections\Collection
     {
 
@@ -684,6 +651,72 @@ class Brief extends \App\Entity\Brief implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeGroupe', [$groupe]);
 
         return parent::removeGroupe($groupe);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPromoBrief($promoBrief)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPromoBrief', [$promoBrief]);
+
+        return parent::setPromoBrief($promoBrief);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setGroupe($groupe)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupe', [$groupe]);
+
+        return parent::setGroupe($groupe);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNiveaux($niveaux)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNiveaux', [$niveaux]);
+
+        return parent::setNiveaux($niveaux);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBriefLivrableAttendus(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBriefLivrableAttendus', []);
+
+        return parent::getBriefLivrableAttendus();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addBriefLivrableAttendu(\App\Entity\BriefLivrableAttendu $briefLivrableAttendu): \App\Entity\Brief
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addBriefLivrableAttendu', [$briefLivrableAttendu]);
+
+        return parent::addBriefLivrableAttendu($briefLivrableAttendu);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeBriefLivrableAttendu(\App\Entity\BriefLivrableAttendu $briefLivrableAttendu): \App\Entity\Brief
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeBriefLivrableAttendu', [$briefLivrableAttendu]);
+
+        return parent::removeBriefLivrableAttendu($briefLivrableAttendu);
     }
 
 }

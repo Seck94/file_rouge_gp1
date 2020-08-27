@@ -402,7 +402,8 @@ class PromoController extends AbstractController
         // }
 
         $errors = $validator->validate($Promo);
-        if (count($errors)){
+        if (count($errors))
+        {
             $errors = $serializer->serialize($errors,"json");
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
