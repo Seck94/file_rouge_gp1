@@ -12,6 +12,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'App\\Entity\\Brief',
                     'App\\Entity\\Groupetag',
                     'App\\Entity\\Tag',
+                    'App\\Entity\\Livrable',
                     'App\\Entity\\User',
                     'App\\Entity\\Promo',
                     'App\\Entity\\Competence',

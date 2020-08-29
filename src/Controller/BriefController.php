@@ -4,20 +4,24 @@ namespace App\Controller;
 
 use DateTime;
 use App\Entity\Brief;
+use App\Entity\Niveau;
 use App\Entity\Ressource;
 use App\Entity\PromoBrief;
 use App\Entity\LivrableAttendu;
 use App\Repository\TagRepository;
-use App\Controller\BriefController;
 use App\Entity\PromoBriefApprenant;
 use App\Repository\BriefRepository;
 use App\Repository\PromoRepository;
 use App\Entity\BriefLivrableAttendu;
+use App\Entity\Livrable;
 use App\Repository\GroupeRepository;
 use App\Repository\NiveauRepository;
+use App\Repository\ApprenantRepository;
+use App\Repository\RessourceRepository;
 use App\Repository\PromoBriefRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ReferentielRepository;
+use App\Repository\LivrableAttenduRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -156,9 +160,6 @@ class BriefController extends AbstractController
                                                                                             
                                                                                         }
                                                                                             
-                                                                                                                                                                  
-                                                                                        
-                                                                                
 
                                                                            
                                                                            if (isset ($Brief_tab["groupes"]) && !empty ($Brief_tab["groupes"]))
@@ -180,9 +181,9 @@ class BriefController extends AbstractController
                                                                                         $PromoBriefApprenant->setStatut("validé");
                                                                                         $PromoBriefApprenant->addPromoBrief($PromoBrief);
                                                                                         $tab=$Groupe->getApprenants();
-                                                                                        foreach ($tab as $key => $value) 
+                                                                                        foreach ($tab as $key => $apprenant) 
                                                                                         {
-                                                                                            $PromoBriefApprenant->addApprenant($value);
+                                                                                            $PromoBriefApprenant->addApprenant($apprenant);
                                                                                             
                                                                                             $message = (new \Swift_Message('Ajout'))
                                                                                             ->setFrom('admin@gmail.com')
@@ -261,55 +262,27 @@ class BriefController extends AbstractController
         $duplique->setGroupe(new ArrayCollection());
         //Suppression de la collection de Niveaux dans Brief
         $duplique->setNiveaux(new ArrayCollection());
-        
+        //Reccupération de la collection de livrables attendus du Brief à dupliquer
         $tab_Brieflivrableatt=$duplique->getBriefLivrableAttendus();
+        //Suppression du lien entre le brief dupliqué et les livrables attendus
         $duplique->setBriefLivrableAttendu(new ArrayCollection());
+        //Duplication du brief dans la BD
         $manager->persist($duplique);
         $manager->flush();
+        //Reccupération de chaque livrable attendu du Brief à dupliquer
         foreach ($tab_Brieflivrableatt as $key => $BriefLivrableatt) 
         {
+            //Création nouvelle objet BriefLivrableAttendu
             $BriefLivrableAttendu=new BriefLivrableAttendu();
             $livrableAttendu=$BriefLivrableatt->getLivrableAttendu();
+            //Affectation du livrableAttendu
             $BriefLivrableAttendu->setLivrableAttendu($livrableAttendu);
+            //Affectation du brief dupliqué
             $BriefLivrableAttendu->SetBrief($duplique);
+            // Enregistrement du lien entre le brief dupliqué et le livrable attendu
             $manager->persist($BriefLivrableAttendu);
             $manager->flush();
         }
-        //dd($Brief->getBriefLivrableAttendus());
-        
-
-        /* 
-                                Autres Méthode de duplication
-
-            $PromoBriefs=$duplique->getPromoBriefs();
-            Obtention de chaque PromoBrief
-            foreach ($PromoBriefs as $key => $PromoBrief) 
-            {
-                Obtention des apprenants du PromoBrief
-                $PromoBriefApprenant=$PromoBrief->getPromoBriefApprenant();   
-                $tab_Apprenants=$PromoBrief->getPromoBriefApprenant()->getApprenant();
-                
-                foreach ($tab_Apprenants as $key => $apprenant) 
-                {
-                    Suppression des apprenants dans PromoBriefApprenant
-                    $PromoBriefApprenant->removeApprenant($apprenant);
-                } 
-
-                Suppression du PromoBrief dans le Brief
-                $duplique->removePromoBrief($PromoBrief);
-
-                 $Groupes=$duplique->getGroupes();
-                Suppression des groupes
-                foreach ($Groupes as $key => $Groupe) 
-                {
-                     $duplique->removeGroupe($Groupe);
-                }
-            }
-         
-         */
-        
-
-        
         
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $duplique->setFormateur($user);
@@ -373,14 +346,27 @@ class BriefController extends AbstractController
                                }
                                 
                             }
-                            /*else
-                                if (isset ($value["action"]) && $value["action"]=="desaffecter")
+                            else
+                                if (isset($value["action"]) && $value["action"]=="desaffecter")
                                 {
-                                    $PromoBrief->setStatut("desassigné");
-                                    $manager->persist($PromoBriefApprenant);
+                                    $Promo=$groupe->find($value["id"])->getPromo();
+                                    $PromoBriefs=$Brief->getPromoBriefs();
+                                    foreach ($PromoBriefs as $key => $PB) {
+                                        
+                                        if ($PB->getBrief()==$Brief && $PB->getPromo()==$Promo)
+                                        {
+                                            $PromoBrief=$PB;
+                                            $PromoBrief->setStatut("désassigné");
+                                            break;
+                                        }
+                                        
+                                        
+                                    }
+                                    //("desassigné");
+                                    $manager->persist($PromoBrief);
                                     $manager->flush();
                                 }
-                            */
+                            
                         }
 
                     }
@@ -396,19 +382,224 @@ class BriefController extends AbstractController
     /**
      * @Route(
      *     path="api/formateur/promo/{idpromo}/brief/{idbrief}",
-     *     methods={"PUT"},
+     *     methods={"POST"},
      *     defaults={
-     *          "__controller"="App\Controller\BriefController::assignationBrief",
+     *          "__controller"="App\Controller\BriefController::UpdateBrief",
      *          "__api_resource_class"=Brief::class,
      *          "__api_collection_operation_name"="update_briefs",
      *     }
      * )
     */
 
-    public function UpdateBrief(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,BriefRepository $brief,PromoRepository $promo,GroupeRepository $groupe,$idpromo,$idbrief)
+    public function UpdateBrief(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,BriefRepository $brief,PromoRepository $promo,GroupeRepository $groupe,$idpromo,$idbrief,NiveauRepository $niveaux,TagRepository $tags,RessourceRepository $ress,LivrableAttenduRepository $livrableattendu)
     {
-        
+        $Brief_json = $request->getContent();
+        $Brief_tab = $serializer->decode($Brief_json,"json");
+        if($promo->find($idpromo))
+        {
+            $Promo=$promo->find($idpromo);
+            if ($brief->find($idbrief))
+            {
+                $Brief=$brief->find($idbrief);
+                $PromoBriefs=$Promo->getPromoBriefs();
+                $test=0;
+                //Test si la promo est liée au brief
+                foreach ($PromoBriefs as $key => $PB) 
+                {
+                    if ($PB->getBrief()==$Brief)
+                    {
+                        $test=1;
+                    }
+                    
+                }
+                // Arrete le prog si ils ne sont pas liés
+                if ($test==0)
+                {
+                        return $this -> json(["message" => "Ce Brief n'est pas lié à la promo donnée"],Response::HTTP_FORBIDDEN);
+                }
+
+                if (isset ($Brief_tab["action"]) && !empty ($Brief_tab["action"]))
+                {
+                    $Brief->setStatut(($Brief_tab["action"]));
+                    if (isset ($Brief_tab["niveaux"]) && !empty ($Brief_tab["niveaux"]))
+                    {
+                        foreach ($Brief_tab["niveaux"] as $key => $niveau) 
+                        {
+                            if ($niveau["action"]=="ajouter")
+                            {
+                                $Niveau=$niveaux->find($niveau["id"]);
+                                $Brief->addNiveau($Niveau);
+                            }
+                            else
+                                if ($niveau["action"]=="supprimer")
+                                {
+                                    $Niveau=$niveaux->find($niveau["id"]);
+                                    $Brief->RemoveNiveau($Niveau);
+                                }
+                        }
+                    }
+
+                    if (isset ($Brief_tab["tags"]) && !empty ($Brief_tab["tags"]))
+                    {
+                        foreach ($Brief_tab["tags"] as $key => $tag) 
+                        {
+                            if ($tag["action"]=="ajouter")
+                            {
+                                $Tag=$tags->find($tag["id"]);
+                                $Brief->addTag($Tag);
+                            }
+                            else
+                                if ($tag["action"]=="supprimer")
+                                {
+                                    $Tag=$tags->find($tag["id"]);
+                                    $Brief->RemoveTag($Tag);
+                                }
+                        }
+                    }
+
+                    if (isset ($Brief_tab["ressources"]) && !empty ($Brief_tab["ressources"]))
+                    {
+                        foreach ($Brief_tab["ressources"] as $key => $ressource) 
+                        {
+                            if ($ressource["action"]=="ajouter")
+                            {
+                                $Ressource=$ress->find($ressource["id"]);
+                                $Brief->addRessource($Ressource);
+                            }
+                            else
+                                if ($ressource["action"]=="supprimer")
+                                {
+                                    $Ressource=$ress->find($ressource["id"]);
+                                    $Brief->RemoveRessource($Ressource);
+                                }
+                        }
+                    }
+
+                    if (isset ($Brief_tab["livrableAttendus"]) && !empty ($Brief_tab["livrableAttendus"]))
+                    {
+                        foreach ($Brief_tab["livrableAttendus"] as $key => $LA) 
+                        {
+                            
+                            if ($LA["action"]=="ajouter")
+                            {
+                                
+                                $livrableAttendu=$livrableattendu->find($LA["id"]);
+                                $BriefLivrableAttendu=new BriefLivrableAttendu();
+                                //Création du lien dans la table d'association BriefLivrableAttendu
+                                $BriefLivrableAttendu->setBrief($Brief);
+                                $BriefLivrableAttendu->setLivrableAttendu($livrableAttendu);
+                                $Brief->addBriefLivrableAttendu($BriefLivrableAttendu);
+                                $manager->persist($BriefLivrableAttendu);
+                                $manager->flush();
+                            }
+                            else
+                                if ($LA["action"]=="supprimer")
+                                {
+                                    $livrableAttendu=$livrableattendu->find($LA["id"]);
+                                    $tab=$livrableAttendu->getBriefLivrableAttendus();
+                                    foreach ($tab as $key => $briefLA) 
+                                    {
+                                        
+                                        // Vérifie la liaison entre le Brief et le LivrableAttendu
+                                        if ($briefLA->getBrief()==$Brief && $briefLA->getLivrableAttendu()==$livrableAttendu)
+                                        {
+                                            //$Brief->removeBriefLivrableAttendu($briefLA);
+                                            //$livrableAttendu->removeBriefLivrableAttendu($briefLA);
+                                            $manager->remove($briefLA);
+                                            //$manager->persist($briefLA);
+                                            $manager->flush();
+                                            break;    
+                                        }    
+                                    }
+                                }
+                        }
+                    }
+                }
+            $manager->persist($Brief);
+            $manager->flush();
+            $serializer ->encode($Brief,"json");
+            return $this->json($Brief,Response::HTTP_CREATED);
+            }
+        }
+
     }
 
+    /**
+     * @Route(
+     *     path="api/apprenants/{idapp}/groupe/{idgrp}/livrables",
+     *     methods={"POST"},
+     *     defaults={
+     *          "__controller"="App\Controller\BriefController::AddLivrable",
+     *          "__api_resource_class"=Brief::class,
+     *          "__api_collection_operation_name"="add_livrable",
+     *     }
+     * )
+    */
 
+    public function AddLivrable(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,ApprenantRepository $app,LivrableAttenduRepository $livrableattendu,GroupeRepository $grp,$idapp,$idgrp)
+    {
+        $livrable_json = $request->getContent();
+        $livrable_tab = $serializer->decode($livrable_json,"json");
+        //Reccupération id Apprenant
+        if($app->find($idapp))
+        {
+            $Apprenant=$app->find($idapp);
+        //Reccupération id Groupe
+            if($grp->find($idgrp))
+            {
+                $Groupe=$grp->find($idgrp);
+                //Test si l'apprenant fait partie du groupe
+                $test=0;
+            
+                $tab_groupes=$Apprenant->getGroupe();
+                foreach ($tab_groupes as $key => $groupe) 
+                {
+                    if ($groupe==$Groupe)
+                    {
+                        $test=1;
+                        break;
+                    }    
+                }
+                if ($test!=1)
+                {
+                    return $this -> json (["message" => "Cet apprenant ne fait pas partie du groupe donné"],Response::HTTP_FORBIDDEN);
+                }
+                else
+                
+                    if (isset($livrable_tab["livrables"]) && !empty($livrable_tab["livrables"]))
+                    {
+                        
+                        foreach ($livrable_tab as $key => $livrable) 
+                        {
+                            foreach ($livrable as $key => $value) {
+                                
+                            
+                            if ($livrableattendu->find($value["id"]))
+                            {
+                                //Reccupération de tous les étudiants du groupe
+                                $tab_apprenants=$Groupe->getApprenants();
+                                foreach ($tab_apprenants as $key => $apprenant) 
+                                {
+                                    $Livrable=New Livrable();
+                                    $Livrable->setUrl($value["url"]);
+                                    //Affecter le livrable à chaque apprenant du groupe
+                                    $Livrable->setApprenant($apprenant);
+                                    $LivrableAttendu=$livrableattendu->find($value["id"]);
+                                    $Livrable->setLivrableAttendu($LivrableAttendu);
+                                    $LivrableAttendu->addLivrable($Livrable);
+                                    $tab_livrables[]=$Livrable;
+                                    $manager->persist($Livrable);
+                                    $manager->persist($LivrableAttendu);
+                                    $manager->flush();
+                                }
+                            }
+                        }
+                    }
+                }
+                                 
+            }
+                return $this -> json ($tab_livrables,Response::HTTP_CREATED);
+        }
+        
+    }
 }

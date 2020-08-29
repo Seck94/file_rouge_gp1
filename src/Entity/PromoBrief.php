@@ -131,7 +131,6 @@ class PromoBrief
     public function setPromoBriefApprenant(?PromoBriefApprenant $promoBriefApprenant): self
     {
         $this->promoBriefApprenant = $promoBriefApprenant;
-
         return $this;
     }
 }

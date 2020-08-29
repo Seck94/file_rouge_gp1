@@ -66,10 +66,10 @@ class LivrableAttendu extends \App\Entity\LivrableAttendu implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'id', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefLivrableAttendus'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'id', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefLivrableAttendus', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'livrables'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'id', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefLivrableAttendus'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'id', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefLivrableAttendus', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'livrables'];
     }
 
     /**
@@ -244,6 +244,39 @@ class LivrableAttendu extends \App\Entity\LivrableAttendu implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeBriefLivrableAttendu', [$briefLivrableAttendu]);
 
         return parent::removeBriefLivrableAttendu($briefLivrableAttendu);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLivrables(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLivrables', []);
+
+        return parent::getLivrables();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addLivrable(\App\Entity\Livrable $livrable): \App\Entity\LivrableAttendu
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLivrable', [$livrable]);
+
+        return parent::addLivrable($livrable);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeLivrable(\App\Entity\Livrable $livrable): \App\Entity\LivrableAttendu
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLivrable', [$livrable]);
+
+        return parent::removeLivrable($livrable);
     }
 
 }

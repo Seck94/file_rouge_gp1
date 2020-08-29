@@ -44,11 +44,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              
  *              "duplique_briefs"={
  *              "method"="POST",
- *               "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="formateur/briefs/{id}",
  *              "defaults"={"id"=null}   
- *               }
+ *               },
+ *              
+ *              
+ *              
  *     },
  *     
  *     itemOperations={
@@ -66,6 +69,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "path"="formateurs/promo/{idpromo}/brief/{idbrief}/assignation",
  *          
  *          },
+ * 
+*          "update_briefs"=
+  *              {
+  *              "method"="PUT",
+ *               "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateur/promo/{idpromo}/brief/{idbrief}",
+ *              "defaults"={"id"=null}
+  *              }
  * 
  *     },
  * )
@@ -222,7 +234,6 @@ class Brief
     public function setLangue(string $langue): self
     {
         $this->langue = $langue;
-
         return $this;
     }
 
@@ -234,7 +245,6 @@ class Brief
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
         return $this;
     }
 
@@ -246,7 +256,6 @@ class Brief
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -258,7 +267,6 @@ class Brief
     public function setContexte(string $contexte): self
     {
         $this->contexte = $contexte;
-
         return $this;
     }
 
@@ -270,7 +278,6 @@ class Brief
     public function setLivrablesAttendus(string $livrablesAttendus): self
     {
         $this->livrablesAttendus = $livrablesAttendus;
-
         return $this;
     }
 
@@ -282,7 +289,6 @@ class Brief
     public function setModalitesPedagogiques(string $modalitesPedagogiques): self
     {
         $this->modalitesPedagogiques = $modalitesPedagogiques;
-
         return $this;
     }
 
@@ -305,7 +311,6 @@ class Brief
     public function setModalitesEvaluation(string $modalitesEvaluation): self
     {
         $this->modalitesEvaluation = $modalitesEvaluation;
-
         return $this;
     }
 
@@ -317,7 +322,6 @@ class Brief
     public function setAvatar($avatar): self
     {
         $this->avatar = $avatar;
-
         return $this;
     }
 
@@ -329,7 +333,6 @@ class Brief
     public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
-
         return $this;
     }
 
@@ -341,7 +344,6 @@ class Brief
     public function setStatut(?string $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 

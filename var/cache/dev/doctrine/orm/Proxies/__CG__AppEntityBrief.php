@@ -719,4 +719,15 @@ class Brief extends \App\Entity\Brief implements \Doctrine\ORM\Proxy\Proxy
         return parent::removeBriefLivrableAttendu($briefLivrableAttendu);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function setBriefLivrableAttendu($briefLivrableAttendu)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBriefLivrableAttendu', [$briefLivrableAttendu]);
+
+        return parent::setBriefLivrableAttendu($briefLivrableAttendu);
+    }
+
 }

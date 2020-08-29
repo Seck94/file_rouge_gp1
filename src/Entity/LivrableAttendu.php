@@ -35,6 +35,11 @@ class LivrableAttendu
      */
     private $briefLivrableAttendus;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Livrable::class, mappedBy="livrableattendu")
+     */
+    private $livrables;
+
 
     public function __construct()
     {
@@ -87,6 +92,37 @@ class LivrableAttendu
             // set the owning side to null (unless already changed)
             if ($briefLivrableAttendu->getLivrableAttendu() === $this) {
                 $briefLivrableAttendu->setLivrableAttendu(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Livrable[]
+     */
+    public function getLivrables(): Collection
+    {
+        return $this->livrables;
+    }
+
+    public function addLivrable(Livrable $livrable): self
+    {
+        if (!$this->livrables->contains($livrable)) {
+            $this->livrables[] = $livrable;
+            $livrable->setLivrableattendu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLivrable(Livrable $livrable): self
+    {
+        if ($this->livrables->contains($livrable)) {
+            $this->livrables->removeElement($livrable);
+            // set the owning side to null (unless already changed)
+            if ($livrable->getLivrableattendu() === $this) {
+                $livrable->setLivrableattendu(null);
             }
         }
 
