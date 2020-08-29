@@ -355,6 +355,7 @@ class BriefController extends AbstractController
                                         
                                         if ($PB->getBrief()==$Brief && $PB->getPromo()==$Promo)
                                         {
+                                            //("desassigné");
                                             $PromoBrief=$PB;
                                             $PromoBrief->setStatut("désassigné");
                                             break;
@@ -362,7 +363,7 @@ class BriefController extends AbstractController
                                         
                                         
                                     }
-                                    //("desassigné");
+                                    
                                     $manager->persist($PromoBrief);
                                     $manager->flush();
                                 }
@@ -601,5 +602,30 @@ class BriefController extends AbstractController
                 return $this -> json ($tab_livrables,Response::HTTP_CREATED);
         }
         
+    }
+
+    private function Assignation($Brief,$Promo,$Groupe,EntityManagerInterface $manager,\Swift_Mailer $mailer)
+    {
+        $PromoBrief=new PromoBrief();
+        $PromoBrief->setBrief($Brief);
+        $PromoBrief->setPromo($Promo);
+        $PromoBrief->setStatut("assigné");
+        $Brief->addPromoBrief($PromoBrief);
+        $manager->persist($Brief);
+        $manager->flush();
+        $PromoBriefApprenant=new PromoBriefApprenant();
+        $PromoBriefApprenant->setStatut("en cours");
+        $PromoBriefApprenant->addPromoBrief($PromoBrief);
+        $tab=$Groupe->getApprenants();
+        foreach ($tab as $key => $apprenant) 
+        {
+            $PromoBriefApprenant->addApprenant($apprenant);
+            
+            $message = (new \Swift_Message('Ajout'))
+            ->setFrom('admin@gmail.com')
+            ->setTo($apprenant->getEmail())
+            ->setBody('Bonjour cher(e) apprenant(e) de la Sonatel Academy '.$Promo->getTitre().', vous avez été assigné au brief '.$Brief->getTitre());
+                // $mailer->send($message); // on envoie
+        }
     }
 }
