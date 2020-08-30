@@ -1,0 +1,136 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --git-dir
+Open repository: /opt/lampp/htdocs/file_rouge_gp1
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 78dd701f3f16a61c7f8c9f71c0dabccd9c20532f
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git pull --tags origin ldab
+From https://github.com/Seck94/file_rouge_gp1
+ * branch              ldab       -> FETCH_HEAD
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 78dd701f3f16a61c7f8c9f71c0dabccd9c20532f
+> git show --textconv :src/Controller/BriefController.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git push -u origin ldab
+Everything up-to-date
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 78dd701f3f16a61c7f8c9f71c0dabccd9c20532f
+> git show --textconv :src/Controller/BriefController.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git pull --tags origin update_fil_rouge_fadel
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 78dd701f3f16a61c7f8c9f71c0dabccd9c20532f
+> git show --textconv :src/Controller/BriefController.php
+From https://github.com/Seck94/file_rouge_gp1
+ * branch              update_fil_rouge_fadel -> FETCH_HEAD
+error: Your local changes to the following files would be overwritten by merge:
+	~/root/Cache/c85687354a0e770a_0
+	~/root/Cache/cbc42e4c979f69f0_0
+	~/root/Cache/index-dir/the-real-index
+	~/root/CachedExtensions/builtin
+	~/root/CachedExtensions/user
+	~/root/Cookies
+	~/root/GPUCache/data_1
+	~/root/GPUCache/index
+	~/root/Network Persistent State
+	~/root/Session Storage/000003.log
+	~/root/Session Storage/LOG
+	~/root/Session Storage/LOG.old
+	~/root/TransportSecurity
+	~/root/User/globalStorage/state.vscdb
+	~/root/User/globalStorage/state.vscdb.backup
+	~/root/languagepacks.json
+	~/root/storage.json
+Please commit your changes or stash them before you merge.
+Aborting
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 78dd701f3f16a61c7f8c9f71c0dabccd9c20532f
+> git show --textconv :src/Controller/BriefController.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git pull --tags origin ldab
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 78dd701f3f16a61c7f8c9f71c0dabccd9c20532f
+> git show --textconv :src/Controller/BriefController.php
+From https://github.com/Seck94/file_rouge_gp1
+ * branch              ldab       -> FETCH_HEAD
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 78dd701f3f16a61c7f8c9f71c0dabccd9c20532f
+> git show --textconv :src/Controller/BriefController.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git add -A -- .

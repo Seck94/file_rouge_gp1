@@ -1,4 +1,0 @@
-[2020-08-23 00:48:21:914] Warning(/usr/bin/git -c core.quotepath=false -c color.ui=false fetch): From https://github.com/Seck94/file_rouge_gp1
-   cbf66226..962b0874  Update_fil_rouge_momo  -> origin/Update_fil_rouge_momo
-   cbf66226..ba532d13  update_fil_rouge_fadel -> origin/update_fil_rouge_fadel
-
