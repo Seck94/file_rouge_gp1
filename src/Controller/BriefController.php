@@ -306,7 +306,7 @@ class BriefController extends AbstractController
     
     
 
-    public function assignationBrief (Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,BriefRepository $brief,PromoRepository $promo,GroupeRepository $groupe,$idpromo,$idbrief)
+    public function assignationBrief (Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,BriefRepository $brief,PromoRepository $promo,GroupeRepository $groupe,$idpromo,$idbrief,\Swift_Mailer $mailer)
     {
         $Brief_json = $request -> getContent();
         $Brief_tab = $serializer -> decode($Brief_json,"json");
@@ -338,9 +338,14 @@ class BriefController extends AbstractController
                                $PromoBriefApprenant->setStatut("en cours");
                                $PromoBriefApprenant->addPromoBrief($PromoBrief);
                                $tab=$groupe->find($value["id"])->getApprenants();
-                               foreach ($tab as $key => $value) 
+                               foreach ($tab as $key => $apprenant) 
                                {
-                                   $PromoBriefApprenant->addApprenant($value);
+                                   $PromoBriefApprenant->addApprenant($apprenant);
+                                   $message = (new \Swift_Message('Ajout'))
+                                   ->setFrom('admin@gmail.com')
+                                   ->setTo($apprenant->getEmail())
+                                   ->setBody('Bonjour cher(e) apprenant(e), vous avez été assigné au brief '.$Brief->getTitre());
+                                       // $mailer->send($message); // on envoie
                                    $manager->persist($PromoBriefApprenant);
                                    $manager->flush();
                                }
