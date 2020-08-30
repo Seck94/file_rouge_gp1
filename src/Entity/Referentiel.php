@@ -15,7 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
- *          "normalization_context"={"groups"={"brief_read"}}
  *     },
  * 
  *     collectionOperations={
@@ -81,13 +80,13 @@ class Referentiel
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"referentiel_read","Grpcompetence_read","brief_read"})
+     * @Groups({"referentiel_read","Grpcompetence_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"referentiel_read","promo_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read"})
+     * @Groups({"referentiel_read","promo_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
      */
     private $libelle;
 

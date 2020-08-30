@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *      attributes={
- *          "normalization_context"={"groups"={"a_mettre"},"enable_max_depth"=true}
+ *          "normalization_context"={"groups"={"livrable_read"},"enable_max_depth"=true}
  *      },
  * )
  * @ORM\Entity(repositoryClass=LivrableRepository::class)
@@ -23,18 +23,20 @@ class Livrable
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"brief_read","brief_groupe_promo","brief_promo","brief_apprenant_promo","brief_brouillon","brief_valide"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","brief_promo","brief_apprenant_promo","brief_brouillon","brief_valide"})
      */
     private $url;
 
     /**
      * @ORM\ManyToOne(targetEntity=LivrableAttendu::class, inversedBy="livrables")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"livrable_read"})
      */
     private $livrableAttendu;
 

@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Brief;
+use App\Repository\UserRepository;
 use App\Repository\BriefRepository;
 use App\Repository\PromoRepository;
 use App\Repository\GroupeRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BriefController extends AbstractController
@@ -16,13 +19,13 @@ class BriefController extends AbstractController
 
     /**
     * @Route(
-    *     name="brief_formateur",
+    *     name="all_briefs",
     *     path="api/formateur/briefs",
     *     methods={"GET"},
     *     defaults={
     *         "_controller"="\app\Controller\BriefController::brief_formateur",
     *         "_api_resource_class"=Brief::class,
-    *         "_api_collection_operation_name"="brief_formateur"
+    *         "_api_collection_operation_name"="all_briefs"
     *     }
     * )
     */
@@ -30,36 +33,7 @@ class BriefController extends AbstractController
         if ($this->get('security.token_storage')->getToken()->getUser() -> getRoles()[0] !== "ROLE_FORMATEUR") {
             return $this -> json("Vous n'etes pas formateur...", Response::HTTP_FORBIDDEN);
         }
-        foreach ($briefs -> findAll() as $key => $brief) {
-            $brf['id'] = $brief -> getId();
-            $brf['titre'] = $brief -> getTitre();
-            foreach ($brief -> getLivrableAttendus() as $key => $livrableAttendu) {
-                $livAtt['id'] = $livrableAttendu -> getId();
-                $livAtt['libelle'] = $livrableAttendu -> getLibelle();
-                $brf['livrables Attendus'][] = $livAtt;
-            }
-            foreach ($brief -> getNiveaux() as $key => $niveau) {
-                $niv['id'] = $niveau -> getId();
-                $niv['libelle'] = $niveau -> getLibelle();
-                $niv['competence']['id'] = $niveau -> getCompetence() -> getId();
-                $niv['competence']['libelle'] = $niveau -> getCompetence() -> getLibelle();
-                $brf['niveaux'][] = $niv;
-            }
-            foreach ($brief -> getTags() as $key => $tag) {
-                $tg['id'] = $tag -> getId();
-                $tg['libelle'] = $tag -> getLibelle();
-                $brf['tags'][] = $tg;
-            }
-            foreach ($brief -> getRessources() as $key => $ressource) {
-                $rsrce['id'] = $ressource -> getId();
-                $rsrce['titre'] = $ressource -> getTitre();
-                $rsrce['url'] = $ressource -> getUrl();
-                $rsrce['pj'] = $ressource -> getPj();
-                $brf['ressources'][] = $rsrce;
-            }
-            $result[] = $brf;
-        }
-        return $this -> json($result, Response::HTTP_OK);
+        return $briefs -> findAll();
     }
 
 
@@ -86,126 +60,144 @@ class BriefController extends AbstractController
         $result = [];
         foreach ($promo -> getGroupes() as $key => $groupe) {
             if ($groupe -> getId() === $groupe_a_rechercher -> getId()) {
-                $briefs = $groupe -> getBriefs();
-                foreach ($briefs as $key => $brief) {
-                    $brf['id'] = $brief -> getId();
-                    $brf['titre'] = $brief -> getTitre();
-                    $brf['referentiel']['id'] = $brief -> getreferentiel() -> getId();
-                    $brf['referentiel']['libelle'] = $brief -> getReferentiel() -> getLibelle();
-                    foreach ($brief -> getLivrableAttendus() as $key => $livrableAttendu) {
-                        $livAtt['id'] = $livrableAttendu -> getId();
-                        $livAtt['libelle'] = $livrableAttendu -> getLibelle();
-                        $brf['livrables Attendus'][] = $livAtt;
-                    }
-                    foreach ($brief -> getNiveaux() as $key => $niveau) {
-                        $niv['id'] = $niveau -> getId();
-                        $niv['libelle'] = $niveau -> getLibelle();
-                        $niv['competence']['id'] = $niveau -> getCompetence() -> getId();
-                        $niv['competence']['libelle'] = $niveau -> getCompetence() -> getLibelle();
-                        $brf['niveaux'][] = $niv;
-                    }
-                    foreach ($brief -> getTags() as $key => $tag) {
-                        $tg['id'] = $tag -> getId();
-                        $tg['libelle'] = $tag -> getLibelle();
-                        $brf['tags'][] = $tg;
-                    }
-                    foreach ($brief -> getRessources() as $key => $ressource) {
-                        $rsrce['id'] = $ressource -> getId();
-                        $rsrce['titre'] = $ressource -> getTitre();
-                        $rsrce['url'] = $ressource -> getUrl();
-                        $rsrce['pj'] = $ressource -> getPj();
-                        $brf['ressources'][] = $rsrce;
-                    }
+                foreach ($groupe -> getBriefs() as $key => $brief) {
                     foreach ($brief -> getGroupes() as $key => $groupe) {
-                        if ($groupe -> getStatut() === 'encours') {
-                            $grp['id'] = $groupe -> getId();
-                            $grp['nom'] = $groupe -> getNom();
-                            $grp['statut'] = $groupe -> getStatut();
-                            $grp['type'] = $groupe -> getType();
-                            $grp['apprenants'] = $groupe -> getApprenants();
-                            $brf['groupes'][] = $grp;
+                        if ($groupe -> getStatut() !== 'encours') {
+                            $brief -> removeGroupe($groupe);
                         }
                     }
-                    $brf['formateur'][] = $brief -> getFormateur();
-                    foreach ($brief -> getPromoBriefs()  as $key => $promobrief) {
-                        $prm['id'] = $promobrief -> getPromo() -> getId();
-                        $prm['titre'] = $promobrief -> getPromo() -> getTitre();
-                        $brf['promos'][] = $prm;
-                    }
-                    $result[] = $brf;
                 }
-                return $this -> json($result, Response::HTTP_OK);
+                $result[] = $brief;
             }
         }
-        return $this -> json("Verifiez les données entrées", Response::HTTP_NOT_FOUND);
+        return $result;
     }
 
     /**
     * @Route(
-    *     name="promo_id_brief",
-    *     path="api/formateur/promos/{id}/briefs",
+    *     name="brief_promo",
+    *     path="api/formateurs/promos/{idp}/briefs/{id}",
     *     methods={"GET"},
     *     defaults={
-    *         "_controller"="\app\Controller\BriefController::promo_id_briefs",
+    *         "_controller"="\app\Controller\BriefController::brief_promo",
+    *         "_api_resource_class"=Brief::class,
+    *         "_api_item_operation_name"="brief_promo"
+    *     }
+    * )
+    */
+    public function brief_promo(PromoRepository $promo_repo, BriefRepository $brief_repo, $idp, $id){
+        
+        if (!$promo = $promo_repo -> find($idp)) {
+            return $this -> json("Promo introuvable", Response::HTTP_NOT_FOUND);
+        }
+        if (!$brief = $brief_repo -> find($id)) {
+            return $this -> json("Brief introuvable", Response::HTTP_NOT_FOUND);
+        }
+        if (!$this -> isGranted("VIEW",$brief)) {
+            return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
+        }
+        foreach ($brief -> getPromoBriefs() as $key => $promobrief) {
+            if ($promobrief -> getPromo() === $promo) {
+                return $this -> json($brief,Response::HTTP_OK,);
+            }
+        }
+        return $this -> json("Brief introuvable dans cette promo", Response::HTTP_NOT_FOUND);
+    }
+
+
+    /**
+    * @Route(
+    *     name="promo_id_brief",
+    *     path="api/formateurs/promos/{idp}/briefs",
+    *     methods={"GET"},
+    *     defaults={
+    *         "_controller"="\App\Controller\BriefController::promo_id_briefs",
     *         "_api_resource_class"=Brief::class,
     *         "_api_collection_operation_name"="promo_id_brief"
     *     }
     * )
     */
-    public function promo_id_briefs(PromoRepository $promo_repo, $id){
+    public function promo_id_briefs(PromoRepository $promo_repo, $idp){
+        if (!$promo = $promo_repo -> find($idp)) {
+            return $this -> json("Promo introuvable", Response::HTTP_NOT_FOUND);
+        }
+        $briefs =[];
+        foreach ($promo -> getPromoBriefs() as $key => $promobrief) {
+            $brief = $promobrief -> getBrief();
+            foreach ( $brief -> getGroupes() as $key => $groupe) {
+                if ($groupe -> getStatut() !== 'encours') {
+                    $brief -> removeGroupe($groupe);
+                }
+            }
+            $briefs[] = $brief;
+        }
+        return $briefs;
+    }
+
+
+    /**
+    * @Route(
+    *     name="promo_apprenant_brief",
+    *     path="api/apprenants/promos/{id}/briefs",
+    *     methods={"GET"},
+    *     defaults={
+    *         "_controller"="\app\Controller\BriefController::promo_apprenant_brief",
+    *         "_api_resource_class"=Brief::class,
+    *         "_api_collection_operation_name"="promo_apprenant_brief"
+    *     }
+    * )
+    */
+    public function promo_apprenant_brief(PromoRepository $promo_repo, $id){
         if (!$promo = $promo_repo -> find($id)) {
             return $this -> json("Promo introuvable", Response::HTTP_NOT_FOUND);
         }
-        $result =[];
-        foreach ($promo -> getPromoBriefs() as $key => $promobrief) {
-            $brief = $promobrief -> getBrief();
-            $brf['id'] = $brief -> getId();
-            $brf['titre'] = $brief -> getTitre();
-            $brf['referentiel']['id'] = $brief -> getreferentiel() -> getId();
-            $brf['referentiel']['libelle'] = $brief -> getReferentiel() -> getLibelle();
-            foreach ($brief -> getLivrableAttendus() as $key => $livrableAttendu) {
-                $livAtt['id'] = $livrableAttendu -> getId();
-                $livAtt['libelle'] = $livrableAttendu -> getLibelle();
-                $brf['livrables Attendus'][] = $livAtt;
-            }
-            foreach ($brief -> getNiveaux() as $key => $niveau) {
-                $niv['id'] = $niveau -> getId();
-                $niv['libelle'] = $niveau -> getLibelle();
-                $niv['competence']['id'] = $niveau -> getCompetence() -> getId();
-                $niv['competence']['libelle'] = $niveau -> getCompetence() -> getLibelle();
-                $brf['niveaux'][] = $niv;
-            }
-            foreach ($brief -> getTags() as $key => $tag) {
-                $tg['id'] = $tag -> getId();
-                $tg['libelle'] = $tag -> getLibelle();
-                $brf['tags'][] = $tg;
-            }
-            foreach ($brief -> getRessources() as $key => $ressource) {
-                $rsrce['id'] = $ressource -> getId();
-                $rsrce['titre'] = $ressource -> getTitre();
-                $rsrce['url'] = $ressource -> getUrl();
-                $rsrce['pj'] = $ressource -> getPj();
-                $brf['ressources'][] = $rsrce;
-            }
-            foreach ($brief -> getGroupes() as $key => $groupe) {
-                if ($groupe -> getStatut() === 'encours') {
-                    $grp['id'] = $groupe -> getId();
-                    $grp['nom'] = $groupe -> getNom();
-                    $grp['statut'] = $groupe -> getStatut();
-                    $grp['type'] = $groupe -> getType();
-                    $grp['apprenants'] = $groupe -> getApprenants();
-                    $brf['groupes'][] = $grp;
+        $briefs =[];
+        foreach ($promo -> getGroupes() as $key => $groupe) {
+            foreach ($groupe -> getBriefs() as $key => $brief) {
+                if (!in_array($brief,$briefs)) {
+                    foreach ( $brief -> getGroupes() as $key => $groupe) {
+                        if ($groupe -> getStatut() !== 'encours') {
+                            $brief -> removeGroupe($groupe);
+                        }
+                    }
+                    $briefs[] = $brief;
                 }
             }
-            $brf['formateur'][] = $brief -> getFormateur();
-            foreach ($brief -> getPromoBriefs()  as $key => $promobrief) {
-                $prm['id'] = $promobrief -> getPromo() -> getId();
-                $prm['titre'] = $promobrief -> getPromo() -> getTitre();
-                $brf['promos'][] = $prm;
-            }
-            $result[] = $brf;
+            
         }
-        return $this -> json($result, Response::HTTP_OK);
+        return $briefs;
+    }
+
+
+    /**
+    * @Route(
+    *     name="apprenant_promo_brief",
+    *     path="api/apprenants/promos/{idp}/briefs/{idb}",
+    *     methods={"GET"},
+    *     defaults={
+    *         "_controller"="\App\Controller\BriefController::apprenant_promo_brief",
+    *         "_api_resource_class"=Brief::class,
+    *         "_api_collection_operation_name"="apprenant_promo_brief"
+    *     }
+    * )
+    */
+    public function apprenant_promo_brief(PromoRepository $promo_repo, BriefRepository $brief_repo, $idp, $idb){
+        
+        if (!$promo = $promo_repo -> find($idp)) {
+            return $this -> json("Promo introuvable", Response::HTTP_NOT_FOUND);
+        }
+        if (!$brief = $brief_repo -> find($idb)) {
+            return $this -> json("Brief introuvable", Response::HTTP_NOT_FOUND);
+        }
+        if (!$this -> isGranted("VIEW_APPRENANT",$brief)) {
+            return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
+        }
+        foreach ($brief -> getPromoBriefs() as $key => $promobrief) {
+            if ($promobrief -> getPromo() === $promo) {
+                return $brief;
+            }
+        }
+        return $this -> json("infos incorrectes", Response::HTTP_NOT_FOUND);
     }
 
 
@@ -229,38 +221,10 @@ class BriefController extends AbstractController
         $result = [];
         foreach ($briefs as $key => $brief) {
             if ($brief -> getstatut() === 'brouillon') {
-                $brf['id'] = $brief -> getId();
-                $brf['titre'] = $brief -> getTitre();
-                $brf['referentiel']['id'] = $brief -> getreferentiel() -> getId();
-                $brf['referentiel']['libelle'] = $brief -> getReferentiel() -> getLibelle();
-                foreach ($brief -> getLivrableAttendus() as $key => $livrableAttendu) {
-                    $livAtt['id'] = $livrableAttendu -> getId();
-                    $livAtt['libelle'] = $livrableAttendu -> getLibelle();
-                    $brf['livrables Attendus'][] = $livAtt;
-                }
-                foreach ($brief -> getNiveaux() as $key => $niveau) {
-                    $niv['id'] = $niveau -> getId();
-                    $niv['libelle'] = $niveau -> getLibelle();
-                    $niv['competence']['id'] = $niveau -> getCompetence() -> getId();
-                    $niv['competence']['libelle'] = $niveau -> getCompetence() -> getLibelle();
-                    $brf['niveaux'][] = $niv;
-                }
-                foreach ($brief -> getTags() as $key => $tag) {
-                    $tg['id'] = $tag -> getId();
-                    $tg['libelle'] = $tag -> getLibelle();
-                    $brf['tags'][] = $tg;
-                }
-                foreach ($brief -> getRessources() as $key => $ressource) {
-                    $rsrce['id'] = $ressource -> getId();
-                    $rsrce['titre'] = $ressource -> getTitre();
-                    $rsrce['url'] = $ressource -> getUrl();
-                    $rsrce['pj'] = $ressource -> getPj();
-                    $brf['ressources'][] = $rsrce;
-                }
-                $result[] = $brf;
+                $result[] = $brief;
             }
         }
-        return !empty($result) ? $this -> json($result, Response::HTTP_OK) : $this -> json("Vous n'avez aucun brouillon", Response::HTTP_NOT_FOUND);
+        return !empty($result) ? $result : $this -> json("Vous n'avez aucun brief brouillon", Response::HTTP_NOT_FOUND);
     }
 
     /**
@@ -283,38 +247,10 @@ class BriefController extends AbstractController
         $result = [];
         foreach ($briefs as $key => $brief) {
             if ($brief -> getstatut() === 'valide') {
-                $brf['id'] = $brief -> getId();
-                $brf['titre'] = $brief -> getTitre();
-                $brf['referentiel']['id'] = $brief -> getreferentiel() -> getId();
-                $brf['referentiel']['libelle'] = $brief -> getReferentiel() -> getLibelle();
-                foreach ($brief -> getLivrableAttendus() as $key => $livrableAttendu) {
-                    $livAtt['id'] = $livrableAttendu -> getId();
-                    $livAtt['libelle'] = $livrableAttendu -> getLibelle();
-                    $brf['livrables Attendus'][] = $livAtt;
-                }
-                foreach ($brief -> getNiveaux() as $key => $niveau) {
-                    $niv['id'] = $niveau -> getId();
-                    $niv['libelle'] = $niveau -> getLibelle();
-                    $niv['competence']['id'] = $niveau -> getCompetence() -> getId();
-                    $niv['competence']['libelle'] = $niveau -> getCompetence() -> getLibelle();
-                    $brf['niveaux'][] = $niv;
-                }
-                foreach ($brief -> getTags() as $key => $tag) {
-                    $tg['id'] = $tag -> getId();
-                    $tg['libelle'] = $tag -> getLibelle();
-                    $brf['tags'][] = $tg;
-                }
-                foreach ($brief -> getRessources() as $key => $ressource) {
-                    $rsrce['id'] = $ressource -> getId();
-                    $rsrce['titre'] = $ressource -> getTitre();
-                    $rsrce['url'] = $ressource -> getUrl();
-                    $rsrce['pj'] = $ressource -> getPj();
-                    $brf['ressources'][] = $rsrce;
-                }
                 $result[] = $brf;
             }
         }
-        return !empty($result) ? $this -> json($result, Response::HTTP_OK) : $this -> json("Vous n'avez aucun brief validé", Response::HTTP_NOT_FOUND);
+        return !empty($result) ? $result : $this -> json("Vous n'avez aucun brief validé", Response::HTTP_NOT_FOUND);
     }
 
 

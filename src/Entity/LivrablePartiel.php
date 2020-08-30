@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use App\Repository\LivrablePartielRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=LivrablePartielRepository::class)
@@ -16,11 +17,13 @@ class LivrablePartiel
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"brief_promo"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"brief_promo"})
      */
     private $libelle;
 
@@ -57,6 +60,7 @@ class LivrablePartiel
 
     /**
      * @ORM\ManyToMany(targetEntity=Niveau::class, inversedBy="livrablePartiels")
+     * @Groups({"brief_promo"})
      */
     private $niveaux;
 

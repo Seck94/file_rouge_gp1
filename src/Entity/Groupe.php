@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "get"={
  *              "method"="GET",
  *              "path"="/admin/groupes" ,
- *              "security"="(is_granted('ROLE_ADMIN'))", 
+ *              "security"="(is_granted('ROLE_FORMATEUR'))", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "normalization_context"={"groups"={"gproupe_read"},"enable_max_depth"=true}
  *          },
@@ -59,13 +59,13 @@ class Groupe
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_read"})
+     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $nom;
 
@@ -82,13 +82,13 @@ class Groupe
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $type;
 
     /**
      * @ORM\ManyToMany(targetEntity=Apprenant::class, mappedBy="groupe",cascade={"persist"})
-     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants"})
+     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      * @ApiSubresource()
      */
     private $apprenants;

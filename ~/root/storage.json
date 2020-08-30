@@ -40,8 +40,7 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Rouvrir l'éditeur fermé",
-                                    "enabled": false
+                                    "label": "&&Rouvrir l'éditeur fermé"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"

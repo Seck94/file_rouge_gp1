@@ -15,7 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ApiResource(
  *     attributes={
  *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
  *      },
  *     collectionOperations={
  *          "add_promo"={
@@ -120,7 +119,7 @@ class Promo
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read"})
+     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
      */
     private $id;
 
@@ -132,7 +131,7 @@ class Promo
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read"})
+     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
      */
     private $titre;
 

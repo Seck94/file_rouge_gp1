@@ -11,9 +11,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *      attributes={
- *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
- *      },
  *      collectionOperations={
  *          "get"={
  *              "path"="admin/niveaux",
@@ -29,14 +26,14 @@ class Niveau
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"competence_read","niveau_read","brief_read"})
+     * @Groups({"competence_read","niveau_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence_read","niveau_read"})
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $libelle;
 
@@ -54,7 +51,7 @@ class Niveau
 
     /**
      * @ORM\ManyToOne(targetEntity=Competence::class, inversedBy="niveau")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $competence;
 

@@ -7,7 +7,13 @@ use App\Repository\CMRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      itemOperations={
+ *          "get"={
+ *              "defaults"={"id"=null}
+ *          }
+ *      }
+ * )
  * @ORM\Entity(repositoryClass=CMRepository::class)
  */
 class CM extends User

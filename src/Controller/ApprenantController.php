@@ -42,7 +42,7 @@ class ApprenantController extends AbstractController
     *     defaults={
     *         "_controller"="\app\Controller\ApprenantController::getApprenantById",
     *         "_api_resource_class"=User::class,
-    *         "_api_collection_operation_name"="get_apprenant"
+    *         "_api_item_operation_name"="get_apprenant"
     *     }
     * )
     */

@@ -1,0 +1,97 @@
+Recherche de git dans : git
+Utilisation de git 2.17.1 à partir de git
+> git rev-parse --git-dir
+Open repository: /opt/lampp/htdocs/file_rouge_gp1
+> git status -z -u
+> git check-ignore -v -z --stdin
+> git symbolic-ref --short HEAD
+> git rev-parse ldab
+> git rev-parse --symbolic-full-name ldab@{u}
+> git rev-list --left-right ldab...refs/remotes/origin/ldab
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/opt/lampp/htdocs/file_rouge_gp1/.git/refs/remotes/origin/ldab', is most likely packed.
+> git config --get commit.template
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s f29a67939aafa742c23f9003229bb2e1840f8a03
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s f29a67939aafa742c23f9003229bb2e1840f8a03
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s f29a67939aafa742c23f9003229bb2e1840f8a03
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s f29a67939aafa742c23f9003229bb2e1840f8a03
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s f29a67939aafa742c23f9003229bb2e1840f8a03
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Controller/ApprenantController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/ApprenantController.php
+> git cat-file -s 92a02fe881428ee272fef6c19ef57d772e212deb
+> git check-ignore -v -z --stdin
+> git show --textconv :src/Entity/Apprenant.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Apprenant.php
+> git cat-file -s def280d9720f394dcea974655d6c98cbfce82bed
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s f29a67939aafa742c23f9003229bb2e1840f8a03
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Controller/GroupeController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/GroupeController.php
+> git cat-file -s 903c8b3011ca4357434ca206320f6231dfafb934
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Controller/AdminController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/AdminController.php
+> git cat-file -s 2fd62e02991eccbae82f95f16c64d18666845cc1
+> git show --textconv :src/Controller/ApprenantController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/ApprenantController.php
+> git cat-file -s 92a02fe881428ee272fef6c19ef57d772e212deb
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s f29a67939aafa742c23f9003229bb2e1840f8a03
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git show --textconv :src/Entity/Brief.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Brief.php
+> git cat-file -s f29a67939aafa742c23f9003229bb2e1840f8a03
+> git show --textconv :src/Entity/Apprenant.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Apprenant.php
+> git cat-file -s def280d9720f394dcea974655d6c98cbfce82bed
+> git show --textconv :src/Controller/ApprenantController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/ApprenantController.php
+> git cat-file -s 92a02fe881428ee272fef6c19ef57d772e212deb
+> git show --textconv :src/Entity/Apprenant.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Entity/Apprenant.php
+> git cat-file -s def280d9720f394dcea974655d6c98cbfce82bed
+> git show --textconv :src/Controller/BriefController.php
+> git ls-files --stage -- /opt/lampp/htdocs/file_rouge_gp1/src/Controller/BriefController.php
+> git cat-file -s 911e6f4f14a5fc38141e42cae9805efe86c07953
+> git check-ignore -v -z --stdin

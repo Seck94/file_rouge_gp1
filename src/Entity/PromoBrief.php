@@ -23,13 +23,13 @@ class PromoBrief
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
      */
     private $statut;
 
@@ -42,12 +42,13 @@ class PromoBrief
     /**
      * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="promoBriefs")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
      */
     private $promo;
 
     /**
      * @ORM\OneToMany(targetEntity=LivrablePartiel::class, mappedBy="promoBrief", orphanRemoval=true)
+     * @Groups({"brief_promo"})
      */
     private $livrablesPartiels;
 

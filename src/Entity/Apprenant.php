@@ -8,6 +8,7 @@ use App\Repository\ApprenantRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ApprenantRepository::class)
@@ -37,6 +38,13 @@ use Doctrine\Common\Collections\ArrayCollection;
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "route_name"="formateur_liste",
  *          },
+ *          "apprenant_promo_brief"={
+ *              "method"="GET",
+ *              "path"="apprenants/promos/{idp}/briefs/{idb}",
+ *              "requirements"={"idp"="\d+"},
+ *              "requirements"={"idg"="\d+"},
+ *              "normalization_context"={"groups"={"apprenant_promo_brief"},"enable_max_depth"=true}
+ *          }
  *     },
  *     
  *     itemOperations={
@@ -87,16 +95,19 @@ class Apprenant extends User
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="apprenants",cascade={"persist"})
+     * @Groups({"apprenant_promo_brief"})
      */
     private $groupe;
 
     /**
      * @ORM\OneToMany(targetEntity=Livrable::class, mappedBy="apprenant", orphanRemoval=true)
+     * @Groups({"brief_promo","apprenant_promo_brief"})
      */
     private $livrables;
 
     /**
      * @ORM\OneToMany(targetEntity=LivrableRendu::class, mappedBy="apprenant", orphanRemoval=true)
+     * @Groups({"brief_promo"})
      */
     private $livrableRendus;
 

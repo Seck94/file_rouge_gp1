@@ -16,13 +16,13 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
  *      },
  *     collectionOperations={
- *          "brief_formateur"={
+ *          "all_briefs"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')",
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="formateur/briefs",
+ *              "normalization_context"={"groups"={"all_brief_read"},"enable_max_depth"=true}
  *          },
- *          "get",
  *          "brief_groupe_promo"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')",
@@ -30,32 +30,55 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *              "path"="formateur/promos/{idp}/groupes/{idg}/briefs",
  *              "requirements"={"idp"="\d+"},
  *              "requirements"={"idg"="\d+"},
+ *              "normalization_context"={"groups"={"brief_groupe_promo"},"enable_max_depth"=true}
+ *          },
+ *          "apprenant_promo_brief"={
+ *              "method"="GET",
+ *              "path"="apprenants/promos/{idp}/briefs/{idb}",
+ *              "requirements"={"idp"="\d+"},
+ *              "requirements"={"idb"="\d+"},
+ *              "normalization_context"={"groups"={"apprenant_promo_brief"},"enable_max_depth"=true}
+ *          },
+ *          "promo_apprenant_brief"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_APPRENANT')",
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="apprenants/promos/{id}/briefs",
+ *              "requirements"={"id"="\d+"},
+ *              "normalization_context"={"groups"={"brief_apprenant_promo"},"enable_max_depth"=true}
  *          },
  *          "promo_id_brief"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')",
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="formateur/promos/{id}/briefs",
+ *              "path"="formateurs/promos/{idp}/briefs",
  *              "requirements"={"idp"="\d+"},
- *              "requirements"={"idg"="\d+"},
+ *              "normalization_context"={"groups"={"promo_id_brief"},"enable_max_depth"=true}
  *          },
  *          "briefs_brouillon"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR')",
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="formateur/briefs/brouillons",
- *              "requirements"={"idp"="\d+"},
- *              "requirements"={"idg"="\d+"},
+ *              "normalization_context"={"groups"={"brief_brouillon"},"enable_max_depth"=true}
  *          },
  *          "briefs_valide"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR')",
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="formateur/briefs/valides",
- *              "requirements"={"idp"="\d+"},
- *              "requirements"={"idg"="\d+"},
+ *              "normalization_context"={"groups"={"brief_valide"},"enable_max_depth"=true}
  *          }
- *     }
+ *     },
+ *      itemOperations={
+ *          "brief_promo"={
+ *              "method"="GET",
+ *              "path"="formateurs/promos/{idp}/briefs/{id}",
+ *              "requirements"={"idp"="\d+"},
+ *              "requirements"={"id"="\d+"},
+ *              "normalization_context"={"groups"={"brief_promo"},"enable_max_depth"=true}
+ *          }
+ *      }
  * )
  * @ORM\Entity(repositoryClass=BriefRepository::class)
  */
@@ -65,55 +88,55 @@ class Brief
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_promo"})
      */
     private $langue;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $titre;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_promo"})
      */
     private $contexte;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $livrablesAttendus;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_promo"})
      */
     private $modalitesPedagogiques;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_promo"})
      */
     private $criteresDePerformance;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_promo"})
      */
     private $modalitesEvaluation;
 
@@ -124,51 +147,51 @@ class Brief
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $dateCreation;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $livrableAttendus;
 
     /**
      * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief", orphanRemoval=true)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $ressources;
 
     /**
      * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="brief", orphanRemoval=true)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
      */
     private $promoBriefs;
 
     /**
      * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="briefs")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
      */
     private $referentiel;
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $niveaux;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $tags;
 
@@ -176,13 +199,13 @@ class Brief
      * @ORM\ManyToOne(targetEntity=Formateur::class, inversedBy="briefs")
      * @ORM\JoinColumn(nullable=false)
      * @MaxDepth(2)
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $formateur;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
-     * @Groups({"brief_read"})
+     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $groupes;
 

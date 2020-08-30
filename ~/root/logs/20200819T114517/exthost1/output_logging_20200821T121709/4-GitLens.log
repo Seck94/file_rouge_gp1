@@ -1,2 +1,0 @@
-[2020-08-21 12:56:51:420] Warning(/usr/bin/git -c core.quotepath=false -c color.ui=false -c log.showSignature=false show 960ccae1e44d1ae1d49e02acf1c4593534d41638:./src/Entity/Brief.php --): 
-[2020-08-21 19:59:33:220] Warning(/usr/bin/git -c core.quotepath=false -c color.ui=false -c log.showSignature=false show fad588848cede7e6f0083bb4d4309318a007f95e:./src/Controller/FormateurController.php --): 
