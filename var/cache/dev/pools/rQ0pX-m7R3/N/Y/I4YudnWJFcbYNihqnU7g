@@ -17,7 +17,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
-        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -34,7 +33,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'email',
                 'statut',
                 'profil',
-                'promo',
                 'groupecompetence',
                 'lastLogin',
                 'commentaireGenerals',
@@ -52,29 +50,22 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'email' => $o[8],
                     'statut' => $o[9],
                     'profil' => $o[10],
-                    'promo' => $o[11],
-                    'groupecompetence' => $o[12],
-                    'lastLogin' => $o[13],
-                    'commentaireGenerals' => $o[14],
-                    'salt' => $o[15],
+                    'groupecompetence' => $o[11],
+                    'lastLogin' => $o[12],
+                    'commentaireGenerals' => $o[13],
+                    'salt' => $o[14],
                 ],
             ],
             'groups' => [
                 2 => [
                     'user_read',
+                    'briefs_read',
                 ],
                 [
                     'user_details_read',
                 ],
-                6 => [
-                    'user_read',
-                    'profil_read',
-                    'promo_read',
-                    'gprincipal_read',
-                    'gproupe_read',
-                    'gproupe_apprenant_read',
-                    'promo_groupe_apprenants',
-                    'promo_groupe_formateurs',
+                5 => [
+                    'briefs_read',
                 ],
                 [
                     'user_read',
@@ -85,6 +76,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'gproupe_apprenant_read',
                     'promo_groupe_apprenants',
                     'promo_groupe_formateurs',
+                    'briefs_read',
                 ],
                 [
                     'user_read',
@@ -95,15 +87,24 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'gproupe_apprenant_read',
                     'promo_groupe_apprenants',
                     'promo_groupe_formateurs',
+                    'briefs_read',
+                ],
+                [
+                    'user_read',
+                    'profil_read',
+                    'promo_read',
+                    'gprincipal_read',
+                    'gproupe_read',
+                    'gproupe_apprenant_read',
+                    'promo_groupe_apprenants',
+                    'promo_groupe_formateurs',
+                    'briefs_read',
                 ],
                 [
                     'user_read',
                 ],
                 [
                     'user_read',
-                ],
-                [
-                    'user_details_read',
                 ],
                 [
                     'user_details_read',

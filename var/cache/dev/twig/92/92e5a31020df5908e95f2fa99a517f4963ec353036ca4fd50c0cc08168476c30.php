@@ -136,6 +136,6 @@ class __TwigTemplate_0790843b3ae6a9d91a9b91455c7fd6d7f77ef9d0362281f170559d4e8d1
     </ul>
 </div>
 {% endblock %}
-", "groupetag/index.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/templates/groupetag/index.html.twig");
+", "groupetag/index.html.twig", "/home/sms/file_rouge_gp1/templates/groupetag/index.html.twig");
     }
 }

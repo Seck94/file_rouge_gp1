@@ -20,7 +20,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'brief',
                 'promo',
                 'livrablesPartiels',
-                'promoBriefApprenant',
+                'promoBriefApprenants',
             ],
             'attributesMetadata' => [
                 [
@@ -29,7 +29,15 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'brief' => $o[3],
                     'promo' => $o[4],
                     'livrablesPartiels' => $o[5],
-                    'promoBriefApprenant' => $o[6],
+                    'promoBriefApprenants' => $o[6],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'briefs_read',
+                ],
+                3 => [
+                    'briefs_read',
                 ],
             ],
         ],

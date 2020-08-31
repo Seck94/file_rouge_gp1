@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PromoBriefApprenantRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\PromoBriefApprenantRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PromoBriefApprenantRepository::class)
@@ -16,21 +17,24 @@ class PromoBriefApprenant
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"briefs_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"briefs_read"})
      */
     private $statut;
 
     /**
-     * @ORM\OneToMany(targetEntity=Apprenant::class, mappedBy="promoBriefApprenant")
+     * @ORM\ManyToOne(targetEntity=Apprenant::class, inversedBy="promoBriefApprenants")
      */
     private $apprenant;
 
     /**
-     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="promoBriefApprenant")
+     * @ORM\ManyToOne(targetEntity=PromoBrief::class, inversedBy="promoBriefApprenants")
+     * @Groups({"briefs_read"})
      */
     private $promoBrief;
 
@@ -57,65 +61,29 @@ class PromoBriefApprenant
         return $this;
     }
 
-    /**
-     * @return Collection|Apprenant[]
-     */
-    public function getApprenant(): Collection
+    public function getApprenant(): ?Apprenant
     {
         return $this->apprenant;
     }
 
-    public function addApprenant(Apprenant $apprenant): self
+    public function setApprenant(?Apprenant $apprenant): self
     {
-        if (!$this->apprenant->contains($apprenant)) {
-            $this->apprenant[] = $apprenant;
-            $apprenant->setPromoBriefApprenant($this);
-        }
+        $this->apprenant = $apprenant;
 
         return $this;
     }
 
-    public function removeApprenant(Apprenant $apprenant): self
-    {
-        if ($this->apprenant->contains($apprenant)) {
-            $this->apprenant->removeElement($apprenant);
-            // set the owning side to null (unless already changed)
-            if ($apprenant->getPromoBriefApprenant() === $this) {
-                $apprenant->setPromoBriefApprenant(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|PromoBrief[]
-     */
-    public function getPromoBrief(): Collection
+    public function getPromoBrief(): ?PromoBrief
     {
         return $this->promoBrief;
     }
 
-    public function addPromoBrief(PromoBrief $promoBrief): self
+    public function setPromoBrief(?PromoBrief $promoBrief): self
     {
-        if (!$this->promoBrief->contains($promoBrief)) {
-            $this->promoBrief[] = $promoBrief;
-            $promoBrief->setPromoBriefApprenant($this);
-        }
+        $this->promoBrief = $promoBrief;
 
         return $this;
     }
 
-    public function removePromoBrief(PromoBrief $promoBrief): self
-    {
-        if ($this->promoBrief->contains($promoBrief)) {
-            $this->promoBrief->removeElement($promoBrief);
-            // set the owning side to null (unless already changed)
-            if ($promoBrief->getPromoBriefApprenant() === $this) {
-                $promoBrief->setPromoBriefApprenant(null);
-            }
-        }
 
-        return $this;
-    }
 }

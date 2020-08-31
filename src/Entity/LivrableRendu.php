@@ -2,13 +2,35 @@
 
 namespace App\Entity;
 
-use App\Repository\LivrableRenduRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\LivrableRenduRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=LivrableRenduRepository::class)
+ * @ApiResource(
+ *  *     attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"groups"={"profil_read","profil_details_read"},"enable_max_depth"=true}
+ *      },
+ *    
+ *     
+ *     itemOperations={
+ *         "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="apprenants_livrablepartiels/{id}",
+ *         }, 
+ *         
+ *         "put"={
+ *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="apprenants/{id}/livrablepartiels/{num}",
+ *         },
+ *     },
+ * )
  */
 class LivrableRendu
 {

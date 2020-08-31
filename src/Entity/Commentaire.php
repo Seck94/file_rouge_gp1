@@ -2,11 +2,42 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentaireRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommentaireRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=CommentaireRepository::class)
+ * @ApiResource(
+*      collectionOperations={
+*         "postedByFormateur"={
+*           "method"="POST",
+*          "security"="is_granted('ROLE_FORMATEUR') ",
+*          "security_message"="Seul un formateur peut faire cette action.",
+*          "path"="formateurs/livrablepartiels/{id}/commentaires"
+*           },
+*           "postedByApprenant"={
+*           "method"="POST",
+*          "security"="is_granted('ROLE_APPRENANT') ",
+*          "security_message"="Seul un Apprenant peut faire cette action.",
+*          "path"="apprenants/livrablepartiels/{id}/commentaires"
+*           },
+*          "get"={
+*              "security"="is_granted('ROLE_FORMATEUR')", 
+*              "security_message"="Vous n'avez pas acces a cette ressource.",
+*              "path"="formateurs/livrablepartiels/{id}/commentaires"
+*              }
+*     },
+*       itemOperations={
+*         "get"={
+*              "security"="is_granted('ROLE_FORMATEUR')",
+*              "security_message"="Vous n'avez pas ces privileges.",
+*               "path"="formateurs/livrablepartiels/commentaires/{id}"
+*             
+*              
+*          }
+*         }
+*)
  */
 class Commentaire
 {
@@ -40,7 +71,7 @@ class Commentaire
 
     /**
      * @ORM\ManyToOne(targetEntity=Formateur::class, inversedBy="commentaires")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $formateur;
 

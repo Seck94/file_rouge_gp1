@@ -2,13 +2,47 @@
 
 namespace App\Entity;
 
-use App\Repository\PromoBriefRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PromoBriefRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PromoBriefRepository::class)
+ * @ApiResource(
+ *     attributes={
+ *          "security"="is_granted('ROLE_ADMIN')",
+ *          "pagination_items_per_page"=10, 
+ *           "normalization_context"={"groups"={"user_read","user_details_read","gprincipal_read"}}
+ *     },
+ * 
+ *     collectionOperations={
+ *       
+ *          "add_PromoBrief"={
+ *              "method"="POST",
+ *              "path"="/formateurs/promobriefs",
+ *              "security"="is_granted('ROLE_FORMATEUR')",
+ *              "security_message"="Vous n'avez pas le privilege"
+ *       }
+ *    },
+ *      itemOperations={
+ *          "PUT"={
+ *          
+ *              "path"="/formateurs/promo/{id}/brief/{num}/livrablePartiels",
+ *              "security"="is_granted('ROLE_FORMATEUR')",
+ *              "security_message"="Vous n'avez pas le privilege"
+ *       },
+ *        "get"={
+ *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="/formateurs/promo_brief/{id}",
+
+ *          },
+ *    }  
+ *      
+ * )
  */
 class PromoBrief
 {
@@ -16,6 +50,7 @@ class PromoBrief
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"briefs_read"})
      */
     private $id;
 
@@ -27,6 +62,7 @@ class PromoBrief
     /**
      * @ORM\ManyToOne(targetEntity=Brief::class, inversedBy="promoBriefs")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"briefs_read"})
      */
     private $brief;
 
@@ -42,13 +78,16 @@ class PromoBrief
     private $livrablesPartiels;
 
     /**
-     * @ORM\ManyToOne(targetEntity=PromoBriefApprenant::class, inversedBy="promoBrief")
+     * @ORM\OneToMany(targetEntity=PromoBriefApprenant::class, mappedBy="promoBrief")
      */
-    private $promoBriefApprenant;
+    private $promoBriefApprenants;
+
+ 
 
     public function __construct()
     {
         $this->livrablesPartiels = new ArrayCollection();
+        $this->promoBriefApprenants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,15 +162,36 @@ class PromoBrief
         return $this;
     }
 
-    public function getPromoBriefApprenant(): ?PromoBriefApprenant
+    /**
+     * @return Collection|PromoBriefApprenant[]
+     */
+    public function getPromoBriefApprenants(): Collection
     {
-        return $this->promoBriefApprenant;
+        return $this->promoBriefApprenants;
     }
 
-    public function setPromoBriefApprenant(?PromoBriefApprenant $promoBriefApprenant): self
+    public function addPromoBriefApprenant(PromoBriefApprenant $promoBriefApprenant): self
     {
-        $this->promoBriefApprenant = $promoBriefApprenant;
+        if (!$this->promoBriefApprenants->contains($promoBriefApprenant)) {
+            $this->promoBriefApprenants[] = $promoBriefApprenant;
+            $promoBriefApprenant->setPromoBrief($this);
+        }
 
         return $this;
     }
+
+    public function removePromoBriefApprenant(PromoBriefApprenant $promoBriefApprenant): self
+    {
+        if ($this->promoBriefApprenants->contains($promoBriefApprenant)) {
+            $this->promoBriefApprenants->removeElement($promoBriefApprenant);
+            // set the owning side to null (unless already changed)
+            if ($promoBriefApprenant->getPromoBrief() === $this) {
+                $promoBriefApprenant->setPromoBrief(null);
+            }
+        }
+
+        return $this;
+    }
+
+  
 }

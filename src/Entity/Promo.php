@@ -185,12 +185,6 @@ class Promo
     private $formateurs;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="promo")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $user;
-
-    /**
      * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="promo", orphanRemoval=true, cascade={"persist"})
      * @Groups({"promo_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      * @ApiSubresource()
@@ -220,12 +214,18 @@ class Promo
      */
     private $statistiquesCompetences;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Apprenant::class, mappedBy="promo")
+     */
+    private $apprenants;
+
     public function __construct()
     {
         $this->formateurs = new ArrayCollection();
         $this->groupes = new ArrayCollection();
         $this->promoBriefs = new ArrayCollection();
         $this->statistiquesCompetences = new ArrayCollection();
+        $this->apprenants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -389,17 +389,6 @@ class Promo
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Groupe[]
@@ -517,6 +506,37 @@ class Promo
             // set the owning side to null (unless already changed)
             if ($statistiquesCompetence->getPromo() === $this) {
                 $statistiquesCompetence->setPromo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Apprenant[]
+     */
+    public function getApprenants(): Collection
+    {
+        return $this->apprenants;
+    }
+
+    public function addApprenant(Apprenant $apprenant): self
+    {
+        if (!$this->apprenants->contains($apprenant)) {
+            $this->apprenants[] = $apprenant;
+            $apprenant->setPromo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApprenant(Apprenant $apprenant): self
+    {
+        if ($this->apprenants->contains($apprenant)) {
+            $this->apprenants->removeElement($apprenant);
+            // set the owning side to null (unless already changed)
+            if ($apprenant->getPromo() === $this) {
+                $apprenant->setPromo(null);
             }
         }
 

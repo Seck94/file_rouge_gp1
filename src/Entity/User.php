@@ -95,7 +95,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","briefs_read"})
      */
     private $username;
 
@@ -112,18 +112,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="blob", nullable=true)
+     * @Groups({"briefs_read"})
      */
     private $avatar;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","briefs_read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","briefs_read"})
      */
     private $nom;
 
@@ -132,7 +133,7 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' est invalide."
      * )
-     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
+     * @Groups({"user_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","briefs_read"})
      */
     private $email;
 
@@ -149,12 +150,7 @@ class User implements UserInterface
      */
     private $profil;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="user", orphanRemoval=true)
-     * @Groups({"user_details_read"})
-     */
-    private $promo;
-
+  
     /**
      * @ORM\OneToMany(targetEntity=Groupecompetence::class, mappedBy="user", orphanRemoval=true)
      * @Groups({"user_details_read"})
@@ -322,37 +318,6 @@ class User implements UserInterface
     public function setProfil(?Profil $profil): self
     {
         $this->profil = $profil;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Promo[]
-     */
-    public function getPromo(): Collection
-    {
-        return $this->promo;
-    }
-
-    public function addPromo(Promo $promo): self
-    {
-        if (!$this->promo->contains($promo)) {
-            $this->promo[] = $promo;
-            $promo->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePromo(Promo $promo): self
-    {
-        if ($this->promo->contains($promo)) {
-            $this->promo->removeElement($promo);
-            // set the owning side to null (unless already changed)
-            if ($promo->getUser() === $this) {
-                $promo->setUser(null);
-            }
-        }
 
         return $this;
     }

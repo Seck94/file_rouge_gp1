@@ -66,10 +66,10 @@ class Referentiel extends \App\Entity\Referentiel implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'presentation', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'programme', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'critereAdmission', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'critereEvaluation', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'promos', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'groupecompetence'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'presentation', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'programme', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'critereAdmission', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'critereEvaluation', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'promos', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'groupecompetence', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'briefs', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'statistiquesCompetences'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'presentation', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'programme', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'critereAdmission', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'critereEvaluation', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'promos', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'groupecompetence'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'presentation', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'programme', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'critereAdmission', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'critereEvaluation', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'promos', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'groupecompetence', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'briefs', '' . "\0" . 'App\\Entity\\Referentiel' . "\0" . 'statistiquesCompetences'];
     }
 
     /**
@@ -354,6 +354,72 @@ class Referentiel extends \App\Entity\Referentiel implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeGroupecompetence', [$groupecompetence]);
 
         return parent::removeGroupecompetence($groupecompetence);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBriefs(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBriefs', []);
+
+        return parent::getBriefs();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addBrief(\App\Entity\Brief $brief): \App\Entity\Referentiel
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addBrief', [$brief]);
+
+        return parent::addBrief($brief);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeBrief(\App\Entity\Brief $brief): \App\Entity\Referentiel
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeBrief', [$brief]);
+
+        return parent::removeBrief($brief);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatistiquesCompetences(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatistiquesCompetences', []);
+
+        return parent::getStatistiquesCompetences();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addStatistiquesCompetence(\App\Entity\StatistiquesCompetences $statistiquesCompetence): \App\Entity\Referentiel
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addStatistiquesCompetence', [$statistiquesCompetence]);
+
+        return parent::addStatistiquesCompetence($statistiquesCompetence);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeStatistiquesCompetence(\App\Entity\StatistiquesCompetences $statistiquesCompetence): \App\Entity\Referentiel
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeStatistiquesCompetence', [$statistiquesCompetence]);
+
+        return parent::removeStatistiquesCompetence($statistiquesCompetence);
     }
 
 }

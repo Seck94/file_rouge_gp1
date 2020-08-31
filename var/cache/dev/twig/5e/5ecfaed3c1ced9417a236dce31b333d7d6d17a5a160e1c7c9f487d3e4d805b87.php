@@ -136,6 +136,6 @@ class __TwigTemplate_5cff9a449786fd77a4bed9c183cee2d0f8264bc3e943e6f3605627457f1
     </ul>
 </div>
 {% endblock %}
-", "competence/index.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/templates/competence/index.html.twig");
+", "competence/index.html.twig", "/home/sms/file_rouge_gp1/templates/competence/index.html.twig");
     }
 }

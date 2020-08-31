@@ -11,6 +11,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -25,6 +26,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'type',
                 'livrableRendus',
                 'promoBrief',
+                'niveaux',
             ],
             'attributesMetadata' => [
                 [
@@ -36,6 +38,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'type' => $o[6],
                     'livrableRendus' => $o[7],
                     'promoBrief' => $o[8],
+                    'niveaux' => $o[9],
                 ],
             ],
         ],

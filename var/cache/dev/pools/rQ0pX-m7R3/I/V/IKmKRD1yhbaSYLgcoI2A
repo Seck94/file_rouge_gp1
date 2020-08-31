@@ -39,12 +39,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'dateFinReelle',
                 'etat',
                 'formateurs',
-                'user',
                 'groupes',
                 'referentiel',
                 'promoBriefs',
                 'filDeDiscussion',
                 'statistiquesCompetences',
+                'apprenants',
             ],
             'attributesMetadata' => [
                 [
@@ -60,12 +60,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'dateFinReelle' => $o[10],
                     'etat' => $o[11],
                     'formateurs' => $o[12],
-                    'user' => $o[13],
-                    'groupes' => $o[14],
-                    'referentiel' => $o[15],
-                    'promoBriefs' => $o[16],
-                    'filDeDiscussion' => $o[17],
-                    'statistiquesCompetences' => $o[18],
+                    'groupes' => $o[13],
+                    'referentiel' => $o[14],
+                    'promoBriefs' => $o[15],
+                    'filDeDiscussion' => $o[16],
+                    'statistiquesCompetences' => $o[17],
+                    'apprenants' => $o[18],
                 ],
             ],
             'groups' => [
@@ -104,7 +104,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 11 => [
                     'promo_read',
                 ],
-                14 => [
+                13 => [
                     'promo_read',
                     'promo_groupe_apprenants',
                     'promo_groupe_formateurs',

@@ -33,12 +33,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 1 => [
                     'competence_read',
                     'promo_referentiel',
+                    'user_read',
                 ],
                 [
                     'Grpcompetence_read',
                     'competence_read',
                     'Grpcompetence_competence_read',
                     'promo_referentiel',
+                    'user_read',
                 ],
                 4 => [
                     'competence_read',

@@ -5,10 +5,12 @@ namespace App\Entity;
 use App\Repository\LivrablePartielRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=LivrablePartielRepository::class)
+ *  @ApiResource()
  */
 class LivrablePartiel
 {
@@ -60,10 +62,16 @@ class LivrablePartiel
      */
     private $niveaux;
 
+   
+
+    
+
     public function __construct()
     {
         $this->livrableRendus = new ArrayCollection();
         $this->niveaux = new ArrayCollection();
+       
+      
     }
 
     public function getId(): ?int
@@ -199,4 +207,8 @@ class LivrablePartiel
 
         return $this;
     }
+
+    
+
+   
 }

@@ -133,6 +133,6 @@ class __TwigTemplate_8d28e634ef9ea13bca623401e2b715550141584bcf6e620a9202498c2b5
 
 </body>
 </html>
-", "@ApiPlatform/Graphiql/index.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Resources/views/Graphiql/index.html.twig");
+", "@ApiPlatform/Graphiql/index.html.twig", "/home/sms/file_rouge_gp1/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Resources/views/Graphiql/index.html.twig");
     }
 }

@@ -6,6 +6,7 @@ use Faker\Factory;
 use App\Entity\Tag;
 use App\Entity\User;
 use App\Entity\Niveau;
+use App\Entity\Livrablepartiel;
 use App\Entity\Profil;
 use App\Entity\Apprenant;
 use App\Entity\Formateur;
@@ -93,6 +94,8 @@ class AppFixtures extends Fixture
             $manager->persist($tag);
             $manager->flush();
         }
+
+    
 
         for ($i=0; $i < 3; $i++) { 
             $competence = new Competence();

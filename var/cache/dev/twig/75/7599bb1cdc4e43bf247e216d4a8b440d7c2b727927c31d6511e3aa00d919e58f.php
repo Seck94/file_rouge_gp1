@@ -136,6 +136,6 @@ class __TwigTemplate_cc73abcf2076e5c23dbe1d275c762e6720bd488424e6028129bd13f6799
     </ul>
 </div>
 {% endblock %}
-", "groupe/index.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/templates/groupe/index.html.twig");
+", "groupe/index.html.twig", "/home/sms/file_rouge_gp1/templates/groupe/index.html.twig");
     }
 }

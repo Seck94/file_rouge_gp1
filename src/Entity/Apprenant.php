@@ -8,6 +8,7 @@ use App\Repository\ApprenantRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ApprenantRepository::class)
@@ -82,11 +83,13 @@ class Apprenant extends User
 
     /**
      * @ORM\ManyToOne(targetEntity=Profilsortie::class, inversedBy="apprenants")
+     * @Groups({"user_read"})
      */
     private $profilsortie;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="apprenants",cascade={"persist"})
+     * 
      */
     private $groupe;
 
@@ -101,14 +104,23 @@ class Apprenant extends User
     private $livrableRendus;
 
     /**
-     * @ORM\ManyToOne(targetEntity=PromoBriefApprenant::class, inversedBy="apprenant")
-     */
-    private $promoBriefApprenant;
-
-    /**
      * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="apprenant", orphanRemoval=true)
+     * @Groups({"user_read"})
      */
     private $statistiquesCompetences;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="apprenants")
+     */
+    private $promo;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PromoBriefApprenant::class, mappedBy="apprenant")
+     * @Groups({"briefs_read"})
+     */
+    private $promoBriefApprenants;
+
+
 
     public function __construct()
     {
@@ -116,6 +128,8 @@ class Apprenant extends User
         $this->livrables = new ArrayCollection();
         $this->livrableRendus = new ArrayCollection();
         $this->statistiquesCompetences = new ArrayCollection();
+        $this->promoBriefApprenants = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -223,17 +237,6 @@ class Apprenant extends User
         return $this;
     }
 
-    public function getPromoBriefApprenant(): ?PromoBriefApprenant
-    {
-        return $this->promoBriefApprenant;
-    }
-
-    public function setPromoBriefApprenant(?PromoBriefApprenant $promoBriefApprenant): self
-    {
-        $this->promoBriefApprenant = $promoBriefApprenant;
-
-        return $this;
-    }
 
     /**
      * @return Collection|StatistiquesCompetences[]
@@ -265,4 +268,50 @@ class Apprenant extends User
 
         return $this;
     }
+
+    public function getPromo(): ?Promo
+    {
+        return $this->promo;
+    }
+
+    public function setPromo(?Promo $promo): self
+    {
+        $this->promo = $promo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PromoBriefApprenant[]
+     */
+    public function getPromoBriefApprenants(): Collection
+    {
+        return $this->promoBriefApprenants;
+    }
+
+    public function addPromoBriefApprenant(PromoBriefApprenant $promoBriefApprenant): self
+    {
+        if (!$this->promoBriefApprenants->contains($promoBriefApprenant)) {
+            $this->promoBriefApprenants[] = $promoBriefApprenant;
+            $promoBriefApprenant->setApprenant($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromoBriefApprenant(PromoBriefApprenant $promoBriefApprenant): self
+    {
+        if ($this->promoBriefApprenants->contains($promoBriefApprenant)) {
+            $this->promoBriefApprenants->removeElement($promoBriefApprenant);
+            // set the owning side to null (unless already changed)
+            if ($promoBriefApprenant->getApprenant() === $this) {
+                $promoBriefApprenant->setApprenant(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
+
 }
