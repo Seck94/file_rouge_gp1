@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *      attributes={
- *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
+ *          "normalization_context"={"enable_max_depth"=true}
  *      },
  * )
  * @ORM\Entity(repositoryClass=LivrableAttenduRepository::class)
@@ -33,10 +33,14 @@ class LivrableAttendu
      */
     private $libelle;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Brief::class, inversedBy="livrableAttendus")
-     */
+    // a enlever
     private $briefs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BriefLivrableAttendu::class, mappedBy="LivrableAttendu", orphanRemoval=true)
+     */
+    private $briefLivrableAttendus;
+
 
     /**
      * @ORM\OneToMany(targetEntity=Livrable::class, mappedBy="livrableAttendu", orphanRemoval=true)
@@ -48,6 +52,7 @@ class LivrableAttendu
     {
         $this->briefs = new ArrayCollection();
         $this->livrables = new ArrayCollection();
+        $this->briefLivrableAttendus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,26 +73,32 @@ class LivrableAttendu
     }
 
     /**
-     * @return Collection|Brief[]
+     * @return Collection|BriefLivrableAttendu[]
      */
-    public function getBriefs(): Collection
+    public function getBriefLivrableAttendus(): Collection
     {
-        return $this->briefs;
+        return $this->briefLivrableAttendus;
     }
 
-    public function addBrief(Brief $brief): self
+    public function addBriefLivrableAttendu(BriefLivrableAttendu $briefLivrableAttendu): self
     {
-        if (!$this->briefs->contains($brief)) {
-            $this->briefs[] = $brief;
+        if (!$this->briefLivrableAttendus->contains($briefLivrableAttendu)) {
+            $this->briefLivrableAttendus[] = $briefLivrableAttendu;
+            $briefLivrableAttendu->setLivrableAttendu($this);
         }
 
         return $this;
     }
 
-    public function removeBrief(Brief $brief): self
+
+    public function removeBriefLivrableAttendu(BriefLivrableAttendu $briefLivrableAttendu): self
     {
-        if ($this->briefs->contains($brief)) {
-            $this->briefs->removeElement($brief);
+        if ($this->briefLivrableAttendus->contains($briefLivrableAttendu)) {
+            $this->briefLivrableAttendus->removeElement($briefLivrableAttendu);
+            // set the owning side to null (unless already changed)
+            if ($briefLivrableAttendu->getLivrableAttendu() === $this) {
+                $briefLivrableAttendu->setLivrableAttendu(null);
+            }
         }
 
         return $this;
@@ -105,7 +116,7 @@ class LivrableAttendu
     {
         if (!$this->livrables->contains($livrable)) {
             $this->livrables[] = $livrable;
-            $livrable->setLivrableAttendu($this);
+            $livrable->setLivrableattendu($this);
         }
 
         return $this;
@@ -116,8 +127,8 @@ class LivrableAttendu
         if ($this->livrables->contains($livrable)) {
             $this->livrables->removeElement($livrable);
             // set the owning side to null (unless already changed)
-            if ($livrable->getLivrableAttendu() === $this) {
-                $livrable->setLivrableAttendu(null);
+            if ($livrable->getLivrableattendu() === $this) {
+                $livrable->setLivrableattendu(null);
             }
         }
 

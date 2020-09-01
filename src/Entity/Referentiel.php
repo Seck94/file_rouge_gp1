@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- * *     attributes={
+ *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "pagination_items_per_page"=10, 
  *     },
@@ -44,7 +44,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/referentiels/groupecompetences",
  *              "normalization_context"={"groups"={"referentiel_groupecompetence_read","referentiel_read","user_details_read"}}
- *              },
+ *              }
  *     },
  *     
  *     itemOperations={
@@ -70,7 +70,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "path"="admin/referentiels/{id}",
  *          },
- *     },
+ *     }
  * )
  * @ORM\Entity(repositoryClass=ReferentielRepository::class)
  */

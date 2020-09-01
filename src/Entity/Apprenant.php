@@ -37,21 +37,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="(is_granted('ROLE_ADMIN'))", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "route_name"="formateur_liste",
- *          },
- *          "apprenant_promo_brief"={
- *              "method"="GET",
- *              "path"="apprenants/promos/{idp}/briefs/{idb}",
- *              "requirements"={"idp"="\d+"},
- *              "requirements"={"idg"="\d+"},
- *              "normalization_context"={"groups"={"apprenant_promo_brief"},"enable_max_depth"=true}
  *          }
- *     },
+ *      },
  *     
  *     itemOperations={
  *         "get"={
- *              "security"="is_granted('ROLE_ADMIN')", 
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "path"="admin/apprenants/{id}",
+ *              "normalization_context"={"groups"={"apprenant_read"}},
  *              "defaults"={"id"=null}
  *          }, 
  *          "get_apprenant"={
@@ -95,7 +89,7 @@ class Apprenant extends User
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="apprenants",cascade={"persist"})
-     * @Groups({"apprenant_promo_brief"})
+     * @Groups({"apprenant_read"})
      */
     private $groupe;
 
@@ -107,17 +101,18 @@ class Apprenant extends User
 
     /**
      * @ORM\OneToMany(targetEntity=LivrableRendu::class, mappedBy="apprenant", orphanRemoval=true)
-     * @Groups({"brief_promo"})
+     * @Groups({"brief_promo","apprenant_promo_brief"})
      */
     private $livrableRendus;
 
     /**
-     * @ORM\ManyToOne(targetEntity=PromoBriefApprenant::class, inversedBy="apprenant")
+     * @ORM\OneToMany(targetEntity=PromoBriefApprenant::class, mappedBy="apprenant")
      */
     private $promoBriefApprenant;
 
     /**
      * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="apprenant", orphanRemoval=true)
+     * @Groups({"apprenant_read"})
      */
     private $statistiquesCompetences;
 

@@ -97,8 +97,20 @@ class PromoController extends AbstractController
                                       -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
                                       -> setEmail(strtolower($val['email']))
                                       -> setProfil($profil);
-                                      $manager->persist($apprenant);     
-                                      $manager->flush();
+                            $statistiquesCompetence = new StatistiquesCompetences();
+                            $statistiquesCompetence -> setApprenant($apprenant)
+                                                    -> setReferentiel($Referentiel)
+                                                    -> setPromo($Promo);
+                            foreach ($referentiel -> getGroupecompetence() as $key => $Groupecompetence) {
+                                foreach ($GroupeCompetence -> getCompetence() as $key => $Competence) {
+                                    $statistiquesCompetence -> setCompetence($Competence);
+                                    $manager->persist($statistiquesCompetence);      
+                                    $manager->flush();
+                                }
+                            }
+                                    $manager->persist($apprenant);
+                                    $manager->persist($statistiquesCompetence);      
+                                    $manager->flush();
                         }
                         $message = (new \Swift_Message('Ajout'))
                         ->setFrom('admin@gmail.com')
@@ -151,8 +163,19 @@ class PromoController extends AbstractController
                                       -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
                                       -> setEmail(strtolower($emails_exel[$i][$j]))
                                       -> setProfil($profil);
-                                      $manager->persist($apprenant);     
-                                      $manager->flush();
+                            $statistiquesCompetence = new StatistiquesCompetences();
+                            $statistiquesCompetence -> setApprenant($apprenant)
+                                                    -> setReferentiel($Referentiel)
+                                                    -> setPromo($Promo);
+                            foreach ($referentiel -> getGroupecompetence() as $key => $Groupecompetence) {
+                                foreach ($GroupeCompetence -> getCompetence() as $key => $Competence) {
+                                    $statistiquesCompetence -> setCompetence($Competence);
+                                    $manager->persist($statistiquesCompetence);      
+                                    $manager->flush();
+                                }
+                            }
+                                    $manager->persist($apprenant);     
+                                    $manager->flush();
                         }
                         $message = (new \Swift_Message('Ajout'))
                         ->setFrom('admin@gmail.com')
@@ -168,7 +191,7 @@ class PromoController extends AbstractController
                 }
                 $i++;
             }
-        return $this->json($groupe_principal,201);
+        // return $this->json($groupe_principal,201);
         }
         
         if (!$this -> isGranted("ROLE_FORMATEUR",$Promo)) {
@@ -184,6 +207,7 @@ class PromoController extends AbstractController
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
 
+        dump($Promo);
         dd($Promo);
         
         $manager->persist($Promo);
@@ -377,6 +401,17 @@ class PromoController extends AbstractController
                               -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
                               -> setEmail(strtolower($val['email']))
                               -> setProfil($profil);
+                            $statistiquesCompetence = new StatistiquesCompetences();
+                            $statistiquesCompetence -> setApprenant($apprenant)
+                                                    -> setReferentiel($Referentiel)
+                                                    -> setPromo($Promo);
+                            foreach ($referentiel -> getGroupecompetence() as $key => $Groupecompetence) {
+                                foreach ($GroupeCompetence -> getCompetence() as $key => $Competence) {
+                                    $statistiquesCompetence -> setCompetence($Competence);
+                                    $manager->persist($statistiquesCompetence);      
+                                    $manager->flush();
+                                }
+                            }
                               $manager->persist($apprenant);     
                               $manager->flush();
                 }

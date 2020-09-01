@@ -66,10 +66,10 @@ class LivrableAttendu extends \App\Entity\LivrableAttendu implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'id', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefs', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'livrables'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'id', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefs', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefLivrableAttendus', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'livrables'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'id', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefs', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'livrables'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'id', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefs', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'briefLivrableAttendus', '' . "\0" . 'App\\Entity\\LivrableAttendu' . "\0" . 'livrables'];
     }
 
     /**
@@ -216,34 +216,34 @@ class LivrableAttendu extends \App\Entity\LivrableAttendu implements \Doctrine\O
     /**
      * {@inheritDoc}
      */
-    public function getBriefs(): \Doctrine\Common\Collections\Collection
+    public function getBriefLivrableAttendus(): \Doctrine\Common\Collections\Collection
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBriefs', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBriefLivrableAttendus', []);
 
-        return parent::getBriefs();
+        return parent::getBriefLivrableAttendus();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function addBrief(\App\Entity\Brief $brief): \App\Entity\LivrableAttendu
+    public function addBriefLivrableAttendu(\App\Entity\BriefLivrableAttendu $briefLivrableAttendu): \App\Entity\LivrableAttendu
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addBrief', [$brief]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addBriefLivrableAttendu', [$briefLivrableAttendu]);
 
-        return parent::addBrief($brief);
+        return parent::addBriefLivrableAttendu($briefLivrableAttendu);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeBrief(\App\Entity\Brief $brief): \App\Entity\LivrableAttendu
+    public function removeBriefLivrableAttendu(\App\Entity\BriefLivrableAttendu $briefLivrableAttendu): \App\Entity\LivrableAttendu
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeBrief', [$brief]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeBriefLivrableAttendu', [$briefLivrableAttendu]);
 
-        return parent::removeBrief($brief);
+        return parent::removeBriefLivrableAttendu($briefLivrableAttendu);
     }
 
     /**

@@ -88,7 +88,7 @@ class Groupe
 
     /**
      * @ORM\ManyToMany(targetEntity=Apprenant::class, mappedBy="groupe",cascade={"persist"})
-     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
+     * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      * @ApiSubresource()
      */
     private $apprenants;
@@ -202,6 +202,10 @@ class Groupe
         }
 
         return $this;
+    }
+
+    public function viderGroupe(){
+        $this->apprenants = new ArrayCollection();
     }
 
     /**

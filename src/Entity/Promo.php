@@ -45,7 +45,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/promos/{id}/principal",
- *              
+ *               *          "normalization_context"={"groups"={"referentiel_read","user_details_read","referentiel_groupecompetence_read"}}
+
  *              },
  *          "apprenants_attente"={
  *              "method"="GET",

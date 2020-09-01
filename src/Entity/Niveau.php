@@ -16,7 +16,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "path"="admin/niveaux",
  *              "normalization_context"={"groups"={"niveau_read","brief_read"}}
  *          }
- *      }
+ *      },
+ *      attributes={
+ *          "pagination_items_per_page"=10,
+ *          "normalization_context"={"enable_max_depth"=true}
+ *      },
  * )
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
  */

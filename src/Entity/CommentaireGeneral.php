@@ -2,10 +2,27 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentaireGeneralRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\CommentaireGeneralRepository;
 
 /**
+ * @ApiResource(
+ *      collectionOperations={
+ *          "add_commentaire"={
+ *              "method"="POST",
+ *              "path"="users/promo/{idp}/apprenant/{ida}/chats",
+ *              "security"="is_granted('ROLE_APPRENANT')", 
+ *              "security_message"="non autorisé.",
+ *          },
+ *          "get_commentaire"={
+ *              "method"="GET",
+ *              "path"="users/promo/{idp}/apprenant/{ida}/chats",
+ *              "security"="is_granted('ROLE_APPRENANT')", 
+ *              "security_message"="non autorisé.",
+ *          }
+ *      }
+ * )
  * @ORM\Entity(repositoryClass=CommentaireGeneralRepository::class)
  */
 class CommentaireGeneral

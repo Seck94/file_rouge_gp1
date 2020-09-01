@@ -15,43 +15,43 @@ use Symfony\Component\Serializer\Annotation\Groups;
  
  * attributes={
  *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"profilsortie_read","profilsortie_apprenants_read"},"enable_max_depth"=true}
  *      },
  * 
  *     collectionOperations={
- *         "post"={
- *              "security_post_denormalize"="is_granted('EDIT', object)", 
- *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/profilsorties",
- *          },
- *         "get"={
+    *         "post"={
+    *              "security_post_denormalize"="is_granted('EDIT', object)", 
+    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+    *              "path"="admin/profilsorties",
+    *          },
+    *         "get"={
  *              "security"="is_granted('ROLE_APPRENANT')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/profilsorties",
- *              
+ *               "normalization_context"={"groups"={"profilsortie_libelle_read"}},
  *              },
- *     },
- *     
- *     itemOperations={
- *         "get"={
- *              "security"="is_granted('VIEW',object)", 
- *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/profilsorties/{id}",
- *         }, 
-
- *          "get"=
- *              {
+ * "            profilsortie_promo"={
+ *               "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="api/profilsorties/{id}/apprenants",
+ *              "path"="admin/promos/{id}/profilsorties",
  *              "normalization_context"={"groups"={"profilsortie_apprenants_read"}},
  *              },
- 
- *         "delete"={
- *              "security"="is_granted('DELETE',object)",
- *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "profilsortie_item"={
+ *               "method"="GET",
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="admin/promos/{idp}/profilsorties/{id}",
+ *              "normalization_context"={"groups"={"profilsortie_apprenants_read"}},
+ *              },     
+ *     },
+ *     itemOperations={       
+ *       "profilsortie_id"={
+ *               "method"="GET",
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/profilsorties/{id}",
- *         },
+ *              "normalization_context"={"groups"={"profilsortie_apprenants_read"}},
+ *              },     
  *         "patch"={
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
@@ -72,21 +72,22 @@ class Profilsortie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups ({"profilsortie_read","profilsortie_apprenants_read"})
+     * @Groups ({"profilsortie_read","profilsortie_apprenants_read","profilsortie_libelle_read",})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups ({"profilsortie_read","profilsortie_apprenants_read"})
+     * @Groups ({"profilsortie_read","profilsortie_apprenants_read","profilsortie_libelle_read"})
      */
     private $libelle;
 
     /**
+     * @Groups({"profilsortie_apprenants_read"})
      * @ORM\OneToMany(targetEntity=Apprenant::class, mappedBy="profilsortie")
-     *@Groups ({"profilsortie_apprenants_read"})
      *@ApiSubresource()
      */
+
     private $apprenants;
 
     public function __construct()

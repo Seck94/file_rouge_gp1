@@ -32,6 +32,13 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *              "requirements"={"idg"="\d+"},
  *              "normalization_context"={"groups"={"brief_groupe_promo"},"enable_max_depth"=true}
  *          },
+ *          "brief_promo"={
+ *              "method"="GET",
+ *              "path"="formateurs/promos/{idp}/briefs/{id}",
+ *              "requirements"={"idp"="\d+"},
+ *              "requirements"={"id"="\d+"},
+ *              "normalization_context"={"groups"={"brief_promo"},"enable_max_depth"=true}
+ *          },
  *          "apprenant_promo_brief"={
  *              "method"="GET",
  *              "path"="apprenants/promos/{idp}/briefs/{idb}",
@@ -68,18 +75,47 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="formateur/briefs/valides",
  *              "normalization_context"={"groups"={"brief_valide"},"enable_max_depth"=true}
- *          }
+ *          },
+ *          "add_briefs"={
+ *              "method"="POST",
+ *              "path"="formateur/briefs",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *          },
+ *           "duplique_briefs"={
+ *              "method"="POST",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateur/briefs/{id}",
+ *              "defaults"={"id"=null}   
+ *            }
  *     },
  *      itemOperations={
- *          "brief_promo"={
- *              "method"="GET",
- *              "path"="formateurs/promos/{idp}/briefs/{id}",
- *              "requirements"={"idp"="\d+"},
- *              "requirements"={"id"="\d+"},
- *              "normalization_context"={"groups"={"brief_promo"},"enable_max_depth"=true}
- *          }
+ *          "get"={
+ *              "security"="is_granted('ROLE_FORMATEUR')", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateur/briefs/{id}",
+ *         }, 
+ * 
+ *          "assignation_briefs"={
+ *              "method"="PUT",
+ *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR')", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateurs/promo/{idpromo}/brief/{idbrief}/assignation",
+ *          
+ *          },
+ * 
+ *          "update_briefs"={
+ *              "method"="PUT",
+ *               "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="formateur/promo/{idpromo}/brief/{idbrief}",
+ *              "defaults"={"id"=null}
+  *         }
  *      }
  * )
+ * 
+ * 
  * @ORM\Entity(repositoryClass=BriefRepository::class)
  */
 class Brief
@@ -124,19 +160,19 @@ class Brief
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read","brief_promo"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_promo"})
      */
     private $modalitesPedagogiques;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read","brief_promo"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_promo"})
      */
     private $criteresDePerformance;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read","brief_promo"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_promo"})
      */
     private $modalitesEvaluation;
 
@@ -147,51 +183,55 @@ class Brief
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $dateCreation;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $statut;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=LivrableAttendu::class, mappedBy="briefs")
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
-     */
+    // a enlever
     private $livrableAttendus;
 
+     /**
+     * @ORM\OneToMany(targetEntity=BriefLivrableAttendu::class, mappedBy="Brief", orphanRemoval=true,cascade={"persist"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     */
+    private $briefLivrableAttendus;
+    
+
     /**
-     * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief", orphanRemoval=true)
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief", orphanRemoval=true,cascade={"persist"})
+     * @Groups({"brief_read","apprenant_promo_brief"})
      */
     private $ressources;
 
     /**
-     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="brief", orphanRemoval=true)
-     * @Groups({"brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","brief_promo","promo_id_brief"})
+     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="brief", orphanRemoval=true,cascade={"persist"})
      */
     private $promoBriefs;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="briefs")
+     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="briefs",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
      */
     private $referentiel;
 
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief")
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $niveaux;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs")
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs",cascade={"persist"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $tags;
 
@@ -199,13 +239,13 @@ class Brief
      * @ORM\ManyToOne(targetEntity=Formateur::class, inversedBy="briefs")
      * @ORM\JoinColumn(nullable=false)
      * @MaxDepth(2)
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $formateur;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $groupes;
 
@@ -217,6 +257,7 @@ class Brief
         $this->niveaux = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->groupes = new ArrayCollection();
+        $this->briefLivrableAttendus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -224,6 +265,11 @@ class Brief
         return $this->id;
     }
 
+    public function setId( $id): self 
+    {
+         $this->id=$id;
+         return $this;
+    }
     public function getLangue(): ?string
     {
         return $this->langue;
@@ -316,7 +362,6 @@ class Brief
     public function setModalitesEvaluation(string $modalitesEvaluation): self
     {
         $this->modalitesEvaluation = $modalitesEvaluation;
-
         return $this;
     }
 
@@ -328,7 +373,6 @@ class Brief
     public function setAvatar($avatar): self
     {
         $this->avatar = $avatar;
-
         return $this;
     }
 
@@ -340,7 +384,6 @@ class Brief
     public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
-
         return $this;
     }
 
@@ -552,4 +595,57 @@ class Brief
 
         return $this;
     }
+    // Suppression de la collection de PromoBriefs
+    public function setPromoBrief($promoBrief)
+    {
+        $this->promoBriefs=$promoBrief;
+    }
+    // Suppression de la collection de groupes
+    public function setGroupe($groupe)
+    {
+        $this->groupes=$groupe;
+    }
+
+    // Suppression de la collection de niveaux
+    public function setNiveaux($niveaux)
+    {
+        $this->niveaux=$niveaux;
+    }
+
+    /**
+     * @return Collection|BriefLivrableAttendu[]
+     */
+    public function getBriefLivrableAttendus(): Collection
+    {
+        return $this->briefLivrableAttendus;
+    }
+
+    public function addBriefLivrableAttendu(BriefLivrableAttendu $briefLivrableAttendu): self
+    {
+        if (!$this->briefLivrableAttendus->contains($briefLivrableAttendu)) 
+        {
+            $this->briefLivrableAttendus[] = $briefLivrableAttendu;
+            $briefLivrableAttendu->setBrief($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBriefLivrableAttendu(BriefLivrableAttendu $briefLivrableAttendu): self
+    {
+        if ($this->briefLivrableAttendus->contains($briefLivrableAttendu)) {
+            $this->briefLivrableAttendus->removeElement($briefLivrableAttendu);
+            // set the owning side to null (unless already changed)
+            if ($briefLivrableAttendu->getBrief() === $this) {
+                $briefLivrableAttendu->setBrief(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function setBriefLivrableAttendu($briefLivrableAttendu)
+    {
+         $this->briefLivrableAttendus=$briefLivrableAttendu;
+    } 
 }

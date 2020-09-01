@@ -9,12 +9,36 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
+
+
 /**
  * @ApiResource(
  *      attributes={
+ *          "pagination_items_per_page"=10,
  *          "normalization_context"={"groups"={"livrable_read"},"enable_max_depth"=true}
  *      },
+ *     collectionOperations={
+ *          
+ *         "get"={
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              
+ *               
+ *              },
+ *              "add_livrable"={
+ *              "method"="POST",
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="apprenants/{idapp}/groupe/{idgrp}/livrables",
+ *              "defaults"={"id"=null}
+ *               },
+ *              
+ *              
+ *     }
  * )
+
+
  * @ORM\Entity(repositoryClass=LivrableRepository::class)
  */
 class Livrable

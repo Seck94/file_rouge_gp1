@@ -47,4 +47,23 @@ class CommentaireGeneralRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return CommentaireGeneral[]
+    */
+    public function findChatByApprenantAndPromo($idp,$ida)
+    {
+       return $this->createQueryBuilder('c')
+        ->join('c.filDeDiscussion','fd')
+        ->join('fd.promo','p')
+        ->join('c.user', 'u')
+        ->where('u.id=:ida' )
+        ->andWhere('p.id=:idp')
+        ->setParameter('idp', $idp)
+        ->setParameter('ida', $ida)
+        ->getQuery()
+        ->getResult()
+        ;
+
+    }
 }

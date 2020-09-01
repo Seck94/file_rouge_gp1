@@ -25,12 +25,12 @@ class PromoBriefApprenant
     private $statut;
 
     /**
-     * @ORM\OneToMany(targetEntity=Apprenant::class, mappedBy="promoBriefApprenant")
+     * @ORM\ManyToOne(targetEntity=Apprenant::class, inversedBy="promoBriefApprenants")
      */
     private $apprenant;
 
     /**
-     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="promoBriefApprenant")
+     * @ORM\ManyToOne(targetEntity=PromoBrief::class, inversedBy="promoBriefApprenants")
      */
     private $promoBrief;
 

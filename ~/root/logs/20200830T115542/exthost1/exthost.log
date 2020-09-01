@@ -53,3 +53,16 @@
     at readableAddChunk (_stream_readable.js:276:11)
     at Socket.Readable.push (_stream_readable.js:210:10)
     at Pipe.onStreamRead (internal/stream_base_commons.js:166:17)
+[2020-08-30 14:24:27.960] [exthost] [warning] TextEditor is closed/disposed
+[2020-08-30 14:26:36.167] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing {"startup":false,"extensionId":{"value":"vscode.configuration-editing","_lower":"vscode.configuration-editing"},"activationEvent":"onLanguage:json"}
+[2020-08-30 14:26:36.167] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/42/usr/share/code/resources/app/extensions/configuration-editing/dist/configurationEditingMain
+[2020-08-30 14:26:36.197] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"extensionId":{"value":"vscode.extension-editing","_lower":"vscode.extension-editing"},"activationEvent":"onLanguage:json"}
+[2020-08-30 14:26:36.197] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/42/usr/share/code/resources/app/extensions/extension-editing/dist/extensionEditingMain
+[2020-08-30 14:26:36.218] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features {"startup":false,"extensionId":{"value":"vscode.json-language-features","_lower":"vscode.json-language-features"},"activationEvent":"onLanguage:json"}
+[2020-08-30 14:26:36.218] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/42/usr/share/code/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain
+[2020-08-30 14:26:36.252] [exthost] [info] ExtensionService#_doActivateExtension ms-vscode.js-debug {"startup":false,"extensionId":{"value":"ms-vscode.js-debug","_lower":"ms-vscode.js-debug"},"activationEvent":"onLanguage:json"}
+[2020-08-30 14:26:36.252] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/42/usr/share/code/resources/app/extensions/ms-vscode.js-debug/src/extension.js
+[2020-08-30 14:26:36.545] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm {"startup":false,"extensionId":{"value":"vscode.npm","_lower":"vscode.npm"},"activationEvent":"onLanguage:json"}
+[2020-08-30 14:26:36.545] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/42/usr/share/code/resources/app/extensions/npm/dist/npmMain
+[2020-08-30 15:34:12.301] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"extensionId":{"value":"vscode.typescript-language-features","_lower":"vscode.typescript-language-features"},"activationEvent":"onLanguage:jsonc"}
+[2020-08-30 15:34:12.301] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/42/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension
