@@ -66,10 +66,10 @@ class Profil extends \App\Entity\Profil implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'lastUpdate', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'users'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'lastUpdate', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'users', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'statut'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'lastUpdate', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'users'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'lastUpdate', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'users', '' . "\0" . 'App\\Entity\\Profil' . "\0" . 'statut'];
     }
 
     /**
@@ -277,6 +277,28 @@ class Profil extends \App\Entity\Profil implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUser', [$user]);
 
         return parent::removeUser($user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatut(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatut', []);
+
+        return parent::getStatut();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStatut(?string $statut): \App\Entity\Profil
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatut', [$statut]);
+
+        return parent::setStatut($statut);
     }
 
 }

@@ -65,6 +65,6 @@ class __TwigTemplate_2484e507b58a081f2a862b22ce01dceebfe89f867c9fc41d2c24ea93a40
     public function getSourceContext()
     {
         return new Source("{% extends \"@email/zurb_2/notification/body.txt.twig\" %}
-", "@email/default/notification/body.txt.twig", "/opt/lampp/htdocs/file_rouge_gp1/vendor/symfony/twig-bridge/Resources/views/Email/default/notification/body.txt.twig");
+", "@email/default/notification/body.txt.twig", "/home/ldab/Bureau/fil_rouge_ldab/vendor/symfony/twig-bridge/Resources/views/Email/default/notification/body.txt.twig");
     }
 }

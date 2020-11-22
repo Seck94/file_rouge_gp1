@@ -5,6 +5,7 @@ namespace App\Entity;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -12,6 +13,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 // use Webmozart\Assert\Assert;
 
 /**
@@ -39,7 +41,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/users",
-
  *          },
  *          "get_admins"={
  *              "method"="GET",
@@ -52,13 +53,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     },
  *     
  *     itemOperations={
+ *          "update_user"={
+ *              "method"="PUT",
+ *              "path"="/admin/users/{id}",
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security_message"="action non autorisée",
+ *              "requirements"={"id"="\d+"},
+ *          },
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "normalization_context"={"groups"={"user_read","user_details_read"}},
  *              "path"="admin/users/{id}",
  *              "requirements"={"id"="\d+"},
- *              "defaults"={"id"=null}
  *          },
  *          "get_admin"={
  *              "method"="GET",
@@ -78,15 +85,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "path"="admin/users/{id}",
  *              "requirements"={"id"="\d+"},
- *          },
- *         "put"={
- *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
- *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/users/{id}",
- *              "requirements"={"id"="\d+"},
- *          },
+ *          }
  *     },
  * )
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "profil.libelle":"exact"})
  */
 class User implements UserInterface
 {
@@ -141,7 +143,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, options={"default":"actif"})
      * @Groups({"user_read"})
      */
     private $statut;

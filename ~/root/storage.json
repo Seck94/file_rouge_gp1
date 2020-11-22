@@ -2,7 +2,7 @@
     "telemetry.machineId": "70e47962f8db9099b5c32bff5d086a841625d7fc5fd73ad6847e53798bf19d88",
     "openedPathsList": {
         "workspaces3": [
-            "file:///opt/lampp/htdocs/file_rouge_gp1"
+            "file:///home/ldab/Bureau/fil_rouge_ldab"
         ],
         "files2": []
     },
@@ -50,13 +50,13 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
-                                        "fsPath": "/opt/lampp/htdocs/file_rouge_gp1",
-                                        "external": "file:///opt/lampp/htdocs/file_rouge_gp1",
-                                        "path": "/opt/lampp/htdocs/file_rouge_gp1",
+                                        "fsPath": "/home/ldab/Bureau/fil_rouge_ldab",
+                                        "external": "file:///home/ldab/Bureau/fil_rouge_ldab",
+                                        "path": "/home/ldab/Bureau/fil_rouge_ldab",
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "/opt/lampp/htdocs/file_rouge_gp1"
+                                    "label": "/home/ldab/Bureau/fil_rouge_ldab"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -91,7 +91,8 @@
                     },
                     {
                         "id": "workbench.action.files.save",
-                        "label": "&&Save"
+                        "label": "&&Save",
+                        "enabled": false
                     },
                     {
                         "id": "workbench.action.files.saveAs",
@@ -155,6 +156,13 @@
                                 {
                                     "id": "workbench.action.selectIconTheme",
                                     "label": "File &&Icon Theme"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "workbench.userDataSync.actions.turnOn",
+                                    "label": "Turn on Settings Sync..."
                                 }
                             ]
                         }
@@ -164,7 +172,8 @@
                     },
                     {
                         "id": "workbench.action.files.revert",
-                        "label": "Re&&vert File"
+                        "label": "Re&&vert File",
+                        "enabled": false
                     },
                     {
                         "id": "workbench.action.closeActiveEditor",
@@ -568,7 +577,8 @@
                 "items": [
                     {
                         "id": "workbench.action.navigateBack",
-                        "label": "&&Back"
+                        "label": "&&Back",
+                        "enabled": false
                     },
                     {
                         "id": "workbench.action.navigateForward",
@@ -1241,9 +1251,8 @@
                 "userSettingsLabel": "ctrl+shift+f"
             },
             "workbench.view.scm": {
-                "label": "Ctrl+Shift+G G",
-                "isNative": false,
-                "userSettingsLabel": "ctrl+shift+g g"
+                "label": "Ctrl+Shift+G",
+                "userSettingsLabel": "ctrl+shift+g"
             },
             "workbench.view.debug": {
                 "label": "Ctrl+Shift+D",
@@ -1440,17 +1449,17 @@
     "themeBackground": "#1e1e1e",
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///opt/lampp/htdocs/file_rouge_gp1",
-            "backupPath": "/opt/lampp/htdocs/file_rouge_gp1/~/root/Backups/077f8bd220fffee23f6a9a1fcb7c85ea",
+            "folder": "file:///home/ldab/Bureau/fil_rouge_ldab",
+            "backupPath": "/home/ldab/Bureau/fil_rouge_ldab/~/root/Backups/695557fbe63e522be635276c990aa986",
             "uiState": {
                 "mode": 0,
-                "x": 67,
-                "y": 57,
-                "width": 1853,
-                "height": 1023
+                "x": 72,
+                "y": 64,
+                "width": 1848,
+                "height": 1016
             }
         },
         "openedWindows": []
     },
-    "pickerWorkingDir": "/opt/lampp/htdocs"
+    "pickerWorkingDir": "/home/ldab/Bureau"
 }

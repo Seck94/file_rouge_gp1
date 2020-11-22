@@ -136,6 +136,6 @@ class __TwigTemplate_27e5ff751a6bf836a38b34fe8cc0172c30f055134dba81b942c52330993
     </ul>
 </div>
 {% endblock %}
-", "brief/index.html.twig", "/opt/lampp/htdocs/file_rouge_gp1/templates/brief/index.html.twig");
+", "brief/index.html.twig", "/home/ldab/Bureau/fil_rouge_ldab/templates/brief/index.html.twig");
     }
 }

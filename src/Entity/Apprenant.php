@@ -80,7 +80,7 @@ class Apprenant extends User
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profilsortie::class, inversedBy="apprenants")

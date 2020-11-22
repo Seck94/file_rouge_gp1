@@ -42,7 +42,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "path"="admin/profils/{id}",
  *         }, 
  *         "delete"={
- *              "security"="is_granted('DELETE',object)",
+ *              "security"="is_granted('EDIT',object)",
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
  *         },
@@ -70,7 +70,7 @@ class Profil
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Groups({"profil_read"})
      */
     private $libelle;
@@ -107,6 +107,11 @@ class Profil
     * @ApiSubresource()
     */
     private $users;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true, options={"default":"actif"})
+     */
+    private $statut;
 
     public function __construct()
     {
@@ -157,6 +162,18 @@ class Profil
                 $user->setProfil(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

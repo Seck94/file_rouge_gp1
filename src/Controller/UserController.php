@@ -31,6 +31,7 @@ class UserController extends AbstractController
     public function addUser(Request $request,UserPasswordEncoderInterface $encoder,SerializerInterface $serializer,ValidatorInterface $validator,ProfilRepository $profil,EntityManagerInterface $manager)
     {
         $user = $request->request->all();
+        //Pour l'instant on recherche par id car avec postman on a un souci avc le profil
         $profil = $profil -> find(4);
         $avatar = $request->files->get("avatar");
         $avatar = fopen($avatar->getRealPath(),"rb");
@@ -44,10 +45,29 @@ class UserController extends AbstractController
         $user -> setProfil($profil);
         $password = $user->getPassword();
         $user->setPassword($encoder->encodePassword($user,$password));
-        // dd($user);
+        dd($user);
         $manager->persist($user);
         $manager->flush();
         fclose($avatar);
         return $this->json($user,Response::HTTP_CREATED);
+    }
+    
+
+     /**
+     * @Route(
+     *     path="/api/admin/users/{id}",
+     *     methods={"PUT"},
+     *     defaults={
+     *          "__controller"="App\Controller\UserController::UpdateUser",
+     *          "__api_resource_class"=User::class,
+     *          "__api_item_operation_name"="update_user"
+     *     }
+     * )
+    */
+    public function UpdateUser(Request $request,UserPasswordEncoderInterface $encoder,SerializerInterface $serializer,ValidatorInterface $validator,ProfilRepository $profil,EntityManagerInterface $manager)
+    {
+        // dd($this -> getUser());//l'utilisateur connecté
+        dd($request->request->all());
+        return $this->json("user update",Response::HTTP_CREATED);
     }
 }

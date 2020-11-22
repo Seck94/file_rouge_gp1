@@ -80,7 +80,7 @@ class Formateur extends User
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="formateurs")

@@ -8,3 +8,8 @@ api_platform:
     # formats:
     #     form:
     #         mime_types: ['multipart/form-data']
+
+    collection:
+        pagination:
+            items_per_page: 15
+            maximum_items_per_page: 30
