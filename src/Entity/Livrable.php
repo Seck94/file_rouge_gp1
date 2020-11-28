@@ -32,9 +32,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *              "path"="apprenants/{idapp}/groupe/{idgrp}/livrables",
  *              "defaults"={"id"=null}
- *               },
- *              
- *              
+ *               },    
  *     }
  * )
 

@@ -25,7 +25,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Factory::create('fr_FR');
 
-        for ($j=0; $j < 12; $j++) {
+        for ($j=0; $j < 15; $j++) {
             if ($j<3) {
                 $user = new User();
                 $user -> setProfil($this -> getReference("ADMIN"));
@@ -38,10 +38,12 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             elseif ($j<9) {
                 $user = new Formateur();
                 $user -> setProfil($this -> getReference("FORMATEUR"));
+                $this -> addreference("formateur".$j, $user);
             }
             else {
                 $user = new Apprenant();    
                 $user -> setProfil($this -> getReference("APPRENANT"));
+                $this -> addReference("apprenant".$j, $user);
             }             
             $user -> setEmail($faker -> unique() -> email());
             $user -> setUsername(strtolower($faker->name()));

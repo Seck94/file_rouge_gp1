@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -86,6 +87,7 @@ class Referentiel
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\notBlank(message = "valeur null")
      * @Groups({"referentiel_read","promo_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
      */
     private $libelle;

@@ -39,6 +39,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 4 => [
                     'profil_read',
                 ],
+                [
+                    'profil_read',
+                ],
             ],
         ],
     ],

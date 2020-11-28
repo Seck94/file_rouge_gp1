@@ -66,10 +66,10 @@ class Profilsortie extends \App\Entity\Profilsortie implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'apprenants'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'apprenants', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'statut'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'apprenants'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'apprenants', '' . "\0" . 'App\\Entity\\Profilsortie' . "\0" . 'statut'];
     }
 
     /**
@@ -244,6 +244,28 @@ class Profilsortie extends \App\Entity\Profilsortie implements \Doctrine\ORM\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeApprenant', [$apprenant]);
 
         return parent::removeApprenant($apprenant);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatut(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatut', []);
+
+        return parent::getStatut();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStatut(?string $statut): \App\Entity\Profilsortie
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatut', [$statut]);
+
+        return parent::setStatut($statut);
     }
 
 }

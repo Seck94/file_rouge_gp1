@@ -41,7 +41,19 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'get' => [
                         'security' => 'is_granted(\'ROLE_ADMIN\')',
                         'security_message' => 'Vous n\'avez pas acces a cette ressource.',
-                        'path' => 'admin/users',
+                        'path' => '/admin/users',
+                    ],
+                    'get_admins' => [
+                        'method' => 'GET',
+                        'path' => '/admins',
+                        'security' => '(is_granted(\'ROLE_ADMIN\'))',
+                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
+                        'route_name' => 'admin_liste',
+                        'normalization_context' => [
+                            'groups' => [
+                                'admin_read',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -68,9 +80,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'path' => 'admin/users/{id}',
                         'requirements' => [
                             'id' => '\\d+',
-                        ],
-                        'defaults' => [
-                            'id' => null,
                         ],
                     ],
                     'get_admin' => [

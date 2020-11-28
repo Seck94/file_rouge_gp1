@@ -8,6 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/api/admins' => [[['_route' => 'admin_liste', '_controller' => 'App\\Controller\\AdminController::getAdmin', '_api_resource_class' => 'App\\Entity\\User', '_api_collection_operation_name' => 'get_admins'], null, ['GET' => 0], null, false, false, null]],
         '/api/apprenants' => [[['_route' => 'apprenant_liste', '_controller' => 'App\\Controller\\ApprenantController::getApprenant', '_api_resource_class' => 'App\\Entity\\User', '_api_collection_operation_name' => 'get_apprenants'], null, ['GET' => 0], null, false, false, null]],
         '/api/admin/apprenants' => [
             [['_route' => 'app_apprenant_addapprenant', '__controller' => 'App\\Controller\\ApprenantController::addApprenant', '__api_resource_class' => 'Apprenant', '__api_collection_operation_name' => 'add_apprenant', '_controller' => 'App\\Controller\\ApprenantController::addApprenant'], null, ['POST' => 0], null, false, false, null],
@@ -97,131 +98,134 @@ return [
                 .'|/api(?'
                     .'|/(?'
                         .'|a(?'
-                            .'|pprenants/(?'
-                                .'|([^/]++)(*:78)'
-                                .'|promos/([^/]++)/briefs(?'
-                                    .'|(*:110)'
-                                    .'|/([^/]++)(*:127)'
-                                .')'
-                                .'|([^/]++)/groupe/([^/]++)/livrables(*:170)'
-                            .')'
-                            .'|dmin/(?'
-                                .'|competences/([^/]++)(*:207)'
-                                .'|groupe(?'
-                                    .'|s/([^/]++)(*:234)'
-                                    .'|competences/([^/]++)(*:262)'
-                                    .'|tags/([^/]++)(*:283)'
-                                .')'
-                                .'|promos/([^/]++)(?'
-                                    .'|/(?'
-                                        .'|pr(?'
-                                            .'|ofilsorties(?'
-                                                .'|(*:333)'
-                                                .'|/([^/]++)(*:350)'
-                                            .')'
-                                            .'|incipal(*:366)'
-                                        .')'
-                                        .'|apprenants(?'
-                                            .'|/attente(*:396)'
-                                            .'|(*:404)'
-                                        .')'
-                                        .'|formateurs(*:423)'
-                                        .'|groupes(*:438)'
+                            .'|dmin(?'
+                                .'|s/([^/]++)(*:74)'
+                                .'|/(?'
+                                    .'|competences/([^/]++)(*:105)'
+                                    .'|groupe(?'
+                                        .'|s/([^/]++)(*:132)'
+                                        .'|competences/([^/]++)(*:160)'
+                                        .'|tags/([^/]++)(*:181)'
                                     .')'
-                                    .'|(*:447)'
+                                    .'|promos/([^/]++)(?'
+                                        .'|/(?'
+                                            .'|pr(?'
+                                                .'|ofilsorties(?'
+                                                    .'|(*:231)'
+                                                    .'|/([^/]++)(*:248)'
+                                                .')'
+                                                .'|incipal(*:264)'
+                                            .')'
+                                            .'|apprenants(?'
+                                                .'|/attente(*:294)'
+                                                .'|(*:302)'
+                                            .')'
+                                            .'|formateurs(*:321)'
+                                            .'|groupes(*:336)'
+                                        .')'
+                                        .'|(*:345)'
+                                    .')'
+                                    .'|referentiels/([^/]++)(*:375)'
+                                    .'|users/([^/]++)(*:397)'
                                 .')'
-                                .'|referentiels/([^/]++)(*:477)'
-                                .'|users/([^/]++)(*:499)'
+                            .')'
+                            .'|pprenants/(?'
+                                .'|([^/]++)(*:428)'
+                                .'|promos/([^/]++)/briefs(?'
+                                    .'|(*:461)'
+                                    .'|/([^/]++)(*:478)'
+                                .')'
+                                .'|([^/]++)/groupe/([^/]++)/livrables(*:521)'
                             .')'
                         .')'
                         .'|formateur(?'
                             .'|/(?'
                                 .'|promo(?'
-                                    .'|s/([^/]++)/groupes/([^/]++)/briefs(*:567)'
+                                    .'|s/([^/]++)/groupes/([^/]++)/briefs(*:589)'
                                     .'|/([^/]++)/brief/([^/]++)(?'
-                                        .'|/assignation(*:614)'
-                                        .'|(*:622)'
+                                        .'|/assignation(*:636)'
+                                        .'|(*:644)'
                                     .')'
                                 .')'
-                                .'|briefs/([^/]++)(*:647)'
+                                .'|briefs/([^/]++)(*:669)'
                             .')'
                             .'|s/(?'
                                 .'|promos/([^/]++)/briefs(?'
-                                    .'|/([^/]++)(*:695)'
-                                    .'|(*:703)'
+                                    .'|/([^/]++)(*:717)'
+                                    .'|(*:725)'
                                 .')'
-                                .'|([^/]++)(*:720)'
+                                .'|([^/]++)(*:742)'
                             .')'
                         .')'
                         .'|users/promo/([^/]++)/apprenant/([^/]++)/chats(?'
-                            .'|(*:778)'
+                            .'|(*:800)'
                         .')'
                     .')'
-                    .'|(?:/(index)(?:\\.([^/]++))?)?(*:816)'
+                    .'|(?:/(index)(?:\\.([^/]++))?)?(*:838)'
                     .'|/(?'
-                        .'|docs(?:\\.([^/]++))?(*:847)'
+                        .'|docs(?:\\.([^/]++))?(*:869)'
                         .'|c(?'
                             .'|o(?'
-                                .'|ntexts/(.+)(?:\\.([^/]++))?(*:889)'
+                                .'|ntexts/(.+)(?:\\.([^/]++))?(*:911)'
                                 .'|m(?'
                                     .'|petences/([^/]++)/(?'
                                         .'|groupecompetences(?'
-                                            .'|(?:\\.([^/]++))?(*:957)'
+                                            .'|(?:\\.([^/]++))?(*:979)'
                                             .'|/([^/]++)/(?'
-                                                .'|user(?:\\.([^/]++))?(*:997)'
+                                                .'|user(?:\\.([^/]++))?(*:1019)'
                                                 .'|competences(?'
-                                                    .'|(?:\\.([^/]++))?(*:1034)'
-                                                    .'|/([^/]++)/niveaux(?:\\.([^/]++))?(*:1075)'
+                                                    .'|(?:\\.([^/]++))?(*:1057)'
+                                                    .'|/([^/]++)/niveaux(?:\\.([^/]++))?(*:1098)'
                                                 .')'
                                             .')'
                                         .')'
-                                        .'|niveaux(?:\\.([^/]++))?(*:1109)'
+                                        .'|niveaux(?:\\.([^/]++))?(*:1132)'
                                     .')'
                                     .'|mentaire_generals/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                        .'|(*:1165)'
+                                        .'|(*:1188)'
                                     .')'
                                 .')'
                             .')'
                             .'|_ms(?'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:1201)'
+                                    .'|(*:1224)'
                                 .')'
-                                .'|(?:/([^/\\.]++)(?:\\.([^/]++))?)?(*:1242)'
+                                .'|(?:/([^/\\.]++)(?:\\.([^/]++))?)?(*:1265)'
                             .')'
                         .')'
                         .'|formateur(?'
                             .'|/(?'
                                 .'|promo(?'
-                                    .'|s/([^/]++)/groupes/(\\d+)/briefs(*:1308)'
-                                    .'|/([^/]++)/brief/([^/]++)(*:1341)'
+                                    .'|s/([^/]++)/groupes/(\\d+)/briefs(*:1331)'
+                                    .'|/([^/]++)/brief/([^/]++)(*:1364)'
                                 .')'
                                 .'|briefs(?'
                                     .'|/(?'
-                                        .'|brouillons(*:1374)'
-                                        .'|valides(*:1390)'
+                                        .'|brouillons(*:1397)'
+                                        .'|valides(*:1413)'
                                     .')'
-                                    .'|(?:/([^/]++))?(*:1414)'
-                                    .'|/([^/]++)(*:1432)'
+                                    .'|(?:/([^/]++))?(*:1437)'
+                                    .'|/([^/]++)(*:1455)'
                                 .')'
                             .')'
                             .'|s/(?'
                                 .'|promo(?'
                                     .'|s/(?'
-                                        .'|([^/]++)/briefs/(\\d+)(*:1482)'
-                                        .'|(\\d+)/briefs(*:1503)'
+                                        .'|([^/]++)/briefs/(\\d+)(*:1505)'
+                                        .'|(\\d+)/briefs(*:1526)'
                                     .')'
-                                    .'|/([^/]++)/brief/([^/]++)/assignation(*:1549)'
+                                    .'|/([^/]++)/brief/([^/]++)/assignation(*:1572)'
                                 .')'
-                                .'|(\\d+)(*:1564)'
+                                .'|(\\d+)(*:1587)'
                                 .'|promo(?'
                                     .'|/([^/]++)/referentiel/([^/]++)/(?'
                                         .'|competences(?'
-                                            .'|(*:1629)'
-                                            .'|/([^/]++)(*:1647)'
+                                            .'|(*:1652)'
+                                            .'|/([^/]++)(*:1670)'
                                         .')'
-                                        .'|statistiques/competences(*:1681)'
+                                        .'|statistiques/competences(*:1704)'
                                     .')'
-                                    .'|_referentiel/competences/([^/]++)(*:1724)'
+                                    .'|_referentiel/competences/([^/]++)(*:1747)'
                                 .')'
                             .')'
                         .')'
@@ -230,135 +234,136 @@ return [
                                 .'|prenant(?'
                                     .'|s/(?'
                                         .'|promos/(?'
-                                            .'|([^/]++)/briefs/(\\d+)(*:1790)'
-                                            .'|(\\d+)/briefs(*:1811)'
+                                            .'|([^/]++)/briefs/(\\d+)(*:1813)'
+                                            .'|(\\d+)/briefs(*:1834)'
                                         .')'
-                                        .'|(\\d+)(*:1826)'
-                                        .'|([^/]++)/groupe/([^/]++)/livrables(*:1869)'
+                                        .'|(\\d+)(*:1849)'
+                                        .'|([^/]++)/groupe/([^/]++)/livrables(*:1892)'
                                     .')'
-                                    .'|/([^/]++)/promo/([^/]++)/referentiel/([^/]++)/statistiques/briefs(*:1944)'
+                                    .'|/([^/]++)/promo/([^/]++)/referentiel/([^/]++)/statistiques/briefs(*:1967)'
                                 .')'
-                                .'|i/apprenant/([^/]++)/promo/([^/]++)/referentiel/([^/]++)/competences(*:2022)'
+                                .'|i/apprenant/([^/]++)/promo/([^/]++)/referentiel/([^/]++)/competences(*:2045)'
                             .')'
                             .'|dmin(?'
                                 .'|/(?'
                                     .'|formateurs(?'
-                                        .'|(?:/([^/]++))?(*:2070)'
+                                        .'|(?:/([^/]++))?(*:2093)'
                                         .'|/([^/]++)(?'
-                                            .'|(*:2091)'
+                                            .'|(*:2114)'
                                         .')'
                                     .')'
                                     .'|users/(\\d+)(?'
-                                        .'|(*:2116)'
+                                        .'|(*:2139)'
                                     .')'
                                     .'|groupe(?'
                                         .'|tags/(?'
-                                            .'|tags(*:2147)'
+                                            .'|tags(*:2170)'
                                             .'|([^/]++)(?'
-                                                .'|(*:2167)'
+                                                .'|(*:2190)'
                                             .')'
                                         .')'
                                         .'|s/(?'
-                                            .'|apprenants(*:2193)'
+                                            .'|apprenants(*:2216)'
                                             .'|([^/]++)(?'
-                                                .'|(*:2213)'
+                                                .'|(*:2236)'
                                             .')'
                                         .')'
                                         .'|competences/(?'
-                                            .'|competences(*:2250)'
+                                            .'|competences(*:2273)'
                                             .'|([^/]++)(?'
-                                                .'|(*:2270)'
+                                                .'|(*:2293)'
                                             .')'
                                         .')'
                                     .')'
                                     .'|pro(?'
                                         .'|mos/(?'
-                                            .'|principal(*:2304)'
+                                            .'|principal(*:2327)'
                                             .'|([^/]++)(?'
                                                 .'|/(?'
                                                     .'|pr(?'
-                                                        .'|incipal(*:2340)'
+                                                        .'|incipal(*:2363)'
                                                         .'|ofilsorties(?'
-                                                            .'|(*:2363)'
-                                                            .'|/([^/]++)(*:2381)'
+                                                            .'|(*:2386)'
+                                                            .'|/([^/]++)(*:2404)'
                                                         .')'
                                                     .')'
                                                     .'|apprenants(?'
-                                                        .'|/attente(*:2413)'
-                                                        .'|(*:2422)'
+                                                        .'|/attente(*:2436)'
+                                                        .'|(*:2445)'
                                                     .')'
-                                                    .'|referentiel(*:2443)'
+                                                    .'|referentiel(*:2466)'
                                                     .'|groupes(?'
-                                                        .'|/apprenants(*:2473)'
-                                                        .'|(*:2482)'
-                                                    .')'
-                                                    .'|formateurs(?'
+                                                        .'|/apprenants(*:2496)'
                                                         .'|(*:2505)'
                                                     .')'
+                                                    .'|formateurs(?'
+                                                        .'|(*:2528)'
+                                                    .')'
                                                 .')'
-                                                .'|(*:2516)'
+                                                .'|(*:2539)'
                                             .')'
                                         .')'
                                         .'|fils(?'
+                                            .'|(?:/([^/]++))?(*:2571)'
                                             .'|/([^/]++)(?'
-                                                .'|(*:2546)'
+                                                .'|(*:2592)'
                                             .')'
                                             .'|orties/([^/]++)(?'
-                                                .'|(*:2574)'
+                                                .'|(*:2620)'
                                             .')'
                                         .')'
                                     .')'
                                     .'|referentiels/(?'
-                                        .'|groupecompetences(*:2619)'
+                                        .'|groupecompetences(*:2665)'
                                         .'|([^/]++)(?'
-                                            .'|(*:2639)'
+                                            .'|(*:2685)'
                                         .')'
                                     .')'
                                     .'|competences/([^/]++)(?'
-                                        .'|(*:2673)'
+                                        .'|(*:2719)'
                                     .')'
                                     .'|tags/([^/]++)(?'
-                                        .'|(*:2699)'
+                                        .'|(*:2745)'
                                     .')'
                                     .'|apprenants(?'
-                                        .'|(?:/([^/]++))?(*:2736)'
+                                        .'|(?:/([^/]++))?(*:2782)'
                                         .'|/([^/]++)(?'
-                                            .'|(*:2757)'
+                                            .'|(*:2803)'
                                         .')'
                                     .')'
                                 .')'
-                                .'|s/(\\d+)(*:2776)'
+                                .'|s/(\\d+)(*:2822)'
                             .')'
                         .')'
                         .'|pro(?'
                             .'|mo(?'
                                 .'|_briefs(?'
                                     .'|(?:\\.([^/]++))?(?'
-                                        .'|(*:2826)'
+                                        .'|(*:2872)'
                                     .')'
                                     .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                        .'|(*:2865)'
+                                        .'|(*:2911)'
                                     .')'
                                 .')'
                                 .'|s/([^/]++)/(?'
                                     .'|groupes(?'
-                                        .'|(?:\\.([^/]++))?(*:2915)'
-                                        .'|/([^/]++)/apprenants(?:\\.([^/]++))?(*:2959)'
+                                        .'|(?:\\.([^/]++))?(*:2961)'
+                                        .'|/([^/]++)/apprenants(?:\\.([^/]++))?(*:3005)'
                                     .')'
                                     .'|referentiel(?'
-                                        .'|(?:\\.([^/]++))?(*:2998)'
+                                        .'|(?:\\.([^/]++))?(*:3044)'
                                         .'|/groupecompetences(?'
-                                            .'|(?:\\.([^/]++))?(*:3043)'
+                                            .'|(?:\\.([^/]++))?(*:3089)'
                                             .'|/([^/]++)/(?'
-                                                .'|user(?:\\.([^/]++))?(*:3084)'
+                                                .'|user(?:\\.([^/]++))?(*:3130)'
                                                 .'|competences(?'
-                                                    .'|(?:\\.([^/]++))?(*:3122)'
+                                                    .'|(?:\\.([^/]++))?(*:3168)'
                                                     .'|/([^/]++)/(?'
                                                         .'|groupecompetences(?'
-                                                            .'|(?:\\.([^/]++))?(*:3179)'
-                                                            .'|/([^/]++)/user(?:\\.([^/]++))?(*:3217)'
+                                                            .'|(?:\\.([^/]++))?(*:3225)'
+                                                            .'|/([^/]++)/user(?:\\.([^/]++))?(*:3263)'
                                                         .')'
-                                                        .'|niveaux(?:\\.([^/]++))?(*:3249)'
+                                                        .'|niveaux(?:\\.([^/]++))?(*:3295)'
                                                     .')'
                                                 .')'
                                             .')'
@@ -367,49 +372,49 @@ return [
                                 .')'
                             .')'
                             .'|fils(?'
-                                .'|/([^/]++)/users(?:\\.([^/]++))?(*:3302)'
-                                .'|orties/([^/]++)/apprenants(?:\\.([^/]++))?(*:3352)'
+                                .'|/([^/]++)/users(?:\\.([^/]++))?(*:3348)'
+                                .'|orties/([^/]++)/apprenants(?:\\.([^/]++))?(*:3398)'
                             .')'
                         .')'
                         .'|re(?'
                             .'|ssources(?'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:3397)'
+                                    .'|(*:3443)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:3436)'
+                                    .'|(*:3482)'
                                 .')'
                             .')'
                             .'|ferentiels/([^/]++)/groupecompetences(?'
-                                .'|(?:\\.([^/]++))?(*:3502)'
+                                .'|(?:\\.([^/]++))?(*:3548)'
                                 .'|/([^/]++)/(?'
-                                    .'|user(?:\\.([^/]++))?(*:3543)'
+                                    .'|user(?:\\.([^/]++))?(*:3589)'
                                     .'|competences(?'
-                                        .'|(?:\\.([^/]++))?(*:3581)'
+                                        .'|(?:\\.([^/]++))?(*:3627)'
                                         .'|/([^/]++)/(?'
                                             .'|groupecompetences(?'
-                                                .'|(?:\\.([^/]++))?(*:3638)'
-                                                .'|/([^/]++)/user(?:\\.([^/]++))?(*:3676)'
+                                                .'|(?:\\.([^/]++))?(*:3684)'
+                                                .'|/([^/]++)/user(?:\\.([^/]++))?(*:3722)'
                                             .')'
-                                            .'|niveaux(?:\\.([^/]++))?(*:3708)'
+                                            .'|niveaux(?:\\.([^/]++))?(*:3754)'
                                         .')'
                                     .')'
                                 .')'
                             .')'
                         .')'
                         .'|groupe(?'
-                            .'|tags/([^/]++)/tags(?:\\.([^/]++))?(*:3764)'
-                            .'|s/([^/]++)/apprenants(?:\\.([^/]++))?(*:3809)'
+                            .'|tags/([^/]++)/tags(?:\\.([^/]++))?(*:3810)'
+                            .'|s/([^/]++)/apprenants(?:\\.([^/]++))?(*:3855)'
                             .'|competences/([^/]++)/(?'
-                                .'|user(?:\\.([^/]++))?(*:3861)'
+                                .'|user(?:\\.([^/]++))?(*:3907)'
                                 .'|competences(?'
-                                    .'|(?:\\.([^/]++))?(*:3899)'
+                                    .'|(?:\\.([^/]++))?(*:3945)'
                                     .'|/([^/]++)/(?'
                                         .'|groupecompetences(?'
-                                            .'|(?:\\.([^/]++))?(*:3956)'
-                                            .'|/([^/]++)/user(?:\\.([^/]++))?(*:3994)'
+                                            .'|(?:\\.([^/]++))?(*:4002)'
+                                            .'|/([^/]++)/user(?:\\.([^/]++))?(*:4040)'
                                         .')'
-                                        .'|niveaux(?:\\.([^/]++))?(*:4026)'
+                                        .'|niveaux(?:\\.([^/]++))?(*:4072)'
                                     .')'
                                 .')'
                             .')'
@@ -417,24 +422,24 @@ return [
                         .'|livrable(?'
                             .'|_attendus(?'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:4080)'
+                                    .'|(*:4126)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:4119)'
+                                    .'|(*:4165)'
                                 .')'
                             .')'
                             .'|s(?'
-                                .'|(?:\\.([^/]++))?(*:4149)'
+                                .'|(?:\\.([^/]++))?(*:4195)'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:4187)'
+                                    .'|(*:4233)'
                                 .')'
                             .')'
                         .')'
                         .'|users/promo/([^/]++)/apprenant/([^/]++)/chats(?'
-                            .'|(*:4247)'
+                            .'|(*:4293)'
                         .')'
                         .'|niveaux/([^/\\.]++)(?:\\.([^/]++))?(?'
-                            .'|(*:4293)'
+                            .'|(*:4339)'
                         .')'
                     .')'
                 .')'
@@ -442,225 +447,227 @@ return [
     ],
     [ // $dynamicRoutes
         35 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        78 => [[['_route' => 'apprenant_find', '_controller' => 'App\\Controller\\ApprenantController::getApprenantById', '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'get_apprenant'], ['id'], ['GET' => 0], null, false, true, null]],
-        110 => [[['_route' => 'promo_apprenant_brief', '_controller' => 'App\\Controller\\BriefController::promo_apprenant_brief', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'promo_apprenant_brief'], ['id'], ['GET' => 0], null, false, false, null]],
-        127 => [[['_route' => 'apprenant_promo_brief', '_controller' => 'App\\Controller\\BriefController::apprenant_promo_brief', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'apprenant_promo_brief'], ['idp', 'idb'], ['GET' => 0], null, false, true, null]],
-        170 => [[['_route' => 'app_brief_addlivrable', '__controller' => 'App\\Controller\\BriefController::AddLivrable', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'add_livrable', '_controller' => 'App\\Controller\\BriefController::AddLivrable'], ['idapp', 'idgrp'], ['POST' => 0], null, false, false, null]],
-        207 => [[['_route' => 'app_competence_updatecompetence', '__controller' => 'App\\Controller\\CompetenceController::updateCompetence', '__api_resource_class' => 'App\\Entity\\Competence', '__api_collection_operation_name' => 'update_competence', '_controller' => 'App\\Controller\\CompetenceController::updateCompetence'], ['id'], ['PUT' => 0, 'PATCH' => 1], null, false, true, null]],
-        234 => [[['_route' => 'app_groupe_updategroupe', '__controller' => 'App\\Controller\\GroupeController::updateGroupe', '__api_resource_class' => 'App\\Entity\\Groupe', '__api_collection_operation_name' => 'update_groupe', '_controller' => 'App\\Controller\\GroupeController::updateGroupe'], ['id'], ['PUT' => 0], null, false, true, null]],
-        262 => [[['_route' => 'app_groupecompetence_updategroupecompetence', '__controller' => 'App\\Controller\\GroupecompetenceController::updateGroupecompetence', '__api_resource_class' => 'App\\Entity\\Groupecompetence', '__api_collection_operation_name' => 'update_groupecompetence', '_controller' => 'App\\Controller\\GroupecompetenceController::updateGroupecompetence'], ['id'], ['PUT' => 0, 'PATCH' => 1], null, false, true, null]],
-        283 => [[['_route' => 'app_groupetag_updategroupetag', '__controller' => 'App\\Controller\\GroupetagController::updateGroupetag', '__api_resource_class' => 'App\\Entity\\Groupetag', '__api_collection_operation_name' => 'update_Groupetag', '_controller' => 'App\\Controller\\GroupetagController::updateGroupetag'], ['id'], ['PUT' => 0, 'PATCH' => 1], null, false, true, null]],
-        333 => [[['_route' => 'app_profilsortie_profilsortie_collection', '__controller' => 'App\\Controller\\ProfilsortieController::profilsortie_collection', '__api_resource_class' => 'Profilsortie', '__api_collection_operation_name' => 'profilsortie_promo', '_controller' => 'App\\Controller\\ProfilsortieController::profilsortie_collection'], ['id'], ['GET' => 0], null, false, false, null]],
-        350 => [[['_route' => 'app_profilsortie_profilsortie_item', '__controller' => 'App\\Controller\\ProfilsortieController::profilsortie_item', '__api_resource_class' => 'Profilsortie', '__api_collection_operation_name' => 'profilsortie_item', '_controller' => 'App\\Controller\\ProfilsortieController::profilsortie_item'], ['idp', 'id'], ['GET' => 0], null, false, true, null]],
-        366 => [[['_route' => 'app_promo_promo_id_gp_principal', '__controller' => 'App\\Controller\\PromoController::promo_id_gp_principal', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'promo_id_gprincipal', '_controller' => 'App\\Controller\\PromoController::promo_id_gp_principal'], ['id'], ['GET' => 0], null, false, false, null]],
-        396 => [[['_route' => 'app_promo_apprenantenattente', '__controller' => 'App\\Controller\\PromoController::apprenantEnAttente', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'apprenants_attente', '_controller' => 'App\\Controller\\PromoController::apprenantEnAttente'], ['id'], ['GET' => 0], null, false, false, null]],
-        404 => [[['_route' => 'app_promo_gerer_apprenant', '__controller' => 'App\\Controller\\PromoController::gerer_apprenant', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'gerer_apprenants', '_controller' => 'App\\Controller\\PromoController::gerer_apprenant'], ['id'], ['PUT' => 0], null, false, false, null]],
-        423 => [[['_route' => 'app_promo_gerer_formateur', '__controller' => 'App\\Controller\\PromoController::gerer_formateur', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'gerer_formateurs', '_controller' => 'App\\Controller\\PromoController::gerer_formateur'], ['id'], ['PUT' => 0], null, false, false, null]],
-        438 => [[['_route' => 'app_promo_gerer_groupe', '__controller' => 'App\\Controller\\PromoController::gerer_groupe', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'gerer_groupes', '_controller' => 'App\\Controller\\PromoController::gerer_groupe'], ['id'], ['PUT' => 0], null, false, false, null]],
-        447 => [[['_route' => 'app_promo_updatepromo', '__controller' => 'App\\Controller\\PromoController::updatePromo', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'update_promo', '_controller' => 'App\\Controller\\PromoController::updatePromo'], ['id'], ['PUT' => 0], null, false, true, null]],
-        477 => [[['_route' => 'app_referentiel_updatereferentiel', '__controller' => 'App\\Controller\\ReferentielController::updateReferentiel', '__api_resource_class' => 'App\\Entity\\Referentiel', '__api_collection_operation_name' => 'update_referentiel', '_controller' => 'App\\Controller\\ReferentielController::updateReferentiel'], ['id'], ['PUT' => 0, 'PATCH' => 1], null, false, true, null]],
-        499 => [[['_route' => 'app_user_updateuser', '__controller' => 'App\\Controller\\UserController::UpdateUser', '__api_resource_class' => 'App\\Entity\\User', '__api_item_operation_name' => 'update_user', '_controller' => 'App\\Controller\\UserController::UpdateUser'], ['id'], ['PUT' => 0], null, false, true, null]],
-        567 => [[['_route' => 'brief_groupe_promo', '_controller' => 'App\\Controller\\BriefController::briefs_groupe_promo', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'brief_groupe_promo'], ['idp', 'idg'], ['GET' => 0], null, false, false, null]],
-        614 => [[['_route' => 'app_brief_assignationbrief', '__controller' => 'App\\Controller\\BriefController::assignationBrief', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'assignation_briefs', '_controller' => 'App\\Controller\\BriefController::assignationBrief'], ['idpromo', 'idbrief'], ['GET' => 0], null, false, false, null]],
-        622 => [[['_route' => 'app_brief_updatebrief', '__controller' => 'App\\Controller\\BriefController::UpdateBrief', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'update_briefs', '_controller' => 'App\\Controller\\BriefController::UpdateBrief'], ['idpromo', 'idbrief'], ['PUT' => 0], null, false, true, null]],
-        647 => [[['_route' => 'app_brief_dupliquebrief', '__controller' => 'App\\Controller\\BriefController::addBrief', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'duplique_briefs', '_controller' => 'App\\Controller\\BriefController::dupliqueBrief'], ['id'], ['POST' => 0], null, false, true, null]],
-        695 => [[['_route' => 'brief_promo', '_controller' => 'App\\Controller\\BriefController::brief_promo', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'brief_promo'], ['idp', 'id'], ['GET' => 0], null, false, true, null]],
-        703 => [[['_route' => 'promo_id_brief', '_controller' => 'App\\Controller\\BriefController::promo_id_briefs', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'promo_id_brief'], ['idp'], ['GET' => 0], null, false, false, null]],
-        720 => [[['_route' => 'formateur_find', '_controller' => 'App\\Controller\\FormateurController::getFormateurById', '_api_resource_class' => 'App\\Entity\\User', '_api_collection_operation_name' => 'get_formateur'], ['id'], ['GET' => 0], null, false, true, null]],
-        778 => [
+        74 => [[['_route' => 'admin_find', '_controller' => 'App\\Controller\\AdminController::getAdminById', '_api_resource_class' => 'App\\Entity\\User', '_api_collection_operation_name' => 'get_admin'], ['id'], ['GET' => 0], null, false, true, null]],
+        105 => [[['_route' => 'app_competence_updatecompetence', '__controller' => 'App\\Controller\\CompetenceController::updateCompetence', '__api_resource_class' => 'App\\Entity\\Competence', '__api_collection_operation_name' => 'update_competence', '_controller' => 'App\\Controller\\CompetenceController::updateCompetence'], ['id'], ['PUT' => 0, 'PATCH' => 1], null, false, true, null]],
+        132 => [[['_route' => 'app_groupe_updategroupe', '__controller' => 'App\\Controller\\GroupeController::updateGroupe', '__api_resource_class' => 'App\\Entity\\Groupe', '__api_collection_operation_name' => 'update_groupe', '_controller' => 'App\\Controller\\GroupeController::updateGroupe'], ['id'], ['PUT' => 0], null, false, true, null]],
+        160 => [[['_route' => 'app_groupecompetence_updategroupecompetence', '__controller' => 'App\\Controller\\GroupecompetenceController::updateGroupecompetence', '__api_resource_class' => 'App\\Entity\\Groupecompetence', '__api_collection_operation_name' => 'update_groupecompetence', '_controller' => 'App\\Controller\\GroupecompetenceController::updateGroupecompetence'], ['id'], ['PUT' => 0, 'PATCH' => 1], null, false, true, null]],
+        181 => [[['_route' => 'app_groupetag_updategroupetag', '__controller' => 'App\\Controller\\GroupetagController::updateGroupetag', '__api_resource_class' => 'App\\Entity\\Groupetag', '__api_collection_operation_name' => 'update_Groupetag', '_controller' => 'App\\Controller\\GroupetagController::updateGroupetag'], ['id'], ['PUT' => 0, 'PATCH' => 1], null, false, true, null]],
+        231 => [[['_route' => 'app_profilsortie_profilsortie_collection', '__controller' => 'App\\Controller\\ProfilsortieController::profilsortie_collection', '__api_resource_class' => 'Profilsortie', '__api_collection_operation_name' => 'profilsortie_promo', '_controller' => 'App\\Controller\\ProfilsortieController::profilsortie_collection'], ['id'], ['GET' => 0], null, false, false, null]],
+        248 => [[['_route' => 'app_profilsortie_profilsortie_item', '__controller' => 'App\\Controller\\ProfilsortieController::profilsortie_item', '__api_resource_class' => 'Profilsortie', '__api_collection_operation_name' => 'profilsortie_item', '_controller' => 'App\\Controller\\ProfilsortieController::profilsortie_item'], ['idp', 'id'], ['GET' => 0], null, false, true, null]],
+        264 => [[['_route' => 'app_promo_promo_id_gp_principal', '__controller' => 'App\\Controller\\PromoController::promo_id_gp_principal', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'promo_id_gprincipal', '_controller' => 'App\\Controller\\PromoController::promo_id_gp_principal'], ['id'], ['GET' => 0], null, false, false, null]],
+        294 => [[['_route' => 'app_promo_apprenantenattente', '__controller' => 'App\\Controller\\PromoController::apprenantEnAttente', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'apprenants_attente', '_controller' => 'App\\Controller\\PromoController::apprenantEnAttente'], ['id'], ['GET' => 0], null, false, false, null]],
+        302 => [[['_route' => 'app_promo_gerer_apprenant', '__controller' => 'App\\Controller\\PromoController::gerer_apprenant', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'gerer_apprenants', '_controller' => 'App\\Controller\\PromoController::gerer_apprenant'], ['id'], ['PUT' => 0], null, false, false, null]],
+        321 => [[['_route' => 'app_promo_gerer_formateur', '__controller' => 'App\\Controller\\PromoController::gerer_formateur', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'gerer_formateurs', '_controller' => 'App\\Controller\\PromoController::gerer_formateur'], ['id'], ['PUT' => 0], null, false, false, null]],
+        336 => [[['_route' => 'app_promo_gerer_groupe', '__controller' => 'App\\Controller\\PromoController::gerer_groupe', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'gerer_groupes', '_controller' => 'App\\Controller\\PromoController::gerer_groupe'], ['id'], ['PUT' => 0], null, false, false, null]],
+        345 => [[['_route' => 'app_promo_updatepromo', '__controller' => 'App\\Controller\\PromoController::updatePromo', '__api_resource_class' => 'App\\Entity\\Promo', '__api_collection_operation_name' => 'update_promo', '_controller' => 'App\\Controller\\PromoController::updatePromo'], ['id'], ['PUT' => 0], null, false, true, null]],
+        375 => [[['_route' => 'app_referentiel_updatereferentiel', '__controller' => 'App\\Controller\\ReferentielController::updateReferentiel', '__api_resource_class' => 'App\\Entity\\Referentiel', '__api_collection_operation_name' => 'update_referentiel', '_controller' => 'App\\Controller\\ReferentielController::updateReferentiel'], ['id'], ['PUT' => 0, 'PATCH' => 1], null, false, true, null]],
+        397 => [[['_route' => 'app_user_updateuser', '__controller' => 'App\\Controller\\UserController::UpdateUser', '__api_resource_class' => 'App\\Entity\\User', '__api_item_operation_name' => 'update_user', '_controller' => 'App\\Controller\\UserController::UpdateUser'], ['id'], ['PUT' => 0], null, false, true, null]],
+        428 => [[['_route' => 'apprenant_find', '_controller' => 'App\\Controller\\ApprenantController::getApprenantById', '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'get_apprenant'], ['id'], ['GET' => 0], null, false, true, null]],
+        461 => [[['_route' => 'promo_apprenant_brief', '_controller' => 'App\\Controller\\BriefController::promo_apprenant_brief', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'promo_apprenant_brief'], ['id'], ['GET' => 0], null, false, false, null]],
+        478 => [[['_route' => 'apprenant_promo_brief', '_controller' => 'App\\Controller\\BriefController::apprenant_promo_brief', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'apprenant_promo_brief'], ['idp', 'idb'], ['GET' => 0], null, false, true, null]],
+        521 => [[['_route' => 'app_brief_addlivrable', '__controller' => 'App\\Controller\\BriefController::AddLivrable', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'add_livrable', '_controller' => 'App\\Controller\\BriefController::AddLivrable'], ['idapp', 'idgrp'], ['POST' => 0], null, false, false, null]],
+        589 => [[['_route' => 'brief_groupe_promo', '_controller' => 'App\\Controller\\BriefController::briefs_groupe_promo', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'brief_groupe_promo'], ['idp', 'idg'], ['GET' => 0], null, false, false, null]],
+        636 => [[['_route' => 'app_brief_assignationbrief', '__controller' => 'App\\Controller\\BriefController::assignationBrief', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'assignation_briefs', '_controller' => 'App\\Controller\\BriefController::assignationBrief'], ['idpromo', 'idbrief'], ['GET' => 0], null, false, false, null]],
+        644 => [[['_route' => 'app_brief_updatebrief', '__controller' => 'App\\Controller\\BriefController::UpdateBrief', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'update_briefs', '_controller' => 'App\\Controller\\BriefController::UpdateBrief'], ['idpromo', 'idbrief'], ['PUT' => 0], null, false, true, null]],
+        669 => [[['_route' => 'app_brief_dupliquebrief', '__controller' => 'App\\Controller\\BriefController::addBrief', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'duplique_briefs', '_controller' => 'App\\Controller\\BriefController::dupliqueBrief'], ['id'], ['POST' => 0], null, false, true, null]],
+        717 => [[['_route' => 'brief_promo', '_controller' => 'App\\Controller\\BriefController::brief_promo', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'brief_promo'], ['idp', 'id'], ['GET' => 0], null, false, true, null]],
+        725 => [[['_route' => 'promo_id_brief', '_controller' => 'App\\Controller\\BriefController::promo_id_briefs', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'promo_id_brief'], ['idp'], ['GET' => 0], null, false, false, null]],
+        742 => [[['_route' => 'formateur_find', '_controller' => 'App\\Controller\\FormateurController::getFormateurById', '_api_resource_class' => 'App\\Entity\\User', '_api_collection_operation_name' => 'get_formateur'], ['id'], ['GET' => 0], null, false, true, null]],
+        800 => [
             [['_route' => 'app_commentairegeneral_envoyercommentaire', '__controller' => 'App\\Controller\\CommentaireGeneralController::envoyerCommentaire', '__api_resource_class' => 'CommentaireGeneral', '__api_collection_operation_name' => 'add_commentaire', '_controller' => 'App\\Controller\\CommentaireGeneralController::envoyerCommentaire'], ['idp', 'ida'], ['POST' => 0], null, false, false, null],
             [['_route' => 'app_commentairegeneral_affichercommentaire', '__controller' => 'App\\Controller\\CommentaireGeneralController::afficherCommentaire', '__api_resource_class' => 'CommentaireGeneral', '__api_collection_operation_name' => 'get_commentaire', '_controller' => 'App\\Controller\\CommentaireGeneralController::afficherCommentaire'], ['idp', 'ida'], ['GET' => 0], null, false, false, null],
         ],
-        816 => [[['_route' => 'api_entrypoint', '_controller' => 'api_platform.action.entrypoint', '_format' => '', '_api_respond' => 'true', 'index' => 'index'], ['index', '_format'], null, null, false, true, null]],
-        847 => [[['_route' => 'api_doc', '_controller' => 'api_platform.action.documentation', '_format' => '', '_api_respond' => 'true'], ['_format'], null, null, false, true, null]],
-        889 => [[['_route' => 'api_jsonld_context', '_controller' => 'api_platform.jsonld.action.context', '_format' => 'jsonld', '_api_respond' => 'true'], ['shortName', '_format'], null, null, false, true, null]],
-        957 => [[['_route' => 'api_competences_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_competences_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetences', 'identifiers' => [['id', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_competences_groupecompetences_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        997 => [[['_route' => 'api_competences_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_competences_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_competences_groupecompetences_user_get_subresource']], ['id', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
-        1034 => [[['_route' => 'api_competences_groupecompetences_competences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_subresource_operation_name' => 'api_competences_groupecompetences_competences_get_subresource', '_api_subresource_context' => ['property' => 'competence', 'identifiers' => [['id', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => true, 'operationId' => 'api_competences_groupecompetences_competences_get_subresource']], ['id', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
-        1075 => [[['_route' => 'api_competences_groupecompetences_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_competences_groupecompetences_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_competences_groupecompetences_competences_niveaux_get_subresource']], ['id', 'groupecompetences', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
-        1109 => [[['_route' => 'api_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_competences_niveaux_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1165 => [
+        838 => [[['_route' => 'api_entrypoint', '_controller' => 'api_platform.action.entrypoint', '_format' => '', '_api_respond' => 'true', 'index' => 'index'], ['index', '_format'], null, null, false, true, null]],
+        869 => [[['_route' => 'api_doc', '_controller' => 'api_platform.action.documentation', '_format' => '', '_api_respond' => 'true'], ['_format'], null, null, false, true, null]],
+        911 => [[['_route' => 'api_jsonld_context', '_controller' => 'api_platform.jsonld.action.context', '_format' => 'jsonld', '_api_respond' => 'true'], ['shortName', '_format'], null, null, false, true, null]],
+        979 => [[['_route' => 'api_competences_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_competences_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetences', 'identifiers' => [['id', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_competences_groupecompetences_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1019 => [[['_route' => 'api_competences_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_competences_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_competences_groupecompetences_user_get_subresource']], ['id', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
+        1057 => [[['_route' => 'api_competences_groupecompetences_competences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_subresource_operation_name' => 'api_competences_groupecompetences_competences_get_subresource', '_api_subresource_context' => ['property' => 'competence', 'identifiers' => [['id', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => true, 'operationId' => 'api_competences_groupecompetences_competences_get_subresource']], ['id', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
+        1098 => [[['_route' => 'api_competences_groupecompetences_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_competences_groupecompetences_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_competences_groupecompetences_competences_niveaux_get_subresource']], ['id', 'groupecompetences', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
+        1132 => [[['_route' => 'api_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_competences_niveaux_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1188 => [
             [['_route' => 'api_commentaire_generals_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\CommentaireGeneral', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_commentaire_generals_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\CommentaireGeneral', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_commentaire_generals_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\CommentaireGeneral', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_commentaire_generals_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\CommentaireGeneral', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        1201 => [
+        1224 => [
             [['_route' => 'api_c_ms_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\CM', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_c_ms_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\CM', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1242 => [[['_route' => 'api_c_ms_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\CM', '_api_item_operation_name' => 'get', 'id' => null], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1308 => [[['_route' => 'api_briefs_brief_groupe_promo_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'brief_groupe_promo'], ['idp', 'idg'], ['GET' => 0], null, false, false, null]],
-        1341 => [[['_route' => 'api_briefs_update_briefs_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_item_operation_name' => 'update_briefs', 'id' => null], ['idpromo', 'idbrief'], ['PUT' => 0], null, false, true, null]],
-        1374 => [[['_route' => 'api_briefs_briefs_brouillon_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'briefs_brouillon'], [], ['GET' => 0], null, false, false, null]],
-        1390 => [[['_route' => 'api_briefs_briefs_valide_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'briefs_valide'], [], ['GET' => 0], null, false, false, null]],
-        1414 => [[['_route' => 'api_briefs_duplique_briefs_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'duplique_briefs', 'id' => null], ['id'], ['POST' => 0], null, false, true, null]],
-        1432 => [[['_route' => 'api_briefs_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null]],
-        1482 => [[['_route' => 'api_briefs_brief_promo_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'brief_promo'], ['idp', 'id'], ['GET' => 0], null, false, true, null]],
-        1503 => [[['_route' => 'api_briefs_promo_id_brief_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'promo_id_brief'], ['idp'], ['GET' => 0], null, false, false, null]],
-        1549 => [[['_route' => 'api_briefs_assignation_briefs_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_item_operation_name' => 'assignation_briefs'], ['idpromo', 'idbrief'], ['PUT' => 0], null, false, false, null]],
-        1564 => [[['_route' => 'api_formateurs_get_formateur_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Formateur', '_api_item_operation_name' => 'get_formateur'], ['id'], ['GET' => 0], null, false, true, null]],
-        1629 => [
+        1265 => [[['_route' => 'api_c_ms_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\CM', '_api_item_operation_name' => 'get', 'id' => null], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1331 => [[['_route' => 'api_briefs_brief_groupe_promo_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'brief_groupe_promo'], ['idp', 'idg'], ['GET' => 0], null, false, false, null]],
+        1364 => [[['_route' => 'api_briefs_update_briefs_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_item_operation_name' => 'update_briefs', 'id' => null], ['idpromo', 'idbrief'], ['PUT' => 0], null, false, true, null]],
+        1397 => [[['_route' => 'api_briefs_briefs_brouillon_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'briefs_brouillon'], [], ['GET' => 0], null, false, false, null]],
+        1413 => [[['_route' => 'api_briefs_briefs_valide_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'briefs_valide'], [], ['GET' => 0], null, false, false, null]],
+        1437 => [[['_route' => 'api_briefs_duplique_briefs_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'duplique_briefs', 'id' => null], ['id'], ['POST' => 0], null, false, true, null]],
+        1455 => [[['_route' => 'api_briefs_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null]],
+        1505 => [[['_route' => 'api_briefs_brief_promo_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'brief_promo'], ['idp', 'id'], ['GET' => 0], null, false, true, null]],
+        1526 => [[['_route' => 'api_briefs_promo_id_brief_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'promo_id_brief'], ['idp'], ['GET' => 0], null, false, false, null]],
+        1572 => [[['_route' => 'api_briefs_assignation_briefs_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_item_operation_name' => 'assignation_briefs'], ['idpromo', 'idbrief'], ['PUT' => 0], null, false, false, null]],
+        1587 => [[['_route' => 'api_formateurs_get_formateur_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Formateur', '_api_item_operation_name' => 'get_formateur'], ['id'], ['GET' => 0], null, false, true, null]],
+        1652 => [
             [['_route' => 'api_statistiques_competences_GET_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_collection_operation_name' => 'GET'], ['id', 'num'], ['GET' => 0], null, false, false, null],
             [['_route' => 'api_statistiques_competences_POST_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_collection_operation_name' => 'POST'], ['id', 'num'], ['POST' => 0], null, false, false, null],
         ],
-        1647 => [[['_route' => 'api_statistiques_competences_PUT_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_item_operation_name' => 'PUT'], ['var', 'num', 'id'], ['PUT' => 0], null, false, true, null]],
-        1681 => [[['_route' => 'api_statistiques_competences_compet_stats_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_collection_operation_name' => 'compet_stats'], ['idPr', 'idRef'], ['GET' => 0], null, false, false, null]],
-        1724 => [[['_route' => 'api_statistiques_competences_GET_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_item_operation_name' => 'GET'], ['id'], ['GET' => 0], null, false, true, null]],
-        1790 => [[['_route' => 'api_briefs_apprenant_promo_brief_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'apprenant_promo_brief'], ['idp', 'idb'], ['GET' => 0], null, false, true, null]],
-        1811 => [[['_route' => 'api_briefs_promo_apprenant_brief_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'promo_apprenant_brief'], ['id'], ['GET' => 0], null, false, false, null]],
-        1826 => [[['_route' => 'api_apprenants_get_apprenant_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_item_operation_name' => 'get_apprenant'], ['id'], ['GET' => 0], null, false, true, null]],
-        1869 => [[['_route' => 'api_livrables_add_livrable_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Livrable', '_api_collection_operation_name' => 'add_livrable', 'id' => null], ['idapp', 'idgrp'], ['POST' => 0], null, false, false, null]],
-        1944 => [[['_route' => 'api_statistiques_competences_apprenant_brief_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_collection_operation_name' => 'apprenant_brief'], ['idAp', 'idPr', 'idRef'], ['GET' => 0], null, false, false, null]],
-        2022 => [[['_route' => 'api_statistiques_competences_apprenant_compet_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_collection_operation_name' => 'apprenant_compet'], ['idAp', 'idPr', 'idRef'], ['GET' => 0], null, false, false, null]],
-        2070 => [[['_route' => 'api_formateurs_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Formateur', '_api_item_operation_name' => 'get', 'id' => null], ['id'], ['GET' => 0], null, false, true, null]],
-        2091 => [
+        1670 => [[['_route' => 'api_statistiques_competences_PUT_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_item_operation_name' => 'PUT'], ['var', 'num', 'id'], ['PUT' => 0], null, false, true, null]],
+        1704 => [[['_route' => 'api_statistiques_competences_compet_stats_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_collection_operation_name' => 'compet_stats'], ['idPr', 'idRef'], ['GET' => 0], null, false, false, null]],
+        1747 => [[['_route' => 'api_statistiques_competences_GET_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_item_operation_name' => 'GET'], ['id'], ['GET' => 0], null, false, true, null]],
+        1813 => [[['_route' => 'api_briefs_apprenant_promo_brief_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'apprenant_promo_brief'], ['idp', 'idb'], ['GET' => 0], null, false, true, null]],
+        1834 => [[['_route' => 'api_briefs_promo_apprenant_brief_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'promo_apprenant_brief'], ['id'], ['GET' => 0], null, false, false, null]],
+        1849 => [[['_route' => 'api_apprenants_get_apprenant_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_item_operation_name' => 'get_apprenant'], ['id'], ['GET' => 0], null, false, true, null]],
+        1892 => [[['_route' => 'api_livrables_add_livrable_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Livrable', '_api_collection_operation_name' => 'add_livrable', 'id' => null], ['idapp', 'idgrp'], ['POST' => 0], null, false, false, null]],
+        1967 => [[['_route' => 'api_statistiques_competences_apprenant_brief_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_collection_operation_name' => 'apprenant_brief'], ['idAp', 'idPr', 'idRef'], ['GET' => 0], null, false, false, null]],
+        2045 => [[['_route' => 'api_statistiques_competences_apprenant_compet_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\StatistiquesCompetences', '_api_collection_operation_name' => 'apprenant_compet'], ['idAp', 'idPr', 'idRef'], ['GET' => 0], null, false, false, null]],
+        2093 => [[['_route' => 'api_formateurs_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Formateur', '_api_item_operation_name' => 'get', 'id' => null], ['id'], ['GET' => 0], null, false, true, null]],
+        2114 => [
             [['_route' => 'api_formateurs_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Formateur', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_formateurs_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Formateur', '_api_item_operation_name' => 'patch'], ['id'], ['PATCH' => 0], null, false, true, null],
             [['_route' => 'api_formateurs_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Formateur', '_api_item_operation_name' => 'put'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2116 => [
+        2139 => [
             [['_route' => 'api_users_update_user_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'update_user'], ['id'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_users_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_users_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_users_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'patch'], ['id'], ['PATCH' => 0], null, false, true, null],
         ],
-        2147 => [[['_route' => 'api_groupetags_show_groupetags_tags_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupetag', '_api_collection_operation_name' => 'show_groupetags_tags'], [], ['GET' => 0], null, false, false, null]],
-        2167 => [
+        2170 => [[['_route' => 'api_groupetags_show_groupetags_tags_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupetag', '_api_collection_operation_name' => 'show_groupetags_tags'], [], ['GET' => 0], null, false, false, null]],
+        2190 => [
             [['_route' => 'api_groupetags_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupetag', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_groupetags_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupetag', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_groupetags_updateGroupeGroupetag_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupetag', '_api_item_operation_name' => 'updateGroupeGroupetag'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2193 => [[['_route' => 'api_groupes_show_apprenants_groupe_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupe', '_api_collection_operation_name' => 'show_apprenants_groupe'], [], ['GET' => 0], null, false, false, null]],
-        2213 => [
+        2216 => [[['_route' => 'api_groupes_show_apprenants_groupe_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupe', '_api_collection_operation_name' => 'show_apprenants_groupe'], [], ['GET' => 0], null, false, false, null]],
+        2236 => [
             [['_route' => 'api_groupes_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupe', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_groupes_update_groupe_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupe', '_api_item_operation_name' => 'update_groupe'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2250 => [[['_route' => 'api_groupecompetences_show_groupecompetence_competence_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_collection_operation_name' => 'show_groupecompetence_competence'], [], ['GET' => 0], null, false, false, null]],
-        2270 => [
+        2273 => [[['_route' => 'api_groupecompetences_show_groupecompetence_competence_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_collection_operation_name' => 'show_groupecompetence_competence'], [], ['GET' => 0], null, false, false, null]],
+        2293 => [
             [['_route' => 'api_groupecompetences_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_groupecompetences_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_groupecompetences_update_groupecompetence_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_item_operation_name' => 'update_groupecompetence'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2304 => [[['_route' => 'api_promos_promo_gprincipal_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_collection_operation_name' => 'promo_gprincipal'], [], ['GET' => 0], null, false, false, null]],
-        2340 => [[['_route' => 'api_promos_promo_id_gprincipal_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'promo_id_gprincipal'], ['id'], ['GET' => 0], null, false, false, null]],
-        2363 => [[['_route' => 'api_profilsorties_            profilsortie_promo_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profilsortie', '_api_collection_operation_name' => '            profilsortie_promo'], ['id'], ['GET' => 0], null, false, false, null]],
-        2381 => [[['_route' => 'api_profilsorties_profilsortie_item_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profilsortie', '_api_collection_operation_name' => 'profilsortie_item'], ['idp', 'id'], ['GET' => 0], null, false, true, null]],
-        2413 => [[['_route' => 'api_promos_apprenants_attente_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'apprenants_attente'], ['id'], ['GET' => 0], null, false, false, null]],
-        2422 => [[['_route' => 'api_promos_gerer_apprenants_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'gerer_apprenants'], ['id'], ['PUT' => 0], null, false, false, null]],
-        2443 => [[['_route' => 'api_promos_promo_referentiel_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'promo_referentiel'], ['id'], ['GET' => 0], null, false, false, null]],
-        2473 => [[['_route' => 'api_promos_promo_groupe_apprenants_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'promo_groupe_apprenants'], ['id'], ['GET' => 0], null, false, false, null]],
-        2482 => [[['_route' => 'api_promos_gerer_groupes_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'gerer_groupes'], ['id'], ['PUT' => 0], null, false, false, null]],
-        2505 => [
+        2327 => [[['_route' => 'api_promos_promo_gprincipal_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_collection_operation_name' => 'promo_gprincipal'], [], ['GET' => 0], null, false, false, null]],
+        2363 => [[['_route' => 'api_promos_promo_id_gprincipal_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'promo_id_gprincipal'], ['id'], ['GET' => 0], null, false, false, null]],
+        2386 => [[['_route' => 'api_profilsorties_profilsortie_promo_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profilsortie', '_api_collection_operation_name' => 'profilsortie_promo'], ['id'], ['GET' => 0], null, false, false, null]],
+        2404 => [[['_route' => 'api_profilsorties_profilsortie_item_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profilsortie', '_api_collection_operation_name' => 'profilsortie_item'], ['idp', 'id'], ['GET' => 0], null, false, true, null]],
+        2436 => [[['_route' => 'api_promos_apprenants_attente_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'apprenants_attente'], ['id'], ['GET' => 0], null, false, false, null]],
+        2445 => [[['_route' => 'api_promos_gerer_apprenants_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'gerer_apprenants'], ['id'], ['PUT' => 0], null, false, false, null]],
+        2466 => [[['_route' => 'api_promos_promo_referentiel_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'promo_referentiel'], ['id'], ['GET' => 0], null, false, false, null]],
+        2496 => [[['_route' => 'api_promos_promo_groupe_apprenants_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'promo_groupe_apprenants'], ['id'], ['GET' => 0], null, false, false, null]],
+        2505 => [[['_route' => 'api_promos_gerer_groupes_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'gerer_groupes'], ['id'], ['PUT' => 0], null, false, false, null]],
+        2528 => [
             [['_route' => 'api_promos_promo_groupe_formateurs_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'promo_groupe_formateurs'], ['id'], ['GET' => 0], null, false, false, null],
             [['_route' => 'api_promos_gerer_formateurs_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'gerer_formateurs'], ['id'], ['PUT' => 0], null, false, false, null],
         ],
-        2516 => [
+        2539 => [
             [['_route' => 'api_promos_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_promos_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_promos_update_promo_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Promo', '_api_item_operation_name' => 'update_promo'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2546 => [
-            [['_route' => 'api_profils_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profil', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
+        2571 => [[['_route' => 'api_profils_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profil', '_api_item_operation_name' => 'get', 'id' => null], ['id'], ['GET' => 0], null, false, true, null]],
+        2592 => [
             [['_route' => 'api_profils_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profil', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_profils_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profil', '_api_item_operation_name' => 'patch'], ['id'], ['PATCH' => 0], null, false, true, null],
             [['_route' => 'api_profils_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profil', '_api_item_operation_name' => 'put'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2574 => [
+        2620 => [
             [['_route' => 'api_profilsorties_profilsortie_id_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profilsortie', '_api_item_operation_name' => 'profilsortie_id'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_profilsorties_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profilsortie', '_api_item_operation_name' => 'patch'], ['id'], ['PATCH' => 0], null, false, true, null],
             [['_route' => 'api_profilsorties_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profilsortie', '_api_item_operation_name' => 'put'], ['id'], ['PUT' => 0], null, false, true, null],
+            [['_route' => 'api_profilsorties_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Profilsortie', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        2619 => [[['_route' => 'api_referentiels_show_referentiel_groupecompetence_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Referentiel', '_api_collection_operation_name' => 'show_referentiel_groupecompetence'], [], ['GET' => 0], null, false, false, null]],
-        2639 => [
+        2665 => [[['_route' => 'api_referentiels_show_referentiel_groupecompetence_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Referentiel', '_api_collection_operation_name' => 'show_referentiel_groupecompetence'], [], ['GET' => 0], null, false, false, null]],
+        2685 => [
             [['_route' => 'api_referentiels_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Referentiel', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_referentiels_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Referentiel', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_referentiels_update_referentiel_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Referentiel', '_api_item_operation_name' => 'update_referentiel'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2673 => [
+        2719 => [
             [['_route' => 'api_competences_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_competences_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_competences_update_competence_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_item_operation_name' => 'update_competence'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2699 => [
+        2745 => [
             [['_route' => 'api_tags_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Tag', '_api_item_operation_name' => 'get'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_tags_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Tag', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_tags_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Tag', '_api_item_operation_name' => 'patch'], ['id'], ['PATCH' => 0], null, false, true, null],
             [['_route' => 'api_tags_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Tag', '_api_item_operation_name' => 'put'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2736 => [[['_route' => 'api_apprenants_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_item_operation_name' => 'get', 'id' => null], ['id'], ['GET' => 0], null, false, true, null]],
-        2757 => [
+        2782 => [[['_route' => 'api_apprenants_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_item_operation_name' => 'get', 'id' => null], ['id'], ['GET' => 0], null, false, true, null]],
+        2803 => [
             [['_route' => 'api_apprenants_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_item_operation_name' => 'delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_apprenants_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_item_operation_name' => 'patch'], ['id'], ['PATCH' => 0], null, false, true, null],
             [['_route' => 'api_apprenants_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_item_operation_name' => 'put'], ['id'], ['PUT' => 0], null, false, true, null],
         ],
-        2776 => [[['_route' => 'api_users_get_admin_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'get_admin'], ['id'], ['GET' => 0], null, false, true, null]],
-        2826 => [
+        2822 => [[['_route' => 'api_users_get_admin_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_item_operation_name' => 'get_admin'], ['id'], ['GET' => 0], null, false, true, null]],
+        2872 => [
             [['_route' => 'api_promo_briefs_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\PromoBrief', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_promo_briefs_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\PromoBrief', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        2865 => [
+        2911 => [
             [['_route' => 'api_promo_briefs_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\PromoBrief', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_promo_briefs_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\PromoBrief', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_promo_briefs_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\PromoBrief', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_promo_briefs_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\PromoBrief', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        2915 => [[['_route' => 'api_promos_groupes_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupe', '_api_subresource_operation_name' => 'api_promos_groupes_get_subresource', '_api_subresource_context' => ['property' => 'groupes', 'identifiers' => [['id', 'App\\Entity\\Promo', true]], 'collection' => true, 'operationId' => 'api_promos_groupes_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        2959 => [[['_route' => 'api_promos_groupes_apprenants_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_subresource_operation_name' => 'api_promos_groupes_apprenants_get_subresource', '_api_subresource_context' => ['property' => 'apprenants', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['groupes', 'App\\Entity\\Groupe', true]], 'collection' => true, 'operationId' => 'api_promos_groupes_apprenants_get_subresource']], ['id', 'groupes', '_format'], ['GET' => 0], null, false, true, null]],
-        2998 => [[['_route' => 'api_promos_referentiel_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Referentiel', '_api_subresource_operation_name' => 'api_promos_referentiel_get_subresource', '_api_subresource_context' => ['property' => 'referentiel', 'identifiers' => [['id', 'App\\Entity\\Promo', true]], 'collection' => false, 'operationId' => 'api_promos_referentiel_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3043 => [[['_route' => 'api_promos_referentiel_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetence', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false]], 'collection' => true, 'operationId' => 'api_promos_referentiel_groupecompetences_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3084 => [[['_route' => 'api_promos_referentiel_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_promos_referentiel_groupecompetences_user_get_subresource']], ['id', 'groupecompetence', '_format'], ['GET' => 0], null, false, true, null]],
-        3122 => [[['_route' => 'api_promos_referentiel_groupecompetences_competences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_competences_get_subresource', '_api_subresource_context' => ['property' => 'competence', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true]], 'collection' => true, 'operationId' => 'api_promos_referentiel_groupecompetences_competences_get_subresource']], ['id', 'groupecompetence', '_format'], ['GET' => 0], null, false, true, null]],
-        3179 => [[['_route' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetences', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_get_subresource']], ['id', 'groupecompetence', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
-        3217 => [[['_route' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_user_get_subresource']], ['id', 'groupecompetence', 'competence', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
-        3249 => [[['_route' => 'api_promos_referentiel_groupecompetences_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_promos_referentiel_groupecompetences_competences_niveaux_get_subresource']], ['id', 'groupecompetence', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
-        3302 => [[['_route' => 'api_profils_users_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_profils_users_get_subresource', '_api_subresource_context' => ['property' => 'users', 'identifiers' => [['id', 'App\\Entity\\Profil', true]], 'collection' => true, 'operationId' => 'api_profils_users_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3352 => [[['_route' => 'api_profilsorties_apprenants_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_subresource_operation_name' => 'api_profilsorties_apprenants_get_subresource', '_api_subresource_context' => ['property' => 'apprenants', 'identifiers' => [['id', 'App\\Entity\\Profilsortie', true]], 'collection' => true, 'operationId' => 'api_profilsorties_apprenants_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3397 => [
+        2961 => [[['_route' => 'api_promos_groupes_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupe', '_api_subresource_operation_name' => 'api_promos_groupes_get_subresource', '_api_subresource_context' => ['property' => 'groupes', 'identifiers' => [['id', 'App\\Entity\\Promo', true]], 'collection' => true, 'operationId' => 'api_promos_groupes_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3005 => [[['_route' => 'api_promos_groupes_apprenants_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_subresource_operation_name' => 'api_promos_groupes_apprenants_get_subresource', '_api_subresource_context' => ['property' => 'apprenants', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['groupes', 'App\\Entity\\Groupe', true]], 'collection' => true, 'operationId' => 'api_promos_groupes_apprenants_get_subresource']], ['id', 'groupes', '_format'], ['GET' => 0], null, false, true, null]],
+        3044 => [[['_route' => 'api_promos_referentiel_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Referentiel', '_api_subresource_operation_name' => 'api_promos_referentiel_get_subresource', '_api_subresource_context' => ['property' => 'referentiel', 'identifiers' => [['id', 'App\\Entity\\Promo', true]], 'collection' => false, 'operationId' => 'api_promos_referentiel_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3089 => [[['_route' => 'api_promos_referentiel_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetence', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false]], 'collection' => true, 'operationId' => 'api_promos_referentiel_groupecompetences_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3130 => [[['_route' => 'api_promos_referentiel_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_promos_referentiel_groupecompetences_user_get_subresource']], ['id', 'groupecompetence', '_format'], ['GET' => 0], null, false, true, null]],
+        3168 => [[['_route' => 'api_promos_referentiel_groupecompetences_competences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_competences_get_subresource', '_api_subresource_context' => ['property' => 'competence', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true]], 'collection' => true, 'operationId' => 'api_promos_referentiel_groupecompetences_competences_get_subresource']], ['id', 'groupecompetence', '_format'], ['GET' => 0], null, false, true, null]],
+        3225 => [[['_route' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetences', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_get_subresource']], ['id', 'groupecompetence', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
+        3263 => [[['_route' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_promos_referentiel_groupecompetences_competences_groupecompetences_user_get_subresource']], ['id', 'groupecompetence', 'competence', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
+        3295 => [[['_route' => 'api_promos_referentiel_groupecompetences_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_promos_referentiel_groupecompetences_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Promo', true], ['referentiel', 'App\\Entity\\Referentiel', false], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_promos_referentiel_groupecompetences_competences_niveaux_get_subresource']], ['id', 'groupecompetence', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
+        3348 => [[['_route' => 'api_profils_users_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_profils_users_get_subresource', '_api_subresource_context' => ['property' => 'users', 'identifiers' => [['id', 'App\\Entity\\Profil', true]], 'collection' => true, 'operationId' => 'api_profils_users_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3398 => [[['_route' => 'api_profilsorties_apprenants_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_subresource_operation_name' => 'api_profilsorties_apprenants_get_subresource', '_api_subresource_context' => ['property' => 'apprenants', 'identifiers' => [['id', 'App\\Entity\\Profilsortie', true]], 'collection' => true, 'operationId' => 'api_profilsorties_apprenants_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3443 => [
             [['_route' => 'api_ressources_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Ressource', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_ressources_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Ressource', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        3436 => [
+        3482 => [
             [['_route' => 'api_ressources_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Ressource', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_ressources_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Ressource', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_ressources_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Ressource', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_ressources_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Ressource', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        3502 => [[['_route' => 'api_referentiels_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetence', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true]], 'collection' => true, 'operationId' => 'api_referentiels_groupecompetences_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3543 => [[['_route' => 'api_referentiels_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_referentiels_groupecompetences_user_get_subresource']], ['id', 'groupecompetence', '_format'], ['GET' => 0], null, false, true, null]],
-        3581 => [[['_route' => 'api_referentiels_groupecompetences_competences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_competences_get_subresource', '_api_subresource_context' => ['property' => 'competence', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true]], 'collection' => true, 'operationId' => 'api_referentiels_groupecompetences_competences_get_subresource']], ['id', 'groupecompetence', '_format'], ['GET' => 0], null, false, true, null]],
-        3638 => [[['_route' => 'api_referentiels_groupecompetences_competences_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_competences_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetences', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_referentiels_groupecompetences_competences_groupecompetences_get_subresource']], ['id', 'groupecompetence', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
-        3676 => [[['_route' => 'api_referentiels_groupecompetences_competences_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_competences_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_referentiels_groupecompetences_competences_groupecompetences_user_get_subresource']], ['id', 'groupecompetence', 'competence', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
-        3708 => [[['_route' => 'api_referentiels_groupecompetences_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_referentiels_groupecompetences_competences_niveaux_get_subresource']], ['id', 'groupecompetence', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
-        3764 => [[['_route' => 'api_groupetags_tags_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Tag', '_api_subresource_operation_name' => 'api_groupetags_tags_get_subresource', '_api_subresource_context' => ['property' => 'tag', 'identifiers' => [['id', 'App\\Entity\\Groupetag', true]], 'collection' => true, 'operationId' => 'api_groupetags_tags_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3809 => [[['_route' => 'api_groupes_apprenants_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_subresource_operation_name' => 'api_groupes_apprenants_get_subresource', '_api_subresource_context' => ['property' => 'apprenants', 'identifiers' => [['id', 'App\\Entity\\Groupe', true]], 'collection' => true, 'operationId' => 'api_groupes_apprenants_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3861 => [[['_route' => 'api_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_groupecompetences_user_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3899 => [[['_route' => 'api_groupecompetences_competences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_subresource_operation_name' => 'api_groupecompetences_competences_get_subresource', '_api_subresource_context' => ['property' => 'competence', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true]], 'collection' => true, 'operationId' => 'api_groupecompetences_competences_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        3956 => [[['_route' => 'api_groupecompetences_competences_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_groupecompetences_competences_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetences', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_groupecompetences_competences_groupecompetences_get_subresource']], ['id', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
-        3994 => [[['_route' => 'api_groupecompetences_competences_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_groupecompetences_competences_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_groupecompetences_competences_groupecompetences_user_get_subresource']], ['id', 'competence', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
-        4026 => [[['_route' => 'api_groupecompetences_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_groupecompetences_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_groupecompetences_competences_niveaux_get_subresource']], ['id', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
-        4080 => [
+        3548 => [[['_route' => 'api_referentiels_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetence', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true]], 'collection' => true, 'operationId' => 'api_referentiels_groupecompetences_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3589 => [[['_route' => 'api_referentiels_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_referentiels_groupecompetences_user_get_subresource']], ['id', 'groupecompetence', '_format'], ['GET' => 0], null, false, true, null]],
+        3627 => [[['_route' => 'api_referentiels_groupecompetences_competences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_competences_get_subresource', '_api_subresource_context' => ['property' => 'competence', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true]], 'collection' => true, 'operationId' => 'api_referentiels_groupecompetences_competences_get_subresource']], ['id', 'groupecompetence', '_format'], ['GET' => 0], null, false, true, null]],
+        3684 => [[['_route' => 'api_referentiels_groupecompetences_competences_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_competences_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetences', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_referentiels_groupecompetences_competences_groupecompetences_get_subresource']], ['id', 'groupecompetence', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
+        3722 => [[['_route' => 'api_referentiels_groupecompetences_competences_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_competences_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_referentiels_groupecompetences_competences_groupecompetences_user_get_subresource']], ['id', 'groupecompetence', 'competence', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
+        3754 => [[['_route' => 'api_referentiels_groupecompetences_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_referentiels_groupecompetences_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Referentiel', true], ['groupecompetence', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_referentiels_groupecompetences_competences_niveaux_get_subresource']], ['id', 'groupecompetence', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
+        3810 => [[['_route' => 'api_groupetags_tags_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Tag', '_api_subresource_operation_name' => 'api_groupetags_tags_get_subresource', '_api_subresource_context' => ['property' => 'tag', 'identifiers' => [['id', 'App\\Entity\\Groupetag', true]], 'collection' => true, 'operationId' => 'api_groupetags_tags_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3855 => [[['_route' => 'api_groupes_apprenants_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_subresource_operation_name' => 'api_groupes_apprenants_get_subresource', '_api_subresource_context' => ['property' => 'apprenants', 'identifiers' => [['id', 'App\\Entity\\Groupe', true]], 'collection' => true, 'operationId' => 'api_groupes_apprenants_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3907 => [[['_route' => 'api_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_groupecompetences_user_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        3945 => [[['_route' => 'api_groupecompetences_competences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Competence', '_api_subresource_operation_name' => 'api_groupecompetences_competences_get_subresource', '_api_subresource_context' => ['property' => 'competence', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true]], 'collection' => true, 'operationId' => 'api_groupecompetences_competences_get_subresource']], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        4002 => [[['_route' => 'api_groupecompetences_competences_groupecompetences_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Groupecompetence', '_api_subresource_operation_name' => 'api_groupecompetences_competences_groupecompetences_get_subresource', '_api_subresource_context' => ['property' => 'groupecompetences', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_groupecompetences_competences_groupecompetences_get_subresource']], ['id', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
+        4040 => [[['_route' => 'api_groupecompetences_competences_groupecompetences_user_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_subresource_operation_name' => 'api_groupecompetences_competences_groupecompetences_user_get_subresource', '_api_subresource_context' => ['property' => 'user', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true], ['groupecompetences', 'App\\Entity\\Groupecompetence', true]], 'collection' => false, 'operationId' => 'api_groupecompetences_competences_groupecompetences_user_get_subresource']], ['id', 'competence', 'groupecompetences', '_format'], ['GET' => 0], null, false, true, null]],
+        4072 => [[['_route' => 'api_groupecompetences_competences_niveaux_get_subresource', '_controller' => 'api_platform.action.get_subresource', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_subresource_operation_name' => 'api_groupecompetences_competences_niveaux_get_subresource', '_api_subresource_context' => ['property' => 'niveau', 'identifiers' => [['id', 'App\\Entity\\Groupecompetence', true], ['competence', 'App\\Entity\\Competence', true]], 'collection' => true, 'operationId' => 'api_groupecompetences_competences_niveaux_get_subresource']], ['id', 'competence', '_format'], ['GET' => 0], null, false, true, null]],
+        4126 => [
             [['_route' => 'api_livrable_attendus_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\LivrableAttendu', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_livrable_attendus_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\LivrableAttendu', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        4119 => [
+        4165 => [
             [['_route' => 'api_livrable_attendus_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\LivrableAttendu', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_livrable_attendus_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\LivrableAttendu', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_livrable_attendus_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\LivrableAttendu', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_livrable_attendus_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\LivrableAttendu', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        4149 => [[['_route' => 'api_livrables_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Livrable', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null]],
-        4187 => [
+        4195 => [[['_route' => 'api_livrables_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Livrable', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null]],
+        4233 => [
             [['_route' => 'api_livrables_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Livrable', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_livrables_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Livrable', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_livrables_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Livrable', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_livrables_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Livrable', '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        4247 => [
+        4293 => [
             [['_route' => 'api_commentaire_generals_add_commentaire_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\CommentaireGeneral', '_api_collection_operation_name' => 'add_commentaire'], ['idp', 'ida'], ['POST' => 0], null, false, false, null],
             [['_route' => 'api_commentaire_generals_get_commentaire_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\CommentaireGeneral', '_api_collection_operation_name' => 'get_commentaire'], ['idp', 'ida'], ['GET' => 0], null, false, false, null],
         ],
-        4293 => [
+        4339 => [
             [['_route' => 'api_niveaux_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_niveaux_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_niveaux_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Niveau', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],

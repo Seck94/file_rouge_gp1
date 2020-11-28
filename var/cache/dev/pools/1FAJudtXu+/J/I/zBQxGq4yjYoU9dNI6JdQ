@@ -25,6 +25,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'lastLogin',
                     'commentaireGenerals',
                     'commentaireGeneral',
+                    'adresse',
                 ],
             ],
         ],

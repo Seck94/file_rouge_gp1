@@ -10,6 +10,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -153,12 +154,14 @@ class Promo
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\DateTime
      * @Groups({"promo_read"})
      */
     private $dateDebut;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\DateTime
      * @Groups({"promo_read"})
      */
     private $dateFinProvisoire;
@@ -171,6 +174,7 @@ class Promo
 
     /**
      * @ORM\Column(type="date",nullable=true)
+     * @Assert\DateTime
      */
     private $dateFinReelle;
 

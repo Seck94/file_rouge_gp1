@@ -29,7 +29,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/apprenants",
+ *              "path"="/admin/apprenants",
  *          },
  *          "get_apprenants"={
  *              "method"="GET",
@@ -80,7 +80,7 @@ class Apprenant extends User
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    // protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profilsortie::class, inversedBy="apprenants")
@@ -124,10 +124,10 @@ class Apprenant extends User
         $this->statistiquesCompetences = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    // public function getId(): ?int
+    // {
+    //     return $this->id;
+    // }
 
     public function getProfilsortie(): ?Profilsortie
     {

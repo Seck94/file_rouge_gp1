@@ -18,6 +18,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -38,6 +39,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'groupecompetence',
                 'lastLogin',
                 'commentaireGenerals',
+                'adresse',
                 'salt',
             ],
             'attributesMetadata' => [
@@ -56,7 +58,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'groupecompetence' => $o[12],
                     'lastLogin' => $o[13],
                     'commentaireGenerals' => $o[14],
-                    'salt' => $o[15],
+                    'adresse' => $o[15],
+                    'salt' => $o[16],
                 ],
             ],
             'groups' => [
@@ -96,6 +99,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'all_brief_read',
                     'brief_apprenant_promo',
                     'promo_id_brief',
+                    'profilsortie_apprenants_read',
                 ],
                 [
                     'user_read',
@@ -113,6 +117,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'all_brief_read',
                     'brief_apprenant_promo',
                     'promo_id_brief',
+                    'profilsortie_apprenants_read',
                 ],
                 [
                     'user_read',
@@ -126,6 +131,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'promo_groupe_formateurs',
                     'brief_promo',
                     'apprenant_promo_brief',
+                    'profilsortie_apprenants_read',
                 ],
                 [
                     'user_read',

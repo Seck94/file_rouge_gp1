@@ -9,59 +9,65 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- 
+ * denormalizationContext={"groups"={"profilSortie_write"}},
  * attributes={
- *          "pagination_items_per_page"=10,
+ *          
  *      },
  * 
  *     collectionOperations={
-    *         "post"={
-    *              "security_post_denormalize"="is_granted('EDIT', object)", 
-    *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
-    *              "path"="admin/profilsorties",
-    *          },
-    *         "get"={
+ *         "post"={
+ *              "security_post_denormalize"="is_granted('EDIT', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="/admin/profilsorties",
+ *          },
+ *         "get"={
  *              "security"="is_granted('ROLE_APPRENANT')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/profilsorties",
- *               "normalization_context"={"groups"={"profilsortie_libelle_read"}},
+ *              "path"="/admin/profilsorties",
+ *              "normalization_context"={"groups"={"profilsortie_libelle_read"}},
  *              },
- * "            profilsortie_promo"={
+ *          "profilsortie_promo"={
  *               "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/{id}/profilsorties",
+ *              "path"="/admin/promos/{id}/profilsorties",
  *              "normalization_context"={"groups"={"profilsortie_apprenants_read"}},
  *              },
- *              "profilsortie_item"={
- *               "method"="GET",
+ *         "profilsortie_item"={
+ *              "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/{idp}/profilsorties/{id}",
+ *              "path"="/admin/promos/{idp}/profilsorties/{id}",
  *              "normalization_context"={"groups"={"profilsortie_apprenants_read"}},
- *              },     
+ *         },     
  *     },
  *     itemOperations={       
  *       "profilsortie_id"={
  *               "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/profilsorties/{id}",
+ *              "path"="/admin/profilsorties/{id}",
  *              "normalization_context"={"groups"={"profilsortie_apprenants_read"}},
  *              },     
  *         "patch"={
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/profilsorties/{id}",
+ *              "path"="/admin/profilsorties/{id}",
  *         },
  *         "put"={
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/profilsorties/{id}",
+ *              "path"="/admin/profilsorties/{id}",
  *         },
+ *         "delete"={
+ *              "security_post_denormalize"="is_granted('DELETE', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="/admin/profilsorties/{id}",
+ *         }
  *     },
  * )
  * @ORM\Entity(repositoryClass=ProfilsortieRepository::class)
@@ -72,13 +78,14 @@ class Profilsortie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups ({"profilsortie_read","profilsortie_apprenants_read","profilsortie_libelle_read",})
+     * @Groups ({"profilsortie_read","profilsortie_apprenants_read","profilsortie_libelle_read","profilSortie_write"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups ({"profilsortie_read","profilsortie_apprenants_read","profilsortie_libelle_read"})
+     * @Assert\notBlank(message = "valeur null")
+     * @Groups ({"profilsortie_read","profilsortie_apprenants_read","profilsortie_libelle_read","profilSortie_write"})
      */
     private $libelle;
 
@@ -89,6 +96,12 @@ class Profilsortie
      */
 
     private $apprenants;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("profilSortie_write")
+     */
+    private $statut;
 
     public function __construct()
     {
@@ -139,6 +152,18 @@ class Profilsortie
                 $apprenant->setProfilsortie(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

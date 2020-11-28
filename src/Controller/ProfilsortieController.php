@@ -59,12 +59,12 @@ class ProfilsortieController extends AbstractController
     */
     public function profilsortie_item(PromoRepository $repopromo,int $id,int $idp, profilSortieRepository $profilsortierepo)
     {
-        if(!$promo=$repopromo->find($id))
+        if(!$promo=$repopromo->find($idp))
         { 
             return $this->json("error", Response::HTTP_NOT_FOUND);
         
         }
-        if(! $profilsortie=$profilsortierepo->find($idp))
+        if(! $profilsortie=$profilsortierepo->find($id))
         { 
             return $this->json("error", Response::HTTP_NOT_FOUND);
         

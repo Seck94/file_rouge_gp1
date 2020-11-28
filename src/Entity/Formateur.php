@@ -80,7 +80,7 @@ class Formateur extends User
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    // protected $id;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="formateurs")
@@ -111,10 +111,10 @@ class Formateur extends User
         $this->briefs = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    // public function getId(): ?int
+    // {
+    //     return $this->id;
+    // }
 
     /**
      * @return Collection|Groupe[]

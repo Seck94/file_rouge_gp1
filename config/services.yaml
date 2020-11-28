@@ -30,3 +30,7 @@ services:
     # App\EventListener\LoginListener:
     #     tags:
     #         - { name: 'kernel.event_listener', event: 'security.authentication.success'}
+
+    # User services
+    App\UserServices\UserServices:
+        public: true

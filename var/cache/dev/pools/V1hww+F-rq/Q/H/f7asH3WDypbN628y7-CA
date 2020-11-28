@@ -34,6 +34,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'brief_promo',
                     'brief_apprenant_promo',
                     'promo_id_brief',
+                    'profilsortie_apprenants_read',
                 ],
             ],
         ],

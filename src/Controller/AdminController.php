@@ -13,17 +13,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminController extends AbstractController
 {
     /**
-    * @Route(
-    *     name="admin_liste",
-    *     path="api/admins",
-    *     methods={"GET"},
-    *     defaults={
-    *         "_controller"="\app\Controller\AdminController::getAdmin",
-    *         "_api_resource_class"=User::class,
-    *         "_api_collection_operation_name"="get_admins"
-    *     }
-    * )
-    */
+     * @Route(
+     *     name="admin_liste",
+     *     path="api/admins",
+     *     methods={"GET"},
+     *     defaults={
+     *         "_controller"="\app\Controller\AdminController::getAdmin",
+     *         "_api_resource_class"=User::class,
+     *         "_api_collection_operation_name"="get_admins"
+     *     }
+     * )
+     * @param UserRepository $repo
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
     public function getAdmin(UserRepository $repo){
         $admin = $repo -> findByProfil("ADMIN");
         return $this -> json($admin, Response::HTTP_OK,);

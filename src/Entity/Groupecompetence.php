@@ -9,6 +9,7 @@ use App\Repository\GroupecompetenceRepository;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -77,12 +78,14 @@ class Groupecompetence
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\notBlank(message="valeur vide")
      * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\notBlank(message="valeur vide")
      * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $descriptif;

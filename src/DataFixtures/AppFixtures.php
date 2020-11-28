@@ -28,7 +28,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         $grpCompetence = new Groupecompetence();
         $grpCompetence -> setLibelle("Developper le backend d'une appli");
         $grpCompetence -> setDescriptif("Le descriptif pour developper le backend d'une application web");
-        $grpCompetence -> addReferentiel($this -> getReference("referentiel"));
+        $grpCompetence -> addReferentiel($this -> getReference("referentiel1"));
 
         for ($i=0; $i < 3; $i++) { 
             $competence = new Competence();
@@ -41,7 +41,6 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
                 $competence -> addNiveau($niveau);
                 $manager->persist($niveau);
                 $manager->persist($competence);
-                $manager->flush();
             }
             $grpCompetence -> addCompetence($competence);
         }

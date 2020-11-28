@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\NiveauRepository;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -37,6 +38,7 @@ class Niveau
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence_read","niveau_read"})
+     * \@Assert\NotBlank(message = "libelle vide")
      * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $libelle;
@@ -44,12 +46,14 @@ class Niveau
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence_read","niveau_read"})
+     * \@Assert\NotBlank(message = "critereEvaluation vide")
      */
     private $critereEvaluation;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence_read","niveau_read"})
+     * \@Assert\NotBlank(message = "groupeAction vide")
      */
     private $groupeAction;
 

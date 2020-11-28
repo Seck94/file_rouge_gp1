@@ -20,6 +20,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'profilsortie_read',
                     'profilsortie_apprenants_read',
                     'profilsortie_libelle_read',
+                    'profilSortie_write',
                 ],
             ],
         ],

@@ -5,20 +5,24 @@ namespace App\Entity;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProfilRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("libelle")
  * 
  * @ApiResource(
  *     attributes={
- *          "pagination_items_per_page"=10,
  *          "normalization_context"={"groups"={"profil_read","profil_details_read"},"enable_max_depth"=true}
  *      },
  *     collectionOperations={
@@ -40,6 +44,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security"="is_granted('VIEW',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
+ *              "defaults"={"id"=null}
  *         }, 
  *         "delete"={
  *              "security"="is_granted('EDIT',object)",
@@ -57,7 +62,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "path"="admin/profils/{id}",
  *         },
  *     },
- * )
+ * ),
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "statut":"exact"})
  */
 class Profil
 {
@@ -72,6 +78,7 @@ class Profil
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Groups({"profil_read"})
+     * @Assert\NotBlank(message = "valeur vide")
      */
     private $libelle;
 
@@ -110,8 +117,9 @@ class Profil
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true, options={"default":"actif"})
+     * @Groups({"profil_read"})
      */
-    private $statut;
+    private $statut ="actif";
 
     public function __construct()
     {

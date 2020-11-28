@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Niveau;
 use App\Entity\Competence;
 use App\Entity\Groupecompetence;
 use App\Repository\CompetenceRepository;
@@ -33,22 +34,43 @@ class GroupecompetenceController extends AbstractController
     public function addGroupecompetence(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager)
     {
         $Groupecompetence_json = $request -> getContent();
-
         $Groupecompetence_tab = $serializer -> decode($Groupecompetence_json,"json");
         $Groupecompetence = new Groupecompetence();
         $Groupecompetence -> setLibelle($Groupecompetence_tab['libelle']);
         $Groupecompetence -> setDescriptif($Groupecompetence_tab['descriptif']);
         $Competence_tab = $Groupecompetence_tab['competence'];
-        foreach ($Competence_tab as $key => $value) {
+    
+        foreach ($Competence_tab as $key => $cmptce) {
             $competence = new Competence();
-            $competence -> setLibelle($value['libelle']);
-            $Groupecompetence -> addCompetence($competence);
+            if (!isset($cmptce['id'])) {
+                if (count($cmptce['niveaux']) != 3) {
+                    return $this -> json("Erreur: nombre de niveau d'une cmptence must be 3, ".count($cmptce['niveaux'])." donnés", Response::HTTP_BAD_REQUEST);
+                }
+                foreach ($cmptce['niveaux'] as $niv) {
+                    $niveau = new Niveau();
+                    $niveau -> setLibelle($niv['libelle']);
+                    $niveau -> setCritereEvaluation($niv['critereEvaluation']);
+                    $niveau -> setGroupeAction($niv['groupeAction']);
+                    $competence -> addNiveau($niveau);
+                }
+                $competence -> setLibelle($cmptce['libelle']);
+                $Groupecompetence -> addCompetence($competence);
+            }
+            else {
+                $competence = $manager -> getRepository(Competence::class) -> find($cmptce['id']);
+                if (isset($cmptce['action']) && $cmptce['action'] ==='delete') {
+                    $Groupecompetence -> removeCompetence($competence);
+                }
+                else {
+                    $Groupecompetence -> addCompetence($competence);
+                }
+            }
         }
         if (!$this -> isGranted("EDIT",$Groupecompetence)) {
             return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
         }
 
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();//user connecté ou encore $this -> get('security.token_storage')->getToken()->getUser()
         $Groupecompetence -> setUser($user);
 
         $errors = $validator->validate($Groupecompetence);

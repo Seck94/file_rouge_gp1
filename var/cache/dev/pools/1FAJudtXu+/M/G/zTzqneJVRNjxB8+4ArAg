@@ -9,13 +9,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         'ApiPlatform\\Core\\Metadata\\Property\\PropertyNameCollection' => [
             'properties' => [
                 [
-                    'id',
                     'profilsortie',
                     'groupe',
                     'livrables',
                     'livrableRendus',
                     'promoBriefApprenant',
                     'statistiquesCompetences',
+                    'id',
                     'username',
                     'roles',
                     'password',
@@ -31,6 +31,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'lastLogin',
                     'commentaireGenerals',
                     'commentaireGeneral',
+                    'adresse',
                 ],
             ],
         ],

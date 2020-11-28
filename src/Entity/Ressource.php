@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RessourceRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -23,6 +24,7 @@ class Ressource
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Notblank(message = "valeur null")
      * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $titre;

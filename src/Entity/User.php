@@ -9,12 +9,10 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-// use Webmozart\Assert\Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -40,11 +38,11 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/users",
+ *              "path"="/admin/users",
  *          },
  *          "get_admins"={
  *              "method"="GET",
- *              "path"="/admins" ,
+ *              "path"="/admins",
  *              "security"="(is_granted('ROLE_ADMIN'))", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "route_name"="admin_liste",
@@ -101,6 +99,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message = "valeur null")
      * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $username;
@@ -113,6 +112,7 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "valeur null")
      */
     private $password;
 
@@ -123,22 +123,21 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
+     * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","profilsortie_apprenants_read"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
+     * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","profilsortie_apprenants_read"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email(
-     *     message = "L'email '{{ value }}' est invalide."
-     * )
-     * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief"})
+     * @Assert\Email(message = "email invalide.")
+     * @Assert\NotBlank(message = "email vide")
+     * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","profilsortie_apprenants_read"})
      */
     private $email;
 
@@ -146,7 +145,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true, options={"default":"actif"})
      * @Groups({"user_read"})
      */
-    private $statut;
+    private $statut = "actif";
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
@@ -177,6 +176,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=CommentaireGeneral::class, mappedBy="user", orphanRemoval=true)
      */
     private $commentaireGenerals;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adresse;
 
     public function __construct()
     {
@@ -259,10 +263,10 @@ class User implements UserInterface
     }
 
     
-    // public function getAvatar()
-    // {
-    //     return $this->avatar;
-    // }
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
 
     public function setAvatar($avatar): self
     {
@@ -433,6 +437,18 @@ class User implements UserInterface
                 $commentaireGeneral->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
