@@ -10,8 +10,10 @@ use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * @UniqueEntity("libelle")
  * @ApiResource(
  *     attributes={
  *          "pagination_items_per_page"=10,
@@ -72,14 +74,14 @@ class Groupecompetence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel","competence_read","referentiel_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\notBlank(message="valeur vide")
-     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel","competence_read","referentiel_read"})
      */
     private $libelle;
 
@@ -109,6 +111,11 @@ class Groupecompetence
      * @ApiSubresource()
      */
     private $competence;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $statut = "actif";
 
     public function __construct()
     {
@@ -207,6 +214,27 @@ class Groupecompetence
         if ($this->competence->contains($competence)) {
             $this->competence->removeElement($competence);
         }
+
+        return $this;
+    }
+
+    public function removeMembers(){
+        foreach ($this->competence as $cmptce) {
+            $this -> removeCompetence($cmptce);
+        }
+        foreach ($this->referentiels as $ref) {
+            $this->removeReferentiel($ref);
+        }
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

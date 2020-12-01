@@ -30,7 +30,7 @@ class ReferentielVoter extends Voter
 
             case 'ADD':
                 if ($user -> getRoles()[0] === "ROLE_ADMIN") {
-                    $subject -> setUser($user);
+                    // $subject -> setUser($user);
                     return true;
                 }
                 return false;
@@ -45,7 +45,8 @@ class ReferentielVoter extends Voter
 
                 break;
             case 'DELETE':
-                return $subject -> getUser() === $user;
+                // return $subject -> getUser() === $user;
+                return $user -> getRoles()[0] === "ROLE_ADMIN";
                 break;
             case 'VIEW':
                 return $user -> getRoles()[0] === "ROLE_ADMIN" || $user -> getRoles()[0] === "ROLE_CM" || $user -> getRoles()[0] === "ROLE_FORMATEUR";

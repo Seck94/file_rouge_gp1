@@ -66,7 +66,6 @@ class PromoController extends AbstractController
         $Promo -> setDateDebut(new \DateTime($Promo_tab['dateDebut']));
         $Promo -> setDateFinProvisoire(new \DateTime($Promo_tab['dateFinProvisoire']));
         $Promo -> setFabrique($Promo_tab['fabrique']);
-        $Promo -> setEtat('encours');
         
         $Formateur_tab = isset($Promo_tab['formateurs'])?$Promo_tab['formateurs']:[];
         foreach ($Formateur_tab as $key => $value) {
@@ -86,7 +85,6 @@ class PromoController extends AbstractController
             if (isset($value['nom']) && isset($value['type'])) {
                 $Groupe -> setNom($value['nom']);
                 $Groupe -> setDateCreation(new \DateTime());
-                $Groupe -> setStatut('actif');
                 $Groupe -> setType($value['type']);
                 if (isset($value['apprenants'])) {
                     $profil = $profil_repo -> findOneByLibelle('APPRENANT');
@@ -308,7 +306,7 @@ class PromoController extends AbstractController
      *     }
      * )
     */
-    public function promo_id_gp_principal(PromoRepository $promo_repo, $id){
+    public function promo_id_gp_principal(PromoRepository $promo_repo, $id,GroupeRepository $groupe_repo){
         $promo = new Promo();
         if (!$this -> isGranted("ROLE_CM",$promo)) {
             return $this -> json(["message" => "l'accès à cette ressource vous est interdit"],Response::HTTP_FORBIDDEN);
@@ -316,17 +314,12 @@ class PromoController extends AbstractController
         if (!($promo = $promo_repo -> find($id))) {
             return $this ->json("Promo introuvable", Response::HTTP_NOT_FOUND,);
         }
-        $groupes = $promo -> getGroupes();
-        foreach ($groupes as $key => $groupe) {
-            if ($groupe -> getType() === 'principal') {
-                $Apprenants = $groupe -> getApprenants();
-                break;
-            }
-        }
+        $groupe_principal = $groupe_repo -> findGroupePrincipal($promo -> getId());
+        $Apprenants = $groupe_principal -> getApprenants();
 
         $pricipal = [];
         $pricipal['ref_promo'] = $promo -> getReferentiel() -> getLibelle();
-        $pricipal['groupe'] = $groupe;
+        $pricipal['groupe principal'] = $groupe_principal;
 
         foreach ($Apprenants as $key => $Apprenant) {
             if(($Apprenant -> getLastLogin()))

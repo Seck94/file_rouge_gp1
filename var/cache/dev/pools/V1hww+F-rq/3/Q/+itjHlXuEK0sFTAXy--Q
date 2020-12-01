@@ -2,14 +2,23 @@
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
-        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
         clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
     ],
     null,
     [
         'stdClass' => [
-            'collectionOperations' => [
+            'fields' => [
+                'libelle',
+            ],
+            'groups' => [
                 [
+                    'Default',
+                ],
+            ],
+            'collectionOperations' => [
+                1 => [
                     'add_groupecompetence' => [
                         'method' => 'POST',
                         'path' => 'admin/groupecompetences',
@@ -37,7 +46,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
             ],
             'itemOperations' => [
-                [
+                1 => [
                     'get' => [
                         'security' => 'is_granted(\'VIEW\',object)',
                         'security_message' => 'Vous n\'avez pas ce privilege.',
@@ -57,7 +66,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
             ],
             'attributes' => [
-                [
+                1 => [
                     'pagination_items_per_page' => 10,
                     'normalization_context' => [
                         'groups' => [
@@ -68,13 +77,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
             ],
             'repositoryClass' => [
-                1 => 'App\\Repository\\GroupecompetenceRepository',
+                2 => 'App\\Repository\\GroupecompetenceRepository',
             ],
         ],
     ],
     [
         $o[0],
         $o[1],
+        $o[2],
     ],
     []
 ); }];

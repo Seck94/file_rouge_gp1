@@ -38,6 +38,17 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'itemOperations' => [
                 [
+                    'get' => [
+                        'security' => 'is_granted(\'ROLE_CM\',object)',
+                        'security_message' => 'Vous n\'avez pas ce privilege.',
+                        'path' => 'admin/promos/{id}',
+                        'normalization_context' => [
+                            'groups' => [
+                                'promo_read',
+                            ],
+                            'enable_max_depth' => true,
+                        ],
+                    ],
                     'promo_id_gprincipal' => [
                         'method' => 'GET',
                         'security' => 'is_granted(\'ROLE_CM\')',
@@ -89,17 +100,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'normalization_context' => [
                             'groups' => [
                                 'promo_groupe_formateurs',
-                            ],
-                            'enable_max_depth' => true,
-                        ],
-                    ],
-                    'get' => [
-                        'security' => 'is_granted(\'ROLE_CM\',object)',
-                        'security_message' => 'Vous n\'avez pas ce privilege.',
-                        'path' => 'admin/promos/{id}',
-                        'normalization_context' => [
-                            'groups' => [
-                                'promo_read',
                             ],
                             'enable_max_depth' => true,
                         ],

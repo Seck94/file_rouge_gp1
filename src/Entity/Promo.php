@@ -41,6 +41,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *     
  *     itemOperations={
+ *          "get"={
+ *              "security"="is_granted('ROLE_CM',object)", 
+ *              "security_message"="Vous n'avez pas ce privilege.",
+ *              "path"="admin/promos/{id}",
+ *              "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
+ *         }, 
  *          "promo_id_gprincipal"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
@@ -76,12 +82,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              "path"="admin/promos/{id}/formateurs",
  *              "normalization_context"={"groups"={"promo_groupe_formateurs"},"enable_max_depth"=true}
  *              },
- *         "get"={
- *              "security"="is_granted('ROLE_CM',object)", 
- *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/promos/{id}",
- *              "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
- *         }, 
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
  *              "security_message"="Seul le proprietaite....",
@@ -182,7 +182,7 @@ class Promo
      * @ORM\Column(type="string", length=255)
      * @Groups({"promo_read"})
      */
-    private $etat;
+    private $etat = 'encours';
 
     /**
      * @ORM\ManyToMany(targetEntity=Formateur::class, mappedBy="promo", cascade={"persist"})

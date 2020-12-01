@@ -517,6 +517,10 @@
       <tag name="doctrine.fixture.orm"/>
       <argument type="service" id="security.user_password_encoder.generic"/>
     </service>
+    <service id="App\DataPersister\DataPersister1" class="App\DataPersister\DataPersister1" autowire="true" autoconfigure="true">
+      <tag name="api_platform.data_persister"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
     <service id="App\DataPersister\ProfilDataPersister" class="App\DataPersister\ProfilDataPersister" autowire="true" autoconfigure="true">
       <tag name="api_platform.data_persister"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
@@ -667,6 +671,7 @@
     <service id="App\Security\Voter\TagVoter" class="App\Security\Voter\TagVoter" autowire="true" autoconfigure="true">
       <tag name="security.voter"/>
     </service>
+    <service id="App\Services\GroupeCompetenceCompetenceServices" class="App\Services\GroupeCompetenceCompetenceServices" autowire="true" autoconfigure="true"/>
     <service id="App\Services\UserServices" class="App\Services\UserServices" autowire="true" autoconfigure="true"/>
     <service id="App\UserServices\UserServices" class="App\UserServices\UserServices" public="true" autowire="true" autoconfigure="true"/>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory" public="false"/>
@@ -5350,6 +5355,8 @@
     <service id=".abstract.instanceof.App\DataFixtures\ReferentielFixtures" class="App\DataFixtures\ReferentielFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\UserFixtures" class="App\DataFixtures\UserFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\UserFixtures" class="App\DataFixtures\UserFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.ApiPlatform\Core\DataPersister\DataPersisterInterface.0.App\DataPersister\DataPersister1" class="App\DataPersister\DataPersister1" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataPersister\DataPersister1" class="App\DataPersister\DataPersister1" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.ApiPlatform\Core\DataPersister\DataPersisterInterface.0.App\DataPersister\ProfilDataPersister" class="App\DataPersister\ProfilDataPersister" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataPersister\ProfilDataPersister" class="App\DataPersister\ProfilDataPersister" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.ApiPlatform\Core\DataPersister\DataPersisterInterface.0.App\DataPersister\ProfilsortieDataPersister" class="App\DataPersister\ProfilsortieDataPersister" autowire="true" abstract="true"/>
@@ -5864,19 +5871,21 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.19ps0qC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.y6ZAStu" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="grpcmpService" type="service" id="App\Services\GroupeCompetenceCompetenceServices"/>
         <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
         <argument key="serializer" type="service" id="serializer"/>
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.o5eLPbk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.I2W5DLB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="cmp" type="service" id="App\Repository\CompetenceRepository"/>
         <argument key="grpcmp" type="service" id="App\Repository\GroupecompetenceRepository"/>
+        <argument key="grpcmpService" type="service" id="App\Services\GroupeCompetenceCompetenceServices"/>
         <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
         <argument key="serializer" type="service" id="serializer"/>
         <argument key="validator" type="service" id="validator"/>
@@ -5888,19 +5897,28 @@
         <argument key="Groupecompetence" type="service" id="App\Repository\GroupecompetenceRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.KESG7UU" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="serializer" type="service" id="serializer"/>
+        <argument key="tag_rep" type="service" id="App\Repository\TagRepository"/>
+        <argument key="validator" type="service" id="validator"/>
+      </argument>
+    </service>
     <service id=".service_locator..q_d43b" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Groupetag" type="service" id="App\Repository\GroupetagRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.HbDiaSm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Ah.Hjw9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="cmp" type="service" id="App\Repository\GroupetagRepository"/>
-        <argument key="grpcmp" type="service" id="App\Repository\TagRepository"/>
+        <argument key="grptag_repo" type="service" id="App\Repository\GroupetagRepository"/>
         <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
         <argument key="serializer" type="service" id="serializer"/>
+        <argument key="tag_rep" type="service" id="App\Repository\TagRepository"/>
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
@@ -5968,20 +5986,15 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.Fw7pQz3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.NlMrA6p" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="cmp" type="service" id="App\Repository\GroupecompetenceRepository"/>
         <argument key="grpcmp" type="service" id="App\Repository\ReferentielRepository"/>
+        <argument key="grpcmpService" type="service" id="App\Services\GroupeCompetenceCompetenceServices"/>
         <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
         <argument key="serializer" type="service" id="serializer"/>
         <argument key="validator" type="service" id="validator"/>
-      </argument>
-    </service>
-    <service id=".service_locator.M3HL8pi" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="Referentiel" type="service" id="App\Repository\ReferentielRepository"/>
       </argument>
     </service>
     <service id=".service_locator.qQP3fp5" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5995,7 +6008,7 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.ZHqkTuN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.zHm7r3i" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::getAdmin" type="service" id=".service_locator.RTUGCCW"/>
@@ -6024,12 +6037,12 @@
         <argument key="App\Controller\FormateurController::getFormateurById" type="service" id=".service_locator.olU6qez"/>
         <argument key="App\Controller\GroupeController::addGroupe" type="service" id=".service_locator.IHqQrnB"/>
         <argument key="App\Controller\GroupeController::updateGroupe" type="service" id=".service_locator.AZQEEXx"/>
-        <argument key="App\Controller\GroupecompetenceController::addGroupecompetence" type="service" id=".service_locator.19ps0qC"/>
+        <argument key="App\Controller\GroupecompetenceController::addGroupecompetence" type="service" id=".service_locator.y6ZAStu"/>
         <argument key="App\Controller\GroupecompetenceController::showGroupecompetence" type="service" id=".service_locator.lRLL0n8"/>
-        <argument key="App\Controller\GroupecompetenceController::updateGroupecompetence" type="service" id=".service_locator.o5eLPbk"/>
-        <argument key="App\Controller\GroupetagController::addGroupetag" type="service" id=".service_locator.19ps0qC"/>
+        <argument key="App\Controller\GroupecompetenceController::updateGroupecompetence" type="service" id=".service_locator.I2W5DLB"/>
+        <argument key="App\Controller\GroupetagController::addGroupetag" type="service" id=".service_locator.KESG7UU"/>
         <argument key="App\Controller\GroupetagController::showGroupetag" type="service" id=".service_locator..q_d43b"/>
-        <argument key="App\Controller\GroupetagController::updateGroupetag" type="service" id=".service_locator.HbDiaSm"/>
+        <argument key="App\Controller\GroupetagController::updateGroupetag" type="service" id=".service_locator.Ah.Hjw9"/>
         <argument key="App\Controller\ProfilsortieController::profilsortie_collection" type="service" id=".service_locator.YjA0jg1"/>
         <argument key="App\Controller\ProfilsortieController::profilsortie_item" type="service" id=".service_locator.YjA0jg1"/>
         <argument key="App\Controller\PromoController::addPromo" type="service" id=".service_locator.Ti2hqA7"/>
@@ -6038,11 +6051,10 @@
         <argument key="App\Controller\PromoController::gerer_formateur" type="service" id=".service_locator.Tmk7PJz"/>
         <argument key="App\Controller\PromoController::gerer_groupe" type="service" id=".service_locator.Avd2yhl"/>
         <argument key="App\Controller\PromoController::promo_gp_principal" type="service" id=".service_locator.X_yNDnk"/>
-        <argument key="App\Controller\PromoController::promo_id_gp_principal" type="service" id=".service_locator.LMeZ5AJ"/>
+        <argument key="App\Controller\PromoController::promo_id_gp_principal" type="service" id=".service_locator.X_yNDnk"/>
         <argument key="App\Controller\PromoController::updatePromo" type="service" id=".service_locator.1F.SJ.0"/>
-        <argument key="App\Controller\ReferentielController::addReferentiel" type="service" id=".service_locator.19ps0qC"/>
-        <argument key="App\Controller\ReferentielController::showReferentiel" type="service" id=".service_locator.M3HL8pi"/>
-        <argument key="App\Controller\ReferentielController::updateReferentiel" type="service" id=".service_locator.Fw7pQz3"/>
+        <argument key="App\Controller\ReferentielController::addReferentiel" type="service" id=".service_locator.y6ZAStu"/>
+        <argument key="App\Controller\ReferentielController::updateReferentiel" type="service" id=".service_locator.NlMrA6p"/>
         <argument key="App\Controller\UserController::UpdateUser" type="service" id=".service_locator.qQP3fp5"/>
         <argument key="App\Controller\UserController::addUser" type="service" id=".service_locator.qQP3fp5"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
@@ -6077,12 +6089,12 @@
         <argument key="App\Controller\FormateurController:getFormateurById" type="service" id=".service_locator.olU6qez"/>
         <argument key="App\Controller\GroupeController:addGroupe" type="service" id=".service_locator.IHqQrnB"/>
         <argument key="App\Controller\GroupeController:updateGroupe" type="service" id=".service_locator.AZQEEXx"/>
-        <argument key="App\Controller\GroupecompetenceController:addGroupecompetence" type="service" id=".service_locator.19ps0qC"/>
+        <argument key="App\Controller\GroupecompetenceController:addGroupecompetence" type="service" id=".service_locator.y6ZAStu"/>
         <argument key="App\Controller\GroupecompetenceController:showGroupecompetence" type="service" id=".service_locator.lRLL0n8"/>
-        <argument key="App\Controller\GroupecompetenceController:updateGroupecompetence" type="service" id=".service_locator.o5eLPbk"/>
-        <argument key="App\Controller\GroupetagController:addGroupetag" type="service" id=".service_locator.19ps0qC"/>
+        <argument key="App\Controller\GroupecompetenceController:updateGroupecompetence" type="service" id=".service_locator.I2W5DLB"/>
+        <argument key="App\Controller\GroupetagController:addGroupetag" type="service" id=".service_locator.KESG7UU"/>
         <argument key="App\Controller\GroupetagController:showGroupetag" type="service" id=".service_locator..q_d43b"/>
-        <argument key="App\Controller\GroupetagController:updateGroupetag" type="service" id=".service_locator.HbDiaSm"/>
+        <argument key="App\Controller\GroupetagController:updateGroupetag" type="service" id=".service_locator.Ah.Hjw9"/>
         <argument key="App\Controller\ProfilsortieController:profilsortie_collection" type="service" id=".service_locator.YjA0jg1"/>
         <argument key="App\Controller\ProfilsortieController:profilsortie_item" type="service" id=".service_locator.YjA0jg1"/>
         <argument key="App\Controller\PromoController:addPromo" type="service" id=".service_locator.Ti2hqA7"/>
@@ -6091,11 +6103,10 @@
         <argument key="App\Controller\PromoController:gerer_formateur" type="service" id=".service_locator.Tmk7PJz"/>
         <argument key="App\Controller\PromoController:gerer_groupe" type="service" id=".service_locator.Avd2yhl"/>
         <argument key="App\Controller\PromoController:promo_gp_principal" type="service" id=".service_locator.X_yNDnk"/>
-        <argument key="App\Controller\PromoController:promo_id_gp_principal" type="service" id=".service_locator.LMeZ5AJ"/>
+        <argument key="App\Controller\PromoController:promo_id_gp_principal" type="service" id=".service_locator.X_yNDnk"/>
         <argument key="App\Controller\PromoController:updatePromo" type="service" id=".service_locator.1F.SJ.0"/>
-        <argument key="App\Controller\ReferentielController:addReferentiel" type="service" id=".service_locator.19ps0qC"/>
-        <argument key="App\Controller\ReferentielController:showReferentiel" type="service" id=".service_locator.M3HL8pi"/>
-        <argument key="App\Controller\ReferentielController:updateReferentiel" type="service" id=".service_locator.Fw7pQz3"/>
+        <argument key="App\Controller\ReferentielController:addReferentiel" type="service" id=".service_locator.y6ZAStu"/>
+        <argument key="App\Controller\ReferentielController:updateReferentiel" type="service" id=".service_locator.NlMrA6p"/>
         <argument key="App\Controller\UserController:UpdateUser" type="service" id=".service_locator.qQP3fp5"/>
         <argument key="App\Controller\UserController:addUser" type="service" id=".service_locator.qQP3fp5"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
@@ -6571,12 +6582,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.ZHqkTuN"/>
+      <argument type="service" id=".service_locator.zHm7r3i"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.ZHqkTuN"/>
+      <argument type="service" id=".service_locator.zHm7r3i"/>
     </service>
     <service id="api_platform.swagger.normalizer.api_gateway.inner" class="ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer" public="false">
       <argument type="service" id="api_platform.metadata.resource.metadata_factory.cached"/>
@@ -7001,7 +7012,7 @@
     <service id="mailer" alias="swiftmailer.mailer.default" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ZHqkTuN"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.zHm7r3i"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

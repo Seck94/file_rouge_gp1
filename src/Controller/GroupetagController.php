@@ -40,7 +40,7 @@ class GroupetagController extends AbstractController
      *     }
      * )
     */
-    public function addGroupetag(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager)
+    public function addGroupetag(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, TagRepository $tag_rep)
     {
         $Groupetag_json = $request -> getContent();
 
@@ -50,19 +50,28 @@ class GroupetagController extends AbstractController
 
         $Groupetag -> setLibelle($Groupetag_tab['libelle']);
         $tag_tab = $Groupetag_tab['tag'];
-        foreach ($tag_tab as $key => $value) 
+        foreach ($tag_tab as $value) 
         {
             $tag = new Tag();
-            $tag -> setLibelle($value['libelle']);
-            $tag -> setDescriptif($value["descriptif"]);
-            $Groupetag -> addtag($tag);
-        
+            if (isset($value['id'])){
+                $tag =  $tag_rep -> find($value['id']);
+            }
+            else {
+                $tag -> setLibelle($value['libelle']);
+                $tag -> setDescriptif($value["descriptif"]);
+            }   
+            $Groupetag -> addtag($tag);          
         }
+
         if (!$this -> isGranted("EDIT",$Groupetag)) {
             return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
         }
 
-        
+        $errors = $validator->validate($tag);
+        if (count($errors)){
+            $errors = $serializer->serialize($errors,"json");
+            return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
+        }
 
         $errors = $validator->validate($Groupetag);
         if (count($errors)){
@@ -98,19 +107,7 @@ class GroupetagController extends AbstractController
         return $this -> json($Groupetag, Response::HTTP_OK,);
     }
 
-    /**
-     * @Route(
-     *     path="/api/admin/tags",
-     *     methods={"POST"},
-     *     defaults={
-     *          "__controller"="App\Controller\tagController::addtag",
-     *          "__api_resource_class"=tag::class,
-     *          "__api_collection_operation_name"="add_tag"
-     *     }
-     * )
-    */
     
-
 
     /**
      * @Route
@@ -124,13 +121,13 @@ class GroupetagController extends AbstractController
      *     }
      * )
     */
-    public function updateGroupetag(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, $id, GroupetagRepository $cmp, TagRepository $grpcmp)
+    public function updateGroupetag(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, $id, GroupetagRepository $grptag_repo, TagRepository $tag_rep)
     {
         $Groupetag_json = $request -> getContent();
         $Groupetag_tab = $serializer -> decode($Groupetag_json,"json");
         
         $Groupetag = new Groupetag();
-        if (!($Groupetag = $cmp -> find($id))) 
+        if (!($Groupetag = $grptag_repo -> find($id))) 
         {
             return $this ->json(null, Response::HTTP_NOT_FOUND,);
         }
@@ -145,23 +142,25 @@ class GroupetagController extends AbstractController
         {
             foreach ($tag_tab as $key => $value) {
                 $tag = new Tag();
-                if (isset($value['id'])) 
+                if (isset($value['id']) && $tag =  $tag_rep -> find($value['id'])) 
                 {
-                    if (!($tag =  $grpcmp -> find($value['id']))) {
-                        return $this ->json(null, Response::HTTP_NOT_FOUND,);
+                    if (isset($value['action'])) {
+                        if ($value['action'] === 'delete') {
+                            $Groupetag -> removeTag($tag);
+                        }
+                        else {
+                            $Groupetag -> addTag($tag);
+                        }
                     }
-
-                    if (isset($value['libelle'])) {
-                        $tag -> setLibelle($value['libelle']);
-                    }
-
-                    if (isset($value['descriptif'])) 
-                    {
-                        $tag -> setDescriptif($value['descriptif']);
-                    }
-
                     else {
-                        $Groupetag -> removeTag($tag);
+                        if (isset($value['libelle'])) {
+                            $tag -> setLibelle($value['libelle']);
+                        }
+    
+                        if (isset($value['descriptif'])) 
+                        {
+                            $tag -> setDescriptif($value['descriptif']);
+                        }
                     }
                 }
                 else
@@ -181,6 +180,11 @@ class GroupetagController extends AbstractController
             }
         }
         
+        $errors = $validator->validate($tag);
+        if (count($errors)){
+            $errors = $serializer->serialize($errors,"json");
+            return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
+        }
         
         if (!$this -> isGranted("EDIT",$Groupetag)) 
         {

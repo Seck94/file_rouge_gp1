@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -28,29 +29,21 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupetags",
  *               
- *              },
- *              "show_groupetags"={
+ *         },
+ *         "show_groupetags"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupetags",
- *              },
- * 
- *              "show_groupetags_tags"={
+ *         },
+ *         "show_groupetags_tags"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/groupetags/tags",
  *              "normalization_context"={"groups"={"Grptags_tags_read"},"enable_max_depth"=true}
  *              
- *              },
- * 
- *              "add_groupetags"={
- *              "method"="POST",
- *              "security"="is_granted('VIEW',object)", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/groupetags",
- *              },
+ *         }
  *     },
  *     
  *     itemOperations={
@@ -93,8 +86,9 @@ class Groupetag
     private $id;
 
     /**
+     * @Assert\NotBlank(message = "libelle nulle")
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Grptags_read"})
+     * @Groups({"Grptags_read","Grptags_tags_read"})
      */
     private $libelle;
 
@@ -110,6 +104,11 @@ class Groupetag
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $lastUpdate;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $statut = "actif";
 
     public function __construct()
     {
@@ -159,6 +158,10 @@ class Groupetag
         return $this;
     }
 
+    public function removeMembers(){
+        
+    }
+
     public function getLastUpdate(): ?\DateTimeInterface
     {
         return $this->lastUpdate;
@@ -176,5 +179,17 @@ class Groupetag
      */
     public function preUpdate(){
         $this -> setLastUpdate(new \DateTime());
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
     }
 }

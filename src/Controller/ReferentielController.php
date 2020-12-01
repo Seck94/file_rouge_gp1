@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Repository\GroupecompetenceRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Services\GroupeCompetenceCompetenceServices;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,7 +39,7 @@ class ReferentielController extends AbstractController
      *     }
      * )
     */
-    public function addReferentiel(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager)
+    public function addReferentiel(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,GroupeCompetenceCompetenceServices $grpcmpService)
     {
         $Referentiel_json = $request -> getContent();
         //dd($Referentiel_json);
@@ -45,20 +47,17 @@ class ReferentielController extends AbstractController
         $Referentiel = new Referentiel();
         $Referentiel -> setLibelle($Referentiel_tab['libelle']);
         $Referentiel -> setPresentation($Referentiel_tab['presentation']);
-        $Referentiel -> setProgramme($Referentiel_tab['programme']);
+        if (isset($Referentiel_tab['programme']) ) {
+            $Referentiel -> setProgramme($Referentiel_tab['programme']);
+        }
         $Referentiel -> setCritereAdmission($Referentiel_tab['critereAdmission']);
         $Referentiel -> setCritereEvaluation($Referentiel_tab['critereEvaluation']);
         
         $Groupecompetence_tab = $Referentiel_tab['groupecompetence'];
-        //dd($Groupecompetence_tab);
-        foreach ($Groupecompetence_tab as $key => $value) {
-            $groupecompetences = new Groupecompetence();
-            $groupecompetences-> setLibelle($value['libelle']);
-            $groupecompetences-> setDescriptif($value['descriptif']);
-            $Referentiel -> addGroupecompetence($groupecompetences);
-            $user = $this->get('security.token_storage')->getToken()->getUser();
-            $groupecompetences -> setUser($user);
-    
+        if (!empty($Groupecompetence_tab)) {
+            // envoyer au service pour affecter le groupecompetence
+            $user = $this->getUser();//user connecté
+            $Referentiel = $grpcmpService -> setGroupeCompetence($Referentiel,$Groupecompetence_tab,$manager,$user);
         }
         if (!$this -> isGranted("EDIT",$Referentiel)) {
             return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
@@ -74,7 +73,7 @@ class ReferentielController extends AbstractController
         $manager->persist($Referentiel);
         $manager->flush();
         
-        return $this->json($Referentiel,Response::HTTP_CREATED);
+        return $this->json($Referentiel,Response::HTTP_CREATED,[],['groups'=>['referentiel_read']] );
     }
 
      /**
@@ -88,12 +87,10 @@ class ReferentielController extends AbstractController
      *     }
      * )
     */
-    public function updateReferentiel(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, $id, GroupecompetenceRepository $cmp, ReferentielRepository $grpcmp)
+    public function updateReferentiel(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, $id, GroupecompetenceRepository $cmp, ReferentielRepository $grpcmp,GroupeCompetenceCompetenceServices $grpcmpService)
     {
         $Referentiel_json = $request -> getContent();
-        //dd($Referentiel_json);
         $Referentiel_tab = $serializer -> decode($Referentiel_json,"json");
-        //dd($Referentiel_tab);
         $Referentiel = new Referentiel();
         if (!($Referentiel = $grpcmp -> find($id))) {
             return $this ->json(null, Response::HTTP_NOT_FOUND,);
@@ -115,39 +112,8 @@ class ReferentielController extends AbstractController
         }
         $Groupecompetence_tab = isset($Referentiel_tab['groupecompetence'])?$Referentiel_tab['groupecompetence']:[];
         if (!empty($Groupecompetence_tab)) {
-            foreach ($Groupecompetence_tab as $key => $value) {
-                $groupecompetences = new Groupecompetence();
-                if (isset($value['id'])) 
-                {
-                    if (!($groupecompetences =  $cmp -> find($value['id']))) {
-                        return $this ->json(null, Response::HTTP_NOT_FOUND,);
-                    }
-                    if (isset($value['libelle'])) {
-                        $groupecompetences -> setLibelle($value['libelle']);
-                    }
-                    if (isset($value['descriptif'])) {
-                        $groupecompetences -> setDescriptif($value['descriptif']);
-                    }
-                    else {
-                        $Referentiel -> removeGroupecompetence($groupecompetences);
-                    }
-                    $user = $this->get('security.token_storage')->getToken()->getUser();
-                   
-                }
-                else{
-                if(isset($value['libelle'])) {
-                   $groupecompetences -> setLibelle($value['libelle']);
-                   
-                   $Referentiel -> addGroupecompetence($groupecompetences);
-                }
-                if(isset($value['descriptif'])){
-                    $groupecompetences -> setDescriptif($value['descriptif']);
-                    $Referentiel -> addGroupecompetence($groupecompetences);
-                }
-                $user = $this->get('security.token_storage')->getToken()->getUser();
-                $groupecompetences -> setUser($user);
-                   }
-            }
+            $user = $this->getUser();
+            $Referentiel = $grpcmpService -> setGroupeCompetence($Referentiel,$Groupecompetence_tab,$manager,$user);
         }
         
         if (!$this -> isGranted("EDIT",$Referentiel)) {
@@ -165,18 +131,6 @@ class ReferentielController extends AbstractController
         
         $manager->persist($Referentiel);
         $manager->flush();
-        return $this->json($Referentiel,Response::HTTP_CREATED);
+        return $this->json($Referentiel,Response::HTTP_CREATED,[],['groups'=>['referentiel_read']] );
     }
-
-
-    public function showReferentiel(ReferentielRepository $Referentiel){
-        if (!$this -> isGranted("ROLE_CM",$Referentiel)) {
-            return $this -> json(["message" => "l'accès à cette ressource est interdite"],Response::HTTP_FORBIDDEN);
-        }
-        $Referentiel = $Referentiel -> findAll();
-        // dd($Groupecompetence[0]->getUser());
-        return $this -> json($Referentiel, Response::HTTP_OK,);
-    }
-
-
 }

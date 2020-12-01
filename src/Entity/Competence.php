@@ -10,8 +10,10 @@ use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * @UniqueEntity("libelle")
  * @ApiResource(
  *      attributes={
  *          "pagination_items_per_page"=10,
@@ -79,6 +81,7 @@ class Competence
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence", cascade={"persist"})
+     * @Groups({"competence_read"})
      * @ApiSubresource()
      */
     private $groupecompetences;
@@ -94,6 +97,11 @@ class Competence
      * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="competence")
      */
     private $statistiquesCompetences;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $statut = "actif";
 
     public function __construct()
     {
@@ -145,6 +153,15 @@ class Competence
         }
 
         return $this;
+    }
+
+    public function removeMembers(){
+        foreach ($this->groupecompetences as  $grpcmp) {
+            $this -> removeGroupecompetence($grpcmp);
+        }
+        foreach ($this ->statistiquesCompetences as  $ststqcmp) {
+            $this -> removeStatistiquesCompetence($ststqcmp);
+        }
     }
 
     /**
@@ -204,6 +221,18 @@ class Competence
                 $statistiquesCompetence->setCompetence(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

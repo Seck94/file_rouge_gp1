@@ -9,8 +9,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * UniqueEntity("nom")
  * @ApiResource(
  *      attributes={
  *          "normalization_context"={"groups"={"gprincipal_read"},"enable_max_depth"=true}
@@ -65,6 +67,7 @@ class Groupe
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "nom est groupe vide")
      * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $nom;
@@ -78,7 +81,7 @@ class Groupe
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
-    private $statut;
+    private $statut = "actif";
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

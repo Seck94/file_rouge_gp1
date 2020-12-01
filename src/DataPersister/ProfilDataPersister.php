@@ -26,7 +26,8 @@ class ProfilDataPersister implements DataPersisterInterface
      */
     public function persist($profil)
     {
-        return $this->em->persist($profil);
+        $this->em->persist($profil);
+        $this->em->flush();
     }
 
     public function remove($profil)

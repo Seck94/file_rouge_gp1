@@ -55,7 +55,6 @@ class GroupeController extends AbstractController
         $Groupe = new Groupe();
         $Groupe -> setNom($Groupe_tab['nom']);
         $Groupe -> setDateCreation(new \DateTime());
-        $Groupe -> setStatut('actif');
         $Groupe -> setType('secondaire');
         $user = $this->get('security.token_storage')->getToken()->getUser();
         if ($user -> getRoles()[0] === "ROLE_FORMATEUR") {

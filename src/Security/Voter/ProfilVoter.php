@@ -21,7 +21,6 @@ class ProfilVoter extends Voter
     {
         /** @var Profil $subject */
         $user = $token->getUser();
-        // dd($user -> getRoles());
         // si l'utilisateur n'est pas connecté, on retourne immédiatement false
         if (!$user instanceof UserInterface) {
             return false;

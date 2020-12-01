@@ -9,6 +9,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -21,6 +22,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'user',
                 'referentiels',
                 'competence',
+                'statut',
             ],
             'attributesMetadata' => [
                 [
@@ -30,6 +32,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'user' => $o[4],
                     'referentiels' => $o[5],
                     'competence' => $o[6],
+                    'statut' => $o[7],
                 ],
             ],
             'groups' => [
@@ -37,11 +40,15 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'Grpcompetence_read',
                     'referentiel_groupecompetence_read',
                     'promo_referentiel',
+                    'competence_read',
+                    'referentiel_read',
                 ],
                 [
                     'Grpcompetence_read',
                     'referentiel_groupecompetence_read',
                     'promo_referentiel',
+                    'competence_read',
+                    'referentiel_read',
                 ],
                 [
                     'Grpcompetence_read',

@@ -44,7 +44,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *              "security"="is_granted('VIEW',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
  *              "path"="admin/profils/{id}",
- *              "defaults"={"id"=null}
  *         }, 
  *         "delete"={
  *              "security"="is_granted('EDIT',object)",

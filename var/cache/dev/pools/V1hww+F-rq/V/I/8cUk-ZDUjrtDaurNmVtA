@@ -27,6 +27,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'Grpcompetence_read',
                     'referentiel_groupecompetence_read',
                     'promo_referentiel',
+                    'competence_read',
+                    'referentiel_read',
                 ],
             ],
         ],

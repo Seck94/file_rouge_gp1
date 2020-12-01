@@ -8,6 +8,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -19,6 +20,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'groupecompetences',
                 'niveau',
                 'statistiquesCompetences',
+                'statut',
             ],
             'attributesMetadata' => [
                 [
@@ -27,6 +29,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'groupecompetences' => $o[3],
                     'niveau' => $o[4],
                     'statistiquesCompetences' => $o[5],
+                    'statut' => $o[6],
                 ],
             ],
             'groups' => [
@@ -56,7 +59,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'brief_brouillon',
                     'brief_valide',
                 ],
-                4 => [
+                [
+                    'competence_read',
+                ],
+                [
                     'competence_read',
                 ],
             ],

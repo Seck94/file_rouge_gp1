@@ -10,12 +10,13 @@ use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * @UniqueEntity("libelle")
  * @ApiResource(
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
- *          "pagination_items_per_page"=10, 
  *     },
  * 
  *     collectionOperations={
@@ -44,7 +45,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="admin/referentiels/groupecompetences",
- *              "normalization_context"={"groups"={"referentiel_groupecompetence_read","referentiel_read","user_details_read"}}
+ *              "normalization_context"={"groups"={"referentiel_groupecompetence_read","referentiel_read"}}
  *              }
  *     },
  *     
@@ -55,7 +56,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              "path"="admin/referentiels/{id}",
  *          },
  *         "delete"={
- *              "security"="is_granted('ROLE_ADMIN')",
+ *              "security"="is_granted('DELETE',object)",
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "path"="admin/referentiels/{id}",
  *          },
@@ -137,6 +138,11 @@ class Referentiel
      * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="referentiel", orphanRemoval=true)
      */
     private $statistiquesCompetences;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $statut = "actif";
 
     public function __construct()
     {
@@ -328,5 +334,21 @@ class Referentiel
         }
 
         return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function removeMembers(){
+        
     }
 }

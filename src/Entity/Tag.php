@@ -72,7 +72,7 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Notblank(message = "valeur null")
+     * @Assert\Notblank(message = "libelle null")
      * @Groups({"tags_read","Grptags_read","Grptags_tags_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $libelle;

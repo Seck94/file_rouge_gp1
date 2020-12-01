@@ -111,9 +111,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'add_groupetags' => [
                         'method' => 'POST',
-                        'security' => 'is_granted(\'VIEW\',object)',
-                        'security_message' => 'Vous n\'avez pas acces a cette ressource.',
                         'path' => 'admin/groupetags',
+                        'security_post_denormalize' => 'is_granted(\'EDIT\', object)',
+                        'security_post_denormalize_message' => 'Vous n\'avez pas ce privilege.',
                         'input' => null,
                         'output' => null,
                         'input_formats' => [

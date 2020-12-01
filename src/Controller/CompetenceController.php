@@ -40,19 +40,17 @@ class CompetenceController extends AbstractController
         $Competence_tab = $serializer -> decode($competence_json,"json");
         $Competence = new Competence();
         $Competence -> setLibelle($Competence_tab['libelle']);
-        $Niveau_tab = $Competence_tab['niveau'];
-        if (!isset($Competence_tab['groupecompetences'])) {
+        $Niveau_tab = $Competence_tab['niveaux'];
+        if (!isset($Competence_tab['groupecompetences']) && !isset($Competence_tab['groupecompetences'][0]['id'])) {
             return $this -> json(["message" => "Une nouvelle compétence doit etre liée à un groupe de compétences"],Response::HTTP_BAD_REQUEST);
         }
-        $Groupecompetence_id = $Competence_tab['groupecompetences'][0]['id'];
-        
-        $Groupecompetence = new Groupecompetence();
-        if (!($Groupecompetence = $grpcmp -> find($Groupecompetence_id))) {
-            return $this ->json("Groupe de competence non trouvé", Response::HTTP_NOT_FOUND,);
-        }
-        $Competence -> addGroupecompetence($Groupecompetence );
-        
 
+        foreach ($Competence_tab['groupecompetences'] as $grpcmptce) {
+            if ($Groupecompetence = $grpcmp -> find($grpcmptce['id'])) {
+                $Competence -> addGroupecompetence($Groupecompetence );
+            }
+        }
+        
         if (count($Niveau_tab)!=3)
         {
             return $this -> json(["message" => "Chaque compétence devrait avoir exactement 3 niveaux"],Response::HTTP_BAD_REQUEST);
@@ -80,7 +78,7 @@ class CompetenceController extends AbstractController
         
         $manager->persist($Competence);
         $manager->flush();
-        return $this->json($Competence,Response::HTTP_CREATED);
+        return $this->json($Competence,Response::HTTP_CREATED,[],['groups'=>['competence_read']] );
     }
 
 
@@ -108,8 +106,19 @@ class CompetenceController extends AbstractController
             $Competence -> setLibelle($Competence_tab['libelle']);
         }
         
-        $Niveau_tab = isset($Competence_tab['niveau'])?$Competence_tab['niveau']:[];
+        foreach ($Competence_tab['groupecompetences'] as $grpcmptce) {
+            if ($Groupecompetence = $manager -> getRepository(Groupecompetence::class) -> find($grpcmptce['id'])) {
+                if (isset($grpcmptce['action']) && $grpcmptce['action'] ==='delete') {
+                    $Competence -> removeGroupecompetence($Groupecompetence);
+                }
+                else {
+                    $Competence -> addGroupecompetence($Groupecompetence);
+                }
+            }
+        }
         
+
+        $Niveau_tab = isset($Competence_tab['niveaux'])?$Competence_tab['niveaux']:[];
         if (!empty($Niveau_tab)) {
             foreach ($Niveau_tab as $key => $value) {
                 $niveau = new Niveau();
@@ -127,15 +136,7 @@ class CompetenceController extends AbstractController
                     if (isset($value['groupeAction'])) {
                         $niveau -> setGroupeAction($value['groupeAction']);
                     }
-                }
-                elseif (isset($value['libelle']) && isset($value['critereEvaluation']) && isset($value['groupeAction'])) {
-                    $niveau -> setLibelle($value['libelle']);
-                    $niveau -> setcritereEvaluation($value['critereEvaluation']);
-                    $niveau -> setGroupeAction($value['groupeAction']);
-                    $Competence->addNiveau($niveau);
-                }
-                else {
-                    return $this -> json(["message" => "Données manquantes quelque part"],Response::HTTP_FORBIDDEN);
+                    $manager->persist($niveau);
                 }
             }
         }
@@ -154,7 +155,7 @@ class CompetenceController extends AbstractController
         
         $manager->persist($Competence);
         $manager->flush();
-        return $this->json($Competence,Response::HTTP_CREATED);
+        return $this->json($Competence,Response::HTTP_CREATED,[],['groups'=>['competence_read']] );
     }
 
 

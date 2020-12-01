@@ -27,6 +27,7 @@ class ProfilsortieDataPersister implements DataPersisterInterface
     public function persist($profilsorite)
     {
         return $this->em->persist($profilsorite);
+        $this->em->flush();
     }
 
     public function remove($profilsorite)

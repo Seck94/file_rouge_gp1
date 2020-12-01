@@ -13,7 +13,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 255,
             ],
             'message' => [
-                1 => 'valeur null',
+                1 => 'libelle null',
             ],
             'groups' => [
                 1 => [

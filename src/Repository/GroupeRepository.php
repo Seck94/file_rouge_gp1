@@ -58,4 +58,16 @@ class GroupeRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findGroupePrincipal($id_promo): ?Groupe
+    {
+        return $this->createQueryBuilder('g')
+            ->andWhere('g.promo= :p_id')
+            ->setParameter('p_id', $id_promo)
+            ->andWhere('g.type= :type')
+            ->setParameter('type','principal')
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

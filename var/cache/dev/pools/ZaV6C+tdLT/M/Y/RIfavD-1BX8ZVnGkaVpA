@@ -7,6 +7,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -17,6 +18,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'libelle',
                 'tag',
                 'lastUpdate',
+                'statut',
             ],
             'attributesMetadata' => [
                 [
@@ -24,6 +26,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'libelle' => $o[2],
                     'tag' => $o[3],
                     'lastUpdate' => $o[4],
+                    'statut' => $o[5],
                 ],
             ],
             'groups' => [
@@ -33,6 +36,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
                 [
                     'Grptags_read',
+                    'Grptags_tags_read',
                 ],
                 [
                     'Grptags_read',

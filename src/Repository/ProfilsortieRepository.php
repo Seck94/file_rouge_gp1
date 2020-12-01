@@ -47,4 +47,20 @@ class ProfilsortieRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function apprenantByProfilSorite($promo_id){
+        return $this -> createQuery('
+            SELECT
+                p,
+                a
+            FROM
+                App\Entity\Profilsortie p
+            LEFT JOIN 
+                App\Entity\Apprenant a  
+            LEFT JOIN 
+                \App\Entity\Groupe g
+            WITH 
+                g.promo_id = $promo_id
+        ') -> execute();
+    }
 }
