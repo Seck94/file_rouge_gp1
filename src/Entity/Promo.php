@@ -2,25 +2,28 @@
 
 namespace App\Entity;
 
+use DateTime;
 use App\Entity\Formateur;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PromoRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(
  *     attributes={
- *          "pagination_items_per_page"=10,
  *      },
+ *      routePrefix="/admin",
  *     collectionOperations={
  *          "add_promo"={
  *              "method"="POST",
- *              "path"="admin/promos",
+ *              "path"="/promos",
  *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *          },
@@ -28,14 +31,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos",
+ *              "path"="/promos",
  *              "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
  *              },
  *          "promo_gprincipal"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/principal",
+ *              "path"="/promos/principal",
  *              
  *              }
  *     },
@@ -44,75 +47,41 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "get"={
  *              "security"="is_granted('ROLE_CM',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/promos/{id}",
+ *              "path"="/promos/{id}",
  *              "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
  *         }, 
- *          "promo_id_gprincipal"={
- *              "method"="GET",
- *              "security"="is_granted('ROLE_CM')", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/{id}/principal",
- *               *          "normalization_context"={"groups"={"referentiel_read","user_details_read","referentiel_groupecompetence_read"}}
-
- *              },
- *          "apprenants_attente"={
- *              "method"="GET",
- *              "security"="is_granted('ROLE_CM')", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/{id}/apprenants/attente"
- *              }, 
- *          "promo_referentiel"={
- *              "method"="GET",
- *              "security"="is_granted('ROLE_CM')", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/{id}/referentiel",
- *              "normalization_context"={"groups"={"promo_referentiel"},"enable_max_depth"=true}
- *              }, 
- *          "promo_groupe_apprenants"={
- *              "method"="GET",
- *              "security"="is_granted('ROLE_CM')", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/{id}/groupes/apprenants",
- *              "normalization_context"={"groups"={"promo_groupe_apprenants"},"enable_max_depth"=true}
- *              }, 
- *          "promo_groupe_formateurs"={
- *              "method"="GET",
- *              "security"="is_granted('ROLE_CM')", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/promos/{id}/formateurs",
- *              "normalization_context"={"groups"={"promo_groupe_formateurs"},"enable_max_depth"=true}
- *              },
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
  *              "security_message"="Seul le proprietaite....",
- *              "path"="admin/promos/{id}",
+ *              "path"="/promos/{id}",
  *         },
  *         "update_promo"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/promos/{id}",
+ *              "path"="/promos/{id}",
  *         },
  *         "gerer_apprenants"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/promos/{id}/apprenants",
+ *              "path"="/promos/{id}/apprenants",
  *         },
  *          "gerer_formateurs"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/promos/{id}/formateurs",
+ *              "path"="/promos/{id}/formateurs",
  *         },
  *         "gerer_groupes"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/promos/{id}/groupes",
+ *              "path"="/promos/{id}/groupes",
  *         },
  *     },
  * )
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "groupes.type":"exact", "groupes.apprenants.lastLogin":"exact"})
  * @ORM\Entity(repositoryClass=PromoRepository::class)
  */
 class Promo
@@ -154,14 +123,14 @@ class Promo
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\DateTime
+     * @Assert\NotBlank
      * @Groups({"promo_read"})
      */
     private $dateDebut;
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\DateTime
+     * @Assert\NotBlank
      * @Groups({"promo_read"})
      */
     private $dateFinProvisoire;
@@ -174,7 +143,6 @@ class Promo
 
     /**
      * @ORM\Column(type="date",nullable=true)
-     * @Assert\DateTime
      */
     private $dateFinReelle;
 
@@ -198,7 +166,13 @@ class Promo
     /**
      * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="promo", orphanRemoval=true, cascade={"persist"})
      * @Groups({"promo_read","promo_groupe_apprenants","promo_groupe_formateurs"})
-     * @ApiSubresource()
+     * @ApiSubresource(maxDepth=2)
+     * @Assert\Count(
+     *      min = 1,
+     *      max = 3,
+     *      minMessage = "You must specify at least one group",
+     *      maxMessage = "You cannot specify more than {{ limit }} groups"
+     * )
      */
     private $groupes;
 
@@ -225,12 +199,19 @@ class Promo
      */
     private $statistiquesCompetences;
 
+    /**
+     * @Groups({"promo_read"})
+     * @ORM\Column(type="blob", nullable=true)
+     */
+    private $avatar;
+
     public function __construct()
     {
         $this->formateurs = new ArrayCollection();
         $this->groupes = new ArrayCollection();
         $this->promoBriefs = new ArrayCollection();
         $this->statistiquesCompetences = new ArrayCollection();
+        $this ->dateDebut = new \DateTime();
     }
 
     public function getId(): ?int
@@ -524,6 +505,24 @@ class Promo
                 $statistiquesCompetence->setPromo(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvatar()
+    {
+        if ($this->avatar!==null) {
+            $content = @\stream_get_contents($this->avatar);
+            @fclose($this->avatar);
+
+            return base64_encode($content);
+        }
+        return null;
+    }
+
+    public function setAvatar($avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
