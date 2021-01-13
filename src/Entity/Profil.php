@@ -70,13 +70,13 @@ class Profil
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"profil_read"})
+     * @Groups({"profil_read","user_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Groups({"profil_read"})
+     * @Groups({"profil_read","user_read"})
      * @Assert\NotBlank(message = "valeur vide")
      */
     private $libelle;
