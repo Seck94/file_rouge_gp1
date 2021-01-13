@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\User;
 use App\Entity\Promo;
 use App\Entity\Groupe;
@@ -16,9 +17,9 @@ use App\Repository\ProfilRepository;
 use App\Repository\ApprenantRepository;
 use App\Repository\FormateurRepository;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ReferentielRepository;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,7 +64,6 @@ class PromoController extends AbstractController
         $Promo -> setTitre($Promo_tab['titre']);
         $Promo -> setDescription($Promo_tab['descriptif']);
         $Promo -> setLieu($Promo_tab['lieu']);
-        $Promo -> setDateDebut(new \DateTime($Promo_tab['dateDebut']));
         $Promo -> setDateFinProvisoire(new \DateTime($Promo_tab['dateFinProvisoire']));
         $Promo -> setFabrique($Promo_tab['fabrique']);
         
@@ -90,35 +90,24 @@ class PromoController extends AbstractController
                     $profil = $profil_repo -> findOneByLibelle('APPRENANT');
                     foreach ($value['apprenants'] as $key => $val) {
                         $apprenant = new Apprenant();
-                        if (!$apprenant = $apprenant_repo->findOneByEmail($val['email'])) {
-                            $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
-                                      -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
-                                      -> setEmail(strtolower($val['email']))
-                                      -> setProfil($profil);
-                            $statistiquesCompetence = new StatistiquesCompetences();
-                            $statistiquesCompetence -> setApprenant($apprenant)
-                                                    -> setReferentiel($Referentiel)
-                                                    -> setPromo($Promo);
-                            foreach ($referentiel -> getGroupecompetence() as $key => $Groupecompetence) {
-                                foreach ($GroupeCompetence -> getCompetence() as $key => $Competence) {
-                                    $statistiquesCompetence -> setCompetence($Competence);
-                                    $manager->persist($statistiquesCompetence);      
-                                    $manager->flush();
-                                }
+                        $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
+                                    -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
+                                    -> setEmail(strtolower($val['email']))
+                                    -> setProfil($profil);
+                        $statistiquesCompetence = new StatistiquesCompetences();
+                        $statistiquesCompetence -> setApprenant($apprenant)
+                                                -> setReferentiel($Referentiel)
+                                                -> setPromo($Promo);
+                        foreach ($referentiel -> getGroupecompetence() as $key => $Groupecompetence) {
+                            foreach ($GroupeCompetence -> getCompetence() as $key => $Competence) {
+                                $statistiquesCompetence -> setCompetence($Competence);
+                                $manager->persist($statistiquesCompetence);      
+                                $manager->flush();
                             }
-                                    $manager->persist($apprenant);
-                                    $manager->persist($statistiquesCompetence);      
-                                    $manager->flush();
                         }
-                        $message = (new \Swift_Message('Ajout'))
-                        ->setFrom('admin@gmail.com')
-                        ->setTo($apprenant->getEmail())
-                        ->setBody('Bonjour cher(e) séléctionné(e) Utilsez
-                        ces infos pour vous connecter à votre promo. Username: '.$apprenant->getUsername().'
-                        password: '.$apprenant->getPassword())
-                        ;
-                        // $mailer->send($message); // on envoie
-                        $Groupe -> addApprenant($apprenant);
+                            $manager->persist($apprenant);
+                            $manager->persist($statistiquesCompetence);      
+                            $manager->flush();
                     }
                 }
                 
@@ -155,7 +144,7 @@ class PromoController extends AbstractController
                 while (isset($emails_exel[$i][$j])) {
                     if (preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $emails_exel[$i][$j])) {
                         // $tab_email[] = strtolower($emails_exel[$i][$j]);
-                        if (!$apprenant = $apprenant_repo->findOneByEmail($emails_exel[$i][$j])) {
+                        if ($apprenant = $apprenant_repo->findOneByEmail($emails_exel[$i][$j])) {
                             $apprenant = new Apprenant();
                             $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
                                       -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
@@ -205,7 +194,6 @@ class PromoController extends AbstractController
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
 
-        dump($Promo);
         dd($Promo);
         
         $manager->persist($Promo);
@@ -388,7 +376,7 @@ class PromoController extends AbstractController
                 }
                 
             foreach ($Promo_tab['apprenants'] as $key => $val) {
-                if (!$apprenant = $apprenant_repo->findOneByEmail($val['email'])) {
+                if ($apprenant = $apprenant_repo->findOneByEmail($val['email'])) {
                     $apprenant = new Apprenant();
                     $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
                               -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
@@ -466,11 +454,8 @@ class PromoController extends AbstractController
             if ($Promo_tab['action'] === 'delete') {
                 foreach ($Promo_tab['apprenants'] as $key => $value) {
                     if ($apprenant = $apprenant_repo -> find($value['id'])) {
-                        if ($groupes = $apprenant -> getGroupe()) {
-                            foreach ($groupes as $key => $groupe) {
-                                $groupe -> removeApprenant($apprenant);// on le retire de tous les groupes
-                            }
-                        }
+                        $apprenant ->setStatut('archived');
+                        $groupe -> removeApprenant($apprenant);// on le retire de tous les groupes
                     }
                 }
             }
@@ -480,18 +465,7 @@ class PromoController extends AbstractController
                     if ($groupe -> getType() === 'principal') {
                         foreach ($Promo_tab['apprenants'] as $key => $value) {
                             if ($apprenant = $apprenant_repo -> find($value['id'])) {
-                                $trouve = false;
-                                if (($apprenant_groupe = $apprenant -> getGroupe())) {
-                                    foreach ($apprenant_groupe as $key => $value) {
-                                        if ($groupe -> getId() === $value -> getId()) {
-                                            $trouve = true;
-                                            break;
-                                        }
-                                    }
-                                    if (!$trouve) {
-                                        $groupe -> addApprenant($apprenant);
-                                    }
-                                }
+                                $groupe -> addApprenant($apprenant);
                             }
                         }
                         break;
@@ -507,12 +481,6 @@ class PromoController extends AbstractController
         $user = $this->get('security.token_storage')->getToken()->getUser();
         if ($Promo -> getUser() !== $user ) {
             return $this -> json(["message" => "Vous n'avez pas crée cette promo"],Response::HTTP_FORBIDDEN);
-        }
-
-        $errors = $validator->validate($Promo);
-        if (count($errors)){
-            $errors = $serializer->serialize($errors,"json");
-            return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
 
         $manager->persist($Promo);
@@ -544,13 +512,8 @@ class PromoController extends AbstractController
             if ($Promo_tab['action'] === 'delete') {
                 foreach ($Promo_tab['formateurs'] as $key => $value) {
                     if ($formateur = $formateur_repo -> find($value['id'])) {
-                        if ($groupes = $formateur -> getGroupe()) {
-                            foreach ($groupes as $key => $groupe) {
-                                $groupe -> removeFormateur($formateur);
-                            }
-                        }
+                        $groupe -> removeFormateur($formateur);
                         $formateur -> removePromo($Promo);
-                        // $Promo -> removeFormateur($formateur);
                     }
                 }
             }
@@ -562,16 +525,8 @@ class PromoController extends AbstractController
                             if ($formateur = $formateur_repo -> find($value['id'])) {
                                 $trouve = false;
                                 if (($formateur_groupe = $formateur -> getGroupe())) {
-                                    foreach ($formateur_groupe as $key => $value) {
-                                        if ($groupe -> getId() === $value -> getId()) {
-                                            $trouve = true;
-                                            break;
-                                        }
-                                    }
-                                    if (!$trouve) {
-                                        $groupe -> addFormateur($formateur);
-                                        $Promo -> addFormateur($formateur);
-                                    }
+                                    $groupe -> addFormateur($formateur);
+                                    $Promo -> addFormateur($formateur);
                                 }
                             }
                         }
@@ -597,8 +552,8 @@ class PromoController extends AbstractController
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
 
-        // $manager->persist($Promo);
-        // $manager->flush();
+        $manager->persist($Promo);
+        $manager->flush();
         return $this->json($Promo,Response::HTTP_CREATED);
     }
 
@@ -651,12 +606,6 @@ class PromoController extends AbstractController
             $user = $this->get('security.token_storage')->getToken()->getUser();
             if ($Promo -> getUser() !== $user ) {
                 return $this -> json(["message" => "Vous n'avez pas crée cette promo"],Response::HTTP_FORBIDDEN);
-            }
-    
-            $errors = $validator->validate($Promo);
-            if (count($errors)){
-                $errors = $serializer->serialize($errors,"json");
-                return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
             }
     
             $manager->persist($Promo);
