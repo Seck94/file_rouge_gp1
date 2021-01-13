@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -17,60 +18,62 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ApiResource(
  *     attributes={
  *          "security"="is_granted('ROLE_ADMIN')",
+ *          "normalization_context"={"enable_max_depth"=true}
  *     },
- * 
+ *     routePrefix="/admin/referentiels",
  *     collectionOperations={
  *          "add_referentiel"={
  *              "method"="POST",
- *              "path"="/admin/referentiels",
+ *              "path"="",
  *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Vous n'avez pas le privilege",
- *              "normalization_context"={"groups"={"referentiel_read"}}
  *          },
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/referentiels",
+ *              "path"="",
+ *              "normalization_context"={"groups"={"referentiel_read"}}
  *   
- *          },
- *           "show_groupecompetence"={
- *              "method"="GET",
- *              "security"="is_granted('ROLE_CM')", 
- *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/referentiels"
- *              },
- *              
+ *          },              
  *           "show_referentiel_groupecompetence"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/referentiels/groupecompetences",
- *              "normalization_context"={"groups"={"referentiel_groupecompetence_read","referentiel_read"}}
- *              }
+ *              "path"="/groupecompetences",
+ *              "normalization_context"={"groups"={"referentiel_groupecompetence_read"}}
+ *          }
  *     },
  *     
  *     itemOperations={
  *         "get"={
  *              "security"="is_granted('VIEW',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/referentiels/{id}",
+ *              "path"="/{id}",
+ *              "normalization_context"={"groups"={"referentiel_read"}}
+ *          },
+ *           "show_referentiel_groupecompetence"={
+ *              "method"="GET",
+ *              "security"="is_granted('ROLE_CM')", 
+ *              "security_message"="Vous n'avez pas acces a cette ressource.",
+ *              "path"="/{id}/groupecompetences",
+ *              "normalization_context"={"groups"={"referentiel_groupecompetence_read"}}
  *          },
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
  *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/referentiels/{id}",
+ *              "path"="/{id}",
  *          },
  *         "update_referentiel"={
  *              "method"="PATCH",
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/referentiels/{id}",
+ *              "path"="/{id}",
  *          },
  *         "update_referentiel"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/referentiels/{id}",
+ *              "path"="/{id}",
  *          },
  *     }
  * )
@@ -88,13 +91,14 @@ class Referentiel
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\notBlank(message = "valeur null")
+     * @Assert\notBlank(message = "libelle null")
      * @Groups({"referentiel_read","promo_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\notBlank(message = "referentiel null")
      *  @Groups({"referentiel_read","promo_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
      */
     private $presentation;
@@ -124,7 +128,8 @@ class Referentiel
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupecompetence::class, inversedBy="referentiels",cascade={"persist"})
-     * @ApiSubresource()
+     * @ApiSubresource(maxDepth=2)
+     * @MaxDepth(2)
      * @Groups({"referentiel_read","referentiel_groupecompetence_read","promo_referentiel"})
      */
     private $groupecompetence;
@@ -181,10 +186,16 @@ class Referentiel
         return $this;
     }
 
-    //  public function getProgramme(): ?string
-    // {
-    //     return $this->programme;
-    // }
+     public function getProgramme()
+    {
+        if ($this->programme) {
+            $content = \stream_get_contents($this->programme);
+            fclose($this->programme);
+
+            return base64_encode($content);
+        }
+        return null;
+    }
 
     public function setProgramme($programme): self
     {
