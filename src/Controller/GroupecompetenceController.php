@@ -55,6 +55,7 @@ class GroupecompetenceController extends AbstractController
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
         
+        dd($Groupecompetence);
         $manager->persist($Groupecompetence);
         $manager->flush();
         return $this->json($Groupecompetence,Response::HTTP_CREATED);
@@ -110,26 +111,5 @@ class GroupecompetenceController extends AbstractController
         $manager->persist($Groupecompetence);
         $manager->flush();
         return $this->json($Groupecompetence,Response::HTTP_CREATED);
-    }
-
-
-    /**
-     * @Route(
-     *     path="/api/admin/groupecompetences",
-     *     methods={"GET"},
-     *     defaults={
-     *          "__controller"="App\Controller\GroupecompetenceController::showGroupecompetence",
-     *          "__api_resource_class"=Groupecompetence::class,
-     *          "__api_collection_operation_name"="show_groupecompetence"
-     *     }
-     * )
-    */
-    public function showGroupecompetence(GroupecompetenceRepository $Groupecompetence){
-        if (!$this -> isGranted("ROLE_CM",$Groupecompetence)) {
-            return $this -> json(["message" => "l'accès à cette ressource vous est interdit"],Response::HTTP_FORBIDDEN);
-        }
-        $Groupecompetence = $Groupecompetence -> findAll();
-        // dd($Groupecompetence[0]->getUser());
-        return $this -> json($Groupecompetence, Response::HTTP_OK,);
     }
 }
