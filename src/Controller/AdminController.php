@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Controller\ApprenantController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -24,11 +25,12 @@ class AdminController extends AbstractController
      *     }
      * )
      * @param UserRepository $repo
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
-    public function getAdmin(UserRepository $repo){
+    public function getAdmin(UserRepository $repo): JsonResponse
+    {
         $admin = $repo -> findByProfil("ADMIN");
-        return $this -> json($admin, Response::HTTP_OK,);
+        return $this -> json($admin, Response::HTTP_OK);
     }
     
     /**
