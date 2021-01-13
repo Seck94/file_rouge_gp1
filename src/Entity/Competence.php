@@ -17,12 +17,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ApiResource(
  *      attributes={
  *          "pagination_items_per_page"=10,
- *          "normalization_context"={"groups"={"competence_read"},"enable_max_depth"=true}
  *      },
+ *      routePrefix="/admin",
  *     collectionOperations={
  *          "add_competence"={
  *              "method"="POST",
- *              "path"="admin/competences",
+ *              "path"="/competences",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *          },
@@ -30,32 +30,34 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/competences"
- *              },
+ *              "path"="/competences",
+ *              "normalization_context"={"groups"={"competence_read"},"enable_max_depth"=true}
+ *         },
  *     },
  *     
  *     itemOperations={
  *         "get"={
  *              "security"="is_granted('VIEW',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/competences/{id}",
+ *              "path"="/competences/{id}",
+ *              "normalization_context"={"groups"={"competence_detail_read"}}
  *         }, 
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
  *              "security_message"="Seul le proprietaite....",
- *              "path"="admin/competences/{id}",
+ *              "path"="/competences/{id}",
  *         },
  *         "update_competence"={
  *              "method"="PATCH",
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/competences/{id}",
+ *              "path"="/competences/{id}",
  *         },
  *         "update_competence"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/competences/{id}",
+ *              "path"="/competences/{id}",
  *         },
  *     },
  * )
@@ -67,28 +69,29 @@ class Competence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"competence_read","promo_referentiel","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"referentiel_read","competence_read","competence_detail_read","Grpcompetence_read","Grpcompetence_competence_read","referentiel_groupecompetence_read","promo_referentiel","brief_read","brief_groupe_promo","all_brief_read",
+     * "brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="valeur vide")
-     * @Groups({"Grpcompetence_read","competence_read","Grpcompetence_competence_read","promo_referentiel"})
-     * @Groups({"brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"Grpcompetence_read","competence_detail_read","competence_read","Grpcompetence_competence_read","promo_referentiel","referentiel_groupecompetence_read"})
+     * @Groups({"referentiel_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $libelle;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupecompetence::class, mappedBy="competence", cascade={"persist"})
-     * @Groups({"competence_read"})
+     * @Groups({"competence_detail_read"})
      * @ApiSubresource()
      */
     private $groupecompetences;
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence", cascade={"persist"})
-     * @Groups({"competence_read"})
+     * @Groups({"referentiel_read","competence_detail_read"})
      * @ApiSubresource()
      */
     private $niveau;
