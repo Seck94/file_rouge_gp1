@@ -20,8 +20,8 @@ class GroupeCompetenceCompetenceServices
                 foreach ($cmptce['niveaux'] as $niv) {
                     $niveau = new Niveau();
                     $niveau -> setLibelle($niv['libelle']);
-                    $niveau -> setCritereEvaluation($niv['critereEvaluation']);
-                    $niveau -> setGroupeAction($niv['groupeAction']);
+                    $niveau -> setCritereEvaluation($niv['critereEval']);
+                    $niveau -> setGroupeAction($niv['grpAction']);
                     $competence -> addNiveau($niveau);
                     $manager -> persist($niveau);
                 }
@@ -43,12 +43,12 @@ class GroupeCompetenceCompetenceServices
 
 
     public function setGroupeCompetence($Referentiel, $Groupecompetence_tab, $manager, $user){
-        foreach ($Groupecompetence_tab as $key => $value) {
+        foreach ($Groupecompetence_tab as $value) {
             $groupecompetences = new Groupecompetence();
             if (isset($value['id'])) 
             {
-                if (!($groupecompetences =  $cmp -> find($value['id']))) {
-                    return $this ->json(null, Response::HTTP_NOT_FOUND,);
+                if (!($groupecompetences =  $manager -> getRepository(Groupecompetence::class) -> find($value['id']))) {
+                    return new JsonResponse(null, Response::HTTP_NOT_FOUND,);
                 }
                 if (isset($value['libelle'])) {
                     $groupecompetences -> setLibelle($value['libelle']);
