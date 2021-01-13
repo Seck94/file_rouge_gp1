@@ -49,7 +49,12 @@ class GroupetagController extends AbstractController
         $Groupetag = new Groupetag();
 
         $Groupetag -> setLibelle($Groupetag_tab['libelle']);
-        $tag_tab = $Groupetag_tab['tag'];
+        if (isset($Groupetag_tab['tag']) && !empty($Groupetag_tab['tag'])) {
+            $tag_tab = $Groupetag_tab['tag'];
+        }
+        else {
+            return new JsonResponse("il faut au moins un tag",Response::HTTP_BAD_REQUEST,[],true);
+        } 
         foreach ($tag_tab as $value) 
         {
             $tag = new Tag();
@@ -59,7 +64,8 @@ class GroupetagController extends AbstractController
             else {
                 $tag -> setLibelle($value['libelle']);
                 $tag -> setDescriptif($value["descriptif"]);
-            }   
+            }  
+            
             $Groupetag -> addtag($tag);          
         }
 
@@ -104,7 +110,7 @@ class GroupetagController extends AbstractController
         $Groupetag = $Groupetag -> findAll();
         
         
-        return $this -> json($Groupetag, Response::HTTP_OK,);
+        return $this -> json($Groupetag, Response::HTTP_OK,[],['groups'=>['Grptags_read']] );
     }
 
     
