@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\GroupeRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * UniqueEntity("nom")
@@ -17,24 +20,25 @@ use Symfony\Component\Validator\Constraints as Assert;
  *      attributes={
  *          "normalization_context"={"groups"={"gprincipal_read"},"enable_max_depth"=true}
  *      },
+ *      routePrefix="/admin/groupes",
  *      collectionOperations={
  *          "get"={
  *              "method"="GET",
- *              "path"="/admin/groupes" ,
+ *              "path"="" ,
  *              "security"="(is_granted('ROLE_FORMATEUR'))", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "normalization_context"={"groups"={"gproupe_read"},"enable_max_depth"=true}
  *          },
- *         "show_apprenants_groupe"={
+ *         "show_apprenants"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupes/apprenants",
+ *              "path"="/apprenants",
  *              "normalization_context"={"groups"={"gproupe_apprenant_read"},"enable_max_depth"=true}
  *         },
  *          "add_groupe"={
  *              "method"="POST",
- *              "path"="/admin/groupes" ,
+ *              "path"="" ,
  *              "security"="(is_granted('ROLE_FORMATEUR'))", 
  *              "security_message"="Vous n'avez pas le droit.",
  *          }
@@ -43,16 +47,23 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "get"={
  *              "security"="is_granted('ROLE_FORMATEUR',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupes/{id}",
+ *              "path"="/{id}",
  *         },
  *         "update_groupe"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupes/{id}",
+ *              "path"="/{id}",
  *         },
+ *         "delete_apprenant"={
+ *              "method"="DELETE",
+ *              "security_post_denormalize"="is_granted('ROLE_FORMATEUR', object)", 
+ *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
+ *              "path"="/{id}/apprenants/{ida}",
+ *        },
  *     }
  * )
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "nom":"exact"})
  * @ORM\Entity(repositoryClass=GroupeRepository::class)
  */
 class Groupe
@@ -105,6 +116,7 @@ class Groupe
     /**
      * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="groupes",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinTable()
      * @Groups({"gproupe_read"})
      */
     private $promo;
@@ -124,6 +136,7 @@ class Groupe
         $this->apprenants = new ArrayCollection();
         $this->formateurs = new ArrayCollection();
         $this->briefs = new ArrayCollection();
+        $this ->dateCreation = new \DateTime();
     }
 
     public function getId(): ?int
