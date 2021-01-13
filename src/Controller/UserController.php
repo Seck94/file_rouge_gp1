@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Profil;
 use App\Services\UserServices;
+use App\Repository\UserRepository;
 use App\Repository\ProfilRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,32 +32,58 @@ class UserController extends AbstractController
     */
     public function addUser(Request $request,UserServices $userService, UserPasswordEncoderInterface $encoder,SerializerInterface $serializer,ValidatorInterface $validator,ProfilRepository $profil,EntityManagerInterface $manager)
     {
-        // try {
-            return $this->json($userService -> setCommonProperties($request, $encoder, $serializer, $validator, $profil,$manager),Response::HTTP_CREATED);
-        // } catch (\Throwable $th) {
-        //     return $this -> json("Erreur ".$e,Response::HTTP_BAD_REQUEST);
-        // }
+        return $this->json($userService -> setCommonProperties($request, $encoder, $serializer, $validator, $profil,$manager),Response::HTTP_CREATED,[],['groups'=>['user_read']]);
+
     }
     
     
      /**
      * @Route(
      *     path="/api/admin/users/{id}",
-     *     methods={"PUT"},
+     *     methods={"POST"},
      *     defaults={
      *          "__controller"="App\Controller\UserController::UpdateUser",
      *          "__api_resource_class"=User::class,
-     *          "__api_item_operation_name"="update_user"
+     *          "__api_collection_operation_name"="update_user"
      *     }
      * )
     */
     public function UpdateUser(Request $request,UserServices $userService, UserPasswordEncoderInterface $encoder,SerializerInterface $serializer,ValidatorInterface $validator,ProfilRepository $profil,EntityManagerInterface $manager, $id)
     {
-        // dd($this -> getUser());//l'utilisateur connecté
-        // try {
-            return $this->json($userService -> setCommonProperties($request, $encoder, $serializer, $validator, $profil,$manager, $id),Response::HTTP_CREATED,[],[]);
-        // } catch (\Throwable $e) {
-        //     return $this -> json("Erreur ".$e,Response::HTTP_BAD_REQUEST);
-        // }
+        return $this->json($userService -> setCommonProperties($request, $encoder, $serializer, $validator, $profil,$manager, $id),Response::HTTP_CREATED,[],['groups'=>['user_read']]);
+    }
+
+    /**
+     * @Route(
+     *     path="/api/admin/users/count",
+     *     methods={"PATCH"},
+     *     defaults={
+     *          "__controller"="App\Controller\UserController::getCount",
+     *          "__api_resource_class"=User::class,
+     *          "__api_collection_operation_name"="getCount_user"
+     *     }
+     * )
+    */
+    public function getCount(Request $req, UserRepository $user_repo, SerializerInterface $serializer){
+        $req = $serializer -> decode($req -> getContent(),"json");
+        if ($req['profil']===0) {
+            return $this->json($user_repo -> getCount(),Response::HTTP_OK);
+        }
+        return $this->json($user_repo -> getCountByProfil($req['profil']),Response::HTTP_OK);
+    }
+
+    /**
+     * @Route(
+     *     path="/api/admin/users/search",
+     *     methods={"PATCH"},
+     *     defaults={
+     *          "__controller"="App\Controller\UserController::searchTerm",
+     *          "__api_resource_class"=User::class,
+     *          "__api_collection_operation_name"="search_user"
+     *     }
+     * )
+    */
+    public function searchTerm(Request $request, UserRepository $user_repo){
+        return $this->json($user_repo -> searchTerm($request->getContent()),Response::HTTP_OK,[],['groups'=>['user_read']]);
     }
 }
