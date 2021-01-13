@@ -141,17 +141,7 @@ class GroupeController extends AbstractController
                     $trouve = false;
                     if (isset($val['action'])) {
                         if ($val['action'] === 'add') {
-                            if (($app_groupe = $Apprenant -> getGroupe())) {
-                                foreach ($app_groupe as $key => $value) {
-                                    if ($Groupe -> getId() === $value -> getId()) {
-                                        $trouve = true;
-                                        break;
-                                    }
-                                }
-                                if (!$trouve) {
-                                    $Groupe -> addApprenant($Apprenant);
-                                }
-                            }
+                            $Groupe -> addApprenant($Apprenant);
                         }
                         elseif($val['action'] === 'delete'){
                             $Groupe -> removeApprenant($Apprenant);
@@ -168,17 +158,7 @@ class GroupeController extends AbstractController
                     $trouve = false;
                     if (isset($val['action'])) {
                         if ($val['action'] === 'add') {
-                            if (($formateur_groupe = $Formateur -> getGroupe())) {
-                                foreach ($formateur_groupe as $key => $value) {
-                                    if ($Groupe -> getId() === $value -> getId()) {
-                                        $trouve = true;
-                                        break;
-                                    }
-                                }
-                                if (!$trouve) {
-                                    $Groupe -> addFormateur($Formateur);
-                                }
-                            }
+                            $Groupe -> addFormateur($Formateur);
                         }
                         elseif($val['action'] === 'delete'){
                             
@@ -208,6 +188,28 @@ class GroupeController extends AbstractController
         return $this->json($Groupe,Response::HTTP_CREATED);
     }
 
+     /**
+     * @Route(
+     *     path="/api/admin/groupes/{id}/apprenants/{ida}",
+     *     methods={"DELETE"},
+     *     defaults={
+     *          "__controller"="App\Controller\GroupeController::deleteApprenant",
+     *          "__api_resource_class"=Groupe::class,
+     *          "__api_item_operation_name"="delete_apprenant"
+     *     }
+     * )
+    */
+    public function deleteApprenant($id,$ida, GroupeRepository $groupe_repo, ApprenantRepository $apprenant_repo, EntityManagerInterface $manager){
+        if (($groupe = $groupe_repo -> find($id)) && ($apprenant = $apprenant_repo -> find($ida))) {
+            $groupe -> removeApprenant($apprenant);
+            if ($groupe -> getType() === "principal") {
+                $apprenant -> setStatut("archived");
+            }
+            $manager -> flush();
+            return $this->json($groupe,Response::HTTP_OK);
+        }
+        return $this->json("données invalides",Response::HTTP_BAD_REQUEST);
+    }
 
     /**
      * @Route("/groupe", name="groupe")
