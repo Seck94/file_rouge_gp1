@@ -19,24 +19,24 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *          "pagination_items_per_page"=10,
  *          "normalization_context"={"groups"={"Grpcompetence_read"},"enable_max_depth"=true}
  *      },
+ *      routePrefix="/admin",
  *     collectionOperations={
  *          "add_groupecompetence"={
  *              "method"="POST",
- *              "path"="admin/groupecompetences",
+ *              "path"="/groupecompetences",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *          },
- *         "show_groupecompetence"={
- *              "method"="GET",
+ *         "get"={
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/groupecompetences"
+ *              "path"="/groupecompetences"
  *              },
  *          "show_groupecompetence_competence"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/groupecompetences/competences",
+ *              "path"="/groupecompetences/competences",
  *              "normalization_context"={"groups"={"Grpcompetence_competence_read"},"enable_max_depth"=true}
  *              },
  *     },
@@ -45,24 +45,24 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *         "get"={
  *              "security"="is_granted('VIEW',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupecompetences/{id}",
+ *              "path"="/groupecompetences/{id}",
  *         }, 
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
  *              "security_message"="Seul le proprietaite....",
- *              "path"="admin/groupecompetences/{id}",
+ *              "path"="/groupecompetences/{id}",
  *         },
  *         "update_groupecompetence"={
  *              "method"="PATCH",
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupecompetences/{id}",
+ *              "path"="/groupecompetences/{id}",
  *         },
  *         "update_groupecompetence"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupecompetences/{id}",
+ *              "path"="/groupecompetences/{id}",
  *         },
  *     },
  * )
@@ -74,14 +74,14 @@ class Groupecompetence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel","competence_read","referentiel_read"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel","competence_detail_read","referentiel_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\notBlank(message="valeur vide")
-     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel","competence_read","referentiel_read"})
+     * @Groups({"Grpcompetence_read","referentiel_groupecompetence_read","promo_referentiel","competence_detail_read","referentiel_read"})
      */
     private $libelle;
 
@@ -107,7 +107,7 @@ class Groupecompetence
 
     /**
      * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="groupecompetences", cascade={"persist"})
-     * @Groups({"Grpcompetence_read","Grpcompetence_competence_read","promo_referentiel"})
+     * @Groups({"referentiel_read","Grpcompetence_read","Grpcompetence_competence_read","referentiel_groupecompetence_read","promo_referentiel"})
      * @ApiSubresource()
      */
     private $competence;
