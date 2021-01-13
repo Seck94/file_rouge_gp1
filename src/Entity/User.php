@@ -28,22 +28,22 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *          "pagination_items_per_page"=10, 
 *           "normalization_context"={"groups"={"user_read","user_details_read","gprincipal_read"}}
  *     },
- * 
+ *      routePrefix="/admin",
  *     collectionOperations={
  *          "add_user"={
  *              "method"="POST",
- *              "path"="/admin/users",
+ *              "path"="/users",
  *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Vous n'avez pas le privilege"
  *          },
  *         "get"={
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="/admin/users",
+ *              "path"="/users",
  *          },
  *          "get_admins"={
  *              "method"="GET",
- *              "path"="/admins",
+ *              "path"="s",
  *              "security"="(is_granted('ROLE_ADMIN'))", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "route_name"="admin_liste",
@@ -54,7 +54,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     itemOperations={
  *          "update_user"={
  *              "method"="PUT",
- *              "path"="/admin/users/{id}",
+ *              "path"="/users/{id}",
  *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="action non autorisée",
  *              "requirements"={"id"="\d+"},
@@ -63,12 +63,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas ces privileges.",
  *              "normalization_context"={"groups"={"user_read","user_details_read"}},
- *              "path"="admin/users/{id}",
+ *              "path"="/users/{id}",
  *              "requirements"={"id"="\d+"},
  *          },
  *          "get_admin"={
  *              "method"="GET",
- *              "path"="/admins/{id}",
+ *              "path"="s/{id}",
  *              "requirements"={"id"="\d+"},
  *              "security"="(is_granted('ROLE_FORMATEUR'))",
  *              "security_message"="Vous n'avez pas access à cette Ressource"
@@ -76,18 +76,18 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *         "delete"={
  *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/users/{id}",
+ *              "path"="/users/{id}",
  *              "requirements"={"id"="\d+"},
  *          },
  *         "patch"={
  *              "security"="is_granted('ROLE_ADMIN')", 
  *              "security_message"="Vous n'avez pas ces privileges.",
- *              "path"="admin/users/{id}",
+ *              "path"="/users/{id}",
  *              "requirements"={"id"="\d+"},
  *          }
  *     },
  * )
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "profil.libelle":"exact"})
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "profil.libelle":"exact", "profil.id":"exact", "lastLogin":"exact", "statut":"exact"})
  */
 class User implements UserInterface
 {
@@ -95,13 +95,14 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"profilsortie_apprenants_read","user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(message = "valeur null")
-     * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
+     * @Groups({"user_read","apprenant_read","profil_read","profilsortie_apprenants_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $username;
 
@@ -113,22 +114,25 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "valeur null")
+     * @Assert\NotBlank(message = "mot de passe null")
      */
     private $password;
 
     /**
      * @ORM\Column(type="blob", nullable=true)
+     * @Groups({"user_read"})
      */
     private $avatar;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","profilsortie_apprenants_read"})
      */
     private $prenom;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"user_read","apprenant_read","profil_read","promo_read","gprincipal_read","gproupe_read","gproupe_apprenant_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_promo","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","profilsortie_apprenants_read"})
      */
@@ -179,6 +183,7 @@ class User implements UserInterface
     private $commentaireGenerals;
 
     /**
+     * @Groups({"user_read"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $adresse;
@@ -265,6 +270,17 @@ class User implements UserInterface
 
     
     public function getAvatar()
+    {
+        if ($this->avatar!==null) {
+            $content = @\stream_get_contents($this->avatar);
+            @fclose($this->avatar);
+
+            return base64_encode($content);
+        }
+        return null;
+    }
+
+    public function getPhoto()
     {
         return $this->avatar;
     }
