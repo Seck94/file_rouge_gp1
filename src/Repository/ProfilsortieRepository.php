@@ -48,19 +48,20 @@ class ProfilsortieRepository extends ServiceEntityRepository
     }
     */
 
-    public function apprenantByProfilSorite($promo_id){
-        return $this -> createQuery('
-            SELECT
-                p,
-                a
-            FROM
-                App\Entity\Profilsortie p
-            LEFT JOIN 
-                App\Entity\Apprenant a  
-            LEFT JOIN 
-                \App\Entity\Groupe g
-            WITH 
-                g.promo_id = $promo_id
-        ') -> execute();
+    /**
+    * @return Profilsortie[] Returns an array of Profilsortie objects
+    *
+    */
+    public function getApprenantByProfilSorite($promo_id)
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.apprenants','a')
+            ->leftJoin('a.groupe','g')
+            ->leftJoin('g.promo','pr')
+            ->andWhere('pr.id = :val')
+            ->setParameter('val', $promo_id)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }
