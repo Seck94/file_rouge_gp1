@@ -109,4 +109,35 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
 
+    public function getCount(){
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->andWhere('u.statut= :st')
+            ->setParameter('st','actif')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function getCountByProfil($profil_id){
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->andWhere('u.statut= :st')
+            ->setParameter('st','actif')
+            ->andWhere('u.profil_id= :profil_id')//probleme à ce niveau
+            ->setParameter('profil_id',$profil_id)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function searchTerm($term){
+        return $this->createQueryBuilder('u')
+        ->Where('u.nom like :val')
+        ->orWhere('u.prenom like :val')
+        ->setParameter('val', '%'.$term.'%')
+        ->andWhere('u.statut= :st')
+        ->setParameter('st','actif')
+        ->getQuery()
+        ->getResult();
+    }
+
 }
