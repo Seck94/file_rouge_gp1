@@ -54,9 +54,25 @@ class PromoRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.id = :val')
             ->setParameter('val', $id_promo)
-            ->leftJoin('App\\Entity\\Groupe','g',null,'g.promo=p.id',null)
+            ->leftJoin('p.groupes','g')
+            ->andWhere('g.type = :type')
+            ->setParameter('type', "principal")
             ->getQuery()
             ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+    * @return Promo[] Returns an array of Promo objects
+    */
+    public function findGroupesPrincipaux()
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.groupes','g')
+            ->andWhere('g.type = :type')
+            ->setParameter('type', "principal")
+            ->getQuery()
+            ->getResult()
         ;
     }
 }
