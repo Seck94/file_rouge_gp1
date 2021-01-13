@@ -17,30 +17,31 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "pagination_items_per_page"=10,
  *          "normalization_context"={"groups"={"Grptags_read","Grptags_tags_read"},"enable_max_depth"=true}
  *      },
+ *      routePrefix="/admin",
  *     collectionOperations={
  *          "add_groupetags"={
  *              "method"="POST",
- *              "path"="admin/groupetags",
+ *              "path"="/groupetags",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
  *          },
  *         "get"={
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/groupetags",
+ *              "path"="/groupetags",
  *               
  *         },
  *         "show_groupetags"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/groupetags",
+ *              "path"="/groupetags",
  *         },
  *         "show_groupetags_tags"={
  *              "method"="GET",
  *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="admin/groupetags/tags",
+ *              "path"="/groupetags/tags",
  *              "normalization_context"={"groups"={"Grptags_tags_read"},"enable_max_depth"=true}
  *              
  *         }
@@ -50,24 +51,24 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "get"={
  *              "security"="is_granted('ROLE_FORMATEUR')", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupetags/{id}",
+ *              "path"="/groupetags/{id}",
  *         }, 
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
  *              "security_message"="Seul le proprietaite....",
- *              "path"="admin/groupetags/{id}",
+ *              "path"="/groupetags/{id}",
  *         },
  *         "updateGroupeGroupetag"={
  *              "method"="PATCH",
  *              "security"="is_granted('EDIT',object)", 
  *              "security_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupetags/{id}",
+ *              "path"="/groupetags/{id}",
  *         },
  *         "updateGroupeGroupetag"={
  *              "method"="PUT",
  *              "security_post_denormalize"="is_granted('EDIT', object)", 
  *              "security_post_denormalize_message"="Vous n'avez pas ce privilege.",
- *              "path"="admin/groupetags/{id}",
+ *              "path"="/groupetags/{id}",
  *         },
  *     },
  * )
@@ -159,7 +160,9 @@ class Groupetag
     }
 
     public function removeMembers(){
-        
+        // foreach ($this->tag as  $tag) {
+        //     $this->removeTag($tag);
+        // }
     }
 
     public function getLastUpdate(): ?\DateTimeInterface
