@@ -18,15 +18,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReferentielController extends AbstractController
 {
-    /**
-     * @Route("/referentiel", name="referentiel")
-     */
-    public function index()
-    {
-        return $this->render('referentiel/index.html.twig', [
-            'controller_name' => 'ReferentielController',
-        ]);
-    }
+
+
 
     /**
      * @Route(
@@ -39,7 +32,33 @@ class ReferentielController extends AbstractController
      *     }
      * )
     */
-    public function addReferentiel(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,GroupeCompetenceCompetenceServices $grpcmpService)
+    public function addReferentiel(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager){
+        $referentiel = $request->request->all();
+        dd(json_decode($referentiel['cmp']));
+        $programme = $request->files->get("programme");
+        $programme = fopen($programme->getRealPath(),"rb");
+        $referentiel["programme"]=$programme;
+        $referentiel = $serializer->denormalize($referentiel,"App\\Entity\\Referentiel");
+        dd($referentiel);
+
+        $manager->persist( $referentiel);
+        $manager->flush();
+        return new JsonResponse( $referentiel, Response::HTTP_CREATED);
+    }
+
+
+    /**
+     * @Route("/referentiel", name="referentiel")
+     */
+    public function index()
+    {
+        return $this->render('referentiel/index.html.twig', [
+            'controller_name' => 'ReferentielController',
+        ]);
+    }
+
+    /// Ancienne methode
+    public function addReferentiel_OLD(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,GroupeCompetenceCompetenceServices $grpcmpService)
     {
         $Referentiel_json = $request -> getContent();
         //dd($Referentiel_json);
@@ -70,6 +89,7 @@ class ReferentielController extends AbstractController
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
         
+        dd($Referentiel);
         $manager->persist($Referentiel);
         $manager->flush();
         
@@ -131,6 +151,6 @@ class ReferentielController extends AbstractController
         
         $manager->persist($Referentiel);
         $manager->flush();
-        return $this->json($Referentiel,Response::HTTP_CREATED,[],['groups'=>['referentiel_read']] );
+        return $this->json($Referentiel,Response::HTTP_CREATED,[],['groups'=>['referentiel_groupecompetence_read']] );
     }
 }
