@@ -30,6 +30,7 @@ class ProfilsortieController extends AbstractController
         
         }
         $profilsorties=$profilsortierepo->findAll();
+        // $profilsorties=$profilsortierepo->getApprenantByProfilSorite($id);
         foreach ($profilsorties as $profilsortie) {
 
         
