@@ -59,8 +59,8 @@ class CompetenceController extends AbstractController
         foreach ($Niveau_tab as $key => $value) {
             $niveau = new Niveau();
             $niveau -> setLibelle($value['libelle']);
-            $niveau -> setcritereEvaluation($value['critereEvaluation']);
-            $niveau -> setgroupeAction($value['groupeAction']);
+            $niveau -> setcritereEvaluation($value['critereEval']);
+            $niveau -> setgroupeAction($value['grpAction']);
             $Competence->addNiveau($niveau);
         }
 
@@ -76,6 +76,7 @@ class CompetenceController extends AbstractController
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
         
+        dd($Competence);
         $manager->persist($Competence);
         $manager->flush();
         return $this->json($Competence,Response::HTTP_CREATED,[],['groups'=>['competence_read']] );
@@ -178,6 +179,6 @@ class CompetenceController extends AbstractController
         }
         $Competence = $Competence -> findAll();
         
-        return $this -> json($Competence, Response::HTTP_OK,);
+        return $this -> json($Competence, Response::HTTP_OK,[],['groups'=>['competence_read']] );
     }
 }
