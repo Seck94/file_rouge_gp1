@@ -4,11 +4,26 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\LivrablePartielRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *      attributes={
+ *              "normalization_context"={"groups"={"livrable_partiel"},"enable_max_depth"=true}
+ *      },
+ *      collectionOperations={
+ *          "collection_app_livrables"={
+ *              "method"="GET",
+ *              "path"="/admin/livrables" ,
+ *              "security"="(is_granted('ROLE_FORMATEUR'))", 
+ *              "security_message"="Acces interdit.",
+ *              
+ *          }
+ *      }
+ * )
  * @ORM\Entity(repositoryClass=LivrablePartielRepository::class)
  */
 class LivrablePartiel
