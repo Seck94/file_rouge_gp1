@@ -35,6 +35,5 @@ class UserDataPersister implements DataPersisterInterface
         $this->em->persist($user);
         $this->em->flush();
         return new JsonResponse("archivage reussi",200, [], true);
-        // $this->em->remove($user);
     }
 }
