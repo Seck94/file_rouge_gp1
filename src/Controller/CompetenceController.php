@@ -41,7 +41,7 @@ class CompetenceController extends AbstractController
         $Competence = new Competence();
         $Competence -> setLibelle($Competence_tab['libelle']);
         $Niveau_tab = $Competence_tab['niveaux'];
-        if (!isset($Competence_tab['groupecompetences']) && !isset($Competence_tab['groupecompetences'][0]['id'])) {
+        if (!isset($Competence_tab['groupecompetences']) || empty($Competence_tab['groupecompetences'])) {
             return $this -> json(["message" => "Une nouvelle compétence doit etre liée à un groupe de compétences"],Response::HTTP_BAD_REQUEST);
         }
 

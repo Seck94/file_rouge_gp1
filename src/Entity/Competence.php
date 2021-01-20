@@ -106,11 +106,17 @@ class Competence
      */
     private $statut = "actif";
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Referentiel::class, mappedBy="competences")
+     */
+    private $referentiels;
+
     public function __construct()
     {
         $this->groupecompetences = new ArrayCollection();
         $this->niveau = new ArrayCollection();
         $this->statistiquesCompetences = new ArrayCollection();
+        $this->referentiels = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -236,6 +242,34 @@ class Competence
     public function setStatut(?string $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Referentiel[]
+     */
+    public function getReferentiels(): Collection
+    {
+        return $this->referentiels;
+    }
+
+    public function addReferentiel(Referentiel $referentiel): self
+    {
+        if (!$this->referentiels->contains($referentiel)) {
+            $this->referentiels[] = $referentiel;
+            $referentiel->addCompetence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReferentiel(Referentiel $referentiel): self
+    {
+        if ($this->referentiels->contains($referentiel)) {
+            $this->referentiels->removeElement($referentiel);
+            $referentiel->removeCompetence($this);
+        }
 
         return $this;
     }

@@ -55,8 +55,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *              "method"="GET",
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
- *              "path"="/{id}/groupecompetences",
- *              "normalization_context"={"groups"={"referentiel_groupecompetence_read"}}
+ *              "path"="/{id}/competences",
+ *              "normalization_context"={"groups"={"referentiel_competence_read"}}
  *          },
  *         "delete"={
  *              "security"="is_granted('DELETE',object)",
@@ -127,10 +127,7 @@ class Referentiel
     private $promos;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupecompetence::class, inversedBy="referentiels",cascade={"persist"})
-     * @ApiSubresource(maxDepth=2)
-     * @MaxDepth(2)
-     * @Groups({"referentiel_read","referentiel_groupecompetence_read","promo_referentiel"})
+     * deleted
      */
     private $groupecompetence;
 
@@ -149,12 +146,21 @@ class Referentiel
      */
     private $statut = "actif";
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Competence::class, inversedBy="referentiels")
+     * @ApiSubresource(maxDepth=2)
+     * @MaxDepth(2)
+     * @Groups({"referentiel_read","referentiel_competence_read","promo_referentiel"})
+     */
+    private $competences;
+
     public function __construct()
     {
         $this->promos = new ArrayCollection();
         $this->groupecompetence = new ArrayCollection();
         $this->briefs = new ArrayCollection();
         $this->statistiquesCompetences = new ArrayCollection();
+        $this->competences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -262,7 +268,7 @@ class Referentiel
     /**
      * @return Collection|Groupecompetence[]
      */
-    public function getGroupecompetence(): Collection
+    /*public function getGroupecompetence(): Collection
     {
         return $this->groupecompetence;
     }
@@ -283,7 +289,7 @@ class Referentiel
         }
 
         return $this;
-    }
+    }*/
 
     /**
      * @return Collection|Brief[]
@@ -361,5 +367,31 @@ class Referentiel
 
     public function removeMembers(){
         
+    }
+
+    /**
+     * @return Collection|Competence[]
+     */
+    public function getCompetences(): Collection
+    {
+        return $this->competences;
+    }
+
+    public function addCompetence(Competence $competence): self
+    {
+        if (!$this->competences->contains($competence)) {
+            $this->competences[] = $competence;
+        }
+
+        return $this;
+    }
+
+    public function removeCompetence(Competence $competence): self
+    {
+        if ($this->competences->contains($competence)) {
+            $this->competences->removeElement($competence);
+        }
+
+        return $this;
     }
 }

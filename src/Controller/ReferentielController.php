@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Referentiel;
 use App\Entity\Groupecompetence;
+use App\Repository\CompetenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ReferentielRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,13 +33,18 @@ class ReferentielController extends AbstractController
      *     }
      * )
     */
-    public function addReferentiel(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager){
+    public function addReferentiel(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, CompetenceRepository $cmp_repo){
         $referentiel = $request->request->all();
-        dd(json_decode($referentiel['cmp']));
+        $competences  = json_decode($referentiel['competences_tab'], true);
         $programme = $request->files->get("programme");
         $programme = fopen($programme->getRealPath(),"rb");
         $referentiel["programme"]=$programme;
         $referentiel = $serializer->denormalize($referentiel,"App\\Entity\\Referentiel");
+        foreach ($competences as  $value) {
+            if ($cmp = $cmp_repo -> findOneByLibelle($value)) {
+                $referentiel -> addCompetence($cmp);
+            }
+        }
         dd($referentiel);
 
         $manager->persist( $referentiel);

@@ -101,7 +101,7 @@ class Groupecompetence
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Referentiel::class, mappedBy="groupecompetence")
+     * deleted
      */
     private $referentiels;
 

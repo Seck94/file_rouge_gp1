@@ -47,4 +47,14 @@ class CompetenceRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findOneByLibelle($value): ?Competence
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.libelle = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
