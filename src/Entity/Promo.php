@@ -32,7 +32,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *              "security"="is_granted('ROLE_CM')", 
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="/promos",
- *              "normalization_context"={"groups"={"promo_read"},"enable_max_depth"=true}
+ *              "normalization_context"={"groups"={"promo_list"},"enable_max_depth"=true}
  *              },
  *          "promo_gprincipal"={
  *              "method"="GET",
@@ -90,7 +90,7 @@ class Promo
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
+     * @Groups({"promo_list","promo_read","gproupe_read","promo_referentiel","referentiel_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
      */
     private $id;
 
@@ -102,13 +102,13 @@ class Promo
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
+     * @Groups({"promo_list","promo_read","gproupe_read","promo_referentiel","referentiel_read","promo_groupe_apprenants","promo_groupe_formateurs","brief_read","brief_groupe_promo","brief_promo","promo_id_brief"})
      */
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"promo_read"})
+     * @ORM\Column(type="string", length=1000)
+     * @Groups({"promo_list","promo_read","referentiel_read"})
      */
     private $description;
 
@@ -137,7 +137,7 @@ class Promo
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo_read"})
+     * @Groups({"promo_read","referentiel_read"})
      */
     private $fabrique;
 
@@ -148,7 +148,7 @@ class Promo
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo_read"})
+     * @Groups({"promo_read","referentiel_read"})
      */
     private $etat = 'encours';
 
@@ -171,16 +171,17 @@ class Promo
      *      min = 1,
      *      max = 3,
      *      minMessage = "You must specify at least one group",
-     *      maxMessage = "You cannot specify more than {{ limit }} groups"
+     *      maxMessage = "You cannot specify more than {{ max }} groups"
      * )
      */
     private $groupes;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="promos")
+     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="promos", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"promo_read","gproupe_read","promo_referentiel","promo_groupe_apprenants","promo_groupe_formateurs"})
      * @ApiSubresource()
+     * @Assert\NotBlank
      */
     private $referentiel;
 
@@ -200,7 +201,7 @@ class Promo
     private $statistiquesCompetences;
 
     /**
-     * @Groups({"promo_read"})
+     * @Groups({"promo_list","promo_read"})
      * @ORM\Column(type="blob", nullable=true)
      */
     private $avatar;

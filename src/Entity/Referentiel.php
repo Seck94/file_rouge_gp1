@@ -85,7 +85,7 @@ class Referentiel
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"referentiel_read","Grpcompetence_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
+     * @Groups({"referentiel_read","promo_read","promo_referentiel","Grpcompetence_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo"})
      */
     private $id;
 
@@ -123,6 +123,7 @@ class Referentiel
 
     /**
      * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="referentiel")
+     * @Groups({"referentiel_read"})
      */
     private $promos;
 

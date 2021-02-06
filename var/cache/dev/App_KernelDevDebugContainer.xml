@@ -217,7 +217,7 @@
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="lexik_jwt_authentication.pass_phrase">%env(JWT_PASSPHRASE)%</parameter>
-    <parameter key="lexik_jwt_authentication.token_ttl">36</parameter>
+    <parameter key="lexik_jwt_authentication.token_ttl">360000</parameter>
     <parameter key="lexik_jwt_authentication.clock_skew">0</parameter>
     <parameter key="lexik_jwt_authentication.user_identity_field">username</parameter>
     <parameter key="lexik_jwt_authentication.user_id_claim">username</parameter>
@@ -4033,7 +4033,7 @@
       <argument type="service" id="lexik_jwt_authentication.key_loader.raw"/>
       <argument>openssl</argument>
       <argument>RS256</argument>
-      <argument>36</argument>
+      <argument>360000</argument>
       <argument>0</argument>
       <deprecated package="lexik/jwt-authentication-bundle" version="2.5">The "%service_id%" is deprecated since version 2.5 and will be removed in 5.0, use "lexik_jwt_authentication.jws_provider.lcobucci" instead.</deprecated>
     </service>
@@ -4065,7 +4065,7 @@
       <argument type="service" id="lexik_jwt_authentication.key_loader.raw"/>
       <argument>openssl</argument>
       <argument>RS256</argument>
-      <argument>36</argument>
+      <argument>360000</argument>
       <argument>0</argument>
     </service>
     <service id="lexik_jwt_authentication.handler.authentication_success" class="Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler">

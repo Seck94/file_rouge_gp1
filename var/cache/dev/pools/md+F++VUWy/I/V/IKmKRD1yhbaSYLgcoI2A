@@ -73,9 +73,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'groups' => [
                 1 => [
+                    'promo_list',
                     'promo_read',
                     'gproupe_read',
                     'promo_referentiel',
+                    'referentiel_read',
                     'promo_groupe_apprenants',
                     'promo_groupe_formateurs',
                     'brief_read',
@@ -87,9 +89,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'promo_read',
                 ],
                 [
+                    'promo_list',
                     'promo_read',
                     'gproupe_read',
                     'promo_referentiel',
+                    'referentiel_read',
                     'promo_groupe_apprenants',
                     'promo_groupe_formateurs',
                     'brief_read',
@@ -98,7 +102,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'promo_id_brief',
                 ],
                 [
+                    'promo_list',
                     'promo_read',
+                    'referentiel_read',
                 ],
                 [
                     'promo_read',
@@ -111,9 +117,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
                 [
                     'promo_read',
+                    'referentiel_read',
                 ],
                 11 => [
                     'promo_read',
+                    'referentiel_read',
                 ],
                 14 => [
                     'promo_read',
@@ -128,6 +136,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'promo_groupe_formateurs',
                 ],
                 19 => [
+                    'promo_list',
                     'promo_read',
                 ],
             ],

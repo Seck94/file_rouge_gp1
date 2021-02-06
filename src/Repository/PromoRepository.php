@@ -48,7 +48,9 @@ class PromoRepository extends ServiceEntityRepository
     }
     */
 
-
+    /**
+    * @return Promo Returns one Promo object with unucally its principal group
+    */
     public function findGroupePrincipal($id_promo): ?Promo
     {
         return $this->createQueryBuilder('p')
@@ -63,7 +65,7 @@ class PromoRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return Promo[] Returns an array of Promo objects
+    * @return Promo[] Returns an array of Promo objects with unucally their principal group
     */
     public function findGroupesPrincipaux()
     {

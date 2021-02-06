@@ -53,6 +53,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'groups' => [
                 1 => [
                     'referentiel_read',
+                    'promo_read',
+                    'promo_referentiel',
                     'Grpcompetence_read',
                     'brief_read',
                     'brief_groupe_promo',
@@ -90,6 +92,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'referentiel_read',
                     'promo_referentiel',
+                ],
+                [
+                    'referentiel_read',
                 ],
                 12 => [
                     'referentiel_read',

@@ -242,7 +242,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'path' => '/promos',
                         'normalization_context' => [
                             'groups' => [
-                                'promo_read',
+                                'promo_list',
                             ],
                             'enable_max_depth' => true,
                         ],

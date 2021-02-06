@@ -76,7 +76,7 @@ class StatistiquesCompetences
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Apprenant::class, inversedBy="statistiquesCompetences")
+     * @ORM\ManyToOne(targetEntity=Apprenant::class, inversedBy="statistiquesCompetences", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $apprenant;

@@ -14,6 +14,7 @@ use App\Repository\UserRepository;
 use App\Repository\PromoRepository;
 use App\Repository\GroupeRepository;
 use App\Repository\ProfilRepository;
+use App\Entity\StatistiquesCompetences;
 use App\Repository\ApprenantRepository;
 use App\Repository\FormateurRepository;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -47,132 +48,41 @@ class PromoController extends AbstractController
     */
     public function addPromo(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager,FormateurRepository $formateur_repo, ProfilRepository $profil_repo, ApprenantRepository $apprenant_repo, ReferentielRepository $ref_repo,UserRepository $user_repo,\Swift_Mailer $mailer)
     {
-        $Promo_json = $request -> getContent();
+        $promo = $request ->request-> get('promo');
+        $promo = json_decode($promo, true);
+        $apprenants = $promo['apprenants'];
 
-        $Promo_tab = $serializer -> decode($Promo_json,"json");
-        $Promo = new Promo();
-        if (!$Promo_tab['referentiel']['id']) {
-            return $this -> json(["message" => "Une promo doit etre liée à un referentiel"],Response::HTTP_FORBIDDEN);
-        }
-        $Referentiel_id = $Promo_tab['referentiel']['id'];
-        $Referentiel = new Referentiel();
-        if (!($Referentiel = $ref_repo -> find($Referentiel_id))) {
-            return $this ->json("Referentiel introuvable", Response::HTTP_NOT_FOUND,);
-        }
-        $Promo -> setReferentiel($Referentiel);
-        $Promo -> setLangue($Promo_tab['langue']);
-        $Promo -> setTitre($Promo_tab['titre']);
-        $Promo -> setDescription($Promo_tab['descriptif']);
-        $Promo -> setLieu($Promo_tab['lieu']);
-        $Promo -> setDateFinProvisoire(new \DateTime($Promo_tab['dateFinProvisoire']));
-        $Promo -> setFabrique($Promo_tab['fabrique']);
-        
-        $Formateur_tab = isset($Promo_tab['formateurs'])?$Promo_tab['formateurs']:[];
-        foreach ($Formateur_tab as $key => $value) {
-            $Formateur = new Formateur();
-            if ($value['id'] && ($Formateur =  $formateur_repo -> find($value['id']))) {
-                $Promo -> addFormateur($Formateur);
-            }
+        $Promo = $serializer ->denormalize($promo, 'App\\Entity\\Promo');
+        if ($avatar = $request->files->get("avatar")) {
+            $avatar = fopen($avatar->getRealPath(),"rb");
+            $Promo -> setAvatar($avatar);
+            // fclose($avatar);
         }
 
-        $Groupe_tab = isset($Promo_tab['groupes'])?$Promo_tab['groupes']:[];
-        if (empty($Groupe_tab)) {
-            return $this -> json(["message" => "Il faut au moins un groupe à la création de promo"],Response::HTTP_FORBIDDEN);
-        }
         
-        foreach ($Groupe_tab as $key => $value) {
-            $Groupe = new Groupe();
-            if (isset($value['nom']) && isset($value['type'])) {
-                $Groupe -> setNom($value['nom']);
-                $Groupe -> setDateCreation(new \DateTime());
-                $Groupe -> setType($value['type']);
-                if (isset($value['apprenants'])) {
-                    $profil = $profil_repo -> findOneByLibelle('APPRENANT');
-                    foreach ($value['apprenants'] as $key => $val) {
-                        $apprenant = new Apprenant();
-                        $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
-                                    -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
-                                    -> setEmail(strtolower($val['email']))
-                                    -> setProfil($profil);
-                        $statistiquesCompetence = new StatistiquesCompetences();
-                        $statistiquesCompetence -> setApprenant($apprenant)
-                                                -> setReferentiel($Referentiel)
-                                                -> setPromo($Promo);
-                        foreach ($referentiel -> getGroupecompetence() as $key => $Groupecompetence) {
-                            foreach ($GroupeCompetence -> getCompetence() as $key => $Competence) {
-                                $statistiquesCompetence -> setCompetence($Competence);
-                                $manager->persist($statistiquesCompetence);      
-                                $manager->flush();
-                            }
-                        }
-                            $manager->persist($apprenant);
-                            $manager->persist($statistiquesCompetence);      
-                            $manager->flush();
-                    }
-                }
-                
-                if (isset($value['formateurs'])) {
-                    foreach ($value['formateurs'] as $key => $val) {
-                        $Formateur = new Formateur();
-                        if ($Formateur = $formateur_repo -> find($val['id'])) {
-                            $Groupe -> addFormateur($Formateur);
-                        }
-                    }
-                }
-                $Promo -> addGroupe($Groupe);
+        $Groupe = new Groupe();
+        $Groupe -> setNom('Groupe principal');
+        $Groupe -> setDateCreation(new \DateTime());
+        $Groupe -> setType('principal');
+        $profil = $profil_repo -> findOneByLibelle('APPRENANT');
+            foreach ($apprenants as $val) {
+                $this ->newApprenant($Promo, $Groupe, $val, $profil, $manager, $mailer); 
             }
-        }
+        $Promo -> addGroupe($Groupe);        
 
         // importation fichier Exel d'emails
-        if ($doc = $request->files->get("document")) {
+        if ($doc = $request ->files->get('excelFile')) {
             $file= IOFactory::identify($doc);        
             $reader= IOFactory::createReader($file);
             $spreadsheet=$reader->load($doc);
             $emails_exel= $spreadsheet->getActivesheet()->toArray();
-            $tab_email = [];
-            $profil = $profil_repo -> findOneByLibelle('APPRENANT');
-            $groupes = $Promo -> getGroupes(); 
-                foreach ($groupes as $key => $groupe) {
-                    if ($groupe -> getType() === 'principal') { //on suppose que le grp principal peut prendre n'importe quelle position
-                        $groupe_principal = $groupe; 
-                        break;
-                    }
-                }
+        
             $i = 0;
             while (isset($emails_exel[$i])) {
                 $j = 0;
                 while (isset($emails_exel[$i][$j])) {
-                    if (preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $emails_exel[$i][$j])) {
-                        // $tab_email[] = strtolower($emails_exel[$i][$j]);
-                        if ($apprenant = $apprenant_repo->findOneByEmail($emails_exel[$i][$j])) {
-                            $apprenant = new Apprenant();
-                            $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
-                                      -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
-                                      -> setEmail(strtolower($emails_exel[$i][$j]))
-                                      -> setProfil($profil);
-                            $statistiquesCompetence = new StatistiquesCompetences();
-                            $statistiquesCompetence -> setApprenant($apprenant)
-                                                    -> setReferentiel($Referentiel)
-                                                    -> setPromo($Promo);
-                            foreach ($referentiel -> getGroupecompetence() as $key => $Groupecompetence) {
-                                foreach ($GroupeCompetence -> getCompetence() as $key => $Competence) {
-                                    $statistiquesCompetence -> setCompetence($Competence);
-                                    $manager->persist($statistiquesCompetence);      
-                                    $manager->flush();
-                                }
-                            }
-                                    $manager->persist($apprenant);     
-                                    $manager->flush();
-                        }
-                        $message = (new \Swift_Message('Ajout'))
-                        ->setFrom('admin@gmail.com')
-                        ->setTo($apprenant->getEmail())
-                        ->setBody('Bonjour cher(e) séléctionné(e) Utilsez
-                        ces infos pour vous connecter à votre promo. Username: '.$apprenant->getUsername().'
-                        password: '.$apprenant->getPassword())
-                        ;
-                        // $mailer->send($message); // on envoie
-                        $groupe_principal -> addApprenant($apprenant); // on l'ajoute dans le groupe principal
+                    if (preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $emails_exel[$i][$j]) && $apprenant_repo->findOneByEmail($emails_exel[$i][$j]) === null) {
+                        $this ->newApprenant($Promo, $Groupe, $emails_exel[$i][$j],$profil, $manager, $mailer);                           
                     }
                     $j++;
                 }
@@ -185,7 +95,7 @@ class PromoController extends AbstractController
             return $this -> json(["message" => "Cette action vous est interdite"],Response::HTTP_FORBIDDEN);
         }
 
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser(); //current user
         $Promo -> setUser($user);
 
         $errors = $validator->validate($Promo);
@@ -201,6 +111,41 @@ class PromoController extends AbstractController
         return $this->json($Promo,Response::HTTP_CREATED);
     }
 
+    /**
+     * 
+     * Ajout des apprenants dans le groupe principal et envoi de mails
+     * 
+     */
+    public function newApprenant($Promo, $Groupe, $val, $profil, $manager, $mailer){
+        $random_val = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $apprenant = new Apprenant();
+        $apprenant  ->setUsername(substr(str_shuffle(str_repeat($x=$random_val, ceil(15/strlen($x)) )),1,15)) 
+                    -> setPassword(substr(str_shuffle(str_repeat($x=$random_val, ceil(10/strlen($x)) )),1,10))
+                    -> setEmail(strtolower($val))
+                    -> setProfil($profil);
+        $Groupe ->addApprenant($apprenant);
+        $statistiquesCompetence = new StatistiquesCompetences();
+        $statistiquesCompetence ->setApprenant($apprenant)
+                                ->setReferentiel($Promo -> getReferentiel())
+                                ->setPromo($Promo);
+        foreach ($Promo ->getReferentiel() ->getCompetences() as $Competence) {
+            $statistiquesCompetence -> setCompetence($Competence);
+            $manager->persist($statistiquesCompetence); 
+        }
+        $manager->persist($apprenant);
+        $manager->persist($statistiquesCompetence);
+
+        $message = (new \Swift_Message('Ajout'))
+        ->setFrom('admin@gmail.com')
+        ->setTo($apprenant->getEmail())
+        ->setBody('Bonjour cher(e) séléctionné(e) Utilsez
+        ces infos pour vous connecter à votre promo. Username: '.$apprenant->getUsername().'
+        password: '.$apprenant->getPassword())
+        ;
+        // $mailer->send($message); // on envoie
+    }
+
+    
     /**
      * @Route(
      *     path="/api/admin/promos/{id}/apprenants/attente",
@@ -222,7 +167,7 @@ class PromoController extends AbstractController
         }
 
         $groupes = $promo -> getGroupes();
-        foreach ($groupes as $key => $groupe) {
+        foreach ($groupes as $groupe) {
             if ($groupe -> getType() === 'principal') {//on suppose que le grp principal peut prendre n'importe quelle position
                 $Apprenants = $groupe -> getApprenants();
                 break;
@@ -231,7 +176,7 @@ class PromoController extends AbstractController
         $apprenant_attente = [];
         $apprenant_attente['ref_promo'] = $promo -> getReferentiel() -> getLibelle();
         $apprenant_attente['liste'] = "Apprenant non encore connectés";
-        foreach ($Apprenants as $key => $Apprenant) {
+        foreach ($Apprenants as $Apprenant) {
             if (!($Apprenant -> getLastLogin())) {
                 $apprenant_attente[] = $Apprenant;
             }
@@ -259,9 +204,9 @@ class PromoController extends AbstractController
         $promo = $promo_repo -> findAll();
         $Promos = [];
         
-        foreach ($promo as $key => $value) {
+        foreach ($promo as $value) {
             $groupes = $value -> getGroupes();
-            foreach ($groupes as $key => $groupe) {
+            foreach ($groupes as $groupe) {
                 if ($groupe -> getType() === 'principal') { //on suppose que le grp principal peut prendre n'importe quelle position
                     $Apprenants = $groupe -> getApprenants();
                     break;
@@ -272,7 +217,7 @@ class PromoController extends AbstractController
             $pricipal['ref_promo'] = $value -> getReferentiel() -> getLibelle();
             $pricipal['groupe'] = $groupe;
 
-            foreach ($Apprenants as $key => $Apprenant) {
+            foreach ($Apprenants as $Apprenant) {
                 if(($Apprenant -> getLastLogin()))
                     $pricipal['apprenants actifs'] = $Apprenant;
             }
@@ -309,7 +254,7 @@ class PromoController extends AbstractController
         $pricipal['ref_promo'] = $promo -> getReferentiel() -> getLibelle();
         $pricipal['groupe principal'] = $groupe_principal;
 
-        foreach ($Apprenants as $key => $Apprenant) {
+        foreach ($Apprenants as $Apprenant) {
             if(($Apprenant -> getLastLogin()))
                 $pricipal['apprenants actifs'] = $Apprenant;
             }
@@ -368,43 +313,17 @@ class PromoController extends AbstractController
         if (isset($Promo_tab['apprenants'])) {
             $profil = $profil_repo -> findOneByLibelle('APPRENANT');
             $groupes = $Promo -> getGroupes(); 
-                foreach ($groupes as $key => $groupe) {
+                foreach ($groupes as $groupe) {
                     if ($groupe -> getType() === 'principal') { //on suppose que le grp principal peut prendre n'importe quelle position
                         $groupe_principal = $groupe; 
                         break;
                     }
                 }
                 
-            foreach ($Promo_tab['apprenants'] as $key => $val) {
-                if ($apprenant = $apprenant_repo->findOneByEmail($val['email'])) {
-                    $apprenant = new Apprenant();
-                    $apprenant-> setUsername(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)) 
-                              -> setPassword(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10))
-                              -> setEmail(strtolower($val['email']))
-                              -> setProfil($profil);
-                            $statistiquesCompetence = new StatistiquesCompetences();
-                            $statistiquesCompetence -> setApprenant($apprenant)
-                                                    -> setReferentiel($Referentiel)
-                                                    -> setPromo($Promo);
-                            foreach ($referentiel -> getGroupecompetence() as $key => $Groupecompetence) {
-                                foreach ($GroupeCompetence -> getCompetence() as $key => $Competence) {
-                                    $statistiquesCompetence -> setCompetence($Competence);
-                                    $manager->persist($statistiquesCompetence);      
-                                    $manager->flush();
-                                }
-                            }
-                              $manager->persist($apprenant);     
-                              $manager->flush();
+            foreach ($Promo_tab['apprenants'] as $val) {
+                if ($apprenant_repo->findOneByEmail($val['email'])===null) {
+                    $this ->newApprenant($Promo, $groupe_principal, $val, $profil, $manager, $mailer);
                 }
-                $message = (new \Swift_Message('Ajout'))
-                ->setFrom('admin@gmail.com')
-                ->setTo($apprenant->getEmail())
-                ->setBody('Bonjour cher(e) séléctionné(e) Utilsez
-                ces infos pour vous connecter à votre promo. Username: '.$apprenant->getUsername().'
-                password: '.$apprenant->getPassword())
-                ;
-                // $mailer->send($message); // on envoie
-                $groupe_principal -> addApprenant($apprenant); // on l'ajoute dans le groupe principal
             }
         }
 
@@ -452,7 +371,7 @@ class PromoController extends AbstractController
         if (isset($Promo_tab['action']) && isset($Promo_tab['apprenants'])) {
             $apprenant = new Apprenant();
             if ($Promo_tab['action'] === 'delete') {
-                foreach ($Promo_tab['apprenants'] as $key => $value) {
+                foreach ($Promo_tab['apprenants'] as $value) {
                     if ($apprenant = $apprenant_repo -> find($value['id'])) {
                         $apprenant ->setStatut('archived');
                         $groupe -> removeApprenant($apprenant);// on le retire de tous les groupes
@@ -461,9 +380,9 @@ class PromoController extends AbstractController
             }
             elseif ($Promo_tab['action'] === 'add') {
                 $groupes = $Promo -> getGroupes();
-                foreach ($groupes as $key => $groupe) {
+                foreach ($groupes as $groupe) {
                     if ($groupe -> getType() === 'principal') {
-                        foreach ($Promo_tab['apprenants'] as $key => $value) {
+                        foreach ($Promo_tab['apprenants'] as $value) {
                             if ($apprenant = $apprenant_repo -> find($value['id'])) {
                                 $groupe -> addApprenant($apprenant);
                             }
@@ -510,7 +429,7 @@ class PromoController extends AbstractController
         if (isset($Promo_tab['action']) && isset($Promo_tab['formateurs'])) {
             $formateur = new Formateur();
             if ($Promo_tab['action'] === 'delete') {
-                foreach ($Promo_tab['formateurs'] as $key => $value) {
+                foreach ($Promo_tab['formateurs'] as $value) {
                     if ($formateur = $formateur_repo -> find($value['id'])) {
                         $groupe -> removeFormateur($formateur);
                         $formateur -> removePromo($Promo);
@@ -519,9 +438,9 @@ class PromoController extends AbstractController
             }
             elseif ($Promo_tab['action'] === 'add') {
                 $groupes = $Promo -> getGroupes();
-                foreach ($groupes as $key => $groupe) {
+                foreach ($groupes as $groupe) {
                     if ($groupe -> getType() === 'principal') {
-                        foreach ($Promo_tab['formateurs'] as $key => $value) {
+                        foreach ($Promo_tab['formateurs'] as $value) {
                             if ($formateur = $formateur_repo -> find($value['id'])) {
                                 $trouve = false;
                                 if (($formateur_groupe = $formateur -> getGroupe())) {
@@ -578,25 +497,26 @@ class PromoController extends AbstractController
 
         $Groupe = new Groupe();
 
-        if (isset($Groupe_tab['action']) && isset($Groupe_tab['groupes'])) {
+        if (isset($Groupe_tab['action'])) {
             switch ($Groupe_tab['action']) {
                 case 'archiver':
-                    foreach ($Groupe_tab['groupes'] as $key => $groupe) {
-                        if ($Groupe = $groupe_repo -> find($groupe['id'])) {
-                            $Groupe -> setStatut('archived');
-                        }
+                    if ($Groupe = $groupe_repo -> find($Groupe_tab['id'])) {
+                        $Groupe -> setStatut('archived');
                     }
                     break;
                 case 'delete':
-                    foreach ($Groupe_tab['groupes'] as $key => $groupe) {
-                        if ($Groupe = $groupe_repo -> find($groupe['id'])) {
-                            $Groupe -> setStatut('deleted');
-                            $Promo -> removeGroupe($Groupe);
-                        }
+                    if ($Groupe = $groupe_repo -> find($Groupe_tab['id'])) {
+                        $Groupe -> setStatut('deleted');
+                        $Promo -> removeGroupe($Groupe);
                     }
                     break;    
                 default:
-                    # code...
+                    $Groupe ->setNom($Groupe_tab['nom']);
+                    $Groupe -> setDateCreation(new DateTime('now'));
+                    $Promo ->addGroupe($Groupe);
+                    if ($this ->getUser() ->getProfil() ->getLibelle() ==='FORMATEUR') {
+                        $Groupe ->addFormateur($this ->getUser());
+                    }
                     break;
             }
             if (!$this -> isGranted("ROLE_FORMATEUR",$Promo)) {
@@ -607,10 +527,10 @@ class PromoController extends AbstractController
             if ($Promo -> getUser() !== $user ) {
                 return $this -> json(["message" => "Vous n'avez pas crée cette promo"],Response::HTTP_FORBIDDEN);
             }
-    
+            return $this->json('eeeeee');
             $manager->persist($Promo);
             $manager->flush();
-            return $this->json($Promo,Response::HTTP_CREATED);
+            return $this->json($Groupe,Response::HTTP_CREATED);
         }
     }
 
