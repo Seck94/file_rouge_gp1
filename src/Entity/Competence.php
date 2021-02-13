@@ -69,7 +69,7 @@ class Competence
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"referentiel_read","competence_read","competence_detail_read","Grpcompetence_read","Grpcompetence_competence_read","referentiel_groupecompetence_read","promo_referentiel","brief_read","brief_groupe_promo","all_brief_read",
+     * @Groups({"referentiel_read","competence_read","competence_detail_read","Grpcompetence_details_read","Grpcompetence_competence_read","referentiel_groupecompetence_read","promo_referentiel","brief_read","brief_groupe_promo","all_brief_read",
      * "brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $id;
@@ -77,7 +77,7 @@ class Competence
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="valeur vide")
-     * @Groups({"Grpcompetence_read","competence_detail_read","competence_read","Grpcompetence_competence_read","promo_referentiel","referentiel_groupecompetence_read"})
+     * @Groups({"Grpcompetence_details_read","competence_detail_read","competence_read","Grpcompetence_competence_read","promo_referentiel","referentiel_groupecompetence_read"})
      * @Groups({"referentiel_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $libelle;
@@ -91,7 +91,7 @@ class Competence
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence", cascade={"persist"})
-     * @Groups({"referentiel_read","competence_detail_read"})
+     * @Groups({"referentiel_read","competence_detail_read","Grpcompetence_details_read"})
      * @ApiSubresource()
      */
     private $niveau;

@@ -1,3 +1,0 @@
-<?php //route_name_41f086215b7ba4583cc4937136d3eae8
-
-return [PHP_INT_MAX, 'api_c_ms_get_item'];

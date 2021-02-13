@@ -11,9 +11,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'id',
                     'username',
+                    'avatar',
                     'prenom',
                     'nom',
                     'email',
+                    'profil',
+                    'lastLogin',
+                    'adresse',
                 ],
             ],
         ],

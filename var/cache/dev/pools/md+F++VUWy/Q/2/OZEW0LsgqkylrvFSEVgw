@@ -40,7 +40,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'referentiel_read',
                     'competence_read',
                     'competence_detail_read',
-                    'Grpcompetence_read',
+                    'Grpcompetence_details_read',
                     'Grpcompetence_competence_read',
                     'referentiel_groupecompetence_read',
                     'promo_referentiel',
@@ -54,7 +54,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'brief_valide',
                 ],
                 [
-                    'Grpcompetence_read',
+                    'Grpcompetence_details_read',
                     'competence_detail_read',
                     'competence_read',
                     'Grpcompetence_competence_read',
@@ -76,6 +76,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'referentiel_read',
                     'competence_detail_read',
+                    'Grpcompetence_details_read',
                 ],
             ],
         ],

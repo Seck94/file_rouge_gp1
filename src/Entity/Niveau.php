@@ -31,7 +31,7 @@ class Niveau
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"referentiel_read","competence_detail_read","niveau_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"referentiel_read","competence_detail_read","Grpcompetence_details_read","niveau_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $id;
 
@@ -39,20 +39,20 @@ class Niveau
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence_detail_read","niveau_read"})
      * \@Assert\NotBlank(message = "libelle vide")
-     * @Groups({"referentiel_read","brief_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"referentiel_read","brief_read","Grpcompetence_details_read","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"referentiel_read","competence_detail_read","niveau_read"})
+     * @Groups({"referentiel_read","competence_detail_read","Grpcompetence_details_read","niveau_read"})
      * \@Assert\NotBlank(message = "critereEvaluation vide")
      */
     private $critereEvaluation;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"referentiel_read","competence_detail_read","niveau_read"})
+     * @Groups({"referentiel_read","competence_detail_read","niveau_read","Grpcompetence_details_read"})
      * \@Assert\NotBlank(message = "groupeAction vide")
      */
     private $groupeAction;

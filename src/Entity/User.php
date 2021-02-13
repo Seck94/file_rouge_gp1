@@ -120,7 +120,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="blob", nullable=true)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","promo_read",})
      */
     private $avatar;
 
@@ -155,7 +155,7 @@ class User implements UserInterface
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"user_read"})
+     * @Groups({"user_read","promo_read",})
      */
     private $profil;
 
@@ -173,7 +173,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"user_read","apprenant_read"})
+     * @Groups({"user_read","apprenant_read","promo_read",})
      */
     private $lastLogin;
 
@@ -183,7 +183,7 @@ class User implements UserInterface
     private $commentaireGenerals;
 
     /**
-     * @Groups({"user_read"})
+     * @Groups({"user_read","promo_read",})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $adresse;

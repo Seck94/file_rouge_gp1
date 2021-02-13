@@ -122,6 +122,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
                 9 => [
                     'user_read',
+                    'promo_read',
                 ],
                 [
                     'user_read',
@@ -178,6 +179,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
                 [
                     'user_read',
+                    'promo_read',
                 ],
                 [
                     'user_details_read',
@@ -185,9 +187,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'user_read',
                     'apprenant_read',
+                    'promo_read',
                 ],
                 18 => [
                     'user_read',
+                    'promo_read',
                 ],
             ],
         ],
