@@ -194,6 +194,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'attributes' => [
                 [
                     'pagination_items_per_page' => 10,
+                    'mercure' => true,
                     'route_prefix' => '/admin',
                     'input' => null,
                     'output' => null,

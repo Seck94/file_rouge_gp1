@@ -15,6 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @UniqueEntity("libelle")
  * @ApiResource(
+ *      mercure=true,
  *      attributes={
  *          "pagination_items_per_page"=10,
  *      },

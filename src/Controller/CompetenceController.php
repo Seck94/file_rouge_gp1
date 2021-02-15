@@ -6,6 +6,7 @@ use App\Entity\Niveau;
 use App\Entity\Competence;
 use App\Entity\Groupecompetence;
 use App\Repository\NiveauRepository;
+use Symfony\Component\Mercure\Update;
 use App\Controller\CompetenceController;
 use App\Repository\CompetenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,6 +15,7 @@ use App\Repository\GroupecompetenceRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -56,7 +58,7 @@ class CompetenceController extends AbstractController
             return $this -> json(["message" => "Chaque compétence devrait avoir exactement 3 niveaux"],Response::HTTP_BAD_REQUEST);
         }
         
-        foreach ($Niveau_tab as $key => $value) {
+        foreach ($Niveau_tab as $value) {
             $niveau = new Niveau();
             $niveau -> setLibelle($value['libelle']);
             $niveau -> setcritereEvaluation($value['critereEval']);
@@ -95,7 +97,7 @@ class CompetenceController extends AbstractController
      *     }
      * )
     */
-    public function updateCompetence(Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, $id, CompetenceRepository $rep_cmp,NiveauRepository $rep_niveau)
+    public function updateCompetence(MessageBusInterface $bus,Request $request,SerializerInterface $serializer,ValidatorInterface $validator,EntityManagerInterface $manager, $id, CompetenceRepository $rep_cmp,NiveauRepository $rep_niveau)
     {
         $Competence_json = $request -> getContent();
         $Competence_tab = $serializer -> decode($Competence_json,"json");
@@ -107,21 +109,21 @@ class CompetenceController extends AbstractController
             $Competence -> setLibelle($Competence_tab['libelle']);
         }
         
-        foreach ($Competence_tab['groupecompetences'] as $grpcmptce) {
-            if ($Groupecompetence = $manager -> getRepository(Groupecompetence::class) -> find($grpcmptce['id'])) {
-                if (isset($grpcmptce['action']) && $grpcmptce['action'] ==='delete') {
-                    $Competence -> removeGroupecompetence($Groupecompetence);
-                }
-                else {
+        if (isset($Competence_tab['to_remove']) && $Groupecompetence = $manager -> getRepository(Groupecompetence::class) -> find($Competence_tab['to_remove'][0]['id'])) {
+            $Competence -> removeGroupecompetence($Groupecompetence);
+        }
+
+        if (isset($Competence_tab['to_add'])) {
+            foreach ($Competence_tab['to_add'] as $grpcmptce) {
+                if ($Groupecompetence = $manager -> getRepository(Groupecompetence::class) -> find($grpcmptce['id'])) {
                     $Competence -> addGroupecompetence($Groupecompetence);
                 }
             }
         }
-        
 
         $Niveau_tab = isset($Competence_tab['niveaux'])?$Competence_tab['niveaux']:[];
         if (!empty($Niveau_tab)) {
-            foreach ($Niveau_tab as $key => $value) {
+            foreach ($Niveau_tab as $value) {
                 $niveau = new Niveau();
                 if (isset($value['id'])) 
                 {
@@ -156,6 +158,15 @@ class CompetenceController extends AbstractController
         
         $manager->persist($Competence);
         $manager->flush();
+
+        // mercure
+        $update = new Update(
+            'competence'.$id,
+            json_encode(['id' => $id])
+        );
+        $bus->dispatch($update);
+        // End mercure
+
         return $this->json($Competence,Response::HTTP_CREATED,[],['groups'=>['competence_read']] );
     }
 

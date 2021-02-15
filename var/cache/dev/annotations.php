@@ -2022,7 +2022,7 @@ return [[
 
 0 => 'N;',
 1 => [],
-2 => 1613151435,
+2 => 1613331254,
 3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -5268,6 +5268,7 @@ return [[
                 'attributes' => [
                     1 => [
                         'pagination_items_per_page' => 10,
+                        'mercure' => true,
                         'route_prefix' => '/admin',
                     ],
                 ],
