@@ -15,14 +15,13 @@ return [
             [['_route' => 'api_apprenants_add_apprenant_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_collection_operation_name' => 'add_apprenant'], null, ['POST' => 0], null, false, false, null],
             [['_route' => 'api_apprenants_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Apprenant', '_api_collection_operation_name' => 'get'], null, ['GET' => 0], null, false, false, null],
         ],
-        '/api/formateur/briefs' => [
-            [['_route' => 'all_briefs', '_controller' => 'App\\Controller\\BriefController::brief_formateur', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'all_briefs'], null, ['GET' => 0], null, false, false, null],
-            [['_route' => 'app_brief_addbrief', '__controller' => 'App\\Controller\\BriefController::addBrief', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'add_briefs', '_controller' => 'App\\Controller\\BriefController::addBrief'], null, ['POST' => 0], null, false, false, null],
-            [['_route' => 'api_briefs_all_briefs_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'all_briefs'], null, ['GET' => 0], null, false, false, null],
-            [['_route' => 'api_briefs_add_briefs_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'add_briefs'], null, ['POST' => 0], null, false, false, null],
-        ],
         '/api/formateur/briefs/brouillons' => [[['_route' => 'briefs_brouillon', '_controller' => 'App\\Controller\\BriefController::briefs_brouillon', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'briefs_brouillon'], null, ['GET' => 0], null, false, false, null]],
         '/api/formateur/briefs/valides' => [[['_route' => 'briefs_valide', '_controller' => 'App\\Controller\\BriefController::briefs_valide', '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'briefs_valide'], null, ['GET' => 0], null, false, false, null]],
+        '/api/formateur/briefs' => [
+            [['_route' => 'app_brief_addbrief', '__controller' => 'App\\Controller\\BriefController::addBrief', '__api_resource_class' => 'App\\Entity\\Brief', '__api_collection_operation_name' => 'add_briefs', '_controller' => 'App\\Controller\\BriefController::addBrief'], null, ['POST' => 0], null, false, false, null],
+            [['_route' => 'api_briefs_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'get'], null, ['GET' => 0], null, false, false, null],
+            [['_route' => 'api_briefs_add_briefs_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Brief', '_api_collection_operation_name' => 'add_briefs'], null, ['POST' => 0], null, false, false, null],
+        ],
         '/brief' => [[['_route' => 'brief', '_controller' => 'App\\Controller\\BriefController::UpdateBrief'], null, null, null, false, false, null]],
         '/commentaire/general' => [[['_route' => 'commentaire_general', '_controller' => 'App\\Controller\\CommentaireGeneralController::index'], null, null, null, false, false, null]],
         '/api/admin/competences' => [

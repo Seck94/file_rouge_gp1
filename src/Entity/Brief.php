@@ -16,8 +16,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *          "normalization_context"={"groups"={"brief_read"},"enable_max_depth"=true}
  *      },
  *     collectionOperations={
- *          "all_briefs"={
- *              "method"="GET",
+ *          "get"={
  *              "security"="is_granted('ROLE_CM')",
  *              "security_message"="Vous n'avez pas acces a cette ressource.",
  *              "path"="formateur/briefs",
@@ -154,7 +153,7 @@ class Brief
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $livrablesAttendus;
 
@@ -178,6 +177,7 @@ class Brief
 
     /**
      * @ORM\Column(type="blob", nullable=true)
+     * @Groups({"all_brief_read"})
      */
     private $avatar;
 
@@ -198,7 +198,7 @@ class Brief
 
      /**
      * @ORM\OneToMany(targetEntity=BriefLivrableAttendu::class, mappedBy="Brief", orphanRemoval=true,cascade={"persist"})
-     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $briefLivrableAttendus;
     
@@ -225,13 +225,13 @@ class Brief
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $niveaux;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs",cascade={"persist"})
-     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","brief_promo","brief_apprenant_promo","promo_id_brief","brief_brouillon","brief_valide"})
      */
     private $tags;
 
@@ -245,7 +245,7 @@ class Brief
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
-     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","all_brief_read","brief_promo","brief_apprenant_promo","promo_id_brief"})
+     * @Groups({"brief_read","apprenant_promo_brief","brief_groupe_promo","brief_promo","brief_apprenant_promo","promo_id_brief"})
      */
     private $groupes;
 
@@ -367,7 +367,13 @@ class Brief
 
     public function getAvatar()
     {
-        return $this->avatar;
+        if ($this->avatar!==null) {
+            $content = @\stream_get_contents($this->avatar);
+            @fclose($this->avatar);
+
+            return base64_encode($content);
+        }
+        return null;
     }
 
     public function setAvatar($avatar): self

@@ -6082,12 +6082,6 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.7TeimA8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="briefs" type="service" id="App\Repository\BriefRepository"/>
-      </argument>
-    </service>
     <service id=".service_locator.X_yNDnk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6404,7 +6398,7 @@
         <argument key="user_repo" type="service" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.KwY9NjY" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.6YQgzYP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::getAdmin" type="service" id=".service_locator.RTUGCCW"/>
@@ -6417,7 +6411,6 @@
         <argument key="App\Controller\BriefController::addBrief" type="service" id=".service_locator.zBzfrbV"/>
         <argument key="App\Controller\BriefController::apprenant_promo_brief" type="service" id=".service_locator.YL8mi0a"/>
         <argument key="App\Controller\BriefController::assignationBrief" type="service" id=".service_locator.Wz7Ufj7"/>
-        <argument key="App\Controller\BriefController::brief_formateur" type="service" id=".service_locator.7TeimA8"/>
         <argument key="App\Controller\BriefController::brief_promo" type="service" id=".service_locator.Js0aMQF"/>
         <argument key="App\Controller\BriefController::briefs_groupe_promo" type="service" id=".service_locator.X_yNDnk"/>
         <argument key="App\Controller\BriefController::dupliqueBrief" type="service" id=".service_locator.H3oolym"/>
@@ -6472,7 +6465,6 @@
         <argument key="App\Controller\BriefController:addBrief" type="service" id=".service_locator.zBzfrbV"/>
         <argument key="App\Controller\BriefController:apprenant_promo_brief" type="service" id=".service_locator.YL8mi0a"/>
         <argument key="App\Controller\BriefController:assignationBrief" type="service" id=".service_locator.Wz7Ufj7"/>
-        <argument key="App\Controller\BriefController:brief_formateur" type="service" id=".service_locator.7TeimA8"/>
         <argument key="App\Controller\BriefController:brief_promo" type="service" id=".service_locator.Js0aMQF"/>
         <argument key="App\Controller\BriefController:briefs_groupe_promo" type="service" id=".service_locator.X_yNDnk"/>
         <argument key="App\Controller\BriefController:dupliqueBrief" type="service" id=".service_locator.H3oolym"/>
@@ -7040,12 +7032,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.KwY9NjY"/>
+      <argument type="service" id=".service_locator.6YQgzYP"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.KwY9NjY"/>
+      <argument type="service" id=".service_locator.6YQgzYP"/>
     </service>
     <service id="api_platform.swagger.normalizer.api_gateway.inner" class="ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer" public="false">
       <argument type="service" id="api_platform.metadata.resource.metadata_factory.cached"/>
@@ -7486,7 +7478,7 @@
     <service id="Symfony\Component\Mercure\PublisherInterface" alias="mercure.hub.default.publisher.traceable"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.KwY9NjY"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.6YQgzYP"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

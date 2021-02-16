@@ -38,27 +38,6 @@ class BriefController extends AbstractController
 
     /**
     * @Route(
-    *     name="all_briefs",
-    *     path="api/formateur/briefs",
-    *     methods={"GET"},
-    *     defaults={
-    *         "_controller"="\app\Controller\BriefController::brief_formateur",
-    *         "_api_resource_class"=Brief::class,
-    *         "_api_collection_operation_name"="all_briefs"
-    *     }
-    * )
-    */
-    public function brief_formateur(BriefRepository $briefs){
-        if ($this->get('security.token_storage')->getToken()->getUser() -> getRoles()[0] !== "ROLE_FORMATEUR") {
-            return $this -> json("Vous n'etes pas formateur...", Response::HTTP_FORBIDDEN);
-        }
-        return $briefs -> findAll();
-    }
-
-
-
-    /**
-    * @Route(
     *     name="brief_groupe_promo",
     *     path="api/formateur/promos/{idp}/groupes/{idg}/briefs",
     *     methods={"GET"},
