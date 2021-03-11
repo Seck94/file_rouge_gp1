@@ -2020,7 +2020,7 @@ return [[
 
 0 => 'N;',
 1 => [],
-2 => 1613467062,
+2 => 1614161814,
 3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -10030,6 +10030,7 @@ return [[
                 'groups' => [
                     3 => [
                         'Grptags_read',
+                        'Grptags_tags_read',
                         'brief_read',
                         'brief_groupe_promo',
                         'all_brief_read',

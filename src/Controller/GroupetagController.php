@@ -110,7 +110,7 @@ class GroupetagController extends AbstractController
         $Groupetag = $Groupetag -> findAll();
         
         
-        return $this -> json($Groupetag, Response::HTTP_OK,[],['groups'=>['Grptags_read']] );
+        return $this -> json($Groupetag, Response::HTTP_OK,[],['groups'=>['Grptags_tags_read']] );
     }
 
     

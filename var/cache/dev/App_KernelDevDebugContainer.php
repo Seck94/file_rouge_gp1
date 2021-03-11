@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerSoKLUVa\App_KernelDevDebugContainer([
     'container.build_hash' => 'SoKLUVa',
-    'container.build_id' => 'e2e23589',
-    'container.build_time' => 1613467061,
+    'container.build_id' => 'd8816ced',
+    'container.build_time' => 1614249553,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerSoKLUVa');

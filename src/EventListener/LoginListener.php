@@ -17,7 +17,6 @@ class LoginListener{
 
     public function onSecurityAuthenticationSuccess(AuthenticationEvent $event){ 
         if ($user = $event -> getAuthenticationToken() -> getUser()) {
-            //on peut aussi faire $user = $this -> getuser() qui retourne le user connecté
             $user -> setLastLogin(new \Datetime());
             $this -> em -> persist($user);
             $this -> em -> flush();
